@@ -1,0 +1,123 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/definitions/deprecated-aliases.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.DEPRECATED_ALIASES = void 0;\nconst DEPRECATED_ALIASES = exports.DEPRECATED_ALIASES = {\n  ModuleDeclaration: \"ImportOrExportDeclaration\"\n};\n\n//# sourceMappingURL=deprecated-aliases.js.map\n",
+      "start": 1727785256985,
+      "end": 1727785257056,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1727785257056,
+      "end": 1727785257056,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727785257056,
+      "end": 1727785257056,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727785257056,
+      "end": 1727785257056,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727785257056,
+      "end": 1727785257056,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727785257056,
+      "end": 1727785257056,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1727785257056,
+      "end": 1727785257056,
+      "order": "normal"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1727785257056,
+      "end": 1727785257056,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727785257056,
+      "end": 1727785257056,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727785257056,
+      "end": 1727785257056,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727785257056,
+      "end": 1727785257056,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727785257056,
+      "end": 1727785257056,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727785257056,
+      "end": 1727785257056,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as deprecatedAliases } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/definitions/deprecated-aliases.js?commonjs-exports\";\n\n\"use strict\";\n\nObject.defineProperty(deprecatedAliases, \"__esModule\", {\n  value: true\n});\nvar DEPRECATED_ALIASES_1 = deprecatedAliases.DEPRECATED_ALIASES = void 0;\nconst DEPRECATED_ALIASES = DEPRECATED_ALIASES_1 = deprecatedAliases.DEPRECATED_ALIASES = {\n  ModuleDeclaration: \"ImportOrExportDeclaration\"\n};\n\n//# sourceMappingURL=deprecated-aliases.js.map\n\nexport { deprecatedAliases as __moduleExports, DEPRECATED_ALIASES_1 as DEPRECATED_ALIASES, deprecatedAliases as default };",
+      "start": 1727785257056,
+      "end": 1727785257056,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;AAAA,YAAY,CAAC;AACb;AACA,MAAM,CAAC,cAAc,CAAC,iBAAO,EAAE,YAAY,EAAE;AAC7C,EAAE,KAAK,EAAE,IAAI;AACb,CAAC,CAAC,CAAC;AACH,+DAA0B,GAAG,KAAK,CAAC,CAAC;AACpC,MAAM,kBAAkB,GAAG,2DAA0B,GAAG;AACxD,EAAE,iBAAiB,EAAE,2BAA2B;AAChD,CAAC,CAAC;AACF;AACA"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727785257056,
+      "end": 1727785257056,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727785257056,
+      "end": 1727785257056,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727785257056,
+      "end": 1727785257056,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727785257056,
+      "end": 1727785257056,
+      "order": "normal"
+    }
+  ]
+}

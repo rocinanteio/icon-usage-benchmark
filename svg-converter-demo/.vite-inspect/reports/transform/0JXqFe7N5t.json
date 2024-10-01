@@ -1,0 +1,12 @@
+{
+  "resolvedId": "\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/js-tokens/index.js?commonjs-proxy",
+  "transforms": [
+    {
+      "name": "commonjs",
+      "result": "export { __moduleExports as default } from \"/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/js-tokens/index.js\";",
+      "start": 1727785257420,
+      "end": 1727785257420,
+      "sourcemaps": null
+    }
+  ]
+}

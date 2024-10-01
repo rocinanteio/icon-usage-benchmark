@@ -1,0 +1,11 @@
+{
+  "resolvedId": "\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/picocolors/picocolors.browser.js?commonjs-module",
+  "transforms": [
+    {
+      "name": "commonjs",
+      "result": "var picocolors_browser = {exports: {}}; export {picocolors_browser as __module}",
+      "start": 1727785257420,
+      "end": 1727785257420
+    }
+  ]
+}

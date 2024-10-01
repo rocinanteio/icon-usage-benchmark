@@ -1,0 +1,12 @@
+{
+  "resolvedId": "\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/traverse/traverseFast.js?commonjs-proxy",
+  "transforms": [
+    {
+      "name": "commonjs",
+      "result": "export { __moduleExports as default } from \"/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/traverse/traverseFast.js\";",
+      "start": 1727785257351,
+      "end": 1727785257351,
+      "sourcemaps": null
+    }
+  ]
+}

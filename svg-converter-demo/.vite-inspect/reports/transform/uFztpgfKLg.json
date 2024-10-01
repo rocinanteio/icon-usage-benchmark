@@ -1,0 +1,123 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/comments/addComments.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = addComments;\nfunction addComments(node, type, comments) {\n  if (!comments || !node) return node;\n  const key = `${type}Comments`;\n  if (node[key]) {\n    if (type === \"leading\") {\n      node[key] = comments.concat(node[key]);\n    } else {\n      node[key].push(...comments);\n    }\n  } else {\n    node[key] = comments;\n  }\n  return node;\n}\n\n//# sourceMappingURL=addComments.js.map\n",
+      "start": 1727785256878,
+      "end": 1727785256911,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1727785256911,
+      "end": 1727785256911,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727785256911,
+      "end": 1727785256911,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727785256911,
+      "end": 1727785256911,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727785256911,
+      "end": 1727785256911,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727785256911,
+      "end": 1727785256911,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1727785256911,
+      "end": 1727785256911,
+      "order": "normal"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1727785256911,
+      "end": 1727785256911,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727785256911,
+      "end": 1727785256911,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727785256911,
+      "end": 1727785256911,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727785256911,
+      "end": 1727785256911,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727785256911,
+      "end": 1727785256911,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727785256911,
+      "end": 1727785256911,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as addComments_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/comments/addComments.js?commonjs-exports\";\n\n\"use strict\";\n\nObject.defineProperty(addComments_1, \"__esModule\", {\n  value: true\n});\nvar _default = addComments_1.default = addComments;\nfunction addComments(node, type, comments) {\n  if (!comments || !node) return node;\n  const key = `${type}Comments`;\n  if (node[key]) {\n    if (type === \"leading\") {\n      node[key] = comments.concat(node[key]);\n    } else {\n      node[key].push(...comments);\n    }\n  } else {\n    node[key] = comments;\n  }\n  return node;\n}\n\n//# sourceMappingURL=addComments.js.map\n\nexport { addComments_1 as __moduleExports, _default as default };",
+      "start": 1727785256911,
+      "end": 1727785256911,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;AAAA,YAAY,CAAC;AACb;AACA,MAAM,CAAC,cAAc,CAAC,aAAO,EAAE,YAAY,EAAE;AAC7C,EAAE,KAAK,EAAE,IAAI;AACb,CAAC,CAAC,CAAC;AACH,oCAAe,GAAG,WAAW,CAAC;AAC9B,SAAS,WAAW,CAAC,IAAI,EAAE,IAAI,EAAE,QAAQ,EAAE;AAC3C,EAAE,IAAI,CAAC,QAAQ,IAAI,CAAC,IAAI,EAAE,OAAO,IAAI,CAAC;AACtC,EAAE,MAAM,GAAG,GAAG,CAAC,EAAE,IAAI,CAAC,QAAQ,CAAC,CAAC;AAChC,EAAE,IAAI,IAAI,CAAC,GAAG,CAAC,EAAE;AACjB,IAAI,IAAI,IAAI,KAAK,SAAS,EAAE;AAC5B,MAAM,IAAI,CAAC,GAAG,CAAC,GAAG,QAAQ,CAAC,MAAM,CAAC,IAAI,CAAC,GAAG,CAAC,CAAC,CAAC;AAC7C,KAAK,MAAM;AACX,MAAM,IAAI,CAAC,GAAG,CAAC,CAAC,IAAI,CAAC,GAAG,QAAQ,CAAC,CAAC;AAClC,KAAK;AACL,GAAG,MAAM;AACT,IAAI,IAAI,CAAC,GAAG,CAAC,GAAG,QAAQ,CAAC;AACzB,GAAG;AACH,EAAE,OAAO,IAAI,CAAC;AACd,CAAC;AACD;AACA"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727785256911,
+      "end": 1727785256911,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727785256911,
+      "end": 1727785256911,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727785256911,
+      "end": 1727785256911,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727785256911,
+      "end": 1727785256911,
+      "order": "normal"
+    }
+  ]
+}

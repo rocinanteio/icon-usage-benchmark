@@ -1,0 +1,123 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/path/inference/util.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.createUnionType = createUnionType;\nvar _t = require(\"@babel/types\");\nconst {\n  createFlowUnionType,\n  createTSUnionType,\n  createUnionTypeAnnotation,\n  isFlowType,\n  isTSType\n} = _t;\nfunction createUnionType(types) {\n  {\n    if (types.every(v => isFlowType(v))) {\n      if (createFlowUnionType) {\n        return createFlowUnionType(types);\n      }\n      return createUnionTypeAnnotation(types);\n    } else if (types.every(v => isTSType(v))) {\n      if (createTSUnionType) {\n        return createTSUnionType(types);\n      }\n    }\n  }\n}\n\n//# sourceMappingURL=util.js.map\n",
+      "start": 1727785257081,
+      "end": 1727785257121,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1727785257121,
+      "end": 1727785257121,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727785257121,
+      "end": 1727785257121,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727785257121,
+      "end": 1727785257121,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727785257121,
+      "end": 1727785257121,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727785257121,
+      "end": 1727785257121,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1727785257121,
+      "end": 1727785257121,
+      "order": "normal"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1727785257121,
+      "end": 1727785257121,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727785257121,
+      "end": 1727785257121,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727785257121,
+      "end": 1727785257121,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727785257121,
+      "end": 1727785257121,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727785257121,
+      "end": 1727785257121,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727785257121,
+      "end": 1727785257121,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as util } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/path/inference/util.js?commonjs-exports\";\nimport { __require as require$$0 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/index.js?commonjs-wrapped\";\n\n\"use strict\";\n\nObject.defineProperty(util, \"__esModule\", {\n  value: true\n});\nvar createUnionType_1 = util.createUnionType = createUnionType;\nvar _t = require$$0();\nconst {\n  createFlowUnionType,\n  createTSUnionType,\n  createUnionTypeAnnotation,\n  isFlowType,\n  isTSType\n} = _t;\nfunction createUnionType(types) {\n  {\n    if (types.every(v => isFlowType(v))) {\n      if (createFlowUnionType) {\n        return createFlowUnionType(types);\n      }\n      return createUnionTypeAnnotation(types);\n    } else if (types.every(v => isTSType(v))) {\n      if (createTSUnionType) {\n        return createTSUnionType(types);\n      }\n    }\n  }\n}\n\n//# sourceMappingURL=util.js.map\n\nexport { util as __moduleExports, createUnionType_1 as createUnionType, util as default };",
+      "start": 1727785257121,
+      "end": 1727785257121,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;AAAA,YAAY,CAAC;AACb;AACA,MAAM,CAAC,cAAc,CAAC,IAAO,EAAE,YAAY,EAAE;AAC7C,EAAE,KAAK,EAAE,IAAI;AACb,CAAC,CAAC,CAAC;AACH,4CAAuB,GAAG,eAAe,CAAC;AAC1C,IAAI,EAAE,GAAG,YAAuB,CAAC;AACjC,MAAM;AACN,EAAE,mBAAmB;AACrB,EAAE,iBAAiB;AACnB,EAAE,yBAAyB;AAC3B,EAAE,UAAU;AACZ,EAAE,QAAQ;AACV,CAAC,GAAG,EAAE,CAAC;AACP,SAAS,eAAe,CAAC,KAAK,EAAE;AAChC,EAAE;AACF,IAAI,IAAI,KAAK,CAAC,KAAK,CAAC,CAAC,IAAI,UAAU,CAAC,CAAC,CAAC,CAAC,EAAE;AACzC,MAAM,IAAI,mBAAmB,EAAE;AAC/B,QAAQ,OAAO,mBAAmB,CAAC,KAAK,CAAC,CAAC;AAC1C,OAAO;AACP,MAAM,OAAO,yBAAyB,CAAC,KAAK,CAAC,CAAC;AAC9C,KAAK,MAAM,IAAI,KAAK,CAAC,KAAK,CAAC,CAAC,IAAI,QAAQ,CAAC,CAAC,CAAC,CAAC,EAAE;AAC9C,MAAM,IAAI,iBAAiB,EAAE;AAC7B,QAAQ,OAAO,iBAAiB,CAAC,KAAK,CAAC,CAAC;AACxC,OAAO;AACP,KAAK;AACL,GAAG;AACH,CAAC;AACD;AACA"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727785257121,
+      "end": 1727785257121,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727785257121,
+      "end": 1727785257121,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727785257121,
+      "end": 1727785257121,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727785257121,
+      "end": 1727785257121,
+      "order": "normal"
+    }
+  ]
+}

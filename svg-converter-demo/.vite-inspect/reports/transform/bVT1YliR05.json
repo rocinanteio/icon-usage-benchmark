@@ -1,0 +1,123 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/lib/source-map.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\nvar _genMapping = require(\"@jridgewell/gen-mapping\");\nvar _traceMapping = require(\"@jridgewell/trace-mapping\");\nclass SourceMap {\n  constructor(opts, code) {\n    var _opts$sourceFileName;\n    this._map = void 0;\n    this._rawMappings = void 0;\n    this._sourceFileName = void 0;\n    this._lastGenLine = 0;\n    this._lastSourceLine = 0;\n    this._lastSourceColumn = 0;\n    this._inputMap = void 0;\n    const map = this._map = new _genMapping.GenMapping({\n      sourceRoot: opts.sourceRoot\n    });\n    this._sourceFileName = (_opts$sourceFileName = opts.sourceFileName) == null ? void 0 : _opts$sourceFileName.replace(/\\\\/g, \"/\");\n    this._rawMappings = undefined;\n    if (opts.inputSourceMap) {\n      this._inputMap = new _traceMapping.TraceMap(opts.inputSourceMap);\n      const resolvedSources = this._inputMap.resolvedSources;\n      if (resolvedSources.length) {\n        for (let i = 0; i < resolvedSources.length; i++) {\n          var _this$_inputMap$sourc;\n          (0, _genMapping.setSourceContent)(map, resolvedSources[i], (_this$_inputMap$sourc = this._inputMap.sourcesContent) == null ? void 0 : _this$_inputMap$sourc[i]);\n        }\n      }\n    }\n    if (typeof code === \"string\" && !opts.inputSourceMap) {\n      (0, _genMapping.setSourceContent)(map, this._sourceFileName, code);\n    } else if (typeof code === \"object\") {\n      for (const sourceFileName of Object.keys(code)) {\n        (0, _genMapping.setSourceContent)(map, sourceFileName.replace(/\\\\/g, \"/\"), code[sourceFileName]);\n      }\n    }\n  }\n  get() {\n    return (0, _genMapping.toEncodedMap)(this._map);\n  }\n  getDecoded() {\n    return (0, _genMapping.toDecodedMap)(this._map);\n  }\n  getRawMappings() {\n    return this._rawMappings || (this._rawMappings = (0, _genMapping.allMappings)(this._map));\n  }\n  mark(generated, line, column, identifierName, identifierNamePos, filename) {\n    var _originalMapping;\n    this._rawMappings = undefined;\n    let originalMapping;\n    if (line != null) {\n      if (this._inputMap) {\n        originalMapping = (0, _traceMapping.originalPositionFor)(this._inputMap, {\n          line,\n          column\n        });\n        if (!originalMapping.name && identifierNamePos) {\n          const originalIdentifierMapping = (0, _traceMapping.originalPositionFor)(this._inputMap, identifierNamePos);\n          if (originalIdentifierMapping.name) {\n            identifierName = originalIdentifierMapping.name;\n          }\n        }\n      } else {\n        originalMapping = {\n          source: (filename == null ? void 0 : filename.replace(/\\\\/g, \"/\")) || this._sourceFileName,\n          line: line,\n          column: column\n        };\n      }\n    }\n    (0, _genMapping.maybeAddMapping)(this._map, {\n      name: identifierName,\n      generated,\n      source: (_originalMapping = originalMapping) == null ? void 0 : _originalMapping.source,\n      original: originalMapping\n    });\n  }\n}\nexports.default = SourceMap;\n\n//# sourceMappingURL=source-map.js.map\n",
+      "start": 1727785257031,
+      "end": 1727785257060,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1727785257060,
+      "end": 1727785257060,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727785257060,
+      "end": 1727785257060,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727785257060,
+      "end": 1727785257060,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727785257060,
+      "end": 1727785257060,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727785257060,
+      "end": 1727785257060,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1727785257060,
+      "end": 1727785257060,
+      "order": "normal"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1727785257060,
+      "end": 1727785257060,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727785257060,
+      "end": 1727785257060,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727785257060,
+      "end": 1727785257060,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727785257060,
+      "end": 1727785257060,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727785257060,
+      "end": 1727785257060,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727785257060,
+      "end": 1727785257060,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as sourceMap } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/lib/source-map.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@jridgewell/gen-mapping/dist/gen-mapping.umd.js?commonjs-proxy\";\nimport require$$1 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@jridgewell/trace-mapping/dist/trace-mapping.umd.js?commonjs-proxy\";\n\n\"use strict\";\n\nObject.defineProperty(sourceMap, \"__esModule\", {\n  value: true\n});\nvar _default = sourceMap.default = void 0;\nvar _genMapping = require$$0;\nvar _traceMapping = require$$1;\nclass SourceMap {\n  constructor(opts, code) {\n    var _opts$sourceFileName;\n    this._map = void 0;\n    this._rawMappings = void 0;\n    this._sourceFileName = void 0;\n    this._lastGenLine = 0;\n    this._lastSourceLine = 0;\n    this._lastSourceColumn = 0;\n    this._inputMap = void 0;\n    const map = this._map = new _genMapping.GenMapping({\n      sourceRoot: opts.sourceRoot\n    });\n    this._sourceFileName = (_opts$sourceFileName = opts.sourceFileName) == null ? void 0 : _opts$sourceFileName.replace(/\\\\/g, \"/\");\n    this._rawMappings = undefined;\n    if (opts.inputSourceMap) {\n      this._inputMap = new _traceMapping.TraceMap(opts.inputSourceMap);\n      const resolvedSources = this._inputMap.resolvedSources;\n      if (resolvedSources.length) {\n        for (let i = 0; i < resolvedSources.length; i++) {\n          var _this$_inputMap$sourc;\n          (0, _genMapping.setSourceContent)(map, resolvedSources[i], (_this$_inputMap$sourc = this._inputMap.sourcesContent) == null ? void 0 : _this$_inputMap$sourc[i]);\n        }\n      }\n    }\n    if (typeof code === \"string\" && !opts.inputSourceMap) {\n      (0, _genMapping.setSourceContent)(map, this._sourceFileName, code);\n    } else if (typeof code === \"object\") {\n      for (const sourceFileName of Object.keys(code)) {\n        (0, _genMapping.setSourceContent)(map, sourceFileName.replace(/\\\\/g, \"/\"), code[sourceFileName]);\n      }\n    }\n  }\n  get() {\n    return (0, _genMapping.toEncodedMap)(this._map);\n  }\n  getDecoded() {\n    return (0, _genMapping.toDecodedMap)(this._map);\n  }\n  getRawMappings() {\n    return this._rawMappings || (this._rawMappings = (0, _genMapping.allMappings)(this._map));\n  }\n  mark(generated, line, column, identifierName, identifierNamePos, filename) {\n    var _originalMapping;\n    this._rawMappings = undefined;\n    let originalMapping;\n    if (line != null) {\n      if (this._inputMap) {\n        originalMapping = (0, _traceMapping.originalPositionFor)(this._inputMap, {\n          line,\n          column\n        });\n        if (!originalMapping.name && identifierNamePos) {\n          const originalIdentifierMapping = (0, _traceMapping.originalPositionFor)(this._inputMap, identifierNamePos);\n          if (originalIdentifierMapping.name) {\n            identifierName = originalIdentifierMapping.name;\n          }\n        }\n      } else {\n        originalMapping = {\n          source: (filename == null ? void 0 : filename.replace(/\\\\/g, \"/\")) || this._sourceFileName,\n          line: line,\n          column: column\n        };\n      }\n    }\n    (0, _genMapping.maybeAddMapping)(this._map, {\n      name: identifierName,\n      generated,\n      source: (_originalMapping = originalMapping) == null ? void 0 : _originalMapping.source,\n      original: originalMapping\n    });\n  }\n}\n_default = sourceMap.default = SourceMap;\n\n//# sourceMappingURL=source-map.js.map\n\nexport { sourceMap as __moduleExports, _default as default };",
+      "start": 1727785257060,
+      "end": 1727785257197,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": "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"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727785257197,
+      "end": 1727785257197,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727785257197,
+      "end": 1727785257197,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727785257197,
+      "end": 1727785257197,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727785257197,
+      "end": 1727785257197,
+      "order": "normal"
+    }
+  ]
+}

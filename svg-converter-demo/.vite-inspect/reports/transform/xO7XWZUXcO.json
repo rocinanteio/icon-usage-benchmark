@@ -1,0 +1,123 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/template/lib/index.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.statements = exports.statement = exports.smart = exports.program = exports.expression = exports.default = void 0;\nvar formatters = require(\"./formatters.js\");\nvar _builder = require(\"./builder.js\");\nconst smart = exports.smart = (0, _builder.default)(formatters.smart);\nconst statement = exports.statement = (0, _builder.default)(formatters.statement);\nconst statements = exports.statements = (0, _builder.default)(formatters.statements);\nconst expression = exports.expression = (0, _builder.default)(formatters.expression);\nconst program = exports.program = (0, _builder.default)(formatters.program);\nvar _default = exports.default = Object.assign(smart.bind(undefined), {\n  smart,\n  statement,\n  statements,\n  expression,\n  program,\n  ast: smart.ast\n});\n\n//# sourceMappingURL=index.js.map\n",
+      "start": 1727785257046,
+      "end": 1727785257071,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1727785257071,
+      "end": 1727785257071,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727785257071,
+      "end": 1727785257071,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727785257071,
+      "end": 1727785257071,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727785257071,
+      "end": 1727785257071,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727785257071,
+      "end": 1727785257071,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1727785257071,
+      "end": 1727785257071,
+      "order": "normal"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1727785257071,
+      "end": 1727785257071,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727785257071,
+      "end": 1727785257071,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727785257071,
+      "end": 1727785257071,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727785257071,
+      "end": 1727785257071,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727785257071,
+      "end": 1727785257071,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727785257071,
+      "end": 1727785257071,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as lib } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/template/lib/index.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/template/lib/formatters.js?commonjs-proxy\";\nimport require$$1 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/template/lib/builder.js?commonjs-proxy\";\n\nvar default_1;\nvar expression_1;\nvar program_1;\nvar smart_1;\nvar statement_1;\n\"use strict\";\n\nObject.defineProperty(lib, \"__esModule\", {\n  value: true\n});\nvar statements_1 = lib.statements = statement_1 = lib.statement = smart_1 = lib.smart = program_1 = lib.program = expression_1 = lib.expression = default_1 = lib.default = void 0;\nvar formatters = require$$0;\nvar _builder = require$$1;\nconst smart = smart_1 = lib.smart = (0, _builder.default)(formatters.smart);\nconst statement = statement_1 = lib.statement = (0, _builder.default)(formatters.statement);\nconst statements = statements_1 = lib.statements = (0, _builder.default)(formatters.statements);\nconst expression = expression_1 = lib.expression = (0, _builder.default)(formatters.expression);\nconst program = program_1 = lib.program = (0, _builder.default)(formatters.program);\nvar _default = default_1 = lib.default = Object.assign(smart.bind(undefined), {\n  smart,\n  statement,\n  statements,\n  expression,\n  program,\n  ast: smart.ast\n});\n\n//# sourceMappingURL=index.js.map\n\nexport { lib as __moduleExports, statements_1 as statements, statement_1 as statement, smart_1 as smart, program_1 as program, expression_1 as expression, default_1 as default };",
+      "start": 1727785257071,
+      "end": 1727785257401,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;;;;;;;AAAA,YAAY,CAAC;AACb;AACA,MAAM,CAAC,cAAc,CAAC,GAAO,EAAE,YAAY,EAAE;AAC7C,EAAE,KAAK,EAAE,IAAI;AACb,CAAC,CAAC,CAAC;AACH,iCAAkB,GAAG,2BAAiB,GAAG,mBAAa,GAAG,uBAAe,GAAG,6BAAkB,GAAG,uBAAe,GAAG,KAAK,CAAC,CAAC;AACzH,IAAI,UAAU,GAAG,UAA0B,CAAC;AAC5C,IAAI,QAAQ,GAAG,UAAuB,CAAC;AACvC,MAAM,KAAK,GAAG,mBAAa,GAAG,CAAC,CAAC,EAAE,QAAQ,CAAC,OAAO,EAAE,UAAU,CAAC,KAAK,CAAC,CAAC;AACtE,MAAM,SAAS,GAAG,2BAAiB,GAAG,CAAC,CAAC,EAAE,QAAQ,CAAC,OAAO,EAAE,UAAU,CAAC,SAAS,CAAC,CAAC;AAClF,MAAM,UAAU,GAAG,6BAAkB,GAAG,CAAC,CAAC,EAAE,QAAQ,CAAC,OAAO,EAAE,UAAU,CAAC,UAAU,CAAC,CAAC;AACrF,MAAM,UAAU,GAAG,6BAAkB,GAAG,CAAC,CAAC,EAAE,QAAQ,CAAC,OAAO,EAAE,UAAU,CAAC,UAAU,CAAC,CAAC;AACrF,MAAM,OAAO,GAAG,uBAAe,GAAG,CAAC,CAAC,EAAE,QAAQ,CAAC,OAAO,EAAE,UAAU,CAAC,OAAO,CAAC,CAAC;AAC5E,IAAI,QAAQ,GAAG,uBAAe,GAAG,MAAM,CAAC,MAAM,CAAC,KAAK,CAAC,IAAI,CAAC,SAAS,CAAC,EAAE;AACtE,EAAE,KAAK;AACP,EAAE,SAAS;AACX,EAAE,UAAU;AACZ,EAAE,UAAU;AACZ,EAAE,OAAO;AACT,EAAE,GAAG,EAAE,KAAK,CAAC,GAAG;AAChB,CAAC,CAAC,CAAC;AACH;AACA"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727785257401,
+      "end": 1727785257401,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727785257401,
+      "end": 1727785257401,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727785257401,
+      "end": 1727785257401,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727785257401,
+      "end": 1727785257401,
+      "order": "normal"
+    }
+  ]
+}

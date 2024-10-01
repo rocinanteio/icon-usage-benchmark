@@ -1,0 +1,123 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/template/lib/formatters.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.statements = exports.statement = exports.smart = exports.program = exports.expression = void 0;\nvar _t = require(\"@babel/types\");\nconst {\n  assertExpressionStatement\n} = _t;\nfunction makeStatementFormatter(fn) {\n  return {\n    code: str => `/* @babel/template */;\\n${str}`,\n    validate: () => {},\n    unwrap: ast => {\n      return fn(ast.program.body.slice(1));\n    }\n  };\n}\nconst smart = exports.smart = makeStatementFormatter(body => {\n  if (body.length > 1) {\n    return body;\n  } else {\n    return body[0];\n  }\n});\nconst statements = exports.statements = makeStatementFormatter(body => body);\nconst statement = exports.statement = makeStatementFormatter(body => {\n  if (body.length === 0) {\n    throw new Error(\"Found nothing to return.\");\n  }\n  if (body.length > 1) {\n    throw new Error(\"Found multiple statements but wanted one\");\n  }\n  return body[0];\n});\nconst expression = exports.expression = {\n  code: str => `(\\n${str}\\n)`,\n  validate: ast => {\n    if (ast.program.body.length > 1) {\n      throw new Error(\"Found multiple statements but wanted one\");\n    }\n    if (expression.unwrap(ast).start === 0) {\n      throw new Error(\"Parse result included parens.\");\n    }\n  },\n  unwrap: ({\n    program\n  }) => {\n    const [stmt] = program.body;\n    assertExpressionStatement(stmt);\n    return stmt.expression;\n  }\n};\nconst program = exports.program = {\n  code: str => str,\n  validate: () => {},\n  unwrap: ast => ast.program\n};\n\n//# sourceMappingURL=formatters.js.map\n",
+      "start": 1727785257082,
+      "end": 1727785257122,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1727785257122,
+      "end": 1727785257122,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727785257122,
+      "end": 1727785257122,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727785257122,
+      "end": 1727785257122,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727785257122,
+      "end": 1727785257122,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727785257122,
+      "end": 1727785257122,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1727785257122,
+      "end": 1727785257122,
+      "order": "normal"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1727785257122,
+      "end": 1727785257122,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727785257122,
+      "end": 1727785257122,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727785257122,
+      "end": 1727785257122,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727785257122,
+      "end": 1727785257122,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727785257122,
+      "end": 1727785257122,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727785257122,
+      "end": 1727785257122,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as formatters } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/template/lib/formatters.js?commonjs-exports\";\nimport { __require as require$$0 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/index.js?commonjs-wrapped\";\n\nvar expression_1;\nvar program_1;\nvar smart_1;\nvar statement_1;\n\"use strict\";\n\nObject.defineProperty(formatters, \"__esModule\", {\n  value: true\n});\nvar statements_1 = formatters.statements = statement_1 = formatters.statement = smart_1 = formatters.smart = program_1 = formatters.program = expression_1 = formatters.expression = void 0;\nvar _t = require$$0();\nconst {\n  assertExpressionStatement\n} = _t;\nfunction makeStatementFormatter(fn) {\n  return {\n    code: str => `/* @babel/template */;\\n${str}`,\n    validate: () => {},\n    unwrap: ast => {\n      return fn(ast.program.body.slice(1));\n    }\n  };\n}\nconst smart = smart_1 = formatters.smart = makeStatementFormatter(body => {\n  if (body.length > 1) {\n    return body;\n  } else {\n    return body[0];\n  }\n});\nconst statements = statements_1 = formatters.statements = makeStatementFormatter(body => body);\nconst statement = statement_1 = formatters.statement = makeStatementFormatter(body => {\n  if (body.length === 0) {\n    throw new Error(\"Found nothing to return.\");\n  }\n  if (body.length > 1) {\n    throw new Error(\"Found multiple statements but wanted one\");\n  }\n  return body[0];\n});\nconst expression = expression_1 = formatters.expression = {\n  code: str => `(\\n${str}\\n)`,\n  validate: ast => {\n    if (ast.program.body.length > 1) {\n      throw new Error(\"Found multiple statements but wanted one\");\n    }\n    if (expression.unwrap(ast).start === 0) {\n      throw new Error(\"Parse result included parens.\");\n    }\n  },\n  unwrap: ({\n    program\n  }) => {\n    const [stmt] = program.body;\n    assertExpressionStatement(stmt);\n    return stmt.expression;\n  }\n};\nconst program = program_1 = formatters.program = {\n  code: str => str,\n  validate: () => {},\n  unwrap: ast => ast.program\n};\n\n//# sourceMappingURL=formatters.js.map\n\nexport { formatters as __moduleExports, statements_1 as statements, statement_1 as statement, smart_1 as smart, program_1 as program, expression_1 as expression, formatters as default };",
+      "start": 1727785257122,
+      "end": 1727785257122,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;;;;;AAAA,YAAY,CAAC;AACb;AACA,MAAM,CAAC,cAAc,CAAC,UAAO,EAAE,YAAY,EAAE;AAC7C,EAAE,KAAK,EAAE,IAAI;AACb,CAAC,CAAC,CAAC;AACH,wCAAkB,GAAG,kCAAiB,GAAG,0BAAa,GAAG,8BAAe,GAAG,oCAAkB,GAAG,KAAK,CAAC,CAAC;AACvG,IAAI,EAAE,GAAG,YAAuB,CAAC;AACjC,MAAM;AACN,EAAE,yBAAyB;AAC3B,CAAC,GAAG,EAAE,CAAC;AACP,SAAS,sBAAsB,CAAC,EAAE,EAAE;AACpC,EAAE,OAAO;AACT,IAAI,IAAI,EAAE,GAAG,IAAI,CAAC,wBAAwB,EAAE,GAAG,CAAC,CAAC;AACjD,IAAI,QAAQ,EAAE,MAAM,EAAE;AACtB,IAAI,MAAM,EAAE,GAAG,IAAI;AACnB,MAAM,OAAO,EAAE,CAAC,GAAG,CAAC,OAAO,CAAC,IAAI,CAAC,KAAK,CAAC,CAAC,CAAC,CAAC,CAAC;AAC3C,KAAK;AACL,GAAG,CAAC;AACJ,CAAC;AACD,MAAM,KAAK,GAAG,0BAAa,GAAG,sBAAsB,CAAC,IAAI,IAAI;AAC7D,EAAE,IAAI,IAAI,CAAC,MAAM,GAAG,CAAC,EAAE;AACvB,IAAI,OAAO,IAAI,CAAC;AAChB,GAAG,MAAM;AACT,IAAI,OAAO,IAAI,CAAC,CAAC,CAAC,CAAC;AACnB,GAAG;AACH,CAAC,CAAC,CAAC;AACH,MAAM,UAAU,GAAG,oCAAkB,GAAG,sBAAsB,CAAC,IAAI,IAAI,IAAI,CAAC,CAAC;AAC7E,MAAM,SAAS,GAAG,kCAAiB,GAAG,sBAAsB,CAAC,IAAI,IAAI;AACrE,EAAE,IAAI,IAAI,CAAC,MAAM,KAAK,CAAC,EAAE;AACzB,IAAI,MAAM,IAAI,KAAK,CAAC,0BAA0B,CAAC,CAAC;AAChD,GAAG;AACH,EAAE,IAAI,IAAI,CAAC,MAAM,GAAG,CAAC,EAAE;AACvB,IAAI,MAAM,IAAI,KAAK,CAAC,0CAA0C,CAAC,CAAC;AAChE,GAAG;AACH,EAAE,OAAO,IAAI,CAAC,CAAC,CAAC,CAAC;AACjB,CAAC,CAAC,CAAC;AACH,MAAM,UAAU,GAAG,oCAAkB,GAAG;AACxC,EAAE,IAAI,EAAE,GAAG,IAAI,CAAC,GAAG,EAAE,GAAG,CAAC,GAAG,CAAC;AAC7B,EAAE,QAAQ,EAAE,GAAG,IAAI;AACnB,IAAI,IAAI,GAAG,CAAC,OAAO,CAAC,IAAI,CAAC,MAAM,GAAG,CAAC,EAAE;AACrC,MAAM,MAAM,IAAI,KAAK,CAAC,0CAA0C,CAAC,CAAC;AAClE,KAAK;AACL,IAAI,IAAI,UAAU,CAAC,MAAM,CAAC,GAAG,CAAC,CAAC,KAAK,KAAK,CAAC,EAAE;AAC5C,MAAM,MAAM,IAAI,KAAK,CAAC,+BAA+B,CAAC,CAAC;AACvD,KAAK;AACL,GAAG;AACH,EAAE,MAAM,EAAE,CAAC;AACX,IAAI,OAAO;AACX,GAAG,KAAK;AACR,IAAI,MAAM,CAAC,IAAI,CAAC,GAAG,OAAO,CAAC,IAAI,CAAC;AAChC,IAAI,yBAAyB,CAAC,IAAI,CAAC,CAAC;AACpC,IAAI,OAAO,IAAI,CAAC,UAAU,CAAC;AAC3B,GAAG;AACH,CAAC,CAAC;AACF,MAAM,OAAO,GAAG,8BAAe,GAAG;AAClC,EAAE,IAAI,EAAE,GAAG,IAAI,GAAG;AAClB,EAAE,QAAQ,EAAE,MAAM,EAAE;AACpB,EAAE,MAAM,EAAE,GAAG,IAAI,GAAG,CAAC,OAAO;AAC5B,CAAC,CAAC;AACF;AACA"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727785257122,
+      "end": 1727785257122,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727785257122,
+      "end": 1727785257122,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727785257122,
+      "end": 1727785257122,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727785257122,
+      "end": 1727785257122,
+      "order": "normal"
+    }
+  ]
+}

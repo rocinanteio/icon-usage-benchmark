@@ -1,0 +1,123 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/converters/toStatement.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\nvar _index = require(\"../validators/generated/index.js\");\nvar _index2 = require(\"../builders/generated/index.js\");\nvar _default = exports.default = toStatement;\nfunction toStatement(node, ignore) {\n  if ((0, _index.isStatement)(node)) {\n    return node;\n  }\n  let mustHaveId = false;\n  let newType;\n  if ((0, _index.isClass)(node)) {\n    mustHaveId = true;\n    newType = \"ClassDeclaration\";\n  } else if ((0, _index.isFunction)(node)) {\n    mustHaveId = true;\n    newType = \"FunctionDeclaration\";\n  } else if ((0, _index.isAssignmentExpression)(node)) {\n    return (0, _index2.expressionStatement)(node);\n  }\n  if (mustHaveId && !node.id) {\n    newType = false;\n  }\n  if (!newType) {\n    if (ignore) {\n      return false;\n    } else {\n      throw new Error(`cannot turn ${node.type} to a statement`);\n    }\n  }\n  node.type = newType;\n  return node;\n}\n\n//# sourceMappingURL=toStatement.js.map\n",
+      "start": 1727785256910,
+      "end": 1727785256920,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1727785256920,
+      "end": 1727785256920,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727785256920,
+      "end": 1727785256920,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727785256920,
+      "end": 1727785256920,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727785256920,
+      "end": 1727785256920,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727785256920,
+      "end": 1727785256920,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1727785256920,
+      "end": 1727785256920,
+      "order": "normal"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1727785256920,
+      "end": 1727785256920,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727785256920,
+      "end": 1727785256920,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727785256920,
+      "end": 1727785256920,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727785256920,
+      "end": 1727785256920,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727785256920,
+      "end": 1727785256920,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727785256920,
+      "end": 1727785256920,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as toStatement_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/converters/toStatement.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/validators/generated/index.js?commonjs-proxy\";\nimport { __require as require$$1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/builders/generated/index.js?commonjs-wrapped\";\n\nvar hasRequiredToStatement;\n\nfunction requireToStatement () {\n\tif (hasRequiredToStatement) return toStatement_1;\n\thasRequiredToStatement = 1;\n\t\"use strict\";\n\n\tObject.defineProperty(toStatement_1, \"__esModule\", {\n\t  value: true\n\t});\n\ttoStatement_1.default = void 0;\n\tvar _index = require$$0;\n\tvar _index2 = require$$1();\n\tvar _default = toStatement_1.default = toStatement;\n\tfunction toStatement(node, ignore) {\n\t  if ((0, _index.isStatement)(node)) {\n\t    return node;\n\t  }\n\t  let mustHaveId = false;\n\t  let newType;\n\t  if ((0, _index.isClass)(node)) {\n\t    mustHaveId = true;\n\t    newType = \"ClassDeclaration\";\n\t  } else if ((0, _index.isFunction)(node)) {\n\t    mustHaveId = true;\n\t    newType = \"FunctionDeclaration\";\n\t  } else if ((0, _index.isAssignmentExpression)(node)) {\n\t    return (0, _index2.expressionStatement)(node);\n\t  }\n\t  if (mustHaveId && !node.id) {\n\t    newType = false;\n\t  }\n\t  if (!newType) {\n\t    if (ignore) {\n\t      return false;\n\t    } else {\n\t      throw new Error(`cannot turn ${node.type} to a statement`);\n\t    }\n\t  }\n\t  node.type = newType;\n\t  return node;\n\t}\n\n\t//# sourceMappingURL=toStatement.js.map\n\treturn toStatement_1;\n}\n\nexport { requireToStatement as __require };",
+      "start": 1727785256920,
+      "end": 1727785257325,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;;;;;;;CAAA,YAAY,CAAC;AACb;CACA,MAAM,CAAC,cAAc,CAAC,aAAO,EAAE,YAAY,EAAE;CAC7C,EAAE,KAAK,EAAE,IAAI;CACb,CAAC,CAAC,CAAC;AACH,sBAAe,GAAG,KAAK,CAAC,CAAC;CACzB,IAAI,MAAM,GAAG,UAA2C,CAAC;CACzD,IAAI,OAAO,GAAG,YAAyC,CAAC;CACxD,IAAI,QAAQ,GAAG,qBAAe,GAAG,WAAW,CAAC;CAC7C,SAAS,WAAW,CAAC,IAAI,EAAE,MAAM,EAAE;CACnC,EAAE,IAAI,CAAC,CAAC,EAAE,MAAM,CAAC,WAAW,EAAE,IAAI,CAAC,EAAE;CACrC,IAAI,OAAO,IAAI,CAAC;CAChB,GAAG;CACH,EAAE,IAAI,UAAU,GAAG,KAAK,CAAC;CACzB,EAAE,IAAI,OAAO,CAAC;CACd,EAAE,IAAI,CAAC,CAAC,EAAE,MAAM,CAAC,OAAO,EAAE,IAAI,CAAC,EAAE;CACjC,IAAI,UAAU,GAAG,IAAI,CAAC;CACtB,IAAI,OAAO,GAAG,kBAAkB,CAAC;CACjC,GAAG,MAAM,IAAI,CAAC,CAAC,EAAE,MAAM,CAAC,UAAU,EAAE,IAAI,CAAC,EAAE;CAC3C,IAAI,UAAU,GAAG,IAAI,CAAC;CACtB,IAAI,OAAO,GAAG,qBAAqB,CAAC;CACpC,GAAG,MAAM,IAAI,CAAC,CAAC,EAAE,MAAM,CAAC,sBAAsB,EAAE,IAAI,CAAC,EAAE;CACvD,IAAI,OAAO,CAAC,CAAC,EAAE,OAAO,CAAC,mBAAmB,EAAE,IAAI,CAAC,CAAC;CAClD,GAAG;CACH,EAAE,IAAI,UAAU,IAAI,CAAC,IAAI,CAAC,EAAE,EAAE;CAC9B,IAAI,OAAO,GAAG,KAAK,CAAC;CACpB,GAAG;CACH,EAAE,IAAI,CAAC,OAAO,EAAE;CAChB,IAAI,IAAI,MAAM,EAAE;CAChB,MAAM,OAAO,KAAK,CAAC;CACnB,KAAK,MAAM;CACX,MAAM,MAAM,IAAI,KAAK,CAAC,CAAC,YAAY,EAAE,IAAI,CAAC,IAAI,CAAC,eAAe,CAAC,CAAC,CAAC;CACjE,KAAK;CACL,GAAG;CACH,EAAE,IAAI,CAAC,IAAI,GAAG,OAAO,CAAC;CACtB,EAAE,OAAO,IAAI,CAAC;CACd,CAAC;AACD;CACA"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727785257325,
+      "end": 1727785257325,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727785257325,
+      "end": 1727785257325,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727785257325,
+      "end": 1727785257325,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727785257325,
+      "end": 1727785257325,
+      "order": "normal"
+    }
+  ]
+}

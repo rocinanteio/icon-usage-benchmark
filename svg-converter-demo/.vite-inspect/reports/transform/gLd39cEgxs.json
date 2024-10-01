@@ -1,0 +1,123 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/builders/flow/createTypeAnnotationBasedOnTypeof.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\nvar _index = require(\"../generated/index.js\");\nvar _default = exports.default = createTypeAnnotationBasedOnTypeof;\nfunction createTypeAnnotationBasedOnTypeof(type) {\n  switch (type) {\n    case \"string\":\n      return (0, _index.stringTypeAnnotation)();\n    case \"number\":\n      return (0, _index.numberTypeAnnotation)();\n    case \"undefined\":\n      return (0, _index.voidTypeAnnotation)();\n    case \"boolean\":\n      return (0, _index.booleanTypeAnnotation)();\n    case \"function\":\n      return (0, _index.genericTypeAnnotation)((0, _index.identifier)(\"Function\"));\n    case \"object\":\n      return (0, _index.genericTypeAnnotation)((0, _index.identifier)(\"Object\"));\n    case \"symbol\":\n      return (0, _index.genericTypeAnnotation)((0, _index.identifier)(\"Symbol\"));\n    case \"bigint\":\n      return (0, _index.anyTypeAnnotation)();\n  }\n  throw new Error(\"Invalid typeof value: \" + type);\n}\n\n//# sourceMappingURL=createTypeAnnotationBasedOnTypeof.js.map\n",
+      "start": 1727785256810,
+      "end": 1727785256886,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1727785256886,
+      "end": 1727785256886,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727785256886,
+      "end": 1727785256886,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727785256886,
+      "end": 1727785256886,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727785256886,
+      "end": 1727785256886,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727785256886,
+      "end": 1727785256886,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1727785256886,
+      "end": 1727785256886,
+      "order": "normal"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1727785256886,
+      "end": 1727785256886,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727785256886,
+      "end": 1727785256886,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727785256886,
+      "end": 1727785256886,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727785256886,
+      "end": 1727785256886,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727785256886,
+      "end": 1727785256886,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727785256886,
+      "end": 1727785256886,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as createTypeAnnotationBasedOnTypeof_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/builders/flow/createTypeAnnotationBasedOnTypeof.js?commonjs-exports\";\nimport { __require as require$$0 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/builders/generated/index.js?commonjs-wrapped\";\n\nvar hasRequiredCreateTypeAnnotationBasedOnTypeof;\n\nfunction requireCreateTypeAnnotationBasedOnTypeof () {\n\tif (hasRequiredCreateTypeAnnotationBasedOnTypeof) return createTypeAnnotationBasedOnTypeof_1;\n\thasRequiredCreateTypeAnnotationBasedOnTypeof = 1;\n\t\"use strict\";\n\n\tObject.defineProperty(createTypeAnnotationBasedOnTypeof_1, \"__esModule\", {\n\t  value: true\n\t});\n\tcreateTypeAnnotationBasedOnTypeof_1.default = void 0;\n\tvar _index = require$$0();\n\tvar _default = createTypeAnnotationBasedOnTypeof_1.default = createTypeAnnotationBasedOnTypeof;\n\tfunction createTypeAnnotationBasedOnTypeof(type) {\n\t  switch (type) {\n\t    case \"string\":\n\t      return (0, _index.stringTypeAnnotation)();\n\t    case \"number\":\n\t      return (0, _index.numberTypeAnnotation)();\n\t    case \"undefined\":\n\t      return (0, _index.voidTypeAnnotation)();\n\t    case \"boolean\":\n\t      return (0, _index.booleanTypeAnnotation)();\n\t    case \"function\":\n\t      return (0, _index.genericTypeAnnotation)((0, _index.identifier)(\"Function\"));\n\t    case \"object\":\n\t      return (0, _index.genericTypeAnnotation)((0, _index.identifier)(\"Object\"));\n\t    case \"symbol\":\n\t      return (0, _index.genericTypeAnnotation)((0, _index.identifier)(\"Symbol\"));\n\t    case \"bigint\":\n\t      return (0, _index.anyTypeAnnotation)();\n\t  }\n\t  throw new Error(\"Invalid typeof value: \" + type);\n\t}\n\n\t//# sourceMappingURL=createTypeAnnotationBasedOnTypeof.js.map\n\treturn createTypeAnnotationBasedOnTypeof_1;\n}\n\nexport { requireCreateTypeAnnotationBasedOnTypeof as __require };",
+      "start": 1727785256886,
+      "end": 1727785257325,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;;;;;;CAAA,YAAY,CAAC;AACb;CACA,MAAM,CAAC,cAAc,CAAC,mCAAO,EAAE,YAAY,EAAE;CAC7C,EAAE,KAAK,EAAE,IAAI;CACb,CAAC,CAAC,CAAC;AACH,4CAAe,GAAG,KAAK,CAAC,CAAC;CACzB,IAAI,MAAM,GAAG,YAAgC,CAAC;CAC9C,IAAI,QAAQ,GAAG,2CAAe,GAAG,iCAAiC,CAAC;CACnE,SAAS,iCAAiC,CAAC,IAAI,EAAE;CACjD,EAAE,QAAQ,IAAI;CACd,IAAI,KAAK,QAAQ;CACjB,MAAM,OAAO,CAAC,CAAC,EAAE,MAAM,CAAC,oBAAoB,GAAG,CAAC;CAChD,IAAI,KAAK,QAAQ;CACjB,MAAM,OAAO,CAAC,CAAC,EAAE,MAAM,CAAC,oBAAoB,GAAG,CAAC;CAChD,IAAI,KAAK,WAAW;CACpB,MAAM,OAAO,CAAC,CAAC,EAAE,MAAM,CAAC,kBAAkB,GAAG,CAAC;CAC9C,IAAI,KAAK,SAAS;CAClB,MAAM,OAAO,CAAC,CAAC,EAAE,MAAM,CAAC,qBAAqB,GAAG,CAAC;CACjD,IAAI,KAAK,UAAU;CACnB,MAAM,OAAO,CAAC,CAAC,EAAE,MAAM,CAAC,qBAAqB,EAAE,CAAC,CAAC,EAAE,MAAM,CAAC,UAAU,EAAE,UAAU,CAAC,CAAC,CAAC;CACnF,IAAI,KAAK,QAAQ;CACjB,MAAM,OAAO,CAAC,CAAC,EAAE,MAAM,CAAC,qBAAqB,EAAE,CAAC,CAAC,EAAE,MAAM,CAAC,UAAU,EAAE,QAAQ,CAAC,CAAC,CAAC;CACjF,IAAI,KAAK,QAAQ;CACjB,MAAM,OAAO,CAAC,CAAC,EAAE,MAAM,CAAC,qBAAqB,EAAE,CAAC,CAAC,EAAE,MAAM,CAAC,UAAU,EAAE,QAAQ,CAAC,CAAC,CAAC;CACjF,IAAI,KAAK,QAAQ;CACjB,MAAM,OAAO,CAAC,CAAC,EAAE,MAAM,CAAC,iBAAiB,GAAG,CAAC;CAC7C,GAAG;CACH,EAAE,MAAM,IAAI,KAAK,CAAC,wBAAwB,GAAG,IAAI,CAAC,CAAC;CACnD,CAAC;AACD;CACA"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727785257325,
+      "end": 1727785257325,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727785257325,
+      "end": 1727785257325,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727785257325,
+      "end": 1727785257325,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727785257325,
+      "end": 1727785257325,
+      "order": "normal"
+    }
+  ]
+}

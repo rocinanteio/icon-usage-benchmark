@@ -1,0 +1,123 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/validators/isImmutable.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = isImmutable;\nvar _isType = require(\"./isType.js\");\nvar _index = require(\"./generated/index.js\");\nfunction isImmutable(node) {\n  if ((0, _isType.default)(node.type, \"Immutable\")) return true;\n  if ((0, _index.isIdentifier)(node)) {\n    if (node.name === \"undefined\") {\n      return true;\n    } else {\n      return false;\n    }\n  }\n  return false;\n}\n\n//# sourceMappingURL=isImmutable.js.map\n",
+      "start": 1727785256920,
+      "end": 1727785256933,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1727785256933,
+      "end": 1727785256933,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727785256933,
+      "end": 1727785256933,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727785256933,
+      "end": 1727785256933,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727785256933,
+      "end": 1727785256933,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727785256933,
+      "end": 1727785256933,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1727785256933,
+      "end": 1727785256933,
+      "order": "normal"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1727785256933,
+      "end": 1727785256933,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727785256933,
+      "end": 1727785256933,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727785256933,
+      "end": 1727785256933,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727785256933,
+      "end": 1727785256933,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727785256933,
+      "end": 1727785256933,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727785256933,
+      "end": 1727785256933,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as isImmutable_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/validators/isImmutable.js?commonjs-exports\";\nimport { __require as require$$0 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/validators/isType.js?commonjs-wrapped\";\nimport require$$1 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/validators/generated/index.js?commonjs-proxy\";\n\n\"use strict\";\n\nObject.defineProperty(isImmutable_1, \"__esModule\", {\n  value: true\n});\nvar _default = isImmutable_1.default = isImmutable;\nvar _isType = require$$0();\nvar _index = require$$1;\nfunction isImmutable(node) {\n  if ((0, _isType.default)(node.type, \"Immutable\")) return true;\n  if ((0, _index.isIdentifier)(node)) {\n    if (node.name === \"undefined\") {\n      return true;\n    } else {\n      return false;\n    }\n  }\n  return false;\n}\n\n//# sourceMappingURL=isImmutable.js.map\n\nexport { isImmutable_1 as __moduleExports, _default as default };",
+      "start": 1727785256933,
+      "end": 1727785257278,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;;AAAA,YAAY,CAAC;AACb;AACA,MAAM,CAAC,cAAc,CAAC,aAAO,EAAE,YAAY,EAAE;AAC7C,EAAE,KAAK,EAAE,IAAI;AACb,CAAC,CAAC,CAAC;AACH,oCAAe,GAAG,WAAW,CAAC;AAC9B,IAAI,OAAO,GAAG,YAAsB,CAAC;AACrC,IAAI,MAAM,GAAG,UAA+B,CAAC;AAC7C,SAAS,WAAW,CAAC,IAAI,EAAE;AAC3B,EAAE,IAAI,CAAC,CAAC,EAAE,OAAO,CAAC,OAAO,EAAE,IAAI,CAAC,IAAI,EAAE,WAAW,CAAC,EAAE,OAAO,IAAI,CAAC;AAChE,EAAE,IAAI,CAAC,CAAC,EAAE,MAAM,CAAC,YAAY,EAAE,IAAI,CAAC,EAAE;AACtC,IAAI,IAAI,IAAI,CAAC,IAAI,KAAK,WAAW,EAAE;AACnC,MAAM,OAAO,IAAI,CAAC;AAClB,KAAK,MAAM;AACX,MAAM,OAAO,KAAK,CAAC;AACnB,KAAK;AACL,GAAG;AACH,EAAE,OAAO,KAAK,CAAC;AACf,CAAC;AACD;AACA"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727785257278,
+      "end": 1727785257278,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727785257278,
+      "end": 1727785257278,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727785257278,
+      "end": 1727785257278,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727785257278,
+      "end": 1727785257278,
+      "order": "normal"
+    }
+  ]
+}

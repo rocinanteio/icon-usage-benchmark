@@ -1,0 +1,123 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/globals/index.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "'use strict';\nmodule.exports = require('./globals.json');\n",
+      "start": 1727785256951,
+      "end": 1727785257046,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1727785257046,
+      "end": 1727785257046,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727785257046,
+      "end": 1727785257046,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727785257046,
+      "end": 1727785257046,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727785257046,
+      "end": 1727785257046,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727785257046,
+      "end": 1727785257046,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1727785257046,
+      "end": 1727785257046,
+      "order": "normal"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1727785257046,
+      "end": 1727785257046,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727785257046,
+      "end": 1727785257046,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727785257046,
+      "end": 1727785257046,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727785257046,
+      "end": 1727785257046,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727785257046,
+      "end": 1727785257046,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727785257046,
+      "end": 1727785257046,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport require$$0 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/globals/globals.json?commonjs-proxy\";\n\n'use strict';\nvar globals = require$$0;\n\nexport default /*@__PURE__*/commonjsHelpers.getDefaultExportFromCjs(globals);\nexport { globals as __moduleExports };",
+      "start": 1727785257046,
+      "end": 1727785257121,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;AAAA,YAAY,CAAC;IACb,OAAc,GAAG,UAAyB"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727785257121,
+      "end": 1727785257121,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727785257121,
+      "end": 1727785257121,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727785257121,
+      "end": 1727785257121,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727785257121,
+      "end": 1727785257121,
+      "order": "normal"
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-usage-benchmark/svg-converter-demo/src/main.tsx",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "import { StrictMode } from 'react'\nimport { createRoot } from 'react-dom/client'\nimport App from './App.tsx'\nimport './index.css'\nimport 'icon-converter-demo'\n\n\ncreateRoot(document.getElementById('root')!).render(\n  <StrictMode>\n    <App />\n  </StrictMode>,\n)\n",
+      "start": 1727785256619,
+      "end": 1727785256619,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1727785256619,
+      "end": 1727785256619,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727785256620,
+      "end": 1727785256620,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "result": "import { jsx } from \"react/jsx-runtime\";\nimport { StrictMode } from \"react\";\nimport { createRoot } from \"react-dom/client\";\nimport App from \"./App.tsx\";\nimport \"./index.css\";\nimport \"icon-converter-demo\";\ncreateRoot(document.getElementById(\"root\")).render(\n  /* @__PURE__ */ jsx(StrictMode, { children: /* @__PURE__ */ jsx(App, {}) })\n);\n",
+      "start": 1727785256620,
+      "end": 1727785256626,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "/Users/ibrahim.dagdelen/Projects/Github/icon-usage-benchmark/svg-converter-demo/src/main.tsx"
+        ],
+        "sourcesContent": [
+          "import { StrictMode } from 'react'\nimport { createRoot } from 'react-dom/client'\nimport App from './App.tsx'\nimport './index.css'\nimport 'icon-converter-demo'\n\n\ncreateRoot(document.getElementById('root')!).render(\n  <StrictMode>\n    <App />\n  </StrictMode>,\n)\n"
+        ],
+        "mappings": "AASI;AATJ,SAAS,kBAAkB;AAC3B,SAAS,kBAAkB;AAC3B,OAAO,SAAS;AAChB,OAAO;AACP,OAAO;AAGP,WAAW,SAAS,eAAe,MAAM,CAAE,EAAE;AAAA,EAC3C,oBAAC,cACC,8BAAC,OAAI,GACP;AACF;",
+        "names": []
+      }
+    },
+    {
+      "name": "vite:json",
+      "start": 1727785256626,
+      "end": 1727785256626,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727785256626,
+      "end": 1727785256626,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1727785256626,
+      "end": 1727785256626,
+      "order": "normal"
+    },
+    {
+      "name": "optimus-bundle",
+      "result": "import { jsx } from \"react/jsx-runtime\";\nimport { StrictMode } from \"react\";\nimport { createRoot } from \"react-dom/client\";\nimport App from \"./App.tsx\";\nimport \"./index.css\";\nimport \"icon-converter-demo\";\ncreateRoot(document.getElementById(\"root\")).render(\n  /* @__PURE__ */ jsx(StrictMode, { children: /* @__PURE__ */ jsx(App, {}) })\n);\n",
+      "start": 1727785256626,
+      "end": 1727785256634,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727785256634,
+      "end": 1727785256634,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727785256634,
+      "end": 1727785256634,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727785256634,
+      "end": 1727785256634,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727785256634,
+      "end": 1727785256634,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727785256634,
+      "end": 1727785256634,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1727785256634,
+      "end": 1727785256634,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727785256634,
+      "end": 1727785256634,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727785256634,
+      "end": 1727785256634,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727785256634,
+      "end": 1727785256634,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727785256634,
+      "end": 1727785256634,
+      "order": "normal"
+    }
+  ]
+}

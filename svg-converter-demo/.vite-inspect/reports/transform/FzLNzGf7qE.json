@@ -1,0 +1,123 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/utils/deprecationWarning.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = deprecationWarning;\nconst warnings = new Set();\nfunction deprecationWarning(oldName, newName, prefix = \"\") {\n  if (warnings.has(oldName)) return;\n  warnings.add(oldName);\n  const {\n    internal,\n    trace\n  } = captureShortStackTrace(1, 2);\n  if (internal) {\n    return;\n  }\n  console.warn(`${prefix}\\`${oldName}\\` has been deprecated, please migrate to \\`${newName}\\`\\n${trace}`);\n}\nfunction captureShortStackTrace(skip, length) {\n  const {\n    stackTraceLimit,\n    prepareStackTrace\n  } = Error;\n  let stackTrace;\n  Error.stackTraceLimit = 1 + skip + length;\n  Error.prepareStackTrace = function (err, stack) {\n    stackTrace = stack;\n  };\n  new Error().stack;\n  Error.stackTraceLimit = stackTraceLimit;\n  Error.prepareStackTrace = prepareStackTrace;\n  if (!stackTrace) return {\n    internal: false,\n    trace: \"\"\n  };\n  const shortStackTrace = stackTrace.slice(1 + skip, 1 + skip + length);\n  return {\n    internal: /[\\\\/]@babel[\\\\/]/.test(shortStackTrace[1].getFileName()),\n    trace: shortStackTrace.map(frame => `    at ${frame}`).join(\"\\n\")\n  };\n}\n\n//# sourceMappingURL=deprecationWarning.js.map\n",
+      "start": 1727785256928,
+      "end": 1727785256950,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1727785256950,
+      "end": 1727785256950,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727785256950,
+      "end": 1727785256950,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727785256950,
+      "end": 1727785256950,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727785256950,
+      "end": 1727785256950,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727785256950,
+      "end": 1727785256950,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1727785256950,
+      "end": 1727785256951,
+      "order": "normal"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1727785256951,
+      "end": 1727785256951,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727785256951,
+      "end": 1727785256951,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727785256951,
+      "end": 1727785256951,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727785256951,
+      "end": 1727785256951,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727785256951,
+      "end": 1727785256951,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727785256951,
+      "end": 1727785256951,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as deprecationWarning_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/utils/deprecationWarning.js?commonjs-exports\";\n\n\"use strict\";\n\nObject.defineProperty(deprecationWarning_1, \"__esModule\", {\n  value: true\n});\nvar _default = deprecationWarning_1.default = deprecationWarning;\nconst warnings = new Set();\nfunction deprecationWarning(oldName, newName, prefix = \"\") {\n  if (warnings.has(oldName)) return;\n  warnings.add(oldName);\n  const {\n    internal,\n    trace\n  } = captureShortStackTrace(1, 2);\n  if (internal) {\n    return;\n  }\n  console.warn(`${prefix}\\`${oldName}\\` has been deprecated, please migrate to \\`${newName}\\`\\n${trace}`);\n}\nfunction captureShortStackTrace(skip, length) {\n  const {\n    stackTraceLimit,\n    prepareStackTrace\n  } = Error;\n  let stackTrace;\n  Error.stackTraceLimit = 1 + skip + length;\n  Error.prepareStackTrace = function (err, stack) {\n    stackTrace = stack;\n  };\n  new Error().stack;\n  Error.stackTraceLimit = stackTraceLimit;\n  Error.prepareStackTrace = prepareStackTrace;\n  if (!stackTrace) return {\n    internal: false,\n    trace: \"\"\n  };\n  const shortStackTrace = stackTrace.slice(1 + skip, 1 + skip + length);\n  return {\n    internal: /[\\\\/]@babel[\\\\/]/.test(shortStackTrace[1].getFileName()),\n    trace: shortStackTrace.map(frame => `    at ${frame}`).join(\"\\n\")\n  };\n}\n\n//# sourceMappingURL=deprecationWarning.js.map\n\nexport { deprecationWarning_1 as __moduleExports, _default as default };",
+      "start": 1727785256951,
+      "end": 1727785256951,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;AAAA,YAAY,CAAC;AACb;AACA,MAAM,CAAC,cAAc,CAAC,oBAAO,EAAE,YAAY,EAAE;AAC7C,EAAE,KAAK,EAAE,IAAI;AACb,CAAC,CAAC,CAAC;AACH,2CAAe,GAAG,kBAAkB,CAAC;AACrC,MAAM,QAAQ,GAAG,IAAI,GAAG,EAAE,CAAC;AAC3B,SAAS,kBAAkB,CAAC,OAAO,EAAE,OAAO,EAAE,MAAM,GAAG,EAAE,EAAE;AAC3D,EAAE,IAAI,QAAQ,CAAC,GAAG,CAAC,OAAO,CAAC,EAAE,OAAO;AACpC,EAAE,QAAQ,CAAC,GAAG,CAAC,OAAO,CAAC,CAAC;AACxB,EAAE,MAAM;AACR,IAAI,QAAQ;AACZ,IAAI,KAAK;AACT,GAAG,GAAG,sBAAsB,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC;AACnC,EAAE,IAAI,QAAQ,EAAE;AAChB,IAAI,OAAO;AACX,GAAG;AACH,EAAE,OAAO,CAAC,IAAI,CAAC,CAAC,EAAE,MAAM,CAAC,EAAE,EAAE,OAAO,CAAC,4CAA4C,EAAE,OAAO,CAAC,IAAI,EAAE,KAAK,CAAC,CAAC,CAAC,CAAC;AAC1G,CAAC;AACD,SAAS,sBAAsB,CAAC,IAAI,EAAE,MAAM,EAAE;AAC9C,EAAE,MAAM;AACR,IAAI,eAAe;AACnB,IAAI,iBAAiB;AACrB,GAAG,GAAG,KAAK,CAAC;AACZ,EAAE,IAAI,UAAU,CAAC;AACjB,EAAE,KAAK,CAAC,eAAe,GAAG,CAAC,GAAG,IAAI,GAAG,MAAM,CAAC;AAC5C,EAAE,KAAK,CAAC,iBAAiB,GAAG,UAAU,GAAG,EAAE,KAAK,EAAE;AAClD,IAAI,UAAU,GAAG,KAAK,CAAC;AACvB,GAAG,CAAC;AACJ,EAAE,IAAI,KAAK,EAAE,CAAC,KAAK,CAAC;AACpB,EAAE,KAAK,CAAC,eAAe,GAAG,eAAe,CAAC;AAC1C,EAAE,KAAK,CAAC,iBAAiB,GAAG,iBAAiB,CAAC;AAC9C,EAAE,IAAI,CAAC,UAAU,EAAE,OAAO;AAC1B,IAAI,QAAQ,EAAE,KAAK;AACnB,IAAI,KAAK,EAAE,EAAE;AACb,GAAG,CAAC;AACJ,EAAE,MAAM,eAAe,GAAG,UAAU,CAAC,KAAK,CAAC,CAAC,GAAG,IAAI,EAAE,CAAC,GAAG,IAAI,GAAG,MAAM,CAAC,CAAC;AACxE,EAAE,OAAO;AACT,IAAI,QAAQ,EAAE,kBAAkB,CAAC,IAAI,CAAC,eAAe,CAAC,CAAC,CAAC,CAAC,WAAW,EAAE,CAAC;AACvE,IAAI,KAAK,EAAE,eAAe,CAAC,GAAG,CAAC,KAAK,IAAI,CAAC,OAAO,EAAE,KAAK,CAAC,CAAC,CAAC,CAAC,IAAI,CAAC,IAAI,CAAC;AACrE,GAAG,CAAC;AACJ,CAAC;AACD;AACA"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727785256951,
+      "end": 1727785256951,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727785256951,
+      "end": 1727785256951,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727785256951,
+      "end": 1727785256951,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727785256951,
+      "end": 1727785256951,
+      "order": "normal"
+    }
+  ]
+}

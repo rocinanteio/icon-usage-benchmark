@@ -1,0 +1,11 @@
+{
+  "resolvedId": "\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/validators/buildMatchMemberExpression.js?commonjs-exports",
+  "transforms": [
+    {
+      "name": "commonjs",
+      "result": "var buildMatchMemberExpression = {}; export {buildMatchMemberExpression as __exports}",
+      "start": 1727785257363,
+      "end": 1727785257363
+    }
+  ]
+}

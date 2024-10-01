@@ -1,0 +1,123 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/converters/toComputedKey.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = toComputedKey;\nvar _index = require(\"../validators/generated/index.js\");\nvar _index2 = require(\"../builders/generated/index.js\");\nfunction toComputedKey(node, key = node.key || node.property) {\n  if (!node.computed && (0, _index.isIdentifier)(key)) key = (0, _index2.stringLiteral)(key.name);\n  return key;\n}\n\n//# sourceMappingURL=toComputedKey.js.map\n",
+      "start": 1727785256898,
+      "end": 1727785256916,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1727785256916,
+      "end": 1727785256916,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727785256916,
+      "end": 1727785256916,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727785256916,
+      "end": 1727785256916,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727785256916,
+      "end": 1727785256916,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727785256916,
+      "end": 1727785256916,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1727785256916,
+      "end": 1727785256916,
+      "order": "normal"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1727785256916,
+      "end": 1727785256916,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727785256916,
+      "end": 1727785256916,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727785256916,
+      "end": 1727785256916,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727785256916,
+      "end": 1727785256916,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727785256916,
+      "end": 1727785256916,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727785256916,
+      "end": 1727785256916,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as toComputedKey_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/converters/toComputedKey.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/validators/generated/index.js?commonjs-proxy\";\nimport { __require as require$$1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/builders/generated/index.js?commonjs-wrapped\";\n\nvar hasRequiredToComputedKey;\n\nfunction requireToComputedKey () {\n\tif (hasRequiredToComputedKey) return toComputedKey_1;\n\thasRequiredToComputedKey = 1;\n\t\"use strict\";\n\n\tObject.defineProperty(toComputedKey_1, \"__esModule\", {\n\t  value: true\n\t});\n\ttoComputedKey_1.default = toComputedKey;\n\tvar _index = require$$0;\n\tvar _index2 = require$$1();\n\tfunction toComputedKey(node, key = node.key || node.property) {\n\t  if (!node.computed && (0, _index.isIdentifier)(key)) key = (0, _index2.stringLiteral)(key.name);\n\t  return key;\n\t}\n\n\t//# sourceMappingURL=toComputedKey.js.map\n\treturn toComputedKey_1;\n}\n\nexport { requireToComputedKey as __require };",
+      "start": 1727785256916,
+      "end": 1727785257325,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;;;;;;;CAAA,YAAY,CAAC;AACb;CACA,MAAM,CAAC,cAAc,CAAC,eAAO,EAAE,YAAY,EAAE;CAC7C,EAAE,KAAK,EAAE,IAAI;CACb,CAAC,CAAC,CAAC;AACH,wBAAe,GAAG,aAAa,CAAC;CAChC,IAAI,MAAM,GAAG,UAA2C,CAAC;CACzD,IAAI,OAAO,GAAG,YAAyC,CAAC;CACxD,SAAS,aAAa,CAAC,IAAI,EAAE,GAAG,GAAG,IAAI,CAAC,GAAG,IAAI,IAAI,CAAC,QAAQ,EAAE;CAC9D,EAAE,IAAI,CAAC,IAAI,CAAC,QAAQ,IAAI,CAAC,CAAC,EAAE,MAAM,CAAC,YAAY,EAAE,GAAG,CAAC,EAAE,GAAG,GAAG,CAAC,CAAC,EAAE,OAAO,CAAC,aAAa,EAAE,GAAG,CAAC,IAAI,CAAC,CAAC;CAClG,EAAE,OAAO,GAAG,CAAC;CACb,CAAC;AACD;CACA"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727785257325,
+      "end": 1727785257325,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727785257325,
+      "end": 1727785257325,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727785257325,
+      "end": 1727785257325,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727785257325,
+      "end": 1727785257325,
+      "order": "normal"
+    }
+  ]
+}

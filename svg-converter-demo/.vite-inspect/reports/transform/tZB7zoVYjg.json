@@ -1,0 +1,123 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/converters/toSequenceExpression.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = toSequenceExpression;\nvar _gatherSequenceExpressions = require(\"./gatherSequenceExpressions.js\");\n;\nfunction toSequenceExpression(nodes, scope) {\n  if (!(nodes != null && nodes.length)) return;\n  const declars = [];\n  const result = (0, _gatherSequenceExpressions.default)(nodes, declars);\n  if (!result) return;\n  for (const declar of declars) {\n    scope.push(declar);\n  }\n  return result;\n}\n\n//# sourceMappingURL=toSequenceExpression.js.map\n",
+      "start": 1727785256929,
+      "end": 1727785256950,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1727785256950,
+      "end": 1727785256950,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727785256950,
+      "end": 1727785256950,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727785256950,
+      "end": 1727785256950,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727785256950,
+      "end": 1727785256950,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727785256950,
+      "end": 1727785256950,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1727785256950,
+      "end": 1727785256950,
+      "order": "normal"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1727785256950,
+      "end": 1727785256950,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727785256950,
+      "end": 1727785256950,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727785256950,
+      "end": 1727785256950,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727785256950,
+      "end": 1727785256950,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727785256950,
+      "end": 1727785256950,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727785256950,
+      "end": 1727785256950,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as toSequenceExpression_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/converters/toSequenceExpression.js?commonjs-exports\";\nimport { __require as require$$0 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/converters/gatherSequenceExpressions.js?commonjs-wrapped\";\n\nvar hasRequiredToSequenceExpression;\n\nfunction requireToSequenceExpression () {\n\tif (hasRequiredToSequenceExpression) return toSequenceExpression_1;\n\thasRequiredToSequenceExpression = 1;\n\t\"use strict\";\n\n\tObject.defineProperty(toSequenceExpression_1, \"__esModule\", {\n\t  value: true\n\t});\n\ttoSequenceExpression_1.default = toSequenceExpression;\n\tvar _gatherSequenceExpressions = require$$0();\n\t;\n\tfunction toSequenceExpression(nodes, scope) {\n\t  if (!(nodes != null && nodes.length)) return;\n\t  const declars = [];\n\t  const result = (0, _gatherSequenceExpressions.default)(nodes, declars);\n\t  if (!result) return;\n\t  for (const declar of declars) {\n\t    scope.push(declar);\n\t  }\n\t  return result;\n\t}\n\n\t//# sourceMappingURL=toSequenceExpression.js.map\n\treturn toSequenceExpression_1;\n}\n\nexport { requireToSequenceExpression as __require };",
+      "start": 1727785256950,
+      "end": 1727785257286,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;;;;;;CAAA,YAAY,CAAC;AACb;CACA,MAAM,CAAC,cAAc,CAAC,sBAAO,EAAE,YAAY,EAAE;CAC7C,EAAE,KAAK,EAAE,IAAI;CACb,CAAC,CAAC,CAAC;AACH,+BAAe,GAAG,oBAAoB,CAAC;CACvC,IAAI,0BAA0B,GAAG,YAAyC,CAAC;CAC3E,CAAC;CACD,SAAS,oBAAoB,CAAC,KAAK,EAAE,KAAK,EAAE;CAC5C,EAAE,IAAI,EAAE,KAAK,IAAI,IAAI,IAAI,KAAK,CAAC,MAAM,CAAC,EAAE,OAAO;CAC/C,EAAE,MAAM,OAAO,GAAG,EAAE,CAAC;CACrB,EAAE,MAAM,MAAM,GAAG,CAAC,CAAC,EAAE,0BAA0B,CAAC,OAAO,EAAE,KAAK,EAAE,OAAO,CAAC,CAAC;CACzE,EAAE,IAAI,CAAC,MAAM,EAAE,OAAO;CACtB,EAAE,KAAK,MAAM,MAAM,IAAI,OAAO,EAAE;CAChC,IAAI,KAAK,CAAC,IAAI,CAAC,MAAM,CAAC,CAAC;CACvB,GAAG;CACH,EAAE,OAAO,MAAM,CAAC;CAChB,CAAC;AACD;CACA"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727785257286,
+      "end": 1727785257286,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727785257286,
+      "end": 1727785257286,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727785257286,
+      "end": 1727785257286,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727785257286,
+      "end": 1727785257286,
+      "order": "normal"
+    }
+  ]
+}

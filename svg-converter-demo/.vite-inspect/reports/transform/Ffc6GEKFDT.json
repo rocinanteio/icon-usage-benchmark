@@ -1,0 +1,11 @@
+{
+  "resolvedId": "\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/constants/index.js?commonjs-exports",
+  "transforms": [
+    {
+      "name": "commonjs",
+      "result": "var constants = {}; export {constants as __exports}",
+      "start": 1727785257361,
+      "end": 1727785257361
+    }
+  ]
+}

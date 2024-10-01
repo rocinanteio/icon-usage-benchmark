@@ -1,0 +1,12 @@
+{
+  "resolvedId": "\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-usage-benchmark/svg-converter-demo/node_modules/react-dom/index.js?commonjs-proxy",
+  "transforms": [
+    {
+      "name": "commonjs",
+      "result": "export { __moduleExports as default } from \"/Users/ibrahim.dagdelen/Projects/Github/icon-usage-benchmark/svg-converter-demo/node_modules/react-dom/index.js\";",
+      "start": 1727785257330,
+      "end": 1727785257330,
+      "sourcemaps": null
+    }
+  ]
+}

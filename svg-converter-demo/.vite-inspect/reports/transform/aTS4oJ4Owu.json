@@ -1,0 +1,123 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/template/lib/options.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.merge = merge;\nexports.normalizeReplacements = normalizeReplacements;\nexports.validate = validate;\nconst _excluded = [\"placeholderWhitelist\", \"placeholderPattern\", \"preserveComments\", \"syntacticPlaceholders\"];\nfunction _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }\nfunction merge(a, b) {\n  const {\n    placeholderWhitelist = a.placeholderWhitelist,\n    placeholderPattern = a.placeholderPattern,\n    preserveComments = a.preserveComments,\n    syntacticPlaceholders = a.syntacticPlaceholders\n  } = b;\n  return {\n    parser: Object.assign({}, a.parser, b.parser),\n    placeholderWhitelist,\n    placeholderPattern,\n    preserveComments,\n    syntacticPlaceholders\n  };\n}\nfunction validate(opts) {\n  if (opts != null && typeof opts !== \"object\") {\n    throw new Error(\"Unknown template options.\");\n  }\n  const _ref = opts || {},\n    {\n      placeholderWhitelist,\n      placeholderPattern,\n      preserveComments,\n      syntacticPlaceholders\n    } = _ref,\n    parser = _objectWithoutPropertiesLoose(_ref, _excluded);\n  if (placeholderWhitelist != null && !(placeholderWhitelist instanceof Set)) {\n    throw new Error(\"'.placeholderWhitelist' must be a Set, null, or undefined\");\n  }\n  if (placeholderPattern != null && !(placeholderPattern instanceof RegExp) && placeholderPattern !== false) {\n    throw new Error(\"'.placeholderPattern' must be a RegExp, false, null, or undefined\");\n  }\n  if (preserveComments != null && typeof preserveComments !== \"boolean\") {\n    throw new Error(\"'.preserveComments' must be a boolean, null, or undefined\");\n  }\n  if (syntacticPlaceholders != null && typeof syntacticPlaceholders !== \"boolean\") {\n    throw new Error(\"'.syntacticPlaceholders' must be a boolean, null, or undefined\");\n  }\n  if (syntacticPlaceholders === true && (placeholderWhitelist != null || placeholderPattern != null)) {\n    throw new Error(\"'.placeholderWhitelist' and '.placeholderPattern' aren't compatible\" + \" with '.syntacticPlaceholders: true'\");\n  }\n  return {\n    parser,\n    placeholderWhitelist: placeholderWhitelist || undefined,\n    placeholderPattern: placeholderPattern == null ? undefined : placeholderPattern,\n    preserveComments: preserveComments == null ? undefined : preserveComments,\n    syntacticPlaceholders: syntacticPlaceholders == null ? undefined : syntacticPlaceholders\n  };\n}\nfunction normalizeReplacements(replacements) {\n  if (Array.isArray(replacements)) {\n    return replacements.reduce((acc, replacement, i) => {\n      acc[\"$\" + i] = replacement;\n      return acc;\n    }, {});\n  } else if (typeof replacements === \"object\" || replacements == null) {\n    return replacements || undefined;\n  }\n  throw new Error(\"Template replacements must be an array, object, null, or undefined\");\n}\n\n//# sourceMappingURL=options.js.map\n",
+      "start": 1727785257140,
+      "end": 1727785257192,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1727785257192,
+      "end": 1727785257192,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727785257192,
+      "end": 1727785257192,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727785257192,
+      "end": 1727785257192,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727785257192,
+      "end": 1727785257192,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727785257192,
+      "end": 1727785257192,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1727785257192,
+      "end": 1727785257192,
+      "order": "normal"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1727785257192,
+      "end": 1727785257192,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727785257192,
+      "end": 1727785257192,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727785257192,
+      "end": 1727785257192,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727785257192,
+      "end": 1727785257192,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727785257192,
+      "end": 1727785257192,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727785257192,
+      "end": 1727785257192,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as options } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/template/lib/options.js?commonjs-exports\";\n\n\"use strict\";\n\nObject.defineProperty(options, \"__esModule\", {\n  value: true\n});\nvar merge_1 = options.merge = merge;\nvar normalizeReplacements_1 = options.normalizeReplacements = normalizeReplacements;\nvar validate_1 = options.validate = validate;\nconst _excluded = [\"placeholderWhitelist\", \"placeholderPattern\", \"preserveComments\", \"syntacticPlaceholders\"];\nfunction _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }\nfunction merge(a, b) {\n  const {\n    placeholderWhitelist = a.placeholderWhitelist,\n    placeholderPattern = a.placeholderPattern,\n    preserveComments = a.preserveComments,\n    syntacticPlaceholders = a.syntacticPlaceholders\n  } = b;\n  return {\n    parser: Object.assign({}, a.parser, b.parser),\n    placeholderWhitelist,\n    placeholderPattern,\n    preserveComments,\n    syntacticPlaceholders\n  };\n}\nfunction validate(opts) {\n  if (opts != null && typeof opts !== \"object\") {\n    throw new Error(\"Unknown template options.\");\n  }\n  const _ref = opts || {},\n    {\n      placeholderWhitelist,\n      placeholderPattern,\n      preserveComments,\n      syntacticPlaceholders\n    } = _ref,\n    parser = _objectWithoutPropertiesLoose(_ref, _excluded);\n  if (placeholderWhitelist != null && !(placeholderWhitelist instanceof Set)) {\n    throw new Error(\"'.placeholderWhitelist' must be a Set, null, or undefined\");\n  }\n  if (placeholderPattern != null && !(placeholderPattern instanceof RegExp) && placeholderPattern !== false) {\n    throw new Error(\"'.placeholderPattern' must be a RegExp, false, null, or undefined\");\n  }\n  if (preserveComments != null && typeof preserveComments !== \"boolean\") {\n    throw new Error(\"'.preserveComments' must be a boolean, null, or undefined\");\n  }\n  if (syntacticPlaceholders != null && typeof syntacticPlaceholders !== \"boolean\") {\n    throw new Error(\"'.syntacticPlaceholders' must be a boolean, null, or undefined\");\n  }\n  if (syntacticPlaceholders === true && (placeholderWhitelist != null || placeholderPattern != null)) {\n    throw new Error(\"'.placeholderWhitelist' and '.placeholderPattern' aren't compatible\" + \" with '.syntacticPlaceholders: true'\");\n  }\n  return {\n    parser,\n    placeholderWhitelist: placeholderWhitelist || undefined,\n    placeholderPattern: placeholderPattern == null ? undefined : placeholderPattern,\n    preserveComments: preserveComments == null ? undefined : preserveComments,\n    syntacticPlaceholders: syntacticPlaceholders == null ? undefined : syntacticPlaceholders\n  };\n}\nfunction normalizeReplacements(replacements) {\n  if (Array.isArray(replacements)) {\n    return replacements.reduce((acc, replacement, i) => {\n      acc[\"$\" + i] = replacement;\n      return acc;\n    }, {});\n  } else if (typeof replacements === \"object\" || replacements == null) {\n    return replacements || undefined;\n  }\n  throw new Error(\"Template replacements must be an array, object, null, or undefined\");\n}\n\n//# sourceMappingURL=options.js.map\n\nexport { options as __moduleExports, merge_1 as merge, normalizeReplacements_1 as normalizeReplacements, validate_1 as validate, options as default };",
+      "start": 1727785257192,
+      "end": 1727785257192,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": "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"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727785257192,
+      "end": 1727785257192,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727785257192,
+      "end": 1727785257192,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727785257192,
+      "end": 1727785257192,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727785257192,
+      "end": 1727785257192,
+      "order": "normal"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "resolvedId": "\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/chalk/index.js?commonjs-module",
+  "transforms": [
+    {
+      "name": "commonjs",
+      "result": "var chalk = {exports: {}}; export {chalk as __module}",
+      "start": 1727785257420,
+      "end": 1727785257420
+    }
+  ]
+}

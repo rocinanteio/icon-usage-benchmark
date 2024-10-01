@@ -1,0 +1,123 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/converters/toIdentifier.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = toIdentifier;\nvar _isValidIdentifier = require(\"../validators/isValidIdentifier.js\");\nvar _helperValidatorIdentifier = require(\"@babel/helper-validator-identifier\");\nfunction toIdentifier(input) {\n  input = input + \"\";\n  let name = \"\";\n  for (const c of input) {\n    name += (0, _helperValidatorIdentifier.isIdentifierChar)(c.codePointAt(0)) ? c : \"-\";\n  }\n  name = name.replace(/^[-0-9]+/, \"\");\n  name = name.replace(/[-\\s]+(.)?/g, function (match, c) {\n    return c ? c.toUpperCase() : \"\";\n  });\n  if (!(0, _isValidIdentifier.default)(name)) {\n    name = `_${name}`;\n  }\n  return name || \"_\";\n}\n\n//# sourceMappingURL=toIdentifier.js.map\n",
+      "start": 1727785256909,
+      "end": 1727785256920,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1727785256920,
+      "end": 1727785256920,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727785256920,
+      "end": 1727785256920,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727785256920,
+      "end": 1727785256920,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727785256920,
+      "end": 1727785256920,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727785256920,
+      "end": 1727785256920,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1727785256920,
+      "end": 1727785256920,
+      "order": "normal"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1727785256920,
+      "end": 1727785256920,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727785256920,
+      "end": 1727785256920,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727785256920,
+      "end": 1727785256920,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727785256920,
+      "end": 1727785256920,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727785256920,
+      "end": 1727785256920,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727785256920,
+      "end": 1727785256920,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as toIdentifier_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/converters/toIdentifier.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/validators/isValidIdentifier.js?commonjs-proxy\";\nimport require$$1 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/helper-validator-identifier/lib/index.js?commonjs-proxy\";\n\n\"use strict\";\n\nObject.defineProperty(toIdentifier_1, \"__esModule\", {\n  value: true\n});\nvar _default = toIdentifier_1.default = toIdentifier;\nvar _isValidIdentifier = require$$0;\nvar _helperValidatorIdentifier = require$$1;\nfunction toIdentifier(input) {\n  input = input + \"\";\n  let name = \"\";\n  for (const c of input) {\n    name += (0, _helperValidatorIdentifier.isIdentifierChar)(c.codePointAt(0)) ? c : \"-\";\n  }\n  name = name.replace(/^[-0-9]+/, \"\");\n  name = name.replace(/[-\\s]+(.)?/g, function (match, c) {\n    return c ? c.toUpperCase() : \"\";\n  });\n  if (!(0, _isValidIdentifier.default)(name)) {\n    name = `_${name}`;\n  }\n  return name || \"_\";\n}\n\n//# sourceMappingURL=toIdentifier.js.map\n\nexport { toIdentifier_1 as __moduleExports, _default as default };",
+      "start": 1727785256920,
+      "end": 1727785257129,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;;AAAA,YAAY,CAAC;AACb;AACA,MAAM,CAAC,cAAc,CAAC,cAAO,EAAE,YAAY,EAAE;AAC7C,EAAE,KAAK,EAAE,IAAI;AACb,CAAC,CAAC,CAAC;AACH,qCAAe,GAAG,YAAY,CAAC;AAC/B,IAAI,kBAAkB,GAAG,UAA6C,CAAC;AACvE,IAAI,0BAA0B,GAAG,UAA6C,CAAC;AAC/E,SAAS,YAAY,CAAC,KAAK,EAAE;AAC7B,EAAE,KAAK,GAAG,KAAK,GAAG,EAAE,CAAC;AACrB,EAAE,IAAI,IAAI,GAAG,EAAE,CAAC;AAChB,EAAE,KAAK,MAAM,CAAC,IAAI,KAAK,EAAE;AACzB,IAAI,IAAI,IAAI,CAAC,CAAC,EAAE,0BAA0B,CAAC,gBAAgB,EAAE,CAAC,CAAC,WAAW,CAAC,CAAC,CAAC,CAAC,GAAG,CAAC,GAAG,GAAG,CAAC;AACzF,GAAG;AACH,EAAE,IAAI,GAAG,IAAI,CAAC,OAAO,CAAC,UAAU,EAAE,EAAE,CAAC,CAAC;AACtC,EAAE,IAAI,GAAG,IAAI,CAAC,OAAO,CAAC,aAAa,EAAE,UAAU,KAAK,EAAE,CAAC,EAAE;AACzD,IAAI,OAAO,CAAC,GAAG,CAAC,CAAC,WAAW,EAAE,GAAG,EAAE,CAAC;AACpC,GAAG,CAAC,CAAC;AACL,EAAE,IAAI,CAAC,CAAC,CAAC,EAAE,kBAAkB,CAAC,OAAO,EAAE,IAAI,CAAC,EAAE;AAC9C,IAAI,IAAI,GAAG,CAAC,CAAC,EAAE,IAAI,CAAC,CAAC,CAAC;AACtB,GAAG;AACH,EAAE,OAAO,IAAI,IAAI,GAAG,CAAC;AACrB,CAAC;AACD;AACA"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727785257130,
+      "end": 1727785257130,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727785257130,
+      "end": 1727785257130,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727785257130,
+      "end": 1727785257130,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727785257130,
+      "end": 1727785257130,
+      "order": "normal"
+    }
+  ]
+}

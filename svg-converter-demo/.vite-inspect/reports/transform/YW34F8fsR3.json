@@ -1,0 +1,11 @@
+{
+  "resolvedId": "\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-usage-benchmark/svg-converter-demo/node_modules/react/index.js?commonjs-module",
+  "transforms": [
+    {
+      "name": "commonjs",
+      "result": "var react = {exports: {}}; export {react as __module}",
+      "start": 1727785256933,
+      "end": 1727785256933
+    }
+  ]
+}

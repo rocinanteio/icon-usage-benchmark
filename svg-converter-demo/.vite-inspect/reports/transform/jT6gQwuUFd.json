@@ -1,0 +1,123 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/path/lib/hoister.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\nvar _t = require(\"@babel/types\");\nvar _t2 = _t;\nconst {\n  react\n} = _t;\nconst {\n  cloneNode,\n  jsxExpressionContainer,\n  variableDeclaration,\n  variableDeclarator\n} = _t2;\nconst referenceVisitor = {\n  ReferencedIdentifier(path, state) {\n    if (path.isJSXIdentifier() && react.isCompatTag(path.node.name) && !path.parentPath.isJSXMemberExpression()) {\n      return;\n    }\n    if (path.node.name === \"this\") {\n      let scope = path.scope;\n      do {\n        if (scope.path.isFunction() && !scope.path.isArrowFunctionExpression()) {\n          break;\n        }\n      } while (scope = scope.parent);\n      if (scope) state.breakOnScopePaths.push(scope.path);\n    }\n    const binding = path.scope.getBinding(path.node.name);\n    if (!binding) return;\n    for (const violation of binding.constantViolations) {\n      if (violation.scope !== binding.path.scope) {\n        state.mutableBinding = true;\n        path.stop();\n        return;\n      }\n    }\n    if (binding !== state.scope.getBinding(path.node.name)) return;\n    state.bindings[path.node.name] = binding;\n  }\n};\nclass PathHoister {\n  constructor(path, scope) {\n    this.breakOnScopePaths = void 0;\n    this.bindings = void 0;\n    this.mutableBinding = void 0;\n    this.scopes = void 0;\n    this.scope = void 0;\n    this.path = void 0;\n    this.attachAfter = void 0;\n    this.breakOnScopePaths = [];\n    this.bindings = {};\n    this.mutableBinding = false;\n    this.scopes = [];\n    this.scope = scope;\n    this.path = path;\n    this.attachAfter = false;\n  }\n  isCompatibleScope(scope) {\n    for (const key of Object.keys(this.bindings)) {\n      const binding = this.bindings[key];\n      if (!scope.bindingIdentifierEquals(key, binding.identifier)) {\n        return false;\n      }\n    }\n    return true;\n  }\n  getCompatibleScopes() {\n    let scope = this.path.scope;\n    do {\n      if (this.isCompatibleScope(scope)) {\n        this.scopes.push(scope);\n      } else {\n        break;\n      }\n      if (this.breakOnScopePaths.includes(scope.path)) {\n        break;\n      }\n    } while (scope = scope.parent);\n  }\n  getAttachmentPath() {\n    let path = this._getAttachmentPath();\n    if (!path) return;\n    let targetScope = path.scope;\n    if (targetScope.path === path) {\n      targetScope = path.scope.parent;\n    }\n    if (targetScope.path.isProgram() || targetScope.path.isFunction()) {\n      for (const name of Object.keys(this.bindings)) {\n        if (!targetScope.hasOwnBinding(name)) continue;\n        const binding = this.bindings[name];\n        if (binding.kind === \"param\" || binding.path.parentKey === \"params\") {\n          continue;\n        }\n        const bindingParentPath = this.getAttachmentParentForPath(binding.path);\n        if (bindingParentPath.key >= path.key) {\n          this.attachAfter = true;\n          path = binding.path;\n          for (const violationPath of binding.constantViolations) {\n            if (this.getAttachmentParentForPath(violationPath).key > path.key) {\n              path = violationPath;\n            }\n          }\n        }\n      }\n    }\n    return path;\n  }\n  _getAttachmentPath() {\n    const scopes = this.scopes;\n    const scope = scopes.pop();\n    if (!scope) return;\n    if (scope.path.isFunction()) {\n      if (this.hasOwnParamBindings(scope)) {\n        if (this.scope === scope) return;\n        const bodies = scope.path.get(\"body\").get(\"body\");\n        for (let i = 0; i < bodies.length; i++) {\n          if (bodies[i].node._blockHoist) continue;\n          return bodies[i];\n        }\n      } else {\n        return this.getNextScopeAttachmentParent();\n      }\n    } else if (scope.path.isProgram()) {\n      return this.getNextScopeAttachmentParent();\n    }\n  }\n  getNextScopeAttachmentParent() {\n    const scope = this.scopes.pop();\n    if (scope) return this.getAttachmentParentForPath(scope.path);\n  }\n  getAttachmentParentForPath(path) {\n    do {\n      if (!path.parentPath || Array.isArray(path.container) && path.isStatement()) {\n        return path;\n      }\n    } while (path = path.parentPath);\n  }\n  hasOwnParamBindings(scope) {\n    for (const name of Object.keys(this.bindings)) {\n      if (!scope.hasOwnBinding(name)) continue;\n      const binding = this.bindings[name];\n      if (binding.kind === \"param\" && binding.constant) return true;\n    }\n    return false;\n  }\n  run() {\n    this.path.traverse(referenceVisitor, this);\n    if (this.mutableBinding) return;\n    this.getCompatibleScopes();\n    const attachTo = this.getAttachmentPath();\n    if (!attachTo) return;\n    if (attachTo.getFunctionParent() === this.path.getFunctionParent()) return;\n    let uid = attachTo.scope.generateUidIdentifier(\"ref\");\n    const declarator = variableDeclarator(uid, this.path.node);\n    const insertFn = this.attachAfter ? \"insertAfter\" : \"insertBefore\";\n    const [attached] = attachTo[insertFn]([attachTo.isVariableDeclarator() ? declarator : variableDeclaration(\"var\", [declarator])]);\n    const parent = this.path.parentPath;\n    if (parent.isJSXElement() && this.path.container === parent.node.children) {\n      uid = jsxExpressionContainer(uid);\n    }\n    this.path.replaceWith(cloneNode(uid));\n    return attachTo.isVariableDeclarator() ? attached.get(\"init\") : attached.get(\"declarations.0.init\");\n  }\n}\nexports.default = PathHoister;\n\n//# sourceMappingURL=hoister.js.map\n",
+      "start": 1727785257070,
+      "end": 1727785257091,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1727785257091,
+      "end": 1727785257091,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727785257091,
+      "end": 1727785257091,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727785257091,
+      "end": 1727785257091,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727785257091,
+      "end": 1727785257091,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727785257091,
+      "end": 1727785257091,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1727785257091,
+      "end": 1727785257091,
+      "order": "normal"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1727785257091,
+      "end": 1727785257091,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727785257091,
+      "end": 1727785257091,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727785257091,
+      "end": 1727785257091,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727785257091,
+      "end": 1727785257091,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727785257091,
+      "end": 1727785257091,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727785257091,
+      "end": 1727785257091,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as hoister } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/path/lib/hoister.js?commonjs-exports\";\nimport { __require as require$$0 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/index.js?commonjs-wrapped\";\n\n\"use strict\";\n\nObject.defineProperty(hoister, \"__esModule\", {\n  value: true\n});\nvar _default = hoister.default = void 0;\nvar _t = require$$0();\nvar _t2 = _t;\nconst {\n  react\n} = _t;\nconst {\n  cloneNode,\n  jsxExpressionContainer,\n  variableDeclaration,\n  variableDeclarator\n} = _t2;\nconst referenceVisitor = {\n  ReferencedIdentifier(path, state) {\n    if (path.isJSXIdentifier() && react.isCompatTag(path.node.name) && !path.parentPath.isJSXMemberExpression()) {\n      return;\n    }\n    if (path.node.name === \"this\") {\n      let scope = path.scope;\n      do {\n        if (scope.path.isFunction() && !scope.path.isArrowFunctionExpression()) {\n          break;\n        }\n      } while (scope = scope.parent);\n      if (scope) state.breakOnScopePaths.push(scope.path);\n    }\n    const binding = path.scope.getBinding(path.node.name);\n    if (!binding) return;\n    for (const violation of binding.constantViolations) {\n      if (violation.scope !== binding.path.scope) {\n        state.mutableBinding = true;\n        path.stop();\n        return;\n      }\n    }\n    if (binding !== state.scope.getBinding(path.node.name)) return;\n    state.bindings[path.node.name] = binding;\n  }\n};\nclass PathHoister {\n  constructor(path, scope) {\n    this.breakOnScopePaths = void 0;\n    this.bindings = void 0;\n    this.mutableBinding = void 0;\n    this.scopes = void 0;\n    this.scope = void 0;\n    this.path = void 0;\n    this.attachAfter = void 0;\n    this.breakOnScopePaths = [];\n    this.bindings = {};\n    this.mutableBinding = false;\n    this.scopes = [];\n    this.scope = scope;\n    this.path = path;\n    this.attachAfter = false;\n  }\n  isCompatibleScope(scope) {\n    for (const key of Object.keys(this.bindings)) {\n      const binding = this.bindings[key];\n      if (!scope.bindingIdentifierEquals(key, binding.identifier)) {\n        return false;\n      }\n    }\n    return true;\n  }\n  getCompatibleScopes() {\n    let scope = this.path.scope;\n    do {\n      if (this.isCompatibleScope(scope)) {\n        this.scopes.push(scope);\n      } else {\n        break;\n      }\n      if (this.breakOnScopePaths.includes(scope.path)) {\n        break;\n      }\n    } while (scope = scope.parent);\n  }\n  getAttachmentPath() {\n    let path = this._getAttachmentPath();\n    if (!path) return;\n    let targetScope = path.scope;\n    if (targetScope.path === path) {\n      targetScope = path.scope.parent;\n    }\n    if (targetScope.path.isProgram() || targetScope.path.isFunction()) {\n      for (const name of Object.keys(this.bindings)) {\n        if (!targetScope.hasOwnBinding(name)) continue;\n        const binding = this.bindings[name];\n        if (binding.kind === \"param\" || binding.path.parentKey === \"params\") {\n          continue;\n        }\n        const bindingParentPath = this.getAttachmentParentForPath(binding.path);\n        if (bindingParentPath.key >= path.key) {\n          this.attachAfter = true;\n          path = binding.path;\n          for (const violationPath of binding.constantViolations) {\n            if (this.getAttachmentParentForPath(violationPath).key > path.key) {\n              path = violationPath;\n            }\n          }\n        }\n      }\n    }\n    return path;\n  }\n  _getAttachmentPath() {\n    const scopes = this.scopes;\n    const scope = scopes.pop();\n    if (!scope) return;\n    if (scope.path.isFunction()) {\n      if (this.hasOwnParamBindings(scope)) {\n        if (this.scope === scope) return;\n        const bodies = scope.path.get(\"body\").get(\"body\");\n        for (let i = 0; i < bodies.length; i++) {\n          if (bodies[i].node._blockHoist) continue;\n          return bodies[i];\n        }\n      } else {\n        return this.getNextScopeAttachmentParent();\n      }\n    } else if (scope.path.isProgram()) {\n      return this.getNextScopeAttachmentParent();\n    }\n  }\n  getNextScopeAttachmentParent() {\n    const scope = this.scopes.pop();\n    if (scope) return this.getAttachmentParentForPath(scope.path);\n  }\n  getAttachmentParentForPath(path) {\n    do {\n      if (!path.parentPath || Array.isArray(path.container) && path.isStatement()) {\n        return path;\n      }\n    } while (path = path.parentPath);\n  }\n  hasOwnParamBindings(scope) {\n    for (const name of Object.keys(this.bindings)) {\n      if (!scope.hasOwnBinding(name)) continue;\n      const binding = this.bindings[name];\n      if (binding.kind === \"param\" && binding.constant) return true;\n    }\n    return false;\n  }\n  run() {\n    this.path.traverse(referenceVisitor, this);\n    if (this.mutableBinding) return;\n    this.getCompatibleScopes();\n    const attachTo = this.getAttachmentPath();\n    if (!attachTo) return;\n    if (attachTo.getFunctionParent() === this.path.getFunctionParent()) return;\n    let uid = attachTo.scope.generateUidIdentifier(\"ref\");\n    const declarator = variableDeclarator(uid, this.path.node);\n    const insertFn = this.attachAfter ? \"insertAfter\" : \"insertBefore\";\n    const [attached] = attachTo[insertFn]([attachTo.isVariableDeclarator() ? declarator : variableDeclaration(\"var\", [declarator])]);\n    const parent = this.path.parentPath;\n    if (parent.isJSXElement() && this.path.container === parent.node.children) {\n      uid = jsxExpressionContainer(uid);\n    }\n    this.path.replaceWith(cloneNode(uid));\n    return attachTo.isVariableDeclarator() ? attached.get(\"init\") : attached.get(\"declarations.0.init\");\n  }\n}\n_default = hoister.default = PathHoister;\n\n//# sourceMappingURL=hoister.js.map\n\nexport { hoister as __moduleExports, _default as default };",
+      "start": 1727785257091,
+      "end": 1727785257092,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": "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"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727785257092,
+      "end": 1727785257092,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727785257092,
+      "end": 1727785257092,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727785257092,
+      "end": 1727785257092,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727785257092,
+      "end": 1727785257092,
+      "order": "normal"
+    }
+  ]
+}

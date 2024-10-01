@@ -1,0 +1,123 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/validators/isBinding.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = isBinding;\nvar _getBindingIdentifiers = require(\"../retrievers/getBindingIdentifiers.js\");\nfunction isBinding(node, parent, grandparent) {\n  if (grandparent && node.type === \"Identifier\" && parent.type === \"ObjectProperty\" && grandparent.type === \"ObjectExpression\") {\n    return false;\n  }\n  const keys = _getBindingIdentifiers.default.keys[parent.type];\n  if (keys) {\n    for (let i = 0; i < keys.length; i++) {\n      const key = keys[i];\n      const val = parent[key];\n      if (Array.isArray(val)) {\n        if (val.includes(node)) return true;\n      } else {\n        if (val === node) return true;\n      }\n    }\n  }\n  return false;\n}\n\n//# sourceMappingURL=isBinding.js.map\n",
+      "start": 1727785256916,
+      "end": 1727785256929,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1727785256929,
+      "end": 1727785256929,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727785256929,
+      "end": 1727785256929,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727785256929,
+      "end": 1727785256929,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727785256929,
+      "end": 1727785256929,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727785256929,
+      "end": 1727785256929,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1727785256929,
+      "end": 1727785256929,
+      "order": "normal"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1727785256929,
+      "end": 1727785256929,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727785256929,
+      "end": 1727785256929,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727785256929,
+      "end": 1727785256929,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727785256929,
+      "end": 1727785256929,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727785256929,
+      "end": 1727785256929,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727785256929,
+      "end": 1727785256929,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as isBinding_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/validators/isBinding.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/retrievers/getBindingIdentifiers.js?commonjs-proxy\";\n\n\"use strict\";\n\nObject.defineProperty(isBinding_1, \"__esModule\", {\n  value: true\n});\nvar _default = isBinding_1.default = isBinding;\nvar _getBindingIdentifiers = require$$0;\nfunction isBinding(node, parent, grandparent) {\n  if (grandparent && node.type === \"Identifier\" && parent.type === \"ObjectProperty\" && grandparent.type === \"ObjectExpression\") {\n    return false;\n  }\n  const keys = _getBindingIdentifiers.default.keys[parent.type];\n  if (keys) {\n    for (let i = 0; i < keys.length; i++) {\n      const key = keys[i];\n      const val = parent[key];\n      if (Array.isArray(val)) {\n        if (val.includes(node)) return true;\n      } else {\n        if (val === node) return true;\n      }\n    }\n  }\n  return false;\n}\n\n//# sourceMappingURL=isBinding.js.map\n\nexport { isBinding_1 as __moduleExports, _default as default };",
+      "start": 1727785256929,
+      "end": 1727785257040,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;AAAA,YAAY,CAAC;AACb;AACA,MAAM,CAAC,cAAc,CAAC,WAAO,EAAE,YAAY,EAAE;AAC7C,EAAE,KAAK,EAAE,IAAI;AACb,CAAC,CAAC,CAAC;AACH,kCAAe,GAAG,SAAS,CAAC;AAC5B,IAAI,sBAAsB,GAAG,UAAiD,CAAC;AAC/E,SAAS,SAAS,CAAC,IAAI,EAAE,MAAM,EAAE,WAAW,EAAE;AAC9C,EAAE,IAAI,WAAW,IAAI,IAAI,CAAC,IAAI,KAAK,YAAY,IAAI,MAAM,CAAC,IAAI,KAAK,gBAAgB,IAAI,WAAW,CAAC,IAAI,KAAK,kBAAkB,EAAE;AAChI,IAAI,OAAO,KAAK,CAAC;AACjB,GAAG;AACH,EAAE,MAAM,IAAI,GAAG,sBAAsB,CAAC,OAAO,CAAC,IAAI,CAAC,MAAM,CAAC,IAAI,CAAC,CAAC;AAChE,EAAE,IAAI,IAAI,EAAE;AACZ,IAAI,KAAK,IAAI,CAAC,GAAG,CAAC,EAAE,CAAC,GAAG,IAAI,CAAC,MAAM,EAAE,CAAC,EAAE,EAAE;AAC1C,MAAM,MAAM,GAAG,GAAG,IAAI,CAAC,CAAC,CAAC,CAAC;AAC1B,MAAM,MAAM,GAAG,GAAG,MAAM,CAAC,GAAG,CAAC,CAAC;AAC9B,MAAM,IAAI,KAAK,CAAC,OAAO,CAAC,GAAG,CAAC,EAAE;AAC9B,QAAQ,IAAI,GAAG,CAAC,QAAQ,CAAC,IAAI,CAAC,EAAE,OAAO,IAAI,CAAC;AAC5C,OAAO,MAAM;AACb,QAAQ,IAAI,GAAG,KAAK,IAAI,EAAE,OAAO,IAAI,CAAC;AACtC,OAAO;AACP,KAAK;AACL,GAAG;AACH,EAAE,OAAO,KAAK,CAAC;AACf,CAAC;AACD;AACA"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727785257040,
+      "end": 1727785257040,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727785257040,
+      "end": 1727785257040,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727785257040,
+      "end": 1727785257040,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727785257040,
+      "end": 1727785257040,
+      "order": "normal"
+    }
+  ]
+}

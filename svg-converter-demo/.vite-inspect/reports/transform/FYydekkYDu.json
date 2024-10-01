@@ -1,0 +1,11 @@
+{
+  "resolvedId": "\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/comments/inheritLeadingComments.js?commonjs-exports",
+  "transforms": [
+    {
+      "name": "commonjs",
+      "result": "var inheritLeadingComments = {}; export {inheritLeadingComments as __exports}",
+      "start": 1727785257360,
+      "end": 1727785257360
+    }
+  ]
+}

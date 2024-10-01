@@ -1,0 +1,11 @@
+{
+  "resolvedId": "\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-usage-benchmark/svg-converter-demo/node_modules/react-dom/client.js?commonjs-exports",
+  "transforms": [
+    {
+      "name": "commonjs",
+      "result": "var client = {}; export {client as __exports}",
+      "start": 1727785257330,
+      "end": 1727785257330
+    }
+  ]
+}

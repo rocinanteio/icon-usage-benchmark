@@ -1,0 +1,123 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/escape-string-regexp/index.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "'use strict';\n\nvar matchOperatorsRe = /[|\\\\{}()[\\]^$+*?.]/g;\n\nmodule.exports = function (str) {\n\tif (typeof str !== 'string') {\n\t\tthrow new TypeError('Expected a string');\n\t}\n\n\treturn str.replace(matchOperatorsRe, '\\\\$&');\n};\n",
+      "start": 1727785257337,
+      "end": 1727785257365,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1727785257365,
+      "end": 1727785257365,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727785257365,
+      "end": 1727785257365,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727785257365,
+      "end": 1727785257365,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727785257365,
+      "end": 1727785257365,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727785257365,
+      "end": 1727785257365,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1727785257365,
+      "end": 1727785257365,
+      "order": "normal"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1727785257365,
+      "end": 1727785257365,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727785257365,
+      "end": 1727785257365,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727785257365,
+      "end": 1727785257365,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727785257365,
+      "end": 1727785257365,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727785257365,
+      "end": 1727785257365,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727785257365,
+      "end": 1727785257365,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\nvar escapeStringRegexp;\nvar hasRequiredEscapeStringRegexp;\n\nfunction requireEscapeStringRegexp () {\n\tif (hasRequiredEscapeStringRegexp) return escapeStringRegexp;\n\thasRequiredEscapeStringRegexp = 1;\n\t'use strict';\n\n\tvar matchOperatorsRe = /[|\\\\{}()[\\]^$+*?.]/g;\n\n\tescapeStringRegexp = function (str) {\n\t\tif (typeof str !== 'string') {\n\t\t\tthrow new TypeError('Expected a string');\n\t\t}\n\n\t\treturn str.replace(matchOperatorsRe, '\\\\$&');\n\t};\n\treturn escapeStringRegexp;\n}\n\nexport { requireEscapeStringRegexp as __require };",
+      "start": 1727785257365,
+      "end": 1727785257365,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;;;;;CAAA,YAAY,CAAC;AACb;CACA,IAAI,gBAAgB,GAAG,qBAAqB,CAAC;AAC7C;AACA,mBAAc,GAAG,UAAU,GAAG,EAAE;CAChC,CAAC,IAAI,OAAO,GAAG,KAAK,QAAQ,EAAE;CAC9B,EAAE,MAAM,IAAI,SAAS,CAAC,mBAAmB,CAAC,CAAC;CAC3C,EAAE;AACF;CACA,CAAC,OAAO,GAAG,CAAC,OAAO,CAAC,gBAAgB,EAAE,MAAM,CAAC,CAAC;CAC9C,CAAC"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727785257365,
+      "end": 1727785257365,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727785257365,
+      "end": 1727785257365,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727785257365,
+      "end": 1727785257365,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727785257365,
+      "end": 1727785257365,
+      "order": "normal"
+    }
+  ]
+}

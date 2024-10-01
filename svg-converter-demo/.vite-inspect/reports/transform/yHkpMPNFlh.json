@@ -1,0 +1,11 @@
+{
+  "resolvedId": "\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-usage-benchmark/svg-converter-demo/node_modules/react/cjs/react.production.min.js?commonjs-exports",
+  "transforms": [
+    {
+      "name": "commonjs",
+      "result": "var react_production_min = {}; export {react_production_min as __exports}",
+      "start": 1727785257028,
+      "end": 1727785257028
+    }
+  ]
+}

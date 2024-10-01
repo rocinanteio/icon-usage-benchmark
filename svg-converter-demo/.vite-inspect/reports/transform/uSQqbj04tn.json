@@ -1,0 +1,11 @@
+{
+  "resolvedId": "\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@jridgewell/trace-mapping/dist/trace-mapping.umd.js?commonjs-module",
+  "transforms": [
+    {
+      "name": "commonjs",
+      "result": "var traceMapping_umd = {exports: {}}; export {traceMapping_umd as __module}",
+      "start": 1727785257421,
+      "end": 1727785257421
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "resolvedId": "\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/path/inference/inferer-reference.js?commonjs-exports",
+  "transforms": [
+    {
+      "name": "commonjs",
+      "result": "var infererReference = {}; export {infererReference as __exports}",
+      "start": 1727785257422,
+      "end": 1727785257422
+    }
+  ]
+}

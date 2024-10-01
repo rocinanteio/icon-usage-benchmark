@@ -1,0 +1,123 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/validators/isVar.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = isVar;\nvar _index = require(\"./generated/index.js\");\nvar _index2 = require(\"../constants/index.js\");\nfunction isVar(node) {\n  return (0, _index.isVariableDeclaration)(node, {\n    kind: \"var\"\n  }) && !node[_index2.BLOCK_SCOPED_SYMBOL];\n}\n\n//# sourceMappingURL=isVar.js.map\n",
+      "start": 1727785256926,
+      "end": 1727785256936,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1727785256936,
+      "end": 1727785256936,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727785256936,
+      "end": 1727785256936,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727785256936,
+      "end": 1727785256936,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727785256936,
+      "end": 1727785256936,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727785256936,
+      "end": 1727785256936,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1727785256936,
+      "end": 1727785256936,
+      "order": "normal"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1727785256936,
+      "end": 1727785256936,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727785256936,
+      "end": 1727785256936,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727785256936,
+      "end": 1727785256936,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727785256936,
+      "end": 1727785256936,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727785256936,
+      "end": 1727785256936,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727785256936,
+      "end": 1727785256936,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as isVar_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/validators/isVar.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/validators/generated/index.js?commonjs-proxy\";\nimport require$$1 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/constants/index.js?commonjs-proxy\";\n\n\"use strict\";\n\nObject.defineProperty(isVar_1, \"__esModule\", {\n  value: true\n});\nvar _default = isVar_1.default = isVar;\nvar _index = require$$0;\nvar _index2 = require$$1;\nfunction isVar(node) {\n  return (0, _index.isVariableDeclaration)(node, {\n    kind: \"var\"\n  }) && !node[_index2.BLOCK_SCOPED_SYMBOL];\n}\n\n//# sourceMappingURL=isVar.js.map\n\nexport { isVar_1 as __moduleExports, _default as default };",
+      "start": 1727785256936,
+      "end": 1727785257027,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;;AAAA,YAAY,CAAC;AACb;AACA,MAAM,CAAC,cAAc,CAAC,OAAO,EAAE,YAAY,EAAE;AAC7C,EAAE,KAAK,EAAE,IAAI;AACb,CAAC,CAAC,CAAC;AACH,8BAAe,GAAG,KAAK,CAAC;AACxB,IAAI,MAAM,GAAG,UAA+B,CAAC;AAC7C,IAAI,OAAO,GAAG,UAAgC,CAAC;AAC/C,SAAS,KAAK,CAAC,IAAI,EAAE;AACrB,EAAE,OAAO,CAAC,CAAC,EAAE,MAAM,CAAC,qBAAqB,EAAE,IAAI,EAAE;AACjD,IAAI,IAAI,EAAE,KAAK;AACf,GAAG,CAAC,IAAI,CAAC,IAAI,CAAC,OAAO,CAAC,mBAAmB,CAAC,CAAC;AAC3C,CAAC;AACD;AACA"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727785257027,
+      "end": 1727785257027,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727785257027,
+      "end": 1727785257027,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727785257027,
+      "end": 1727785257027,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727785257027,
+      "end": 1727785257027,
+      "order": "normal"
+    }
+  ]
+}

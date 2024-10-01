@@ -1,0 +1,123 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/template/lib/string.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = stringTemplate;\nvar _options = require(\"./options.js\");\nvar _parse = require(\"./parse.js\");\nvar _populate = require(\"./populate.js\");\nfunction stringTemplate(formatter, code, opts) {\n  code = formatter.code(code);\n  let metadata;\n  return arg => {\n    const replacements = (0, _options.normalizeReplacements)(arg);\n    if (!metadata) metadata = (0, _parse.default)(formatter, code, opts);\n    return formatter.unwrap((0, _populate.default)(metadata, replacements));\n  };\n}\n\n//# sourceMappingURL=string.js.map\n",
+      "start": 1727785257140,
+      "end": 1727785257192,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1727785257192,
+      "end": 1727785257192,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727785257192,
+      "end": 1727785257192,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727785257192,
+      "end": 1727785257192,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727785257192,
+      "end": 1727785257192,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727785257192,
+      "end": 1727785257192,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1727785257192,
+      "end": 1727785257192,
+      "order": "normal"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1727785257192,
+      "end": 1727785257192,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727785257192,
+      "end": 1727785257192,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727785257192,
+      "end": 1727785257192,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727785257192,
+      "end": 1727785257192,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727785257192,
+      "end": 1727785257192,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727785257192,
+      "end": 1727785257192,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as string } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/template/lib/string.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/template/lib/options.js?commonjs-proxy\";\nimport require$$1 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/template/lib/parse.js?commonjs-proxy\";\nimport require$$2 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/template/lib/populate.js?commonjs-proxy\";\n\n\"use strict\";\n\nObject.defineProperty(string, \"__esModule\", {\n  value: true\n});\nvar _default = string.default = stringTemplate;\nvar _options = require$$0;\nvar _parse = require$$1;\nvar _populate = require$$2;\nfunction stringTemplate(formatter, code, opts) {\n  code = formatter.code(code);\n  let metadata;\n  return arg => {\n    const replacements = (0, _options.normalizeReplacements)(arg);\n    if (!metadata) metadata = (0, _parse.default)(formatter, code, opts);\n    return formatter.unwrap((0, _populate.default)(metadata, replacements));\n  };\n}\n\n//# sourceMappingURL=string.js.map\n\nexport { string as __moduleExports, _default as default };",
+      "start": 1727785257192,
+      "end": 1727785257397,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;;;AAAA,YAAY,CAAC;AACb;AACA,MAAM,CAAC,cAAc,CAAC,MAAO,EAAE,YAAY,EAAE;AAC7C,EAAE,KAAK,EAAE,IAAI;AACb,CAAC,CAAC,CAAC;AACH,6BAAe,GAAG,cAAc,CAAC;AACjC,IAAI,QAAQ,GAAG,UAAuB,CAAC;AACvC,IAAI,MAAM,GAAG,UAAqB,CAAC;AACnC,IAAI,SAAS,GAAG,UAAwB,CAAC;AACzC,SAAS,cAAc,CAAC,SAAS,EAAE,IAAI,EAAE,IAAI,EAAE;AAC/C,EAAE,IAAI,GAAG,SAAS,CAAC,IAAI,CAAC,IAAI,CAAC,CAAC;AAC9B,EAAE,IAAI,QAAQ,CAAC;AACf,EAAE,OAAO,GAAG,IAAI;AAChB,IAAI,MAAM,YAAY,GAAG,CAAC,CAAC,EAAE,QAAQ,CAAC,qBAAqB,EAAE,GAAG,CAAC,CAAC;AAClE,IAAI,IAAI,CAAC,QAAQ,EAAE,QAAQ,GAAG,CAAC,CAAC,EAAE,MAAM,CAAC,OAAO,EAAE,SAAS,EAAE,IAAI,EAAE,IAAI,CAAC,CAAC;AACzE,IAAI,OAAO,SAAS,CAAC,MAAM,CAAC,CAAC,CAAC,EAAE,SAAS,CAAC,OAAO,EAAE,QAAQ,EAAE,YAAY,CAAC,CAAC,CAAC;AAC5E,GAAG,CAAC;AACJ,CAAC;AACD;AACA"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727785257397,
+      "end": 1727785257397,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727785257397,
+      "end": 1727785257397,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727785257397,
+      "end": 1727785257397,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727785257397,
+      "end": 1727785257397,
+      "order": "normal"
+    }
+  ]
+}

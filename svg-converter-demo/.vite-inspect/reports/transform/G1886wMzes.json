@@ -1,0 +1,123 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/clone/cloneDeepWithoutLoc.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = cloneDeepWithoutLoc;\nvar _cloneNode = require(\"./cloneNode.js\");\nfunction cloneDeepWithoutLoc(node) {\n  return (0, _cloneNode.default)(node, true, true);\n}\n\n//# sourceMappingURL=cloneDeepWithoutLoc.js.map\n",
+      "start": 1727785256870,
+      "end": 1727785256910,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1727785256910,
+      "end": 1727785256910,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727785256910,
+      "end": 1727785256910,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727785256910,
+      "end": 1727785256910,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727785256910,
+      "end": 1727785256910,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727785256910,
+      "end": 1727785256910,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1727785256910,
+      "end": 1727785256910,
+      "order": "normal"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1727785256910,
+      "end": 1727785256910,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727785256910,
+      "end": 1727785256910,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727785256910,
+      "end": 1727785256910,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727785256910,
+      "end": 1727785256910,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727785256910,
+      "end": 1727785256910,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727785256910,
+      "end": 1727785256910,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as cloneDeepWithoutLoc_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/clone/cloneDeepWithoutLoc.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/clone/cloneNode.js?commonjs-proxy\";\n\n\"use strict\";\n\nObject.defineProperty(cloneDeepWithoutLoc_1, \"__esModule\", {\n  value: true\n});\nvar _default = cloneDeepWithoutLoc_1.default = cloneDeepWithoutLoc;\nvar _cloneNode = require$$0;\nfunction cloneDeepWithoutLoc(node) {\n  return (0, _cloneNode.default)(node, true, true);\n}\n\n//# sourceMappingURL=cloneDeepWithoutLoc.js.map\n\nexport { cloneDeepWithoutLoc_1 as __moduleExports, _default as default };",
+      "start": 1727785256910,
+      "end": 1727785257275,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;AAAA,YAAY,CAAC;AACb;AACA,MAAM,CAAC,cAAc,CAAC,qBAAO,EAAE,YAAY,EAAE;AAC7C,EAAE,KAAK,EAAE,IAAI;AACb,CAAC,CAAC,CAAC;AACH,4CAAe,GAAG,mBAAmB,CAAC;AACtC,IAAI,UAAU,GAAG,UAAyB,CAAC;AAC3C,SAAS,mBAAmB,CAAC,IAAI,EAAE;AACnC,EAAE,OAAO,CAAC,CAAC,EAAE,UAAU,CAAC,OAAO,EAAE,IAAI,EAAE,IAAI,EAAE,IAAI,CAAC,CAAC;AACnD,CAAC;AACD;AACA"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727785257275,
+      "end": 1727785257275,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727785257275,
+      "end": 1727785257275,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727785257275,
+      "end": 1727785257275,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727785257275,
+      "end": 1727785257275,
+      "order": "normal"
+    }
+  ]
+}

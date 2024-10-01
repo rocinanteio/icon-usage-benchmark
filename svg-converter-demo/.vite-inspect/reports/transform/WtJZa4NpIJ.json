@@ -1,0 +1,123 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/traverse/traverseFast.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = traverseFast;\nvar _index = require(\"../definitions/index.js\");\nfunction traverseFast(node, enter, opts) {\n  if (!node) return;\n  const keys = _index.VISITOR_KEYS[node.type];\n  if (!keys) return;\n  opts = opts || {};\n  enter(node, opts);\n  for (const key of keys) {\n    const subNode = node[key];\n    if (Array.isArray(subNode)) {\n      for (const node of subNode) {\n        traverseFast(node, enter, opts);\n      }\n    } else {\n      traverseFast(subNode, enter, opts);\n    }\n  }\n}\n\n//# sourceMappingURL=traverseFast.js.map\n",
+      "start": 1727785256915,
+      "end": 1727785256928,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1727785256928,
+      "end": 1727785256928,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727785256928,
+      "end": 1727785256928,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727785256928,
+      "end": 1727785256928,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727785256928,
+      "end": 1727785256928,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727785256928,
+      "end": 1727785256928,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1727785256928,
+      "end": 1727785256928,
+      "order": "normal"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1727785256928,
+      "end": 1727785256928,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727785256928,
+      "end": 1727785256928,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727785256928,
+      "end": 1727785256928,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727785256928,
+      "end": 1727785256928,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727785256928,
+      "end": 1727785256928,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727785256928,
+      "end": 1727785256928,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as traverseFast_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/traverse/traverseFast.js?commonjs-exports\";\nimport { __require as require$$0 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/definitions/index.js?commonjs-wrapped\";\n\n\"use strict\";\n\nObject.defineProperty(traverseFast_1, \"__esModule\", {\n  value: true\n});\nvar _default = traverseFast_1.default = traverseFast;\nvar _index = require$$0();\nfunction traverseFast(node, enter, opts) {\n  if (!node) return;\n  const keys = _index.VISITOR_KEYS[node.type];\n  if (!keys) return;\n  opts = opts || {};\n  enter(node, opts);\n  for (const key of keys) {\n    const subNode = node[key];\n    if (Array.isArray(subNode)) {\n      for (const node of subNode) {\n        traverseFast(node, enter, opts);\n      }\n    } else {\n      traverseFast(subNode, enter, opts);\n    }\n  }\n}\n\n//# sourceMappingURL=traverseFast.js.map\n\nexport { traverseFast_1 as __moduleExports, _default as default };",
+      "start": 1727785256928,
+      "end": 1727785257239,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;AAAA,YAAY,CAAC;AACb;AACA,MAAM,CAAC,cAAc,CAAC,cAAO,EAAE,YAAY,EAAE;AAC7C,EAAE,KAAK,EAAE,IAAI;AACb,CAAC,CAAC,CAAC;AACH,qCAAe,GAAG,YAAY,CAAC;AAC/B,IAAI,MAAM,GAAG,YAAkC,CAAC;AAChD,SAAS,YAAY,CAAC,IAAI,EAAE,KAAK,EAAE,IAAI,EAAE;AACzC,EAAE,IAAI,CAAC,IAAI,EAAE,OAAO;AACpB,EAAE,MAAM,IAAI,GAAG,MAAM,CAAC,YAAY,CAAC,IAAI,CAAC,IAAI,CAAC,CAAC;AAC9C,EAAE,IAAI,CAAC,IAAI,EAAE,OAAO;AACpB,EAAE,IAAI,GAAG,IAAI,IAAI,EAAE,CAAC;AACpB,EAAE,KAAK,CAAC,IAAI,EAAE,IAAI,CAAC,CAAC;AACpB,EAAE,KAAK,MAAM,GAAG,IAAI,IAAI,EAAE;AAC1B,IAAI,MAAM,OAAO,GAAG,IAAI,CAAC,GAAG,CAAC,CAAC;AAC9B,IAAI,IAAI,KAAK,CAAC,OAAO,CAAC,OAAO,CAAC,EAAE;AAChC,MAAM,KAAK,MAAM,IAAI,IAAI,OAAO,EAAE;AAClC,QAAQ,YAAY,CAAC,IAAI,EAAE,KAAK,EAAE,IAAI,CAAC,CAAC;AACxC,OAAO;AACP,KAAK,MAAM;AACX,MAAM,YAAY,CAAC,OAAO,EAAE,KAAK,EAAE,IAAI,CAAC,CAAC;AACzC,KAAK;AACL,GAAG;AACH,CAAC;AACD;AACA"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727785257239,
+      "end": 1727785257239,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727785257239,
+      "end": 1727785257239,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727785257239,
+      "end": 1727785257239,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727785257239,
+      "end": 1727785257239,
+      "order": "normal"
+    }
+  ]
+}

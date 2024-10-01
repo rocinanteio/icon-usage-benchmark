@@ -1,0 +1,123 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/lib/index.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = generate;\nvar _sourceMap = require(\"./source-map.js\");\nvar _printer = require(\"./printer.js\");\nfunction normalizeOptions(code, opts) {\n  const format = {\n    auxiliaryCommentBefore: opts.auxiliaryCommentBefore,\n    auxiliaryCommentAfter: opts.auxiliaryCommentAfter,\n    shouldPrintComment: opts.shouldPrintComment,\n    retainLines: opts.retainLines,\n    retainFunctionParens: opts.retainFunctionParens,\n    comments: opts.comments == null || opts.comments,\n    compact: opts.compact,\n    minified: opts.minified,\n    concise: opts.concise,\n    indent: {\n      adjustMultilineComment: true,\n      style: \"  \"\n    },\n    jsescOption: Object.assign({\n      quotes: \"double\",\n      wrap: true,\n      minimal: false\n    }, opts.jsescOption),\n    topicToken: opts.topicToken,\n    importAttributesKeyword: opts.importAttributesKeyword\n  };\n  {\n    var _opts$recordAndTupleS;\n    format.decoratorsBeforeExport = opts.decoratorsBeforeExport;\n    format.jsescOption.json = opts.jsonCompatibleStrings;\n    format.recordAndTupleSyntaxType = (_opts$recordAndTupleS = opts.recordAndTupleSyntaxType) != null ? _opts$recordAndTupleS : \"hash\";\n  }\n  if (format.minified) {\n    format.compact = true;\n    format.shouldPrintComment = format.shouldPrintComment || (() => format.comments);\n  } else {\n    format.shouldPrintComment = format.shouldPrintComment || (value => format.comments || value.includes(\"@license\") || value.includes(\"@preserve\"));\n  }\n  if (format.compact === \"auto\") {\n    format.compact = typeof code === \"string\" && code.length > 500000;\n    if (format.compact) {\n      console.error(\"[BABEL] Note: The code generator has deoptimised the styling of \" + `${opts.filename} as it exceeds the max of ${\"500KB\"}.`);\n    }\n  }\n  if (format.compact) {\n    format.indent.adjustMultilineComment = false;\n  }\n  const {\n    auxiliaryCommentBefore,\n    auxiliaryCommentAfter,\n    shouldPrintComment\n  } = format;\n  if (auxiliaryCommentBefore && !shouldPrintComment(auxiliaryCommentBefore)) {\n    format.auxiliaryCommentBefore = undefined;\n  }\n  if (auxiliaryCommentAfter && !shouldPrintComment(auxiliaryCommentAfter)) {\n    format.auxiliaryCommentAfter = undefined;\n  }\n  return format;\n}\n{\n  exports.CodeGenerator = class CodeGenerator {\n    constructor(ast, opts = {}, code) {\n      this._ast = void 0;\n      this._format = void 0;\n      this._map = void 0;\n      this._ast = ast;\n      this._format = normalizeOptions(code, opts);\n      this._map = opts.sourceMaps ? new _sourceMap.default(opts, code) : null;\n    }\n    generate() {\n      const printer = new _printer.default(this._format, this._map);\n      return printer.generate(this._ast);\n    }\n  };\n}\nfunction generate(ast, opts = {}, code) {\n  const format = normalizeOptions(code, opts);\n  const map = opts.sourceMaps ? new _sourceMap.default(opts, code) : null;\n  const printer = new _printer.default(format, map);\n  return printer.generate(ast);\n}\n\n//# sourceMappingURL=index.js.map\n",
+      "start": 1727785256935,
+      "end": 1727785256955,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1727785256955,
+      "end": 1727785256955,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727785256955,
+      "end": 1727785256955,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727785256955,
+      "end": 1727785256955,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727785256955,
+      "end": 1727785256955,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727785256955,
+      "end": 1727785256955,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1727785256955,
+      "end": 1727785256955,
+      "order": "normal"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1727785256955,
+      "end": 1727785256955,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727785256955,
+      "end": 1727785256955,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727785256955,
+      "end": 1727785256955,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727785256955,
+      "end": 1727785256955,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727785256955,
+      "end": 1727785256955,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727785256955,
+      "end": 1727785256955,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as lib } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/lib/index.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/lib/source-map.js?commonjs-proxy\";\nimport require$$1 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/lib/printer.js?commonjs-proxy\";\n\nvar CodeGenerator_1;\n\"use strict\";\n\nObject.defineProperty(lib, \"__esModule\", {\n  value: true\n});\nvar _default = lib.default = generate;\nvar _sourceMap = require$$0;\nvar _printer = require$$1;\nfunction normalizeOptions(code, opts) {\n  const format = {\n    auxiliaryCommentBefore: opts.auxiliaryCommentBefore,\n    auxiliaryCommentAfter: opts.auxiliaryCommentAfter,\n    shouldPrintComment: opts.shouldPrintComment,\n    retainLines: opts.retainLines,\n    retainFunctionParens: opts.retainFunctionParens,\n    comments: opts.comments == null || opts.comments,\n    compact: opts.compact,\n    minified: opts.minified,\n    concise: opts.concise,\n    indent: {\n      adjustMultilineComment: true,\n      style: \"  \"\n    },\n    jsescOption: Object.assign({\n      quotes: \"double\",\n      wrap: true,\n      minimal: false\n    }, opts.jsescOption),\n    topicToken: opts.topicToken,\n    importAttributesKeyword: opts.importAttributesKeyword\n  };\n  {\n    var _opts$recordAndTupleS;\n    format.decoratorsBeforeExport = opts.decoratorsBeforeExport;\n    format.jsescOption.json = opts.jsonCompatibleStrings;\n    format.recordAndTupleSyntaxType = (_opts$recordAndTupleS = opts.recordAndTupleSyntaxType) != null ? _opts$recordAndTupleS : \"hash\";\n  }\n  if (format.minified) {\n    format.compact = true;\n    format.shouldPrintComment = format.shouldPrintComment || (() => format.comments);\n  } else {\n    format.shouldPrintComment = format.shouldPrintComment || (value => format.comments || value.includes(\"@license\") || value.includes(\"@preserve\"));\n  }\n  if (format.compact === \"auto\") {\n    format.compact = typeof code === \"string\" && code.length > 500000;\n    if (format.compact) {\n      console.error(\"[BABEL] Note: The code generator has deoptimised the styling of \" + `${opts.filename} as it exceeds the max of ${\"500KB\"}.`);\n    }\n  }\n  if (format.compact) {\n    format.indent.adjustMultilineComment = false;\n  }\n  const {\n    auxiliaryCommentBefore,\n    auxiliaryCommentAfter,\n    shouldPrintComment\n  } = format;\n  if (auxiliaryCommentBefore && !shouldPrintComment(auxiliaryCommentBefore)) {\n    format.auxiliaryCommentBefore = undefined;\n  }\n  if (auxiliaryCommentAfter && !shouldPrintComment(auxiliaryCommentAfter)) {\n    format.auxiliaryCommentAfter = undefined;\n  }\n  return format;\n}\n{\n  CodeGenerator_1 = lib.CodeGenerator = class CodeGenerator {\n    constructor(ast, opts = {}, code) {\n      this._ast = void 0;\n      this._format = void 0;\n      this._map = void 0;\n      this._ast = ast;\n      this._format = normalizeOptions(code, opts);\n      this._map = opts.sourceMaps ? new _sourceMap.default(opts, code) : null;\n    }\n    generate() {\n      const printer = new _printer.default(this._format, this._map);\n      return printer.generate(this._ast);\n    }\n  };\n}\nfunction generate(ast, opts = {}, code) {\n  const format = normalizeOptions(code, opts);\n  const map = opts.sourceMaps ? new _sourceMap.default(opts, code) : null;\n  const printer = new _printer.default(format, map);\n  return printer.generate(ast);\n}\n\n//# sourceMappingURL=index.js.map\n\nexport { lib as __moduleExports, CodeGenerator_1 as CodeGenerator, _default as default };",
+      "start": 1727785256955,
+      "end": 1727785257339,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;;;AAAA,YAAY,CAAC;AACb;AACA,MAAM,CAAC,cAAc,CAAC,GAAO,EAAE,YAAY,EAAE;AAC7C,EAAE,KAAK,EAAE,IAAI;AACb,CAAC,CAAC,CAAC;AACH,0BAAe,GAAG,QAAQ,CAAC;AAC3B,IAAI,UAAU,GAAG,UAA0B,CAAC;AAC5C,IAAI,QAAQ,GAAG,UAAuB,CAAC;AACvC,SAAS,gBAAgB,CAAC,IAAI,EAAE,IAAI,EAAE;AACtC,EAAE,MAAM,MAAM,GAAG;AACjB,IAAI,sBAAsB,EAAE,IAAI,CAAC,sBAAsB;AACvD,IAAI,qBAAqB,EAAE,IAAI,CAAC,qBAAqB;AACrD,IAAI,kBAAkB,EAAE,IAAI,CAAC,kBAAkB;AAC/C,IAAI,WAAW,EAAE,IAAI,CAAC,WAAW;AACjC,IAAI,oBAAoB,EAAE,IAAI,CAAC,oBAAoB;AACnD,IAAI,QAAQ,EAAE,IAAI,CAAC,QAAQ,IAAI,IAAI,IAAI,IAAI,CAAC,QAAQ;AACpD,IAAI,OAAO,EAAE,IAAI,CAAC,OAAO;AACzB,IAAI,QAAQ,EAAE,IAAI,CAAC,QAAQ;AAC3B,IAAI,OAAO,EAAE,IAAI,CAAC,OAAO;AACzB,IAAI,MAAM,EAAE;AACZ,MAAM,sBAAsB,EAAE,IAAI;AAClC,MAAM,KAAK,EAAE,IAAI;AACjB,KAAK;AACL,IAAI,WAAW,EAAE,MAAM,CAAC,MAAM,CAAC;AAC/B,MAAM,MAAM,EAAE,QAAQ;AACtB,MAAM,IAAI,EAAE,IAAI;AAChB,MAAM,OAAO,EAAE,KAAK;AACpB,KAAK,EAAE,IAAI,CAAC,WAAW,CAAC;AACxB,IAAI,UAAU,EAAE,IAAI,CAAC,UAAU;AAC/B,IAAI,uBAAuB,EAAE,IAAI,CAAC,uBAAuB;AACzD,GAAG,CAAC;AACJ,EAAE;AACF,IAAI,IAAI,qBAAqB,CAAC;AAC9B,IAAI,MAAM,CAAC,sBAAsB,GAAG,IAAI,CAAC,sBAAsB,CAAC;AAChE,IAAI,MAAM,CAAC,WAAW,CAAC,IAAI,GAAG,IAAI,CAAC,qBAAqB,CAAC;AACzD,IAAI,MAAM,CAAC,wBAAwB,GAAG,CAAC,qBAAqB,GAAG,IAAI,CAAC,wBAAwB,KAAK,IAAI,GAAG,qBAAqB,GAAG,MAAM,CAAC;AACvI,GAAG;AACH,EAAE,IAAI,MAAM,CAAC,QAAQ,EAAE;AACvB,IAAI,MAAM,CAAC,OAAO,GAAG,IAAI,CAAC;AAC1B,IAAI,MAAM,CAAC,kBAAkB,GAAG,MAAM,CAAC,kBAAkB,KAAK,MAAM,MAAM,CAAC,QAAQ,CAAC,CAAC;AACrF,GAAG,MAAM;AACT,IAAI,MAAM,CAAC,kBAAkB,GAAG,MAAM,CAAC,kBAAkB,KAAK,KAAK,IAAI,MAAM,CAAC,QAAQ,IAAI,KAAK,CAAC,QAAQ,CAAC,UAAU,CAAC,IAAI,KAAK,CAAC,QAAQ,CAAC,WAAW,CAAC,CAAC,CAAC;AACrJ,GAAG;AACH,EAAE,IAAI,MAAM,CAAC,OAAO,KAAK,MAAM,EAAE;AACjC,IAAI,MAAM,CAAC,OAAO,GAAG,OAAO,IAAI,KAAK,QAAQ,IAAI,IAAI,CAAC,MAAM,GAAG,MAAM,CAAC;AACtE,IAAI,IAAI,MAAM,CAAC,OAAO,EAAE;AACxB,MAAM,OAAO,CAAC,KAAK,CAAC,kEAAkE,GAAG,CAAC,EAAE,IAAI,CAAC,QAAQ,CAAC,0BAA0B,EAAE,OAAO,CAAC,CAAC,CAAC,CAAC,CAAC;AAClJ,KAAK;AACL,GAAG;AACH,EAAE,IAAI,MAAM,CAAC,OAAO,EAAE;AACtB,IAAI,MAAM,CAAC,MAAM,CAAC,sBAAsB,GAAG,KAAK,CAAC;AACjD,GAAG;AACH,EAAE,MAAM;AACR,IAAI,sBAAsB;AAC1B,IAAI,qBAAqB;AACzB,IAAI,kBAAkB;AACtB,GAAG,GAAG,MAAM,CAAC;AACb,EAAE,IAAI,sBAAsB,IAAI,CAAC,kBAAkB,CAAC,sBAAsB,CAAC,EAAE;AAC7E,IAAI,MAAM,CAAC,sBAAsB,GAAG,SAAS,CAAC;AAC9C,GAAG;AACH,EAAE,IAAI,qBAAqB,IAAI,CAAC,kBAAkB,CAAC,qBAAqB,CAAC,EAAE;AAC3E,IAAI,MAAM,CAAC,qBAAqB,GAAG,SAAS,CAAC;AAC7C,GAAG;AACH,EAAE,OAAO,MAAM,CAAC;AAChB,CAAC;AACD;AACA,EAAE,mCAAqB,GAAG,MAAM,aAAa,CAAC;AAC9C,IAAI,WAAW,CAAC,GAAG,EAAE,IAAI,GAAG,EAAE,EAAE,IAAI,EAAE;AACtC,MAAM,IAAI,CAAC,IAAI,GAAG,KAAK,CAAC,CAAC;AACzB,MAAM,IAAI,CAAC,OAAO,GAAG,KAAK,CAAC,CAAC;AAC5B,MAAM,IAAI,CAAC,IAAI,GAAG,KAAK,CAAC,CAAC;AACzB,MAAM,IAAI,CAAC,IAAI,GAAG,GAAG,CAAC;AACtB,MAAM,IAAI,CAAC,OAAO,GAAG,gBAAgB,CAAC,IAAI,EAAE,IAAI,CAAC,CAAC;AAClD,MAAM,IAAI,CAAC,IAAI,GAAG,IAAI,CAAC,UAAU,GAAG,IAAI,UAAU,CAAC,OAAO,CAAC,IAAI,EAAE,IAAI,CAAC,GAAG,IAAI,CAAC;AAC9E,KAAK;AACL,IAAI,QAAQ,GAAG;AACf,MAAM,MAAM,OAAO,GAAG,IAAI,QAAQ,CAAC,OAAO,CAAC,IAAI,CAAC,OAAO,EAAE,IAAI,CAAC,IAAI,CAAC,CAAC;AACpE,MAAM,OAAO,OAAO,CAAC,QAAQ,CAAC,IAAI,CAAC,IAAI,CAAC,CAAC;AACzC,KAAK;AACL,GAAG,CAAC;AACJ,CAAC;AACD,SAAS,QAAQ,CAAC,GAAG,EAAE,IAAI,GAAG,EAAE,EAAE,IAAI,EAAE;AACxC,EAAE,MAAM,MAAM,GAAG,gBAAgB,CAAC,IAAI,EAAE,IAAI,CAAC,CAAC;AAC9C,EAAE,MAAM,GAAG,GAAG,IAAI,CAAC,UAAU,GAAG,IAAI,UAAU,CAAC,OAAO,CAAC,IAAI,EAAE,IAAI,CAAC,GAAG,IAAI,CAAC;AAC1E,EAAE,MAAM,OAAO,GAAG,IAAI,QAAQ,CAAC,OAAO,CAAC,MAAM,EAAE,GAAG,CAAC,CAAC;AACpD,EAAE,OAAO,OAAO,CAAC,QAAQ,CAAC,GAAG,CAAC,CAAC;AAC/B,CAAC;AACD;AACA"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727785257339,
+      "end": 1727785257339,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727785257339,
+      "end": 1727785257339,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727785257339,
+      "end": 1727785257339,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727785257339,
+      "end": 1727785257339,
+      "order": "normal"
+    }
+  ]
+}

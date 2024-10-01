@@ -1,0 +1,11 @@
+{
+  "resolvedId": "\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/lib/node/whitespace.js?commonjs-exports",
+  "transforms": [
+    {
+      "name": "commonjs",
+      "result": "var whitespace = {}; export {whitespace as __exports}",
+      "start": 1727785257422,
+      "end": 1727785257422
+    }
+  ]
+}

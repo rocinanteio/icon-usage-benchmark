@@ -1,0 +1,123 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/clone/cloneNode.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = cloneNode;\nvar _index = require(\"../definitions/index.js\");\nvar _index2 = require(\"../validators/generated/index.js\");\nconst {\n  hasOwn\n} = {\n  hasOwn: Function.call.bind(Object.prototype.hasOwnProperty)\n};\nfunction cloneIfNode(obj, deep, withoutLoc, commentsCache) {\n  if (obj && typeof obj.type === \"string\") {\n    return cloneNodeInternal(obj, deep, withoutLoc, commentsCache);\n  }\n  return obj;\n}\nfunction cloneIfNodeOrArray(obj, deep, withoutLoc, commentsCache) {\n  if (Array.isArray(obj)) {\n    return obj.map(node => cloneIfNode(node, deep, withoutLoc, commentsCache));\n  }\n  return cloneIfNode(obj, deep, withoutLoc, commentsCache);\n}\nfunction cloneNode(node, deep = true, withoutLoc = false) {\n  return cloneNodeInternal(node, deep, withoutLoc, new Map());\n}\nfunction cloneNodeInternal(node, deep = true, withoutLoc = false, commentsCache) {\n  if (!node) return node;\n  const {\n    type\n  } = node;\n  const newNode = {\n    type: node.type\n  };\n  if ((0, _index2.isIdentifier)(node)) {\n    newNode.name = node.name;\n    if (hasOwn(node, \"optional\") && typeof node.optional === \"boolean\") {\n      newNode.optional = node.optional;\n    }\n    if (hasOwn(node, \"typeAnnotation\")) {\n      newNode.typeAnnotation = deep ? cloneIfNodeOrArray(node.typeAnnotation, true, withoutLoc, commentsCache) : node.typeAnnotation;\n    }\n    if (hasOwn(node, \"decorators\")) {\n      newNode.decorators = deep ? cloneIfNodeOrArray(node.decorators, true, withoutLoc, commentsCache) : node.decorators;\n    }\n  } else if (!hasOwn(_index.NODE_FIELDS, type)) {\n    throw new Error(`Unknown node type: \"${type}\"`);\n  } else {\n    for (const field of Object.keys(_index.NODE_FIELDS[type])) {\n      if (hasOwn(node, field)) {\n        if (deep) {\n          newNode[field] = (0, _index2.isFile)(node) && field === \"comments\" ? maybeCloneComments(node.comments, deep, withoutLoc, commentsCache) : cloneIfNodeOrArray(node[field], true, withoutLoc, commentsCache);\n        } else {\n          newNode[field] = node[field];\n        }\n      }\n    }\n  }\n  if (hasOwn(node, \"loc\")) {\n    if (withoutLoc) {\n      newNode.loc = null;\n    } else {\n      newNode.loc = node.loc;\n    }\n  }\n  if (hasOwn(node, \"leadingComments\")) {\n    newNode.leadingComments = maybeCloneComments(node.leadingComments, deep, withoutLoc, commentsCache);\n  }\n  if (hasOwn(node, \"innerComments\")) {\n    newNode.innerComments = maybeCloneComments(node.innerComments, deep, withoutLoc, commentsCache);\n  }\n  if (hasOwn(node, \"trailingComments\")) {\n    newNode.trailingComments = maybeCloneComments(node.trailingComments, deep, withoutLoc, commentsCache);\n  }\n  if (hasOwn(node, \"extra\")) {\n    newNode.extra = Object.assign({}, node.extra);\n  }\n  return newNode;\n}\nfunction maybeCloneComments(comments, deep, withoutLoc, commentsCache) {\n  if (!comments || !deep) {\n    return comments;\n  }\n  return comments.map(comment => {\n    const cache = commentsCache.get(comment);\n    if (cache) return cache;\n    const {\n      type,\n      value,\n      loc\n    } = comment;\n    const ret = {\n      type,\n      value,\n      loc\n    };\n    if (withoutLoc) {\n      ret.loc = null;\n    }\n    commentsCache.set(comment, ret);\n    return ret;\n  });\n}\n\n//# sourceMappingURL=cloneNode.js.map\n",
+      "start": 1727785256868,
+      "end": 1727785256909,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1727785256910,
+      "end": 1727785256910,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727785256910,
+      "end": 1727785256910,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727785256910,
+      "end": 1727785256910,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727785256910,
+      "end": 1727785256910,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727785256910,
+      "end": 1727785256910,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1727785256910,
+      "end": 1727785256910,
+      "order": "normal"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1727785256910,
+      "end": 1727785256910,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727785256910,
+      "end": 1727785256910,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727785256910,
+      "end": 1727785256910,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727785256910,
+      "end": 1727785256910,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727785256910,
+      "end": 1727785256910,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727785256910,
+      "end": 1727785256910,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as cloneNode_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/clone/cloneNode.js?commonjs-exports\";\nimport { __require as require$$0 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/definitions/index.js?commonjs-wrapped\";\nimport require$$1 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/validators/generated/index.js?commonjs-proxy\";\n\n\"use strict\";\n\nObject.defineProperty(cloneNode_1, \"__esModule\", {\n  value: true\n});\nvar _default = cloneNode_1.default = cloneNode;\nvar _index = require$$0();\nvar _index2 = require$$1;\nconst {\n  hasOwn\n} = {\n  hasOwn: Function.call.bind(Object.prototype.hasOwnProperty)\n};\nfunction cloneIfNode(obj, deep, withoutLoc, commentsCache) {\n  if (obj && typeof obj.type === \"string\") {\n    return cloneNodeInternal(obj, deep, withoutLoc, commentsCache);\n  }\n  return obj;\n}\nfunction cloneIfNodeOrArray(obj, deep, withoutLoc, commentsCache) {\n  if (Array.isArray(obj)) {\n    return obj.map(node => cloneIfNode(node, deep, withoutLoc, commentsCache));\n  }\n  return cloneIfNode(obj, deep, withoutLoc, commentsCache);\n}\nfunction cloneNode(node, deep = true, withoutLoc = false) {\n  return cloneNodeInternal(node, deep, withoutLoc, new Map());\n}\nfunction cloneNodeInternal(node, deep = true, withoutLoc = false, commentsCache) {\n  if (!node) return node;\n  const {\n    type\n  } = node;\n  const newNode = {\n    type: node.type\n  };\n  if ((0, _index2.isIdentifier)(node)) {\n    newNode.name = node.name;\n    if (hasOwn(node, \"optional\") && typeof node.optional === \"boolean\") {\n      newNode.optional = node.optional;\n    }\n    if (hasOwn(node, \"typeAnnotation\")) {\n      newNode.typeAnnotation = deep ? cloneIfNodeOrArray(node.typeAnnotation, true, withoutLoc, commentsCache) : node.typeAnnotation;\n    }\n    if (hasOwn(node, \"decorators\")) {\n      newNode.decorators = deep ? cloneIfNodeOrArray(node.decorators, true, withoutLoc, commentsCache) : node.decorators;\n    }\n  } else if (!hasOwn(_index.NODE_FIELDS, type)) {\n    throw new Error(`Unknown node type: \"${type}\"`);\n  } else {\n    for (const field of Object.keys(_index.NODE_FIELDS[type])) {\n      if (hasOwn(node, field)) {\n        if (deep) {\n          newNode[field] = (0, _index2.isFile)(node) && field === \"comments\" ? maybeCloneComments(node.comments, deep, withoutLoc, commentsCache) : cloneIfNodeOrArray(node[field], true, withoutLoc, commentsCache);\n        } else {\n          newNode[field] = node[field];\n        }\n      }\n    }\n  }\n  if (hasOwn(node, \"loc\")) {\n    if (withoutLoc) {\n      newNode.loc = null;\n    } else {\n      newNode.loc = node.loc;\n    }\n  }\n  if (hasOwn(node, \"leadingComments\")) {\n    newNode.leadingComments = maybeCloneComments(node.leadingComments, deep, withoutLoc, commentsCache);\n  }\n  if (hasOwn(node, \"innerComments\")) {\n    newNode.innerComments = maybeCloneComments(node.innerComments, deep, withoutLoc, commentsCache);\n  }\n  if (hasOwn(node, \"trailingComments\")) {\n    newNode.trailingComments = maybeCloneComments(node.trailingComments, deep, withoutLoc, commentsCache);\n  }\n  if (hasOwn(node, \"extra\")) {\n    newNode.extra = Object.assign({}, node.extra);\n  }\n  return newNode;\n}\nfunction maybeCloneComments(comments, deep, withoutLoc, commentsCache) {\n  if (!comments || !deep) {\n    return comments;\n  }\n  return comments.map(comment => {\n    const cache = commentsCache.get(comment);\n    if (cache) return cache;\n    const {\n      type,\n      value,\n      loc\n    } = comment;\n    const ret = {\n      type,\n      value,\n      loc\n    };\n    if (withoutLoc) {\n      ret.loc = null;\n    }\n    commentsCache.set(comment, ret);\n    return ret;\n  });\n}\n\n//# sourceMappingURL=cloneNode.js.map\n\nexport { cloneNode_1 as __moduleExports, _default as default };",
+      "start": 1727785256910,
+      "end": 1727785257239,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": "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"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727785257239,
+      "end": 1727785257239,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727785257239,
+      "end": 1727785257239,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727785257239,
+      "end": 1727785257239,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727785257239,
+      "end": 1727785257239,
+      "order": "normal"
+    }
+  ]
+}

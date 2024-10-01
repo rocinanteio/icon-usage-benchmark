@@ -1,0 +1,11 @@
+{
+  "resolvedId": "\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@jridgewell/gen-mapping/dist/gen-mapping.umd.js?commonjs-module",
+  "transforms": [
+    {
+      "name": "commonjs",
+      "result": "var genMapping_umd = {exports: {}}; export {genMapping_umd as __module}",
+      "start": 1727785257421,
+      "end": 1727785257421
+    }
+  ]
+}

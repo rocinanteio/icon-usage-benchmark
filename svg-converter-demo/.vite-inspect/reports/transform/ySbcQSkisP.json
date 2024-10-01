@@ -1,0 +1,123 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/traverse-node.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.traverseNode = traverseNode;\nvar _context = require(\"./context.js\");\nvar _t = require(\"@babel/types\");\nconst {\n  VISITOR_KEYS\n} = _t;\nfunction traverseNode(node, opts, scope, state, path, skipKeys, visitSelf) {\n  const keys = VISITOR_KEYS[node.type];\n  if (!keys) return false;\n  const context = new _context.default(scope, opts, state, path);\n  if (visitSelf) {\n    if (skipKeys != null && skipKeys[path.parentKey]) return false;\n    return context.visitQueue([path]);\n  }\n  for (const key of keys) {\n    if (skipKeys != null && skipKeys[key]) continue;\n    if (context.visit(node, key)) {\n      return true;\n    }\n  }\n  return false;\n}\n\n//# sourceMappingURL=traverse-node.js.map\n",
+      "start": 1727785256803,
+      "end": 1727785256870,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1727785256870,
+      "end": 1727785256870,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727785256870,
+      "end": 1727785256870,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727785256870,
+      "end": 1727785256870,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727785256870,
+      "end": 1727785256870,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727785256870,
+      "end": 1727785256870,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1727785256870,
+      "end": 1727785256870,
+      "order": "normal"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1727785256870,
+      "end": 1727785256870,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727785256870,
+      "end": 1727785256870,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727785256870,
+      "end": 1727785256870,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727785256870,
+      "end": 1727785256870,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727785256870,
+      "end": 1727785256870,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727785256870,
+      "end": 1727785256870,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as traverseNode_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/traverse-node.js?commonjs-exports\";\nimport { __require as require$$0 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/context.js?commonjs-wrapped\";\nimport { __require as require$$1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/index.js?commonjs-wrapped\";\n\nvar hasRequiredTraverseNode;\n\nfunction requireTraverseNode () {\n\tif (hasRequiredTraverseNode) return traverseNode_1;\n\thasRequiredTraverseNode = 1;\n\t\"use strict\";\n\n\tObject.defineProperty(traverseNode_1, \"__esModule\", {\n\t  value: true\n\t});\n\ttraverseNode_1.traverseNode = traverseNode;\n\tvar _context = require$$0();\n\tvar _t = require$$1();\n\tconst {\n\t  VISITOR_KEYS\n\t} = _t;\n\tfunction traverseNode(node, opts, scope, state, path, skipKeys, visitSelf) {\n\t  const keys = VISITOR_KEYS[node.type];\n\t  if (!keys) return false;\n\t  const context = new _context.default(scope, opts, state, path);\n\t  if (visitSelf) {\n\t    if (skipKeys != null && skipKeys[path.parentKey]) return false;\n\t    return context.visitQueue([path]);\n\t  }\n\t  for (const key of keys) {\n\t    if (skipKeys != null && skipKeys[key]) continue;\n\t    if (context.visit(node, key)) {\n\t      return true;\n\t    }\n\t  }\n\t  return false;\n\t}\n\n\t//# sourceMappingURL=traverse-node.js.map\n\treturn traverseNode_1;\n}\n\nexport { requireTraverseNode as __require };",
+      "start": 1727785256870,
+      "end": 1727785257347,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;;;;;;;CAAA,YAAY,CAAC;AACb;CACA,MAAM,CAAC,cAAc,CAAC,cAAO,EAAE,YAAY,EAAE;CAC7C,EAAE,KAAK,EAAE,IAAI;CACb,CAAC,CAAC,CAAC;AACH,4BAAoB,GAAG,YAAY,CAAC;CACpC,IAAI,QAAQ,GAAG,YAAuB,CAAC;CACvC,IAAI,EAAE,GAAG,YAAuB,CAAC;CACjC,MAAM;CACN,EAAE,YAAY;CACd,CAAC,GAAG,EAAE,CAAC;CACP,SAAS,YAAY,CAAC,IAAI,EAAE,IAAI,EAAE,KAAK,EAAE,KAAK,EAAE,IAAI,EAAE,QAAQ,EAAE,SAAS,EAAE;CAC3E,EAAE,MAAM,IAAI,GAAG,YAAY,CAAC,IAAI,CAAC,IAAI,CAAC,CAAC;CACvC,EAAE,IAAI,CAAC,IAAI,EAAE,OAAO,KAAK,CAAC;CAC1B,EAAE,MAAM,OAAO,GAAG,IAAI,QAAQ,CAAC,OAAO,CAAC,KAAK,EAAE,IAAI,EAAE,KAAK,EAAE,IAAI,CAAC,CAAC;CACjE,EAAE,IAAI,SAAS,EAAE;CACjB,IAAI,IAAI,QAAQ,IAAI,IAAI,IAAI,QAAQ,CAAC,IAAI,CAAC,SAAS,CAAC,EAAE,OAAO,KAAK,CAAC;CACnE,IAAI,OAAO,OAAO,CAAC,UAAU,CAAC,CAAC,IAAI,CAAC,CAAC,CAAC;CACtC,GAAG;CACH,EAAE,KAAK,MAAM,GAAG,IAAI,IAAI,EAAE;CAC1B,IAAI,IAAI,QAAQ,IAAI,IAAI,IAAI,QAAQ,CAAC,GAAG,CAAC,EAAE,SAAS;CACpD,IAAI,IAAI,OAAO,CAAC,KAAK,CAAC,IAAI,EAAE,GAAG,CAAC,EAAE;CAClC,MAAM,OAAO,IAAI,CAAC;CAClB,KAAK;CACL,GAAG;CACH,EAAE,OAAO,KAAK,CAAC;CACf,CAAC;AACD;CACA"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727785257347,
+      "end": 1727785257347,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727785257347,
+      "end": 1727785257348,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727785257348,
+      "end": 1727785257348,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727785257348,
+      "end": 1727785257348,
+      "order": "normal"
+    }
+  ]
+}

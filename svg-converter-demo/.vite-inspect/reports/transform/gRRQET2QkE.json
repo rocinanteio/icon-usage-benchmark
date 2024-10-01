@@ -1,0 +1,123 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/index.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nObject.defineProperty(exports, \"Hub\", {\n  enumerable: true,\n  get: function () {\n    return _hub.default;\n  }\n});\nObject.defineProperty(exports, \"NodePath\", {\n  enumerable: true,\n  get: function () {\n    return _index.default;\n  }\n});\nObject.defineProperty(exports, \"Scope\", {\n  enumerable: true,\n  get: function () {\n    return _index2.default;\n  }\n});\nexports.visitors = exports.default = void 0;\nrequire(\"./path/context.js\");\nvar visitors = require(\"./visitors.js\");\nexports.visitors = visitors;\nvar _t = require(\"@babel/types\");\nvar cache = require(\"./cache.js\");\nvar _traverseNode = require(\"./traverse-node.js\");\nvar _index = require(\"./path/index.js\");\nvar _index2 = require(\"./scope/index.js\");\nvar _hub = require(\"./hub.js\");\nconst {\n  VISITOR_KEYS,\n  removeProperties,\n  traverseFast\n} = _t;\nfunction traverse(parent, opts = {}, scope, state, parentPath, visitSelf) {\n  if (!parent) return;\n  if (!opts.noScope && !scope) {\n    if (parent.type !== \"Program\" && parent.type !== \"File\") {\n      throw new Error(\"You must pass a scope and parentPath unless traversing a Program/File. \" + `Instead of that you tried to traverse a ${parent.type} node without ` + \"passing scope and parentPath.\");\n    }\n  }\n  if (!parentPath && visitSelf) {\n    throw new Error(\"visitSelf can only be used when providing a NodePath.\");\n  }\n  if (!VISITOR_KEYS[parent.type]) {\n    return;\n  }\n  visitors.explode(opts);\n  (0, _traverseNode.traverseNode)(parent, opts, scope, state, parentPath, null, visitSelf);\n}\nvar _default = exports.default = traverse;\ntraverse.visitors = visitors;\ntraverse.verify = visitors.verify;\ntraverse.explode = visitors.explode;\ntraverse.cheap = function (node, enter) {\n  traverseFast(node, enter);\n  return;\n};\ntraverse.node = function (node, opts, scope, state, path, skipKeys) {\n  (0, _traverseNode.traverseNode)(node, opts, scope, state, path, skipKeys);\n};\ntraverse.clearNode = function (node, opts) {\n  removeProperties(node, opts);\n};\ntraverse.removeProperties = function (tree, opts) {\n  traverseFast(tree, traverse.clearNode, opts);\n  return tree;\n};\nfunction hasDenylistedType(path, state) {\n  if (path.node.type === state.type) {\n    state.has = true;\n    path.stop();\n  }\n}\ntraverse.hasType = function (tree, type, denylistTypes) {\n  if (denylistTypes != null && denylistTypes.includes(tree.type)) return false;\n  if (tree.type === type) return true;\n  const state = {\n    has: false,\n    type: type\n  };\n  traverse(tree, {\n    noScope: true,\n    denylist: denylistTypes,\n    enter: hasDenylistedType\n  }, null, state);\n  return state.has;\n};\ntraverse.cache = cache;\n\n//# sourceMappingURL=index.js.map\n",
+      "start": 1727785256669,
+      "end": 1727785256801,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1727785256801,
+      "end": 1727785256801,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727785256801,
+      "end": 1727785256801,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727785256801,
+      "end": 1727785256801,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727785256801,
+      "end": 1727785256801,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727785256801,
+      "end": 1727785256801,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1727785256801,
+      "end": 1727785256801,
+      "order": "normal"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1727785256801,
+      "end": 1727785256801,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727785256801,
+      "end": 1727785256801,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727785256801,
+      "end": 1727785256801,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727785256801,
+      "end": 1727785256801,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727785256801,
+      "end": 1727785256801,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727785256801,
+      "end": 1727785256801,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as lib } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/index.js?commonjs-exports\";\nimport { __require as require$$0 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/path/context.js?commonjs-wrapped\";\nimport { __require as require$$1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/visitors.js?commonjs-wrapped\";\nimport { __require as require$$2 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/index.js?commonjs-wrapped\";\nimport require$$3 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/cache.js?commonjs-proxy\";\nimport { __require as require$$4 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/traverse-node.js?commonjs-wrapped\";\nimport { __require as require$$5 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/path/index.js?commonjs-wrapped\";\nimport { __require as require$$6 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/scope/index.js?commonjs-wrapped\";\nimport require$$7 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/hub.js?commonjs-proxy\";\n\nvar hasRequiredLib;\n\nfunction requireLib () {\n\tif (hasRequiredLib) return lib;\n\thasRequiredLib = 1;\n\t(function (exports) {\n\t\t\"use strict\";\n\n\t\tObject.defineProperty(exports, \"__esModule\", {\n\t\t  value: true\n\t\t});\n\t\tObject.defineProperty(exports, \"Hub\", {\n\t\t  enumerable: true,\n\t\t  get: function () {\n\t\t    return _hub.default;\n\t\t  }\n\t\t});\n\t\tObject.defineProperty(exports, \"NodePath\", {\n\t\t  enumerable: true,\n\t\t  get: function () {\n\t\t    return _index.default;\n\t\t  }\n\t\t});\n\t\tObject.defineProperty(exports, \"Scope\", {\n\t\t  enumerable: true,\n\t\t  get: function () {\n\t\t    return _index2.default;\n\t\t  }\n\t\t});\n\t\texports.visitors = exports.default = void 0;\n\t\trequire$$0();\n\t\tvar visitors = require$$1();\n\t\texports.visitors = visitors;\n\t\tvar _t = require$$2();\n\t\tvar cache = require$$3;\n\t\tvar _traverseNode = require$$4();\n\t\tvar _index = require$$5();\n\t\tvar _index2 = require$$6();\n\t\tvar _hub = require$$7;\n\t\tconst {\n\t\t  VISITOR_KEYS,\n\t\t  removeProperties,\n\t\t  traverseFast\n\t\t} = _t;\n\t\tfunction traverse(parent, opts = {}, scope, state, parentPath, visitSelf) {\n\t\t  if (!parent) return;\n\t\t  if (!opts.noScope && !scope) {\n\t\t    if (parent.type !== \"Program\" && parent.type !== \"File\") {\n\t\t      throw new Error(\"You must pass a scope and parentPath unless traversing a Program/File. \" + `Instead of that you tried to traverse a ${parent.type} node without ` + \"passing scope and parentPath.\");\n\t\t    }\n\t\t  }\n\t\t  if (!parentPath && visitSelf) {\n\t\t    throw new Error(\"visitSelf can only be used when providing a NodePath.\");\n\t\t  }\n\t\t  if (!VISITOR_KEYS[parent.type]) {\n\t\t    return;\n\t\t  }\n\t\t  visitors.explode(opts);\n\t\t  (0, _traverseNode.traverseNode)(parent, opts, scope, state, parentPath, null, visitSelf);\n\t\t}\n\t\tvar _default = exports.default = traverse;\n\t\ttraverse.visitors = visitors;\n\t\ttraverse.verify = visitors.verify;\n\t\ttraverse.explode = visitors.explode;\n\t\ttraverse.cheap = function (node, enter) {\n\t\t  traverseFast(node, enter);\n\t\t  return;\n\t\t};\n\t\ttraverse.node = function (node, opts, scope, state, path, skipKeys) {\n\t\t  (0, _traverseNode.traverseNode)(node, opts, scope, state, path, skipKeys);\n\t\t};\n\t\ttraverse.clearNode = function (node, opts) {\n\t\t  removeProperties(node, opts);\n\t\t};\n\t\ttraverse.removeProperties = function (tree, opts) {\n\t\t  traverseFast(tree, traverse.clearNode, opts);\n\t\t  return tree;\n\t\t};\n\t\tfunction hasDenylistedType(path, state) {\n\t\t  if (path.node.type === state.type) {\n\t\t    state.has = true;\n\t\t    path.stop();\n\t\t  }\n\t\t}\n\t\ttraverse.hasType = function (tree, type, denylistTypes) {\n\t\t  if (denylistTypes != null && denylistTypes.includes(tree.type)) return false;\n\t\t  if (tree.type === type) return true;\n\t\t  const state = {\n\t\t    has: false,\n\t\t    type: type\n\t\t  };\n\t\t  traverse(tree, {\n\t\t    noScope: true,\n\t\t    denylist: denylistTypes,\n\t\t    enter: hasDenylistedType\n\t\t  }, null, state);\n\t\t  return state.has;\n\t\t};\n\t\ttraverse.cache = cache;\n\n\t\t//# sourceMappingURL=index.js.map \n\t} (lib));\n\treturn lib;\n}\n\nexport { requireLib as __require };",
+      "start": 1727785256801,
+      "end": 1727785257411,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": "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"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727785257411,
+      "end": 1727785257411,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727785257411,
+      "end": 1727785257411,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727785257411,
+      "end": 1727785257411,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727785257411,
+      "end": 1727785257411,
+      "order": "normal"
+    }
+  ]
+}

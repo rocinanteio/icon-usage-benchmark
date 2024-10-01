@@ -1,0 +1,123 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/validators/isScope.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = isScope;\nvar _index = require(\"./generated/index.js\");\nfunction isScope(node, parent) {\n  if ((0, _index.isBlockStatement)(node) && ((0, _index.isFunction)(parent) || (0, _index.isCatchClause)(parent))) {\n    return false;\n  }\n  if ((0, _index.isPattern)(node) && ((0, _index.isFunction)(parent) || (0, _index.isCatchClause)(parent))) {\n    return true;\n  }\n  return (0, _index.isScopable)(node);\n}\n\n//# sourceMappingURL=isScope.js.map\n",
+      "start": 1727785256924,
+      "end": 1727785256935,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1727785256935,
+      "end": 1727785256935,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727785256935,
+      "end": 1727785256935,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727785256935,
+      "end": 1727785256935,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727785256935,
+      "end": 1727785256935,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727785256935,
+      "end": 1727785256935,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1727785256935,
+      "end": 1727785256935,
+      "order": "normal"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1727785256935,
+      "end": 1727785256935,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727785256935,
+      "end": 1727785256935,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727785256935,
+      "end": 1727785256935,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727785256935,
+      "end": 1727785256935,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727785256935,
+      "end": 1727785256935,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727785256935,
+      "end": 1727785256935,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as isScope_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/validators/isScope.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/validators/generated/index.js?commonjs-proxy\";\n\n\"use strict\";\n\nObject.defineProperty(isScope_1, \"__esModule\", {\n  value: true\n});\nvar _default = isScope_1.default = isScope;\nvar _index = require$$0;\nfunction isScope(node, parent) {\n  if ((0, _index.isBlockStatement)(node) && ((0, _index.isFunction)(parent) || (0, _index.isCatchClause)(parent))) {\n    return false;\n  }\n  if ((0, _index.isPattern)(node) && ((0, _index.isFunction)(parent) || (0, _index.isCatchClause)(parent))) {\n    return true;\n  }\n  return (0, _index.isScopable)(node);\n}\n\n//# sourceMappingURL=isScope.js.map\n\nexport { isScope_1 as __moduleExports, _default as default };",
+      "start": 1727785256935,
+      "end": 1727785257027,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;AAAA,YAAY,CAAC;AACb;AACA,MAAM,CAAC,cAAc,CAAC,SAAO,EAAE,YAAY,EAAE;AAC7C,EAAE,KAAK,EAAE,IAAI;AACb,CAAC,CAAC,CAAC;AACH,gCAAe,GAAG,OAAO,CAAC;AAC1B,IAAI,MAAM,GAAG,UAA+B,CAAC;AAC7C,SAAS,OAAO,CAAC,IAAI,EAAE,MAAM,EAAE;AAC/B,EAAE,IAAI,CAAC,CAAC,EAAE,MAAM,CAAC,gBAAgB,EAAE,IAAI,CAAC,KAAK,CAAC,CAAC,EAAE,MAAM,CAAC,UAAU,EAAE,MAAM,CAAC,IAAI,CAAC,CAAC,EAAE,MAAM,CAAC,aAAa,EAAE,MAAM,CAAC,CAAC,EAAE;AACnH,IAAI,OAAO,KAAK,CAAC;AACjB,GAAG;AACH,EAAE,IAAI,CAAC,CAAC,EAAE,MAAM,CAAC,SAAS,EAAE,IAAI,CAAC,KAAK,CAAC,CAAC,EAAE,MAAM,CAAC,UAAU,EAAE,MAAM,CAAC,IAAI,CAAC,CAAC,EAAE,MAAM,CAAC,aAAa,EAAE,MAAM,CAAC,CAAC,EAAE;AAC5G,IAAI,OAAO,IAAI,CAAC;AAChB,GAAG;AACH,EAAE,OAAO,CAAC,CAAC,EAAE,MAAM,CAAC,UAAU,EAAE,IAAI,CAAC,CAAC;AACtC,CAAC;AACD;AACA"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727785257027,
+      "end": 1727785257027,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727785257027,
+      "end": 1727785257027,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727785257027,
+      "end": 1727785257027,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727785257027,
+      "end": 1727785257027,
+      "order": "normal"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "resolvedId": "\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/template/lib/literal.js?commonjs-exports",
+  "transforms": [
+    {
+      "name": "commonjs",
+      "result": "var literal = {}; export {literal as __exports}",
+      "start": 1727785257424,
+      "end": 1727785257424
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "resolvedId": "\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/debug/src/browser.js?commonjs-module",
+  "transforms": [
+    {
+      "name": "commonjs",
+      "result": "var browser = {exports: {}}; export {browser as __module}",
+      "start": 1727785257417,
+      "end": 1727785257417
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/converters/toBlock.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = toBlock;\nvar _index = require(\"../validators/generated/index.js\");\nvar _index2 = require(\"../builders/generated/index.js\");\nfunction toBlock(node, parent) {\n  if ((0, _index.isBlockStatement)(node)) {\n    return node;\n  }\n  let blockNodes = [];\n  if ((0, _index.isEmptyStatement)(node)) {\n    blockNodes = [];\n  } else {\n    if (!(0, _index.isStatement)(node)) {\n      if ((0, _index.isFunction)(parent)) {\n        node = (0, _index2.returnStatement)(node);\n      } else {\n        node = (0, _index2.expressionStatement)(node);\n      }\n    }\n    blockNodes = [node];\n  }\n  return (0, _index2.blockStatement)(blockNodes);\n}\n\n//# sourceMappingURL=toBlock.js.map\n",
+      "start": 1727785256894,
+      "end": 1727785256915,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1727785256915,
+      "end": 1727785256915,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727785256915,
+      "end": 1727785256915,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727785256915,
+      "end": 1727785256915,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727785256915,
+      "end": 1727785256915,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727785256915,
+      "end": 1727785256915,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1727785256915,
+      "end": 1727785256915,
+      "order": "normal"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1727785256915,
+      "end": 1727785256915,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727785256915,
+      "end": 1727785256915,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727785256915,
+      "end": 1727785256915,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727785256915,
+      "end": 1727785256915,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727785256915,
+      "end": 1727785256915,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727785256915,
+      "end": 1727785256915,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as toBlock_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/converters/toBlock.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/validators/generated/index.js?commonjs-proxy\";\nimport { __require as require$$1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/builders/generated/index.js?commonjs-wrapped\";\n\nvar hasRequiredToBlock;\n\nfunction requireToBlock () {\n\tif (hasRequiredToBlock) return toBlock_1;\n\thasRequiredToBlock = 1;\n\t\"use strict\";\n\n\tObject.defineProperty(toBlock_1, \"__esModule\", {\n\t  value: true\n\t});\n\ttoBlock_1.default = toBlock;\n\tvar _index = require$$0;\n\tvar _index2 = require$$1();\n\tfunction toBlock(node, parent) {\n\t  if ((0, _index.isBlockStatement)(node)) {\n\t    return node;\n\t  }\n\t  let blockNodes = [];\n\t  if ((0, _index.isEmptyStatement)(node)) {\n\t    blockNodes = [];\n\t  } else {\n\t    if (!(0, _index.isStatement)(node)) {\n\t      if ((0, _index.isFunction)(parent)) {\n\t        node = (0, _index2.returnStatement)(node);\n\t      } else {\n\t        node = (0, _index2.expressionStatement)(node);\n\t      }\n\t    }\n\t    blockNodes = [node];\n\t  }\n\t  return (0, _index2.blockStatement)(blockNodes);\n\t}\n\n\t//# sourceMappingURL=toBlock.js.map\n\treturn toBlock_1;\n}\n\nexport { requireToBlock as __require };",
+      "start": 1727785256915,
+      "end": 1727785257325,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;;;;;;;CAAA,YAAY,CAAC;AACb;CACA,MAAM,CAAC,cAAc,CAAC,SAAO,EAAE,YAAY,EAAE;CAC7C,EAAE,KAAK,EAAE,IAAI;CACb,CAAC,CAAC,CAAC;AACH,kBAAe,GAAG,OAAO,CAAC;CAC1B,IAAI,MAAM,GAAG,UAA2C,CAAC;CACzD,IAAI,OAAO,GAAG,YAAyC,CAAC;CACxD,SAAS,OAAO,CAAC,IAAI,EAAE,MAAM,EAAE;CAC/B,EAAE,IAAI,CAAC,CAAC,EAAE,MAAM,CAAC,gBAAgB,EAAE,IAAI,CAAC,EAAE;CAC1C,IAAI,OAAO,IAAI,CAAC;CAChB,GAAG;CACH,EAAE,IAAI,UAAU,GAAG,EAAE,CAAC;CACtB,EAAE,IAAI,CAAC,CAAC,EAAE,MAAM,CAAC,gBAAgB,EAAE,IAAI,CAAC,EAAE;CAC1C,IAAI,UAAU,GAAG,EAAE,CAAC;CACpB,GAAG,MAAM;CACT,IAAI,IAAI,CAAC,CAAC,CAAC,EAAE,MAAM,CAAC,WAAW,EAAE,IAAI,CAAC,EAAE;CACxC,MAAM,IAAI,CAAC,CAAC,EAAE,MAAM,CAAC,UAAU,EAAE,MAAM,CAAC,EAAE;CAC1C,QAAQ,IAAI,GAAG,CAAC,CAAC,EAAE,OAAO,CAAC,eAAe,EAAE,IAAI,CAAC,CAAC;CAClD,OAAO,MAAM;CACb,QAAQ,IAAI,GAAG,CAAC,CAAC,EAAE,OAAO,CAAC,mBAAmB,EAAE,IAAI,CAAC,CAAC;CACtD,OAAO;CACP,KAAK;CACL,IAAI,UAAU,GAAG,CAAC,IAAI,CAAC,CAAC;CACxB,GAAG;CACH,EAAE,OAAO,CAAC,CAAC,EAAE,OAAO,CAAC,cAAc,EAAE,UAAU,CAAC,CAAC;CACjD,CAAC;AACD;CACA"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727785257325,
+      "end": 1727785257325,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727785257325,
+      "end": 1727785257325,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727785257325,
+      "end": 1727785257325,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727785257325,
+      "end": 1727785257325,
+      "order": "normal"
+    }
+  ]
+}
