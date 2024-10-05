@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.JSXAttribute = JSXAttribute;\nexports.JSXClosingElement = JSXClosingElement;\nexports.JSXClosingFragment = JSXClosingFragment;\nexports.JSXElement = JSXElement;\nexports.JSXEmptyExpression = JSXEmptyExpression;\nexports.JSXExpressionContainer = JSXExpressionContainer;\nexports.JSXFragment = JSXFragment;\nexports.JSXIdentifier = JSXIdentifier;\nexports.JSXMemberExpression = JSXMemberExpression;\nexports.JSXNamespacedName = JSXNamespacedName;\nexports.JSXOpeningElement = JSXOpeningElement;\nexports.JSXOpeningFragment = JSXOpeningFragment;\nexports.JSXSpreadAttribute = JSXSpreadAttribute;\nexports.JSXSpreadChild = JSXSpreadChild;\nexports.JSXText = JSXText;\nfunction JSXAttribute(node) {\n  this.print(node.name);\n  if (node.value) {\n    this.tokenChar(61);\n    this.print(node.value);\n  }\n}\nfunction JSXIdentifier(node) {\n  this.word(node.name);\n}\nfunction JSXNamespacedName(node) {\n  this.print(node.namespace);\n  this.tokenChar(58);\n  this.print(node.name);\n}\nfunction JSXMemberExpression(node) {\n  this.print(node.object);\n  this.tokenChar(46);\n  this.print(node.property);\n}\nfunction JSXSpreadAttribute(node) {\n  this.tokenChar(123);\n  this.token(\"...\");\n  this.print(node.argument);\n  this.rightBrace(node);\n}\nfunction JSXExpressionContainer(node) {\n  this.tokenChar(123);\n  this.print(node.expression);\n  this.rightBrace(node);\n}\nfunction JSXSpreadChild(node) {\n  this.tokenChar(123);\n  this.token(\"...\");\n  this.print(node.expression);\n  this.rightBrace(node);\n}\nfunction JSXText(node) {\n  const raw = this.getPossibleRaw(node);\n  if (raw !== undefined) {\n    this.token(raw, true);\n  } else {\n    this.token(node.value, true);\n  }\n}\nfunction JSXElement(node) {\n  const open = node.openingElement;\n  this.print(open);\n  if (open.selfClosing) return;\n  this.indent();\n  for (const child of node.children) {\n    this.print(child);\n  }\n  this.dedent();\n  this.print(node.closingElement);\n}\nfunction spaceSeparator() {\n  this.space();\n}\nfunction JSXOpeningElement(node) {\n  this.tokenChar(60);\n  this.print(node.name);\n  this.print(node.typeParameters);\n  if (node.attributes.length > 0) {\n    this.space();\n    this.printJoin(node.attributes, {\n      separator: spaceSeparator\n    });\n  }\n  if (node.selfClosing) {\n    this.space();\n    this.token(\"/>\");\n  } else {\n    this.tokenChar(62);\n  }\n}\nfunction JSXClosingElement(node) {\n  this.token(\"</\");\n  this.print(node.name);\n  this.tokenChar(62);\n}\nfunction JSXEmptyExpression() {\n  this.printInnerComments();\n}\nfunction JSXFragment(node) {\n  this.print(node.openingFragment);\n  this.indent();\n  for (const child of node.children) {\n    this.print(child);\n  }\n  this.dedent();\n  this.print(node.closingFragment);\n}\nfunction JSXOpeningFragment() {\n  this.tokenChar(60);\n  this.tokenChar(62);\n}\nfunction JSXClosingFragment() {\n  this.token(\"</\");\n  this.tokenChar(62);\n}\n\n//# sourceMappingURL=jsx.js.map\n",
-      "start": 1727785257137,
-      "end": 1727785257184,
+      "start": 1728160681309,
+      "end": 1728160681383,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785257184,
-      "end": 1727785257184,
+      "start": 1728160681383,
+      "end": 1728160681383,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160681383,
+      "end": 1728160681383,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785257184,
-      "end": 1727785257184,
+      "start": 1728160681383,
+      "end": 1728160681383,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785257184,
-      "end": 1727785257184,
+      "start": 1728160681383,
+      "end": 1728160681383,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785257184,
-      "end": 1727785257184,
+      "start": 1728160681383,
+      "end": 1728160681383,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785257184,
-      "end": 1727785257184,
+      "start": 1728160681383,
+      "end": 1728160681383,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785257184,
-      "end": 1727785257184,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785257184,
-      "end": 1727785257184,
+      "start": 1728160681383,
+      "end": 1728160681383,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785257184,
-      "end": 1727785257184,
+      "start": 1728160681383,
+      "end": 1728160681383,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785257184,
-      "end": 1727785257184,
+      "start": 1728160681383,
+      "end": 1728160681383,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785257184,
-      "end": 1727785257184,
+      "start": 1728160681383,
+      "end": 1728160681383,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785257184,
-      "end": 1727785257184,
+      "start": 1728160681383,
+      "end": 1728160681383,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785257184,
-      "end": 1727785257184,
+      "start": 1728160681383,
+      "end": 1728160681383,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as jsx } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/lib/generators/jsx.js?commonjs-exports\";\n\n\"use strict\";\n\nObject.defineProperty(jsx, \"__esModule\", {\n  value: true\n});\nvar JSXAttribute_1 = jsx.JSXAttribute = JSXAttribute;\nvar JSXClosingElement_1 = jsx.JSXClosingElement = JSXClosingElement;\nvar JSXClosingFragment_1 = jsx.JSXClosingFragment = JSXClosingFragment;\nvar JSXElement_1 = jsx.JSXElement = JSXElement;\nvar JSXEmptyExpression_1 = jsx.JSXEmptyExpression = JSXEmptyExpression;\nvar JSXExpressionContainer_1 = jsx.JSXExpressionContainer = JSXExpressionContainer;\nvar JSXFragment_1 = jsx.JSXFragment = JSXFragment;\nvar JSXIdentifier_1 = jsx.JSXIdentifier = JSXIdentifier;\nvar JSXMemberExpression_1 = jsx.JSXMemberExpression = JSXMemberExpression;\nvar JSXNamespacedName_1 = jsx.JSXNamespacedName = JSXNamespacedName;\nvar JSXOpeningElement_1 = jsx.JSXOpeningElement = JSXOpeningElement;\nvar JSXOpeningFragment_1 = jsx.JSXOpeningFragment = JSXOpeningFragment;\nvar JSXSpreadAttribute_1 = jsx.JSXSpreadAttribute = JSXSpreadAttribute;\nvar JSXSpreadChild_1 = jsx.JSXSpreadChild = JSXSpreadChild;\nvar JSXText_1 = jsx.JSXText = JSXText;\nfunction JSXAttribute(node) {\n  this.print(node.name);\n  if (node.value) {\n    this.tokenChar(61);\n    this.print(node.value);\n  }\n}\nfunction JSXIdentifier(node) {\n  this.word(node.name);\n}\nfunction JSXNamespacedName(node) {\n  this.print(node.namespace);\n  this.tokenChar(58);\n  this.print(node.name);\n}\nfunction JSXMemberExpression(node) {\n  this.print(node.object);\n  this.tokenChar(46);\n  this.print(node.property);\n}\nfunction JSXSpreadAttribute(node) {\n  this.tokenChar(123);\n  this.token(\"...\");\n  this.print(node.argument);\n  this.rightBrace(node);\n}\nfunction JSXExpressionContainer(node) {\n  this.tokenChar(123);\n  this.print(node.expression);\n  this.rightBrace(node);\n}\nfunction JSXSpreadChild(node) {\n  this.tokenChar(123);\n  this.token(\"...\");\n  this.print(node.expression);\n  this.rightBrace(node);\n}\nfunction JSXText(node) {\n  const raw = this.getPossibleRaw(node);\n  if (raw !== undefined) {\n    this.token(raw, true);\n  } else {\n    this.token(node.value, true);\n  }\n}\nfunction JSXElement(node) {\n  const open = node.openingElement;\n  this.print(open);\n  if (open.selfClosing) return;\n  this.indent();\n  for (const child of node.children) {\n    this.print(child);\n  }\n  this.dedent();\n  this.print(node.closingElement);\n}\nfunction spaceSeparator() {\n  this.space();\n}\nfunction JSXOpeningElement(node) {\n  this.tokenChar(60);\n  this.print(node.name);\n  this.print(node.typeParameters);\n  if (node.attributes.length > 0) {\n    this.space();\n    this.printJoin(node.attributes, {\n      separator: spaceSeparator\n    });\n  }\n  if (node.selfClosing) {\n    this.space();\n    this.token(\"/>\");\n  } else {\n    this.tokenChar(62);\n  }\n}\nfunction JSXClosingElement(node) {\n  this.token(\"</\");\n  this.print(node.name);\n  this.tokenChar(62);\n}\nfunction JSXEmptyExpression() {\n  this.printInnerComments();\n}\nfunction JSXFragment(node) {\n  this.print(node.openingFragment);\n  this.indent();\n  for (const child of node.children) {\n    this.print(child);\n  }\n  this.dedent();\n  this.print(node.closingFragment);\n}\nfunction JSXOpeningFragment() {\n  this.tokenChar(60);\n  this.tokenChar(62);\n}\nfunction JSXClosingFragment() {\n  this.token(\"</\");\n  this.tokenChar(62);\n}\n\n//# sourceMappingURL=jsx.js.map\n\nexport { jsx as __moduleExports, JSXAttribute_1 as JSXAttribute, JSXClosingElement_1 as JSXClosingElement, JSXClosingFragment_1 as JSXClosingFragment, JSXElement_1 as JSXElement, JSXEmptyExpression_1 as JSXEmptyExpression, JSXExpressionContainer_1 as JSXExpressionContainer, JSXFragment_1 as JSXFragment, JSXIdentifier_1 as JSXIdentifier, JSXMemberExpression_1 as JSXMemberExpression, JSXNamespacedName_1 as JSXNamespacedName, JSXOpeningElement_1 as JSXOpeningElement, JSXOpeningFragment_1 as JSXOpeningFragment, JSXSpreadAttribute_1 as JSXSpreadAttribute, JSXSpreadChild_1 as JSXSpreadChild, JSXText_1 as JSXText, jsx as default };",
-      "start": 1727785257184,
-      "end": 1727785257185,
+      "start": 1728160681383,
+      "end": 1728160681384,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160681384,
+      "end": 1728160681384,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785257185,
-      "end": 1727785257185,
+      "start": 1728160681384,
+      "end": 1728160681384,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785257185,
-      "end": 1727785257185,
+      "start": 1728160681384,
+      "end": 1728160681384,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785257185,
-      "end": 1727785257185,
+      "start": 1728160681384,
+      "end": 1728160681384,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785257185,
-      "end": 1727785257185,
+      "start": 1728160681384,
+      "end": 1728160681384,
       "order": "normal"
     }
   ]

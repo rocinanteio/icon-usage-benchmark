@@ -1,0 +1,11 @@
+{
+  "resolvedId": "\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/node_modules/@babel/generator/lib/source-map.js?commonjs-exports",
+  "transforms": [
+    {
+      "name": "commonjs",
+      "result": "var sourceMap = {}; export {sourceMap as __exports}",
+      "start": 1728160682921,
+      "end": 1728160682921
+    }
+  ]
+}

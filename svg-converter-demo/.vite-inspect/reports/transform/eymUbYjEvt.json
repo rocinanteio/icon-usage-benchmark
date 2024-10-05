@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = isNodesEquivalent;\nvar _index = require(\"../definitions/index.js\");\nfunction isNodesEquivalent(a, b) {\n  if (typeof a !== \"object\" || typeof b !== \"object\" || a == null || b == null) {\n    return a === b;\n  }\n  if (a.type !== b.type) {\n    return false;\n  }\n  const fields = Object.keys(_index.NODE_FIELDS[a.type] || a.type);\n  const visitorKeys = _index.VISITOR_KEYS[a.type];\n  for (const field of fields) {\n    const val_a = a[field];\n    const val_b = b[field];\n    if (typeof val_a !== typeof val_b) {\n      return false;\n    }\n    if (val_a == null && val_b == null) {\n      continue;\n    } else if (val_a == null || val_b == null) {\n      return false;\n    }\n    if (Array.isArray(val_a)) {\n      if (!Array.isArray(val_b)) {\n        return false;\n      }\n      if (val_a.length !== val_b.length) {\n        return false;\n      }\n      for (let i = 0; i < val_a.length; i++) {\n        if (!isNodesEquivalent(val_a[i], val_b[i])) {\n          return false;\n        }\n      }\n      continue;\n    }\n    if (typeof val_a === \"object\" && !(visitorKeys != null && visitorKeys.includes(field))) {\n      for (const key of Object.keys(val_a)) {\n        if (val_a[key] !== val_b[key]) {\n          return false;\n        }\n      }\n      continue;\n    }\n    if (!isNodesEquivalent(val_a, val_b)) {\n      return false;\n    }\n  }\n  return true;\n}\n\n//# sourceMappingURL=isNodesEquivalent.js.map\n",
-      "start": 1727785256922,
-      "end": 1727785256934,
+      "start": 1728160652487,
+      "end": 1728160680956,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785256934,
-      "end": 1727785256934,
+      "start": 1728160680956,
+      "end": 1728160680956,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160680956,
+      "end": 1728160680956,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785256934,
-      "end": 1727785256934,
+      "start": 1728160680956,
+      "end": 1728160680956,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785256934,
-      "end": 1727785256934,
+      "start": 1728160680956,
+      "end": 1728160680956,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785256934,
-      "end": 1727785256934,
+      "start": 1728160680956,
+      "end": 1728160680956,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785256934,
-      "end": 1727785256934,
+      "start": 1728160680956,
+      "end": 1728160680956,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785256934,
-      "end": 1727785256934,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785256934,
-      "end": 1727785256934,
+      "start": 1728160680956,
+      "end": 1728160680956,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785256934,
-      "end": 1727785256934,
+      "start": 1728160680956,
+      "end": 1728160680956,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785256934,
-      "end": 1727785256934,
+      "start": 1728160680956,
+      "end": 1728160680956,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785256934,
-      "end": 1727785256934,
+      "start": 1728160680956,
+      "end": 1728160680956,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785256934,
-      "end": 1727785256934,
+      "start": 1728160680956,
+      "end": 1728160680956,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785256934,
-      "end": 1727785256934,
+      "start": 1728160680957,
+      "end": 1728160680957,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as isNodesEquivalent_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/validators/isNodesEquivalent.js?commonjs-exports\";\nimport { __require as require$$0 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/definitions/index.js?commonjs-wrapped\";\n\n\"use strict\";\n\nObject.defineProperty(isNodesEquivalent_1, \"__esModule\", {\n  value: true\n});\nvar _default = isNodesEquivalent_1.default = isNodesEquivalent;\nvar _index = require$$0();\nfunction isNodesEquivalent(a, b) {\n  if (typeof a !== \"object\" || typeof b !== \"object\" || a == null || b == null) {\n    return a === b;\n  }\n  if (a.type !== b.type) {\n    return false;\n  }\n  const fields = Object.keys(_index.NODE_FIELDS[a.type] || a.type);\n  const visitorKeys = _index.VISITOR_KEYS[a.type];\n  for (const field of fields) {\n    const val_a = a[field];\n    const val_b = b[field];\n    if (typeof val_a !== typeof val_b) {\n      return false;\n    }\n    if (val_a == null && val_b == null) {\n      continue;\n    } else if (val_a == null || val_b == null) {\n      return false;\n    }\n    if (Array.isArray(val_a)) {\n      if (!Array.isArray(val_b)) {\n        return false;\n      }\n      if (val_a.length !== val_b.length) {\n        return false;\n      }\n      for (let i = 0; i < val_a.length; i++) {\n        if (!isNodesEquivalent(val_a[i], val_b[i])) {\n          return false;\n        }\n      }\n      continue;\n    }\n    if (typeof val_a === \"object\" && !(visitorKeys != null && visitorKeys.includes(field))) {\n      for (const key of Object.keys(val_a)) {\n        if (val_a[key] !== val_b[key]) {\n          return false;\n        }\n      }\n      continue;\n    }\n    if (!isNodesEquivalent(val_a, val_b)) {\n      return false;\n    }\n  }\n  return true;\n}\n\n//# sourceMappingURL=isNodesEquivalent.js.map\n\nexport { isNodesEquivalent_1 as __moduleExports, _default as default };",
-      "start": 1727785256934,
-      "end": 1727785257239,
+      "start": 1728160680957,
+      "end": 1728160681884,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160681884,
+      "end": 1728160681885,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785257239,
-      "end": 1727785257239,
+      "start": 1728160681885,
+      "end": 1728160681885,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785257239,
-      "end": 1727785257239,
+      "start": 1728160681885,
+      "end": 1728160681885,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785257239,
-      "end": 1727785257239,
+      "start": 1728160681885,
+      "end": 1728160681885,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785257239,
-      "end": 1727785257239,
+      "start": 1728160681885,
+      "end": 1728160681885,
       "order": "normal"
     }
   ]

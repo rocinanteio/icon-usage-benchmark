@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = traverse;\nvar _index = require(\"../definitions/index.js\");\nfunction traverse(node, handlers, state) {\n  if (typeof handlers === \"function\") {\n    handlers = {\n      enter: handlers\n    };\n  }\n  const {\n    enter,\n    exit\n  } = handlers;\n  traverseSimpleImpl(node, enter, exit, state, []);\n}\nfunction traverseSimpleImpl(node, enter, exit, state, ancestors) {\n  const keys = _index.VISITOR_KEYS[node.type];\n  if (!keys) return;\n  if (enter) enter(node, ancestors, state);\n  for (const key of keys) {\n    const subNode = node[key];\n    if (Array.isArray(subNode)) {\n      for (let i = 0; i < subNode.length; i++) {\n        const child = subNode[i];\n        if (!child) continue;\n        ancestors.push({\n          node,\n          key,\n          index: i\n        });\n        traverseSimpleImpl(child, enter, exit, state, ancestors);\n        ancestors.pop();\n      }\n    } else if (subNode) {\n      ancestors.push({\n        node,\n        key\n      });\n      traverseSimpleImpl(subNode, enter, exit, state, ancestors);\n      ancestors.pop();\n    }\n  }\n  if (exit) exit(node, ancestors, state);\n}\n\n//# sourceMappingURL=traverse.js.map\n",
-      "start": 1727785256914,
-      "end": 1727785256929,
+      "start": 1728160652462,
+      "end": 1728160680921,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785256929,
-      "end": 1727785256929,
+      "start": 1728160680922,
+      "end": 1728160680922,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160680922,
+      "end": 1728160680922,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785256929,
-      "end": 1727785256929,
+      "start": 1728160680922,
+      "end": 1728160680922,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785256929,
-      "end": 1727785256929,
+      "start": 1728160680922,
+      "end": 1728160680922,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785256929,
-      "end": 1727785256929,
+      "start": 1728160680922,
+      "end": 1728160680922,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785256929,
-      "end": 1727785256929,
+      "start": 1728160680922,
+      "end": 1728160680922,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785256929,
-      "end": 1727785256929,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785256929,
-      "end": 1727785256929,
+      "start": 1728160680922,
+      "end": 1728160680922,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785256929,
-      "end": 1727785256929,
+      "start": 1728160680922,
+      "end": 1728160680922,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785256929,
-      "end": 1727785256929,
+      "start": 1728160680922,
+      "end": 1728160680922,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785256929,
-      "end": 1727785256929,
+      "start": 1728160680922,
+      "end": 1728160680922,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785256929,
-      "end": 1727785256929,
+      "start": 1728160680922,
+      "end": 1728160680922,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785256929,
-      "end": 1727785256929,
+      "start": 1728160680922,
+      "end": 1728160680922,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as traverse_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/traverse/traverse.js?commonjs-exports\";\nimport { __require as require$$0 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/definitions/index.js?commonjs-wrapped\";\n\n\"use strict\";\n\nObject.defineProperty(traverse_1, \"__esModule\", {\n  value: true\n});\nvar _default = traverse_1.default = traverse;\nvar _index = require$$0();\nfunction traverse(node, handlers, state) {\n  if (typeof handlers === \"function\") {\n    handlers = {\n      enter: handlers\n    };\n  }\n  const {\n    enter,\n    exit\n  } = handlers;\n  traverseSimpleImpl(node, enter, exit, state, []);\n}\nfunction traverseSimpleImpl(node, enter, exit, state, ancestors) {\n  const keys = _index.VISITOR_KEYS[node.type];\n  if (!keys) return;\n  if (enter) enter(node, ancestors, state);\n  for (const key of keys) {\n    const subNode = node[key];\n    if (Array.isArray(subNode)) {\n      for (let i = 0; i < subNode.length; i++) {\n        const child = subNode[i];\n        if (!child) continue;\n        ancestors.push({\n          node,\n          key,\n          index: i\n        });\n        traverseSimpleImpl(child, enter, exit, state, ancestors);\n        ancestors.pop();\n      }\n    } else if (subNode) {\n      ancestors.push({\n        node,\n        key\n      });\n      traverseSimpleImpl(subNode, enter, exit, state, ancestors);\n      ancestors.pop();\n    }\n  }\n  if (exit) exit(node, ancestors, state);\n}\n\n//# sourceMappingURL=traverse.js.map\n\nexport { traverse_1 as __moduleExports, _default as default };",
-      "start": 1727785256929,
-      "end": 1727785257239,
+      "start": 1728160680922,
+      "end": 1728160681884,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160681884,
+      "end": 1728160681885,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785257239,
-      "end": 1727785257239,
+      "start": 1728160681885,
+      "end": 1728160681885,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785257239,
-      "end": 1727785257239,
+      "start": 1728160681885,
+      "end": 1728160681885,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785257239,
-      "end": 1727785257239,
+      "start": 1728160681885,
+      "end": 1728160681885,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785257239,
-      "end": 1727785257239,
+      "start": 1728160681885,
+      "end": 1728160681885,
       "order": "normal"
     }
   ]

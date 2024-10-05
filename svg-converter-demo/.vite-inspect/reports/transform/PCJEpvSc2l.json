@@ -1,0 +1,11 @@
+{
+  "resolvedId": "\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/helper-validator-identifier/lib/index.js?commonjs-exports",
+  "transforms": [
+    {
+      "name": "commonjs",
+      "result": "var lib = {}; export {lib as __exports}",
+      "start": 1728160682766,
+      "end": 1728160682766
+    }
+  ]
+}

@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.addComment = addComment;\nexports.addComments = addComments;\nexports.shareCommentsWithSiblings = shareCommentsWithSiblings;\nvar _t = require(\"@babel/types\");\nconst {\n  addComment: _addComment,\n  addComments: _addComments\n} = _t;\nfunction shareCommentsWithSiblings() {\n  if (typeof this.key === \"string\") return;\n  const node = this.node;\n  if (!node) return;\n  const trailing = node.trailingComments;\n  const leading = node.leadingComments;\n  if (!trailing && !leading) return;\n  const prev = this.getSibling(this.key - 1);\n  const next = this.getSibling(this.key + 1);\n  const hasPrev = Boolean(prev.node);\n  const hasNext = Boolean(next.node);\n  if (hasPrev) {\n    if (leading) {\n      prev.addComments(\"trailing\", removeIfExisting(leading, prev.node.trailingComments));\n    }\n    if (trailing && !hasNext) prev.addComments(\"trailing\", trailing);\n  }\n  if (hasNext) {\n    if (trailing) {\n      next.addComments(\"leading\", removeIfExisting(trailing, next.node.leadingComments));\n    }\n    if (leading && !hasPrev) next.addComments(\"leading\", leading);\n  }\n}\nfunction removeIfExisting(list, toRemove) {\n  if (!(toRemove != null && toRemove.length)) return list;\n  const set = new Set(toRemove);\n  return list.filter(el => {\n    return !set.has(el);\n  });\n}\nfunction addComment(type, content, line) {\n  _addComment(this.node, type, content, line);\n}\nfunction addComments(type, comments) {\n  _addComments(this.node, type, comments);\n}\n\n//# sourceMappingURL=comments.js.map\n",
-      "start": 1727785256938,
-      "end": 1727785257031,
+      "start": 1728160681057,
+      "end": 1728160681184,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785257031,
-      "end": 1727785257031,
+      "start": 1728160681185,
+      "end": 1728160681185,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160681185,
+      "end": 1728160681185,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785257031,
-      "end": 1727785257031,
+      "start": 1728160681185,
+      "end": 1728160681185,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785257031,
-      "end": 1727785257031,
+      "start": 1728160681185,
+      "end": 1728160681185,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785257031,
-      "end": 1727785257031,
+      "start": 1728160681185,
+      "end": 1728160681185,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785257031,
-      "end": 1727785257031,
+      "start": 1728160681185,
+      "end": 1728160681185,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785257031,
-      "end": 1727785257031,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785257031,
-      "end": 1727785257031,
+      "start": 1728160681185,
+      "end": 1728160681185,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785257031,
-      "end": 1727785257031,
+      "start": 1728160681185,
+      "end": 1728160681185,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785257031,
-      "end": 1727785257031,
+      "start": 1728160681185,
+      "end": 1728160681185,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785257031,
-      "end": 1727785257031,
+      "start": 1728160681185,
+      "end": 1728160681185,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785257031,
-      "end": 1727785257031,
+      "start": 1728160681185,
+      "end": 1728160681185,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785257031,
-      "end": 1727785257031,
+      "start": 1728160681185,
+      "end": 1728160681185,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as comments } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/path/comments.js?commonjs-exports\";\nimport { __require as require$$0 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/index.js?commonjs-wrapped\";\n\n\"use strict\";\n\nObject.defineProperty(comments, \"__esModule\", {\n  value: true\n});\nvar addComment_1 = comments.addComment = addComment;\nvar addComments_1 = comments.addComments = addComments;\nvar shareCommentsWithSiblings_1 = comments.shareCommentsWithSiblings = shareCommentsWithSiblings;\nvar _t = require$$0();\nconst {\n  addComment: _addComment,\n  addComments: _addComments\n} = _t;\nfunction shareCommentsWithSiblings() {\n  if (typeof this.key === \"string\") return;\n  const node = this.node;\n  if (!node) return;\n  const trailing = node.trailingComments;\n  const leading = node.leadingComments;\n  if (!trailing && !leading) return;\n  const prev = this.getSibling(this.key - 1);\n  const next = this.getSibling(this.key + 1);\n  const hasPrev = Boolean(prev.node);\n  const hasNext = Boolean(next.node);\n  if (hasPrev) {\n    if (leading) {\n      prev.addComments(\"trailing\", removeIfExisting(leading, prev.node.trailingComments));\n    }\n    if (trailing && !hasNext) prev.addComments(\"trailing\", trailing);\n  }\n  if (hasNext) {\n    if (trailing) {\n      next.addComments(\"leading\", removeIfExisting(trailing, next.node.leadingComments));\n    }\n    if (leading && !hasPrev) next.addComments(\"leading\", leading);\n  }\n}\nfunction removeIfExisting(list, toRemove) {\n  if (!(toRemove != null && toRemove.length)) return list;\n  const set = new Set(toRemove);\n  return list.filter(el => {\n    return !set.has(el);\n  });\n}\nfunction addComment(type, content, line) {\n  _addComment(this.node, type, content, line);\n}\nfunction addComments(type, comments) {\n  _addComments(this.node, type, comments);\n}\n\n//# sourceMappingURL=comments.js.map\n\nexport { comments as __moduleExports, addComment_1 as addComment, addComments_1 as addComments, shareCommentsWithSiblings_1 as shareCommentsWithSiblings, comments as default };",
-      "start": 1727785257031,
-      "end": 1727785257031,
+      "start": 1728160681185,
+      "end": 1728160681186,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160681186,
+      "end": 1728160681186,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785257031,
-      "end": 1727785257031,
+      "start": 1728160681186,
+      "end": 1728160681186,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785257031,
-      "end": 1727785257031,
+      "start": 1728160681186,
+      "end": 1728160681186,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785257031,
-      "end": 1727785257031,
+      "start": 1728160681186,
+      "end": 1728160681186,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785257031,
-      "end": 1727785257031,
+      "start": 1728160681186,
+      "end": 1728160681186,
       "order": "normal"
     }
   ]

@@ -4,110 +4,116 @@
     {
       "name": "vite:load-fallback",
       "result": "import CanceledError from \"../cancel/CanceledError.js\";\nimport AxiosError from \"../core/AxiosError.js\";\nimport utils from '../utils.js';\n\nconst composeSignals = (signals, timeout) => {\n  const {length} = (signals = signals ? signals.filter(Boolean) : []);\n\n  if (timeout || length) {\n    let controller = new AbortController();\n\n    let aborted;\n\n    const onabort = function (reason) {\n      if (!aborted) {\n        aborted = true;\n        unsubscribe();\n        const err = reason instanceof Error ? reason : this.reason;\n        controller.abort(err instanceof AxiosError ? err : new CanceledError(err instanceof Error ? err.message : err));\n      }\n    }\n\n    let timer = timeout && setTimeout(() => {\n      timer = null;\n      onabort(new AxiosError(`timeout ${timeout} of ms exceeded`, AxiosError.ETIMEDOUT))\n    }, timeout)\n\n    const unsubscribe = () => {\n      if (signals) {\n        timer && clearTimeout(timer);\n        timer = null;\n        signals.forEach(signal => {\n          signal.unsubscribe ? signal.unsubscribe(onabort) : signal.removeEventListener('abort', onabort);\n        });\n        signals = null;\n      }\n    }\n\n    signals.forEach((signal) => signal.addEventListener('abort', onabort));\n\n    const {signal} = controller;\n\n    signal.unsubscribe = () => utils.asap(unsubscribe);\n\n    return signal;\n  }\n}\n\nexport default composeSignals;\n",
-      "start": 1727785257185,
-      "end": 1727785257227,
+      "start": 1728160681759,
+      "end": 1728160681875,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785257227,
-      "end": 1727785257227,
+      "start": 1728160681876,
+      "end": 1728160681876,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160681876,
+      "end": 1728160681876,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785257227,
-      "end": 1727785257227,
+      "start": 1728160681876,
+      "end": 1728160681876,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785257227,
-      "end": 1727785257227,
+      "start": 1728160681876,
+      "end": 1728160681876,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785257227,
-      "end": 1727785257227,
+      "start": 1728160681876,
+      "end": 1728160681876,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785257227,
-      "end": 1727785257227,
+      "start": 1728160681876,
+      "end": 1728160681876,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785257227,
-      "end": 1727785257227,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785257227,
-      "end": 1727785257227,
+      "start": 1728160681876,
+      "end": 1728160681876,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785257227,
-      "end": 1727785257227,
+      "start": 1728160681876,
+      "end": 1728160681876,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785257227,
-      "end": 1727785257227,
+      "start": 1728160681876,
+      "end": 1728160681876,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785257227,
-      "end": 1727785257227,
+      "start": 1728160681876,
+      "end": 1728160681876,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785257227,
-      "end": 1727785257227,
+      "start": 1728160681876,
+      "end": 1728160681876,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785257227,
-      "end": 1727785257227,
+      "start": 1728160681876,
+      "end": 1728160681876,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1727785257227,
-      "end": 1727785257227,
+      "start": 1728160681876,
+      "end": 1728160681876,
+      "order": "normal"
+    },
+    {
+      "name": "inject",
+      "start": 1728160681876,
+      "end": 1728160681876,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785257227,
-      "end": 1727785257227,
+      "start": 1728160681876,
+      "end": 1728160681876,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785257227,
-      "end": 1727785257227,
+      "start": 1728160681876,
+      "end": 1728160681876,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785257227,
-      "end": 1727785257227,
+      "start": 1728160681876,
+      "end": 1728160681876,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785257227,
-      "end": 1727785257227,
+      "start": 1728160681876,
+      "end": 1728160681876,
       "order": "normal"
     }
   ]

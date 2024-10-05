@@ -1,0 +1,129 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/validators/buildMatchMemberExpression.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = buildMatchMemberExpression;\nvar _matchesPattern = require(\"./matchesPattern.js\");\nfunction buildMatchMemberExpression(match, allowPartial) {\n  const parts = match.split(\".\");\n  return member => (0, _matchesPattern.default)(member, parts, allowPartial);\n}\n\n//# sourceMappingURL=buildMatchMemberExpression.js.map\n",
+      "start": 1728160681591,
+      "end": 1728160681616,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1728160681616,
+      "end": 1728160681616,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160681616,
+      "end": 1728160681616,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1728160681616,
+      "end": 1728160681616,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1728160681616,
+      "end": 1728160681616,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1728160681616,
+      "end": 1728160681616,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1728160681616,
+      "end": 1728160681616,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1728160681616,
+      "end": 1728160681616,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1728160681616,
+      "end": 1728160681616,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1728160681616,
+      "end": 1728160681616,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1728160681616,
+      "end": 1728160681616,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1728160681617,
+      "end": 1728160681617,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1728160681617,
+      "end": 1728160681617,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as buildMatchMemberExpression_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/validators/buildMatchMemberExpression.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/validators/matchesPattern.js?commonjs-proxy\";\n\n\"use strict\";\n\nObject.defineProperty(buildMatchMemberExpression_1, \"__esModule\", {\n  value: true\n});\nvar _default = buildMatchMemberExpression_1.default = buildMatchMemberExpression;\nvar _matchesPattern = require$$0;\nfunction buildMatchMemberExpression(match, allowPartial) {\n  const parts = match.split(\".\");\n  return member => (0, _matchesPattern.default)(member, parts, allowPartial);\n}\n\n//# sourceMappingURL=buildMatchMemberExpression.js.map\n\nexport { buildMatchMemberExpression_1 as __moduleExports, _default as default };",
+      "start": 1728160681617,
+      "end": 1728160681715,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;AAAA,YAAY,CAAC;AACb;AACA,MAAM,CAAC,cAAc,CAAC,4BAAO,EAAE,YAAY,EAAE;AAC7C,EAAE,KAAK,EAAE,IAAI;AACb,CAAC,CAAC,CAAC;AACH,mDAAe,GAAG,0BAA0B,CAAC;AAC7C,IAAI,eAAe,GAAG,UAA8B,CAAC;AACrD,SAAS,0BAA0B,CAAC,KAAK,EAAE,YAAY,EAAE;AACzD,EAAE,MAAM,KAAK,GAAG,KAAK,CAAC,KAAK,CAAC,GAAG,CAAC,CAAC;AACjC,EAAE,OAAO,MAAM,IAAI,CAAC,CAAC,EAAE,eAAe,CAAC,OAAO,EAAE,MAAM,EAAE,KAAK,EAAE,YAAY,CAAC,CAAC;AAC7E,CAAC;AACD;AACA"
+      }
+    },
+    {
+      "name": "inject",
+      "start": 1728160681715,
+      "end": 1728160681715,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1728160681715,
+      "end": 1728160681715,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1728160681715,
+      "end": 1728160681715,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1728160681715,
+      "end": 1728160681715,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1728160681715,
+      "end": 1728160681715,
+      "order": "normal"
+    }
+  ]
+}

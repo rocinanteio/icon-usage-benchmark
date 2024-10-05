@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.nodes = void 0;\nvar _t = require(\"@babel/types\");\nconst {\n  FLIPPED_ALIAS_KEYS,\n  isArrayExpression,\n  isAssignmentExpression,\n  isBinary,\n  isBlockStatement,\n  isCallExpression,\n  isFunction,\n  isIdentifier,\n  isLiteral,\n  isMemberExpression,\n  isObjectExpression,\n  isOptionalCallExpression,\n  isOptionalMemberExpression,\n  isStringLiteral\n} = _t;\nfunction crawlInternal(node, state) {\n  if (!node) return state;\n  if (isMemberExpression(node) || isOptionalMemberExpression(node)) {\n    crawlInternal(node.object, state);\n    if (node.computed) crawlInternal(node.property, state);\n  } else if (isBinary(node) || isAssignmentExpression(node)) {\n    crawlInternal(node.left, state);\n    crawlInternal(node.right, state);\n  } else if (isCallExpression(node) || isOptionalCallExpression(node)) {\n    state.hasCall = true;\n    crawlInternal(node.callee, state);\n  } else if (isFunction(node)) {\n    state.hasFunction = true;\n  } else if (isIdentifier(node)) {\n    state.hasHelper = state.hasHelper || node.callee && isHelper(node.callee);\n  }\n  return state;\n}\nfunction crawl(node) {\n  return crawlInternal(node, {\n    hasCall: false,\n    hasFunction: false,\n    hasHelper: false\n  });\n}\nfunction isHelper(node) {\n  if (!node) return false;\n  if (isMemberExpression(node)) {\n    return isHelper(node.object) || isHelper(node.property);\n  } else if (isIdentifier(node)) {\n    return node.name === \"require\" || node.name.charCodeAt(0) === 95;\n  } else if (isCallExpression(node)) {\n    return isHelper(node.callee);\n  } else if (isBinary(node) || isAssignmentExpression(node)) {\n    return isIdentifier(node.left) && isHelper(node.left) || isHelper(node.right);\n  } else {\n    return false;\n  }\n}\nfunction isType(node) {\n  return isLiteral(node) || isObjectExpression(node) || isArrayExpression(node) || isIdentifier(node) || isMemberExpression(node);\n}\nconst nodes = exports.nodes = {\n  AssignmentExpression(node) {\n    const state = crawl(node.right);\n    if (state.hasCall && state.hasHelper || state.hasFunction) {\n      return state.hasFunction ? 1 | 2 : 2;\n    }\n  },\n  SwitchCase(node, parent) {\n    return (!!node.consequent.length || parent.cases[0] === node ? 1 : 0) | (!node.consequent.length && parent.cases[parent.cases.length - 1] === node ? 2 : 0);\n  },\n  LogicalExpression(node) {\n    if (isFunction(node.left) || isFunction(node.right)) {\n      return 2;\n    }\n  },\n  Literal(node) {\n    if (isStringLiteral(node) && node.value === \"use strict\") {\n      return 2;\n    }\n  },\n  CallExpression(node) {\n    if (isFunction(node.callee) || isHelper(node)) {\n      return 1 | 2;\n    }\n  },\n  OptionalCallExpression(node) {\n    if (isFunction(node.callee)) {\n      return 1 | 2;\n    }\n  },\n  VariableDeclaration(node) {\n    for (let i = 0; i < node.declarations.length; i++) {\n      const declar = node.declarations[i];\n      let enabled = isHelper(declar.id) && !isType(declar.init);\n      if (!enabled && declar.init) {\n        const state = crawl(declar.init);\n        enabled = isHelper(declar.init) && state.hasCall || state.hasFunction;\n      }\n      if (enabled) {\n        return 1 | 2;\n      }\n    }\n  },\n  IfStatement(node) {\n    if (isBlockStatement(node.consequent)) {\n      return 1 | 2;\n    }\n  }\n};\nnodes.ObjectProperty = nodes.ObjectTypeProperty = nodes.ObjectMethod = function (node, parent) {\n  if (parent.properties[0] === node) {\n    return 1;\n  }\n};\nnodes.ObjectTypeCallProperty = function (node, parent) {\n  var _parent$properties;\n  if (parent.callProperties[0] === node && !((_parent$properties = parent.properties) != null && _parent$properties.length)) {\n    return 1;\n  }\n};\nnodes.ObjectTypeIndexer = function (node, parent) {\n  var _parent$properties2, _parent$callPropertie;\n  if (parent.indexers[0] === node && !((_parent$properties2 = parent.properties) != null && _parent$properties2.length) && !((_parent$callPropertie = parent.callProperties) != null && _parent$callPropertie.length)) {\n    return 1;\n  }\n};\nnodes.ObjectTypeInternalSlot = function (node, parent) {\n  var _parent$properties3, _parent$callPropertie2, _parent$indexers;\n  if (parent.internalSlots[0] === node && !((_parent$properties3 = parent.properties) != null && _parent$properties3.length) && !((_parent$callPropertie2 = parent.callProperties) != null && _parent$callPropertie2.length) && !((_parent$indexers = parent.indexers) != null && _parent$indexers.length)) {\n    return 1;\n  }\n};\n[[\"Function\", true], [\"Class\", true], [\"Loop\", true], [\"LabeledStatement\", true], [\"SwitchStatement\", true], [\"TryStatement\", true]].forEach(function ([type, amounts]) {\n  [type].concat(FLIPPED_ALIAS_KEYS[type] || []).forEach(function (type) {\n    const ret = amounts ? 1 | 2 : 0;\n    nodes[type] = () => ret;\n  });\n});\n\n//# sourceMappingURL=whitespace.js.map\n",
-      "start": 1727785257138,
-      "end": 1727785257185,
+      "start": 1728160681278,
+      "end": 1728160681329,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785257185,
-      "end": 1727785257185,
+      "start": 1728160681329,
+      "end": 1728160681329,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160681329,
+      "end": 1728160681329,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785257185,
-      "end": 1727785257185,
+      "start": 1728160681329,
+      "end": 1728160681329,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785257185,
-      "end": 1727785257185,
+      "start": 1728160681329,
+      "end": 1728160681329,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785257185,
-      "end": 1727785257185,
+      "start": 1728160681329,
+      "end": 1728160681329,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785257185,
-      "end": 1727785257185,
+      "start": 1728160681329,
+      "end": 1728160681329,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785257185,
-      "end": 1727785257185,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785257185,
-      "end": 1727785257185,
+      "start": 1728160681329,
+      "end": 1728160681329,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785257185,
-      "end": 1727785257185,
+      "start": 1728160681329,
+      "end": 1728160681329,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785257185,
-      "end": 1727785257185,
+      "start": 1728160681329,
+      "end": 1728160681329,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785257185,
-      "end": 1727785257185,
+      "start": 1728160681330,
+      "end": 1728160681330,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785257185,
-      "end": 1727785257185,
+      "start": 1728160681332,
+      "end": 1728160681332,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785257185,
-      "end": 1727785257185,
+      "start": 1728160681332,
+      "end": 1728160681332,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as whitespace } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/lib/node/whitespace.js?commonjs-exports\";\nimport { __require as require$$0 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/index.js?commonjs-wrapped\";\n\n\"use strict\";\n\nObject.defineProperty(whitespace, \"__esModule\", {\n  value: true\n});\nvar nodes_1 = whitespace.nodes = void 0;\nvar _t = require$$0();\nconst {\n  FLIPPED_ALIAS_KEYS,\n  isArrayExpression,\n  isAssignmentExpression,\n  isBinary,\n  isBlockStatement,\n  isCallExpression,\n  isFunction,\n  isIdentifier,\n  isLiteral,\n  isMemberExpression,\n  isObjectExpression,\n  isOptionalCallExpression,\n  isOptionalMemberExpression,\n  isStringLiteral\n} = _t;\nfunction crawlInternal(node, state) {\n  if (!node) return state;\n  if (isMemberExpression(node) || isOptionalMemberExpression(node)) {\n    crawlInternal(node.object, state);\n    if (node.computed) crawlInternal(node.property, state);\n  } else if (isBinary(node) || isAssignmentExpression(node)) {\n    crawlInternal(node.left, state);\n    crawlInternal(node.right, state);\n  } else if (isCallExpression(node) || isOptionalCallExpression(node)) {\n    state.hasCall = true;\n    crawlInternal(node.callee, state);\n  } else if (isFunction(node)) {\n    state.hasFunction = true;\n  } else if (isIdentifier(node)) {\n    state.hasHelper = state.hasHelper || node.callee && isHelper(node.callee);\n  }\n  return state;\n}\nfunction crawl(node) {\n  return crawlInternal(node, {\n    hasCall: false,\n    hasFunction: false,\n    hasHelper: false\n  });\n}\nfunction isHelper(node) {\n  if (!node) return false;\n  if (isMemberExpression(node)) {\n    return isHelper(node.object) || isHelper(node.property);\n  } else if (isIdentifier(node)) {\n    return node.name === \"require\" || node.name.charCodeAt(0) === 95;\n  } else if (isCallExpression(node)) {\n    return isHelper(node.callee);\n  } else if (isBinary(node) || isAssignmentExpression(node)) {\n    return isIdentifier(node.left) && isHelper(node.left) || isHelper(node.right);\n  } else {\n    return false;\n  }\n}\nfunction isType(node) {\n  return isLiteral(node) || isObjectExpression(node) || isArrayExpression(node) || isIdentifier(node) || isMemberExpression(node);\n}\nconst nodes = nodes_1 = whitespace.nodes = {\n  AssignmentExpression(node) {\n    const state = crawl(node.right);\n    if (state.hasCall && state.hasHelper || state.hasFunction) {\n      return state.hasFunction ? 1 | 2 : 2;\n    }\n  },\n  SwitchCase(node, parent) {\n    return (!!node.consequent.length || parent.cases[0] === node ? 1 : 0) | (!node.consequent.length && parent.cases[parent.cases.length - 1] === node ? 2 : 0);\n  },\n  LogicalExpression(node) {\n    if (isFunction(node.left) || isFunction(node.right)) {\n      return 2;\n    }\n  },\n  Literal(node) {\n    if (isStringLiteral(node) && node.value === \"use strict\") {\n      return 2;\n    }\n  },\n  CallExpression(node) {\n    if (isFunction(node.callee) || isHelper(node)) {\n      return 1 | 2;\n    }\n  },\n  OptionalCallExpression(node) {\n    if (isFunction(node.callee)) {\n      return 1 | 2;\n    }\n  },\n  VariableDeclaration(node) {\n    for (let i = 0; i < node.declarations.length; i++) {\n      const declar = node.declarations[i];\n      let enabled = isHelper(declar.id) && !isType(declar.init);\n      if (!enabled && declar.init) {\n        const state = crawl(declar.init);\n        enabled = isHelper(declar.init) && state.hasCall || state.hasFunction;\n      }\n      if (enabled) {\n        return 1 | 2;\n      }\n    }\n  },\n  IfStatement(node) {\n    if (isBlockStatement(node.consequent)) {\n      return 1 | 2;\n    }\n  }\n};\nnodes.ObjectProperty = nodes.ObjectTypeProperty = nodes.ObjectMethod = function (node, parent) {\n  if (parent.properties[0] === node) {\n    return 1;\n  }\n};\nnodes.ObjectTypeCallProperty = function (node, parent) {\n  var _parent$properties;\n  if (parent.callProperties[0] === node && !((_parent$properties = parent.properties) != null && _parent$properties.length)) {\n    return 1;\n  }\n};\nnodes.ObjectTypeIndexer = function (node, parent) {\n  var _parent$properties2, _parent$callPropertie;\n  if (parent.indexers[0] === node && !((_parent$properties2 = parent.properties) != null && _parent$properties2.length) && !((_parent$callPropertie = parent.callProperties) != null && _parent$callPropertie.length)) {\n    return 1;\n  }\n};\nnodes.ObjectTypeInternalSlot = function (node, parent) {\n  var _parent$properties3, _parent$callPropertie2, _parent$indexers;\n  if (parent.internalSlots[0] === node && !((_parent$properties3 = parent.properties) != null && _parent$properties3.length) && !((_parent$callPropertie2 = parent.callProperties) != null && _parent$callPropertie2.length) && !((_parent$indexers = parent.indexers) != null && _parent$indexers.length)) {\n    return 1;\n  }\n};\n[[\"Function\", true], [\"Class\", true], [\"Loop\", true], [\"LabeledStatement\", true], [\"SwitchStatement\", true], [\"TryStatement\", true]].forEach(function ([type, amounts]) {\n  [type].concat(FLIPPED_ALIAS_KEYS[type] || []).forEach(function (type) {\n    const ret = amounts ? 1 | 2 : 0;\n    nodes[type] = () => ret;\n  });\n});\n\n//# sourceMappingURL=whitespace.js.map\n\nexport { whitespace as __moduleExports, nodes_1 as nodes, whitespace as default };",
-      "start": 1727785257185,
-      "end": 1727785257188,
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as whitespace } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/lib/node/whitespace.js?commonjs-exports\";\nimport { __require as require$$0 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/index.js?commonjs-wrapped\";\n\n\"use strict\";\n\nObject.defineProperty(whitespace, \"__esModule\", {\n  value: true\n});\nvar nodes_1 = whitespace.nodes = void 0;\nvar _t = require$$0();\nconst {\n  FLIPPED_ALIAS_KEYS,\n  isArrayExpression,\n  isAssignmentExpression,\n  isBinary,\n  isBlockStatement,\n  isCallExpression,\n  isFunction,\n  isIdentifier,\n  isLiteral,\n  isMemberExpression,\n  isObjectExpression,\n  isOptionalCallExpression,\n  isOptionalMemberExpression,\n  isStringLiteral\n} = _t;\nfunction crawlInternal(node, state) {\n  if (!node) return state;\n  if (isMemberExpression(node) || isOptionalMemberExpression(node)) {\n    crawlInternal(node.object, state);\n    if (node.computed) crawlInternal(node.property, state);\n  } else if (isBinary(node) || isAssignmentExpression(node)) {\n    crawlInternal(node.left, state);\n    crawlInternal(node.right, state);\n  } else if (isCallExpression(node) || isOptionalCallExpression(node)) {\n    state.hasCall = true;\n    crawlInternal(node.callee, state);\n  } else if (isFunction(node)) {\n    state.hasFunction = true;\n  } else if (isIdentifier(node)) {\n    state.hasHelper = state.hasHelper || node.callee && isHelper(node.callee);\n  }\n  return state;\n}\nfunction crawl(node) {\n  return crawlInternal(node, {\n    hasCall: false,\n    hasFunction: false,\n    hasHelper: false\n  });\n}\nfunction isHelper(node) {\n  if (!node) return false;\n  if (isMemberExpression(node)) {\n    return isHelper(node.object) || isHelper(node.property);\n  } else if (isIdentifier(node)) {\n    return node.name === \"require\" || node.name.charCodeAt(0) === 95;\n  } else if (isCallExpression(node)) {\n    return isHelper(node.callee);\n  } else if (isBinary(node) || isAssignmentExpression(node)) {\n    return isIdentifier(node.left) && isHelper(node.left) || isHelper(node.right);\n  } else {\n    return false;\n  }\n}\nfunction isType(node) {\n  return isLiteral(node) || isObjectExpression(node) || isArrayExpression(node) || isIdentifier(node) || isMemberExpression(node);\n}\nconst nodes = nodes_1 = whitespace.nodes = {\n  AssignmentExpression(node) {\n    const state = crawl(node.right);\n    if (state.hasCall && state.hasHelper || state.hasFunction) {\n      return state.hasFunction ? 1 | 2 : 2;\n    }\n  },\n  SwitchCase(node, parent) {\n    return (!!node.consequent.length || parent.cases[0] === node ? 1 : 0) | (!node.consequent.length && parent.cases[parent.cases.length - 1] === node ? 2 : 0);\n  },\n  LogicalExpression(node) {\n    if (isFunction(node.left) || isFunction(node.right)) {\n      return 2;\n    }\n  },\n  Literal(node) {\n    if (isStringLiteral(node) && node.value === \"use strict\") {\n      return 2;\n    }\n  },\n  CallExpression(node) {\n    if (isFunction(node.callee) || isHelper(node)) {\n      return 1 | 2;\n    }\n  },\n  OptionalCallExpression(node) {\n    if (isFunction(node.callee)) {\n      return 1 | 2;\n    }\n  },\n  VariableDeclaration(node) {\n    for (let i = 0; i < node.declarations.length; i++) {\n      const declar = node.declarations[i];\n      let enabled = isHelper(declar.id) && !isType(declar.init);\n      if (!enabled && declar.init) {\n        const state = crawl(declar.init);\n        enabled = isHelper(declar.init) && state.hasCall || state.hasFunction;\n      }\n      if (enabled) {\n        return 1 | 2;\n      }\n    }\n  },\n  IfStatement(node) {\n    if (isBlockStatement(node.consequent)) {\n      return 1 | 2;\n    }\n  }\n};\nnodes.ObjectProperty = nodes.ObjectTypeProperty = nodes.ObjectMethod = function (node, parent) {\n  if (parent.properties[0] === node) {\n    return 1;\n  }\n};\nnodes.ObjectTypeCallProperty = function (node, parent) {\n  var _parent$properties;\n  if (parent.callProperties[0] === node && !((_parent$properties = parent.properties) != null && _parent$properties.length)) {\n    return 1;\n  }\n};\nnodes.ObjectTypeIndexer = function (node, parent) {\n  var _parent$properties2, _parent$callPropertie;\n  if (parent.indexers[0] === node && !((_parent$properties2 = parent.properties) != null && _parent$properties2.length) && !((_parent$callPropertie = parent.callProperties) != null && _parent$callPropertie.length)) {\n    return 1;\n  }\n};\nnodes.ObjectTypeInternalSlot = function (node, parent) {\n  var _parent$properties3, _parent$callPropertie2, _parent$indexers;\n  if (parent.internalSlots[0] === node && !((_parent$properties3 = parent.properties) != null && _parent$properties3.length) && !((_parent$callPropertie2 = parent.callProperties) != null && _parent$callPropertie2.length) && !((_parent$indexers = parent.indexers) != null && _parent$indexers.length)) {\n    return 1;\n  }\n};\n[[\"Function\", true], [\"Class\", true], [\"Loop\", true], [\"LabeledStatement\", true], [\"SwitchStatement\", true], [\"TryStatement\", true]].forEach(function ([type, amounts]) {\n  [type].concat(FLIPPED_ALIAS_KEYS[type] || []).forEach(function (type) {\n    const ret = amounts ? 1 | 2 : 0;\n    nodes[type] = () => ret;\n  });\n});\n\n//# sourceMappingURL=whitespace.js.map\n\nexport { whitespace as __moduleExports, nodes_1 as nodes, whitespace as default };",
+      "start": 1728160681332,
+      "end": 1728160682533,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160682539,
+      "end": 1728160682539,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785257188,
-      "end": 1727785257188,
+      "start": 1728160682539,
+      "end": 1728160682539,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785257188,
-      "end": 1727785257188,
+      "start": 1728160682539,
+      "end": 1728160682539,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785257188,
-      "end": 1727785257188,
+      "start": 1728160682539,
+      "end": 1728160682540,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785257188,
-      "end": 1727785257188,
+      "start": 1728160682541,
+      "end": 1728160682542,
       "order": "normal"
     }
   ]

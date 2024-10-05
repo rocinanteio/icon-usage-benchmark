@@ -1,0 +1,129 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/validators/validate.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = validate;\nexports.validateChild = validateChild;\nexports.validateField = validateField;\nexports.validateInternal = validateInternal;\nvar _index = require(\"../definitions/index.js\");\nfunction validate(node, key, val) {\n  if (!node) return;\n  const fields = _index.NODE_FIELDS[node.type];\n  if (!fields) return;\n  const field = fields[key];\n  validateField(node, key, val, field);\n  validateChild(node, key, val);\n}\nfunction validateInternal(field, node, key, val, maybeNode) {\n  if (!(field != null && field.validate)) return;\n  if (field.optional && val == null) return;\n  field.validate(node, key, val);\n  if (maybeNode) {\n    var _NODE_PARENT_VALIDATI;\n    const type = val.type;\n    if (type == null) return;\n    (_NODE_PARENT_VALIDATI = _index.NODE_PARENT_VALIDATIONS[type]) == null || _NODE_PARENT_VALIDATI.call(_index.NODE_PARENT_VALIDATIONS, node, key, val);\n  }\n}\nfunction validateField(node, key, val, field) {\n  if (!(field != null && field.validate)) return;\n  if (field.optional && val == null) return;\n  field.validate(node, key, val);\n}\nfunction validateChild(node, key, val) {\n  var _NODE_PARENT_VALIDATI2;\n  const type = val == null ? void 0 : val.type;\n  if (type == null) return;\n  (_NODE_PARENT_VALIDATI2 = _index.NODE_PARENT_VALIDATIONS[type]) == null || _NODE_PARENT_VALIDATI2.call(_index.NODE_PARENT_VALIDATIONS, node, key, val);\n}\n\n//# sourceMappingURL=validate.js.map\n",
+      "start": 1728160681589,
+      "end": 1728160681614,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1728160681614,
+      "end": 1728160681614,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160681614,
+      "end": 1728160681614,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1728160681614,
+      "end": 1728160681614,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1728160681614,
+      "end": 1728160681614,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1728160681614,
+      "end": 1728160681614,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1728160681614,
+      "end": 1728160681614,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1728160681614,
+      "end": 1728160681614,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1728160681614,
+      "end": 1728160681614,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1728160681614,
+      "end": 1728160681614,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1728160681614,
+      "end": 1728160681614,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1728160681614,
+      "end": 1728160681614,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1728160681614,
+      "end": 1728160681614,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as validate_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/validators/validate.js?commonjs-exports\";\nimport { __require as require$$0 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/definitions/index.js?commonjs-wrapped\";\n\nvar hasRequiredValidate;\n\nfunction requireValidate () {\n\tif (hasRequiredValidate) return validate_1;\n\thasRequiredValidate = 1;\n\t\"use strict\";\n\n\tObject.defineProperty(validate_1, \"__esModule\", {\n\t  value: true\n\t});\n\tvalidate_1.default = validate;\n\tvalidate_1.validateChild = validateChild;\n\tvalidate_1.validateField = validateField;\n\tvalidate_1.validateInternal = validateInternal;\n\tvar _index = require$$0();\n\tfunction validate(node, key, val) {\n\t  if (!node) return;\n\t  const fields = _index.NODE_FIELDS[node.type];\n\t  if (!fields) return;\n\t  const field = fields[key];\n\t  validateField(node, key, val, field);\n\t  validateChild(node, key, val);\n\t}\n\tfunction validateInternal(field, node, key, val, maybeNode) {\n\t  if (!(field != null && field.validate)) return;\n\t  if (field.optional && val == null) return;\n\t  field.validate(node, key, val);\n\t  if (maybeNode) {\n\t    var _NODE_PARENT_VALIDATI;\n\t    const type = val.type;\n\t    if (type == null) return;\n\t    (_NODE_PARENT_VALIDATI = _index.NODE_PARENT_VALIDATIONS[type]) == null || _NODE_PARENT_VALIDATI.call(_index.NODE_PARENT_VALIDATIONS, node, key, val);\n\t  }\n\t}\n\tfunction validateField(node, key, val, field) {\n\t  if (!(field != null && field.validate)) return;\n\t  if (field.optional && val == null) return;\n\t  field.validate(node, key, val);\n\t}\n\tfunction validateChild(node, key, val) {\n\t  var _NODE_PARENT_VALIDATI2;\n\t  const type = val == null ? void 0 : val.type;\n\t  if (type == null) return;\n\t  (_NODE_PARENT_VALIDATI2 = _index.NODE_PARENT_VALIDATIONS[type]) == null || _NODE_PARENT_VALIDATI2.call(_index.NODE_PARENT_VALIDATIONS, node, key, val);\n\t}\n\n\t//# sourceMappingURL=validate.js.map\n\treturn validate_1;\n}\n\nexport { requireValidate as __require };",
+      "start": 1728160681614,
+      "end": 1728160682363,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;;;;;;CAAA,YAAY,CAAC;AACb;CACA,MAAM,CAAC,cAAc,CAAC,UAAO,EAAE,YAAY,EAAE;CAC7C,EAAE,KAAK,EAAE,IAAI;CACb,CAAC,CAAC,CAAC;AACH,mBAAe,GAAG,QAAQ,CAAC;AAC3B,yBAAqB,GAAG,aAAa,CAAC;AACtC,yBAAqB,GAAG,aAAa,CAAC;AACtC,4BAAwB,GAAG,gBAAgB,CAAC;CAC5C,IAAI,MAAM,GAAG,YAAkC,CAAC;CAChD,SAAS,QAAQ,CAAC,IAAI,EAAE,GAAG,EAAE,GAAG,EAAE;CAClC,EAAE,IAAI,CAAC,IAAI,EAAE,OAAO;CACpB,EAAE,MAAM,MAAM,GAAG,MAAM,CAAC,WAAW,CAAC,IAAI,CAAC,IAAI,CAAC,CAAC;CAC/C,EAAE,IAAI,CAAC,MAAM,EAAE,OAAO;CACtB,EAAE,MAAM,KAAK,GAAG,MAAM,CAAC,GAAG,CAAC,CAAC;CAC5B,EAAE,aAAa,CAAC,IAAI,EAAE,GAAG,EAAE,GAAG,EAAE,KAAK,CAAC,CAAC;CACvC,EAAE,aAAa,CAAC,IAAI,EAAE,GAAG,EAAE,GAAG,CAAC,CAAC;CAChC,CAAC;CACD,SAAS,gBAAgB,CAAC,KAAK,EAAE,IAAI,EAAE,GAAG,EAAE,GAAG,EAAE,SAAS,EAAE;CAC5D,EAAE,IAAI,EAAE,KAAK,IAAI,IAAI,IAAI,KAAK,CAAC,QAAQ,CAAC,EAAE,OAAO;CACjD,EAAE,IAAI,KAAK,CAAC,QAAQ,IAAI,GAAG,IAAI,IAAI,EAAE,OAAO;CAC5C,EAAE,KAAK,CAAC,QAAQ,CAAC,IAAI,EAAE,GAAG,EAAE,GAAG,CAAC,CAAC;CACjC,EAAE,IAAI,SAAS,EAAE;CACjB,IAAI,IAAI,qBAAqB,CAAC;CAC9B,IAAI,MAAM,IAAI,GAAG,GAAG,CAAC,IAAI,CAAC;CAC1B,IAAI,IAAI,IAAI,IAAI,IAAI,EAAE,OAAO;CAC7B,IAAI,CAAC,qBAAqB,GAAG,MAAM,CAAC,uBAAuB,CAAC,IAAI,CAAC,KAAK,IAAI,IAAI,qBAAqB,CAAC,IAAI,CAAC,MAAM,CAAC,uBAAuB,EAAE,IAAI,EAAE,GAAG,EAAE,GAAG,CAAC,CAAC;CACzJ,GAAG;CACH,CAAC;CACD,SAAS,aAAa,CAAC,IAAI,EAAE,GAAG,EAAE,GAAG,EAAE,KAAK,EAAE;CAC9C,EAAE,IAAI,EAAE,KAAK,IAAI,IAAI,IAAI,KAAK,CAAC,QAAQ,CAAC,EAAE,OAAO;CACjD,EAAE,IAAI,KAAK,CAAC,QAAQ,IAAI,GAAG,IAAI,IAAI,EAAE,OAAO;CAC5C,EAAE,KAAK,CAAC,QAAQ,CAAC,IAAI,EAAE,GAAG,EAAE,GAAG,CAAC,CAAC;CACjC,CAAC;CACD,SAAS,aAAa,CAAC,IAAI,EAAE,GAAG,EAAE,GAAG,EAAE;CACvC,EAAE,IAAI,sBAAsB,CAAC;CAC7B,EAAE,MAAM,IAAI,GAAG,GAAG,IAAI,IAAI,GAAG,KAAK,CAAC,GAAG,GAAG,CAAC,IAAI,CAAC;CAC/C,EAAE,IAAI,IAAI,IAAI,IAAI,EAAE,OAAO;CAC3B,EAAE,CAAC,sBAAsB,GAAG,MAAM,CAAC,uBAAuB,CAAC,IAAI,CAAC,KAAK,IAAI,IAAI,sBAAsB,CAAC,IAAI,CAAC,MAAM,CAAC,uBAAuB,EAAE,IAAI,EAAE,GAAG,EAAE,GAAG,CAAC,CAAC;CACzJ,CAAC;AACD;CACA"
+      }
+    },
+    {
+      "name": "inject",
+      "start": 1728160682364,
+      "end": 1728160682364,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1728160682364,
+      "end": 1728160682364,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1728160682365,
+      "end": 1728160682365,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1728160682365,
+      "end": 1728160682365,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1728160682366,
+      "end": 1728160682366,
+      "order": "normal"
+    }
+  ]
+}

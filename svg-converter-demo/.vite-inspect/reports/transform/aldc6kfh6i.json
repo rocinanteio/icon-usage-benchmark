@@ -4,8 +4,8 @@
     {
       "name": "commonjs",
       "result": "export { __moduleExports as default } from \"/Users/ibrahim.dagdelen/Projects/Github/icon-usage-benchmark/svg-converter-demo/node_modules/react/cjs/react.production.min.js\";",
-      "start": 1727785256933,
-      "end": 1727785256933,
+      "start": 1728160680970,
+      "end": 1728160680970,
       "sourcemaps": null
     }
   ]

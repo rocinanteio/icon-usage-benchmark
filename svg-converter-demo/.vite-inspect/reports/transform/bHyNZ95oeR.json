@@ -1,0 +1,129 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/vite-plugin-node-polyfills/shims/global/dist/index.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "const global = globalThis || void 0 || self;\n\nexport { global as default, global };\n//# sourceMappingURL=index.js.map\n",
+      "start": 1728160681603,
+      "end": 1728160681651,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1728160681651,
+      "end": 1728160681651,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160681651,
+      "end": 1728160681651,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1728160681651,
+      "end": 1728160681651,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1728160681651,
+      "end": 1728160681651,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1728160681651,
+      "end": 1728160681651,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1728160681651,
+      "end": 1728160681651,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1728160681651,
+      "end": 1728160681651,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1728160681652,
+      "end": 1728160681652,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1728160681652,
+      "end": 1728160681652,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1728160681652,
+      "end": 1728160681652,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1728160681652,
+      "end": 1728160681652,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1728160681652,
+      "end": 1728160681652,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1728160681652,
+      "end": 1728160681652,
+      "order": "normal"
+    },
+    {
+      "name": "inject",
+      "result": "const global = globalThis || void 0 || self;\n\nexport { global as default, global };\n//# sourceMappingURL=index.js.map\n",
+      "start": 1728160681652,
+      "end": 1728160681652,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": "AAAA,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC5C;AACA,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACrC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1728160681652,
+      "end": 1728160681652,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1728160681652,
+      "end": 1728160681652,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1728160681652,
+      "end": 1728160681652,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1728160681652,
+      "end": 1728160681652,
+      "order": "normal"
+    }
+  ]
+}

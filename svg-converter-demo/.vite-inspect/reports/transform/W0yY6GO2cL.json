@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = toKeyAlias;\nvar _index = require(\"../validators/generated/index.js\");\nvar _cloneNode = require(\"../clone/cloneNode.js\");\nvar _removePropertiesDeep = require(\"../modifications/removePropertiesDeep.js\");\nfunction toKeyAlias(node, key = node.key) {\n  let alias;\n  if (node.kind === \"method\") {\n    return toKeyAlias.increment() + \"\";\n  } else if ((0, _index.isIdentifier)(key)) {\n    alias = key.name;\n  } else if ((0, _index.isStringLiteral)(key)) {\n    alias = JSON.stringify(key.value);\n  } else {\n    alias = JSON.stringify((0, _removePropertiesDeep.default)((0, _cloneNode.default)(key)));\n  }\n  if (node.computed) {\n    alias = `[${alias}]`;\n  }\n  if (node.static) {\n    alias = `static:${alias}`;\n  }\n  return alias;\n}\ntoKeyAlias.uid = 0;\ntoKeyAlias.increment = function () {\n  if (toKeyAlias.uid >= Number.MAX_SAFE_INTEGER) {\n    return toKeyAlias.uid = 0;\n  } else {\n    return toKeyAlias.uid++;\n  }\n};\n\n//# sourceMappingURL=toKeyAlias.js.map\n",
-      "start": 1727785256909,
-      "end": 1727785256919,
+      "start": 1728160652446,
+      "end": 1728160652478,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785256919,
-      "end": 1727785256919,
+      "start": 1728160652478,
+      "end": 1728160652478,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160652478,
+      "end": 1728160652478,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785256919,
-      "end": 1727785256919,
+      "start": 1728160652478,
+      "end": 1728160652478,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785256919,
-      "end": 1727785256919,
+      "start": 1728160652478,
+      "end": 1728160652478,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785256919,
-      "end": 1727785256919,
+      "start": 1728160652478,
+      "end": 1728160652478,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785256919,
-      "end": 1727785256919,
+      "start": 1728160652478,
+      "end": 1728160652478,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785256919,
-      "end": 1727785256919,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785256919,
-      "end": 1727785256919,
+      "start": 1728160652479,
+      "end": 1728160652479,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785256919,
-      "end": 1727785256919,
+      "start": 1728160652479,
+      "end": 1728160652479,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785256919,
-      "end": 1727785256919,
+      "start": 1728160652479,
+      "end": 1728160652479,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785256919,
-      "end": 1727785256919,
+      "start": 1728160652479,
+      "end": 1728160652479,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785256919,
-      "end": 1727785256919,
+      "start": 1728160652479,
+      "end": 1728160652479,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785256919,
-      "end": 1727785256919,
+      "start": 1728160652479,
+      "end": 1728160652479,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as toKeyAlias_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/converters/toKeyAlias.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/validators/generated/index.js?commonjs-proxy\";\nimport require$$1 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/clone/cloneNode.js?commonjs-proxy\";\nimport require$$2 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/modifications/removePropertiesDeep.js?commonjs-proxy\";\n\n\"use strict\";\n\nObject.defineProperty(toKeyAlias_1, \"__esModule\", {\n  value: true\n});\nvar _default = toKeyAlias_1.default = toKeyAlias;\nvar _index = require$$0;\nvar _cloneNode = require$$1;\nvar _removePropertiesDeep = require$$2;\nfunction toKeyAlias(node, key = node.key) {\n  let alias;\n  if (node.kind === \"method\") {\n    return toKeyAlias.increment() + \"\";\n  } else if ((0, _index.isIdentifier)(key)) {\n    alias = key.name;\n  } else if ((0, _index.isStringLiteral)(key)) {\n    alias = JSON.stringify(key.value);\n  } else {\n    alias = JSON.stringify((0, _removePropertiesDeep.default)((0, _cloneNode.default)(key)));\n  }\n  if (node.computed) {\n    alias = `[${alias}]`;\n  }\n  if (node.static) {\n    alias = `static:${alias}`;\n  }\n  return alias;\n}\ntoKeyAlias.uid = 0;\ntoKeyAlias.increment = function () {\n  if (toKeyAlias.uid >= Number.MAX_SAFE_INTEGER) {\n    return toKeyAlias.uid = 0;\n  } else {\n    return toKeyAlias.uid++;\n  }\n};\n\n//# sourceMappingURL=toKeyAlias.js.map\n\nexport { toKeyAlias_1 as __moduleExports, _default as default };",
-      "start": 1727785256919,
-      "end": 1727785257286,
+      "start": 1728160652479,
+      "end": 1728160681903,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160681903,
+      "end": 1728160681903,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785257286,
-      "end": 1727785257286,
+      "start": 1728160681903,
+      "end": 1728160681903,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785257286,
-      "end": 1727785257286,
+      "start": 1728160681903,
+      "end": 1728160681903,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785257286,
-      "end": 1727785257286,
+      "start": 1728160681903,
+      "end": 1728160681903,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785257286,
-      "end": 1727785257286,
+      "start": 1728160681903,
+      "end": 1728160681903,
       "order": "normal"
     }
   ]

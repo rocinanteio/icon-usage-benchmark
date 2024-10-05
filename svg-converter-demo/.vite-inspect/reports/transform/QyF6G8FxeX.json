@@ -4,27 +4,34 @@
     {
       "name": "vite:load-fallback",
       "result": "\nconst MyComponent = () => {\n    return (\n        <div>\n            <ul>\n                <li>Item 1</li>\n                <li>Item 3</li>\n                <li>Item 4</li>\n                <li>Item 5</li>\n                <li>Item 6</li>\n            </ul>\n        </div>\n    );\n};\n\nexport default MyComponent;\n",
-      "start": 1727785256682,
-      "end": 1727785256868,
+      "start": 1728160681187,
+      "end": 1728160681269,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785256868,
-      "end": 1727785256868,
+      "start": 1728160681269,
+      "end": 1728160681269,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "result": "const MyComponent = () => {\n  return <div>\n            <ul>\n                <li>Item 1</li>\n                <li>Item 3</li>\n                <li>Item 4</li>\n                <li>Item 5</li>\n                <li>Item 6</li>\n            </ul>\n        </div>;\n};\nexport default MyComponent;",
+      "start": 1728160681269,
+      "end": 1728160681271,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785256868,
-      "end": 1727785256868,
+      "start": 1728160681271,
+      "end": 1728160681271,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
       "result": "import { jsx, jsxs } from \"react/jsx-runtime\";\nconst MyComponent = () => {\n  return /* @__PURE__ */ jsx(\"div\", { children: /* @__PURE__ */ jsxs(\"ul\", { children: [\n    /* @__PURE__ */ jsx(\"li\", { children: \"Item 1\" }),\n    /* @__PURE__ */ jsx(\"li\", { children: \"Item 3\" }),\n    /* @__PURE__ */ jsx(\"li\", { children: \"Item 4\" }),\n    /* @__PURE__ */ jsx(\"li\", { children: \"Item 5\" }),\n    /* @__PURE__ */ jsx(\"li\", { children: \"Item 6\" })\n  ] }) });\n};\nexport default MyComponent;\n",
-      "start": 1727785256868,
-      "end": 1727785256896,
+      "start": 1728160681271,
+      "end": 1728160681378,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -32,95 +39,94 @@
           "/Users/ibrahim.dagdelen/Projects/Github/icon-usage-benchmark/svg-converter-demo/src/Component.tsx"
         ],
         "sourcesContent": [
-          "\nconst MyComponent = () => {\n    return (\n        <div>\n            <ul>\n                <li>Item 1</li>\n                <li>Item 3</li>\n                <li>Item 4</li>\n                <li>Item 5</li>\n                <li>Item 6</li>\n            </ul>\n        </div>\n    );\n};\n\nexport default MyComponent;\n"
+          "const MyComponent = () => {\n  return <div>\n            <ul>\n                <li>Item 1</li>\n                <li>Item 3</li>\n                <li>Item 4</li>\n                <li>Item 5</li>\n                <li>Item 6</li>\n            </ul>\n        </div>;\n};\nexport default MyComponent;"
         ],
-        "mappings": "AAIY,SACI,KADJ;AAHZ,MAAM,cAAc,MAAM;AACtB,SACI,oBAAC,SACG,+BAAC,QACG;AAAA,wBAAC,QAAG,oBAAM;AAAA,IACV,oBAAC,QAAG,oBAAM;AAAA,IACV,oBAAC,QAAG,oBAAM;AAAA,IACV,oBAAC,QAAG,oBAAM;AAAA,IACV,oBAAC,QAAG,oBAAM;AAAA,KACd,GACJ;AAER;AAEA,eAAe;",
+        "mappings": "AAEY,SACI,KADJ;AAFZ,MAAM,cAAc,MAAM;AACxB,SAAO,oBAAC,SACE,+BAAC,QACG;AAAA,wBAAC,QAAG,oBAAM;AAAA,IACV,oBAAC,QAAG,oBAAM;AAAA,IACV,oBAAC,QAAG,oBAAM;AAAA,IACV,oBAAC,QAAG,oBAAM;AAAA,IACV,oBAAC,QAAG,oBAAM;AAAA,KACd,GACJ;AACR;AACA,eAAe;",
         "names": []
       }
     },
     {
       "name": "vite:json",
-      "start": 1727785256896,
-      "end": 1727785256896,
+      "start": 1728160681378,
+      "end": 1728160681378,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785256896,
-      "end": 1727785256896,
+      "start": 1728160681378,
+      "end": 1728160681378,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785256896,
-      "end": 1727785256896,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "result": "import { jsx, jsxs } from \"react/jsx-runtime\";\nconst MyComponent = () => {\n  return /* @__PURE__ */ jsx(\"div\", { children: /* @__PURE__ */ jsxs(\"ul\", { children: [\n    /* @__PURE__ */ jsx(\"li\", { children: \"Item 1\" }),\n    /* @__PURE__ */ jsx(\"li\", { children: \"Item 3\" }),\n    /* @__PURE__ */ jsx(\"li\", { children: \"Item 4\" }),\n    /* @__PURE__ */ jsx(\"li\", { children: \"Item 5\" }),\n    /* @__PURE__ */ jsx(\"li\", { children: \"Item 6\" })\n  ] }) });\n};\nexport default MyComponent;\n",
-      "start": 1727785256896,
-      "end": 1727785256897,
+      "start": 1728160681379,
+      "end": 1728160681379,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785256897,
-      "end": 1727785256897,
+      "start": 1728160681379,
+      "end": 1728160681379,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785256897,
-      "end": 1727785256897,
+      "start": 1728160681379,
+      "end": 1728160681380,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785256897,
-      "end": 1727785256897,
+      "start": 1728160681380,
+      "end": 1728160681380,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785256897,
-      "end": 1727785256897,
+      "start": 1728160681380,
+      "end": 1728160681380,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785256897,
-      "end": 1727785256897,
+      "start": 1728160681380,
+      "end": 1728160681380,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1727785256897,
-      "end": 1727785256897,
+      "start": 1728160681380,
+      "end": 1728160681380,
+      "order": "normal"
+    },
+    {
+      "name": "inject",
+      "start": 1728160681381,
+      "end": 1728160681381,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785256897,
-      "end": 1727785256897,
+      "start": 1728160681381,
+      "end": 1728160681381,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785256897,
-      "end": 1727785256897,
+      "start": 1728160681381,
+      "end": 1728160681381,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785256897,
-      "end": 1727785256897,
+      "start": 1728160681381,
+      "end": 1728160681381,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785256897,
-      "end": 1727785256897,
+      "start": 1728160681381,
+      "end": 1728160681381,
       "order": "normal"
     }
   ]

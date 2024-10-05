@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = generate;\nvar _sourceMap = require(\"./source-map.js\");\nvar _printer = require(\"./printer.js\");\nfunction normalizeOptions(code, opts) {\n  const format = {\n    auxiliaryCommentBefore: opts.auxiliaryCommentBefore,\n    auxiliaryCommentAfter: opts.auxiliaryCommentAfter,\n    shouldPrintComment: opts.shouldPrintComment,\n    retainLines: opts.retainLines,\n    retainFunctionParens: opts.retainFunctionParens,\n    comments: opts.comments == null || opts.comments,\n    compact: opts.compact,\n    minified: opts.minified,\n    concise: opts.concise,\n    indent: {\n      adjustMultilineComment: true,\n      style: \"  \"\n    },\n    jsescOption: Object.assign({\n      quotes: \"double\",\n      wrap: true,\n      minimal: false\n    }, opts.jsescOption),\n    topicToken: opts.topicToken,\n    importAttributesKeyword: opts.importAttributesKeyword\n  };\n  {\n    var _opts$recordAndTupleS;\n    format.decoratorsBeforeExport = opts.decoratorsBeforeExport;\n    format.jsescOption.json = opts.jsonCompatibleStrings;\n    format.recordAndTupleSyntaxType = (_opts$recordAndTupleS = opts.recordAndTupleSyntaxType) != null ? _opts$recordAndTupleS : \"hash\";\n  }\n  if (format.minified) {\n    format.compact = true;\n    format.shouldPrintComment = format.shouldPrintComment || (() => format.comments);\n  } else {\n    format.shouldPrintComment = format.shouldPrintComment || (value => format.comments || value.includes(\"@license\") || value.includes(\"@preserve\"));\n  }\n  if (format.compact === \"auto\") {\n    format.compact = typeof code === \"string\" && code.length > 500000;\n    if (format.compact) {\n      console.error(\"[BABEL] Note: The code generator has deoptimised the styling of \" + `${opts.filename} as it exceeds the max of ${\"500KB\"}.`);\n    }\n  }\n  if (format.compact) {\n    format.indent.adjustMultilineComment = false;\n  }\n  const {\n    auxiliaryCommentBefore,\n    auxiliaryCommentAfter,\n    shouldPrintComment\n  } = format;\n  if (auxiliaryCommentBefore && !shouldPrintComment(auxiliaryCommentBefore)) {\n    format.auxiliaryCommentBefore = undefined;\n  }\n  if (auxiliaryCommentAfter && !shouldPrintComment(auxiliaryCommentAfter)) {\n    format.auxiliaryCommentAfter = undefined;\n  }\n  return format;\n}\n{\n  exports.CodeGenerator = class CodeGenerator {\n    constructor(ast, opts = {}, code) {\n      this._ast = void 0;\n      this._format = void 0;\n      this._map = void 0;\n      this._ast = ast;\n      this._format = normalizeOptions(code, opts);\n      this._map = opts.sourceMaps ? new _sourceMap.default(opts, code) : null;\n    }\n    generate() {\n      const printer = new _printer.default(this._format, this._map);\n      return printer.generate(this._ast);\n    }\n  };\n}\nfunction generate(ast, opts = {}, code) {\n  const format = normalizeOptions(code, opts);\n  const map = opts.sourceMaps ? new _sourceMap.default(opts, code) : null;\n  const printer = new _printer.default(format, map);\n  return printer.generate(ast);\n}\n\n//# sourceMappingURL=index.js.map\n",
-      "start": 1727785256935,
-      "end": 1727785256955,
+      "start": 1728160651937,
+      "end": 1728160651958,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785256955,
-      "end": 1727785256955,
+      "start": 1728160651958,
+      "end": 1728160651958,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160651958,
+      "end": 1728160651958,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785256955,
-      "end": 1727785256955,
+      "start": 1728160651958,
+      "end": 1728160651958,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785256955,
-      "end": 1727785256955,
+      "start": 1728160651958,
+      "end": 1728160651958,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785256955,
-      "end": 1727785256955,
+      "start": 1728160651958,
+      "end": 1728160651958,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785256955,
-      "end": 1727785256955,
+      "start": 1728160651958,
+      "end": 1728160651958,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785256955,
-      "end": 1727785256955,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785256955,
-      "end": 1727785256955,
+      "start": 1728160651958,
+      "end": 1728160651958,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785256955,
-      "end": 1727785256955,
+      "start": 1728160651958,
+      "end": 1728160651958,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785256955,
-      "end": 1727785256955,
+      "start": 1728160651958,
+      "end": 1728160651958,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785256955,
-      "end": 1727785256955,
+      "start": 1728160651958,
+      "end": 1728160651958,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785256955,
-      "end": 1727785256955,
+      "start": 1728160651958,
+      "end": 1728160651958,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785256955,
-      "end": 1727785256955,
+      "start": 1728160651958,
+      "end": 1728160651958,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as lib } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/lib/index.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/lib/source-map.js?commonjs-proxy\";\nimport require$$1 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/lib/printer.js?commonjs-proxy\";\n\nvar CodeGenerator_1;\n\"use strict\";\n\nObject.defineProperty(lib, \"__esModule\", {\n  value: true\n});\nvar _default = lib.default = generate;\nvar _sourceMap = require$$0;\nvar _printer = require$$1;\nfunction normalizeOptions(code, opts) {\n  const format = {\n    auxiliaryCommentBefore: opts.auxiliaryCommentBefore,\n    auxiliaryCommentAfter: opts.auxiliaryCommentAfter,\n    shouldPrintComment: opts.shouldPrintComment,\n    retainLines: opts.retainLines,\n    retainFunctionParens: opts.retainFunctionParens,\n    comments: opts.comments == null || opts.comments,\n    compact: opts.compact,\n    minified: opts.minified,\n    concise: opts.concise,\n    indent: {\n      adjustMultilineComment: true,\n      style: \"  \"\n    },\n    jsescOption: Object.assign({\n      quotes: \"double\",\n      wrap: true,\n      minimal: false\n    }, opts.jsescOption),\n    topicToken: opts.topicToken,\n    importAttributesKeyword: opts.importAttributesKeyword\n  };\n  {\n    var _opts$recordAndTupleS;\n    format.decoratorsBeforeExport = opts.decoratorsBeforeExport;\n    format.jsescOption.json = opts.jsonCompatibleStrings;\n    format.recordAndTupleSyntaxType = (_opts$recordAndTupleS = opts.recordAndTupleSyntaxType) != null ? _opts$recordAndTupleS : \"hash\";\n  }\n  if (format.minified) {\n    format.compact = true;\n    format.shouldPrintComment = format.shouldPrintComment || (() => format.comments);\n  } else {\n    format.shouldPrintComment = format.shouldPrintComment || (value => format.comments || value.includes(\"@license\") || value.includes(\"@preserve\"));\n  }\n  if (format.compact === \"auto\") {\n    format.compact = typeof code === \"string\" && code.length > 500000;\n    if (format.compact) {\n      console.error(\"[BABEL] Note: The code generator has deoptimised the styling of \" + `${opts.filename} as it exceeds the max of ${\"500KB\"}.`);\n    }\n  }\n  if (format.compact) {\n    format.indent.adjustMultilineComment = false;\n  }\n  const {\n    auxiliaryCommentBefore,\n    auxiliaryCommentAfter,\n    shouldPrintComment\n  } = format;\n  if (auxiliaryCommentBefore && !shouldPrintComment(auxiliaryCommentBefore)) {\n    format.auxiliaryCommentBefore = undefined;\n  }\n  if (auxiliaryCommentAfter && !shouldPrintComment(auxiliaryCommentAfter)) {\n    format.auxiliaryCommentAfter = undefined;\n  }\n  return format;\n}\n{\n  CodeGenerator_1 = lib.CodeGenerator = class CodeGenerator {\n    constructor(ast, opts = {}, code) {\n      this._ast = void 0;\n      this._format = void 0;\n      this._map = void 0;\n      this._ast = ast;\n      this._format = normalizeOptions(code, opts);\n      this._map = opts.sourceMaps ? new _sourceMap.default(opts, code) : null;\n    }\n    generate() {\n      const printer = new _printer.default(this._format, this._map);\n      return printer.generate(this._ast);\n    }\n  };\n}\nfunction generate(ast, opts = {}, code) {\n  const format = normalizeOptions(code, opts);\n  const map = opts.sourceMaps ? new _sourceMap.default(opts, code) : null;\n  const printer = new _printer.default(format, map);\n  return printer.generate(ast);\n}\n\n//# sourceMappingURL=index.js.map\n\nexport { lib as __moduleExports, CodeGenerator_1 as CodeGenerator, _default as default };",
-      "start": 1727785256955,
-      "end": 1727785257339,
+      "start": 1728160651958,
+      "end": 1728160682569,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160682569,
+      "end": 1728160682569,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785257339,
-      "end": 1727785257339,
+      "start": 1728160682569,
+      "end": 1728160682569,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785257339,
-      "end": 1727785257339,
+      "start": 1728160682569,
+      "end": 1728160682569,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785257339,
-      "end": 1727785257339,
+      "start": 1728160682569,
+      "end": 1728160682569,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785257339,
-      "end": 1727785257339,
+      "start": 1728160682569,
+      "end": 1728160682569,
       "order": "normal"
     }
   ]

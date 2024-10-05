@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = removeTypeDuplicates;\nvar _index = require(\"../../validators/generated/index.js\");\nfunction getQualifiedName(node) {\n  return (0, _index.isIdentifier)(node) ? node.name : `${node.right.name}.${getQualifiedName(node.left)}`;\n}\nfunction removeTypeDuplicates(nodesIn) {\n  const nodes = Array.from(nodesIn);\n  const generics = new Map();\n  const bases = new Map();\n  const typeGroups = new Set();\n  const types = [];\n  for (let i = 0; i < nodes.length; i++) {\n    const node = nodes[i];\n    if (!node) continue;\n    if (types.includes(node)) {\n      continue;\n    }\n    if ((0, _index.isTSAnyKeyword)(node)) {\n      return [node];\n    }\n    if ((0, _index.isTSBaseType)(node)) {\n      bases.set(node.type, node);\n      continue;\n    }\n    if ((0, _index.isTSUnionType)(node)) {\n      if (!typeGroups.has(node.types)) {\n        nodes.push(...node.types);\n        typeGroups.add(node.types);\n      }\n      continue;\n    }\n    if ((0, _index.isTSTypeReference)(node) && node.typeParameters) {\n      const name = getQualifiedName(node.typeName);\n      if (generics.has(name)) {\n        let existing = generics.get(name);\n        if (existing.typeParameters) {\n          if (node.typeParameters) {\n            existing.typeParameters.params.push(...node.typeParameters.params);\n            existing.typeParameters.params = removeTypeDuplicates(existing.typeParameters.params);\n          }\n        } else {\n          existing = node.typeParameters;\n        }\n      } else {\n        generics.set(name, node);\n      }\n      continue;\n    }\n    types.push(node);\n  }\n  for (const [, baseType] of bases) {\n    types.push(baseType);\n  }\n  for (const [, genericName] of generics) {\n    types.push(genericName);\n  }\n  return types;\n}\n\n//# sourceMappingURL=removeTypeDuplicates.js.map\n",
-      "start": 1727785256951,
-      "end": 1727785257044,
+      "start": 1728160681126,
+      "end": 1728160681211,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785257044,
-      "end": 1727785257044,
+      "start": 1728160681211,
+      "end": 1728160681211,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160681211,
+      "end": 1728160681211,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785257044,
-      "end": 1727785257044,
+      "start": 1728160681211,
+      "end": 1728160681211,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785257044,
-      "end": 1727785257044,
+      "start": 1728160681211,
+      "end": 1728160681211,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785257044,
-      "end": 1727785257044,
+      "start": 1728160681211,
+      "end": 1728160681211,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785257044,
-      "end": 1727785257044,
+      "start": 1728160681211,
+      "end": 1728160681211,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785257044,
-      "end": 1727785257044,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785257044,
-      "end": 1727785257044,
+      "start": 1728160681211,
+      "end": 1728160681211,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785257044,
-      "end": 1727785257044,
+      "start": 1728160681211,
+      "end": 1728160681211,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785257044,
-      "end": 1727785257044,
+      "start": 1728160681211,
+      "end": 1728160681211,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785257044,
-      "end": 1727785257044,
+      "start": 1728160681211,
+      "end": 1728160681211,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785257044,
-      "end": 1727785257044,
+      "start": 1728160681211,
+      "end": 1728160681211,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785257044,
-      "end": 1727785257044,
+      "start": 1728160681211,
+      "end": 1728160681211,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as removeTypeDuplicates_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/modifications/typescript/removeTypeDuplicates.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/validators/generated/index.js?commonjs-proxy\";\n\n\"use strict\";\n\nObject.defineProperty(removeTypeDuplicates_1, \"__esModule\", {\n  value: true\n});\nvar _default = removeTypeDuplicates_1.default = removeTypeDuplicates;\nvar _index = require$$0;\nfunction getQualifiedName(node) {\n  return (0, _index.isIdentifier)(node) ? node.name : `${node.right.name}.${getQualifiedName(node.left)}`;\n}\nfunction removeTypeDuplicates(nodesIn) {\n  const nodes = Array.from(nodesIn);\n  const generics = new Map();\n  const bases = new Map();\n  const typeGroups = new Set();\n  const types = [];\n  for (let i = 0; i < nodes.length; i++) {\n    const node = nodes[i];\n    if (!node) continue;\n    if (types.includes(node)) {\n      continue;\n    }\n    if ((0, _index.isTSAnyKeyword)(node)) {\n      return [node];\n    }\n    if ((0, _index.isTSBaseType)(node)) {\n      bases.set(node.type, node);\n      continue;\n    }\n    if ((0, _index.isTSUnionType)(node)) {\n      if (!typeGroups.has(node.types)) {\n        nodes.push(...node.types);\n        typeGroups.add(node.types);\n      }\n      continue;\n    }\n    if ((0, _index.isTSTypeReference)(node) && node.typeParameters) {\n      const name = getQualifiedName(node.typeName);\n      if (generics.has(name)) {\n        let existing = generics.get(name);\n        if (existing.typeParameters) {\n          if (node.typeParameters) {\n            existing.typeParameters.params.push(...node.typeParameters.params);\n            existing.typeParameters.params = removeTypeDuplicates(existing.typeParameters.params);\n          }\n        } else {\n          existing = node.typeParameters;\n        }\n      } else {\n        generics.set(name, node);\n      }\n      continue;\n    }\n    types.push(node);\n  }\n  for (const [, baseType] of bases) {\n    types.push(baseType);\n  }\n  for (const [, genericName] of generics) {\n    types.push(genericName);\n  }\n  return types;\n}\n\n//# sourceMappingURL=removeTypeDuplicates.js.map\n\nexport { removeTypeDuplicates_1 as __moduleExports, _default as default };",
-      "start": 1727785257044,
-      "end": 1727785257045,
+      "start": 1728160681211,
+      "end": 1728160681212,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160681212,
+      "end": 1728160681212,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785257045,
-      "end": 1727785257045,
+      "start": 1728160681212,
+      "end": 1728160681212,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785257045,
-      "end": 1727785257045,
+      "start": 1728160681212,
+      "end": 1728160681212,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785257045,
-      "end": 1727785257045,
+      "start": 1728160681212,
+      "end": 1728160681212,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785257045,
-      "end": 1727785257045,
+      "start": 1728160681212,
+      "end": 1728160681212,
       "order": "normal"
     }
   ]

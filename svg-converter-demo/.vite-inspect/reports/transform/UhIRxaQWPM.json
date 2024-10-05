@@ -4,8 +4,8 @@
     {
       "name": "commonjs",
       "result": "export { __moduleExports as default } from \"/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/modifications/removeProperties.js\";",
-      "start": 1727785257350,
-      "end": 1727785257350,
+      "start": 1728160682063,
+      "end": 1728160682064,
       "sourcemaps": null
     }
   ]

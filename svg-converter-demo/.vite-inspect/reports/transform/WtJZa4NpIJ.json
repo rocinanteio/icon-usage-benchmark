@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = traverseFast;\nvar _index = require(\"../definitions/index.js\");\nfunction traverseFast(node, enter, opts) {\n  if (!node) return;\n  const keys = _index.VISITOR_KEYS[node.type];\n  if (!keys) return;\n  opts = opts || {};\n  enter(node, opts);\n  for (const key of keys) {\n    const subNode = node[key];\n    if (Array.isArray(subNode)) {\n      for (const node of subNode) {\n        traverseFast(node, enter, opts);\n      }\n    } else {\n      traverseFast(subNode, enter, opts);\n    }\n  }\n}\n\n//# sourceMappingURL=traverseFast.js.map\n",
-      "start": 1727785256915,
-      "end": 1727785256928,
+      "start": 1728160652463,
+      "end": 1728160680923,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785256928,
-      "end": 1727785256928,
+      "start": 1728160680924,
+      "end": 1728160680924,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160680924,
+      "end": 1728160680924,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785256928,
-      "end": 1727785256928,
+      "start": 1728160680924,
+      "end": 1728160680924,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785256928,
-      "end": 1727785256928,
+      "start": 1728160680924,
+      "end": 1728160680924,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785256928,
-      "end": 1727785256928,
+      "start": 1728160680924,
+      "end": 1728160680924,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785256928,
-      "end": 1727785256928,
+      "start": 1728160680924,
+      "end": 1728160680924,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785256928,
-      "end": 1727785256928,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785256928,
-      "end": 1727785256928,
+      "start": 1728160680924,
+      "end": 1728160680924,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785256928,
-      "end": 1727785256928,
+      "start": 1728160680924,
+      "end": 1728160680924,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785256928,
-      "end": 1727785256928,
+      "start": 1728160680924,
+      "end": 1728160680924,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785256928,
-      "end": 1727785256928,
+      "start": 1728160680924,
+      "end": 1728160680924,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785256928,
-      "end": 1727785256928,
+      "start": 1728160680924,
+      "end": 1728160680924,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785256928,
-      "end": 1727785256928,
+      "start": 1728160680924,
+      "end": 1728160680924,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as traverseFast_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/traverse/traverseFast.js?commonjs-exports\";\nimport { __require as require$$0 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/definitions/index.js?commonjs-wrapped\";\n\n\"use strict\";\n\nObject.defineProperty(traverseFast_1, \"__esModule\", {\n  value: true\n});\nvar _default = traverseFast_1.default = traverseFast;\nvar _index = require$$0();\nfunction traverseFast(node, enter, opts) {\n  if (!node) return;\n  const keys = _index.VISITOR_KEYS[node.type];\n  if (!keys) return;\n  opts = opts || {};\n  enter(node, opts);\n  for (const key of keys) {\n    const subNode = node[key];\n    if (Array.isArray(subNode)) {\n      for (const node of subNode) {\n        traverseFast(node, enter, opts);\n      }\n    } else {\n      traverseFast(subNode, enter, opts);\n    }\n  }\n}\n\n//# sourceMappingURL=traverseFast.js.map\n\nexport { traverseFast_1 as __moduleExports, _default as default };",
-      "start": 1727785256928,
-      "end": 1727785257239,
+      "start": 1728160680924,
+      "end": 1728160681884,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160681884,
+      "end": 1728160681885,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785257239,
-      "end": 1727785257239,
+      "start": 1728160681885,
+      "end": 1728160681885,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785257239,
-      "end": 1727785257239,
+      "start": 1728160681885,
+      "end": 1728160681885,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785257239,
-      "end": 1727785257239,
+      "start": 1728160681885,
+      "end": 1728160681885,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785257239,
-      "end": 1727785257239,
+      "start": 1728160681885,
+      "end": 1728160681885,
       "order": "normal"
     }
   ]

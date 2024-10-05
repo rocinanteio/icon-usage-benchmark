@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = literalTemplate;\nvar _options = require(\"./options.js\");\nvar _parse = require(\"./parse.js\");\nvar _populate = require(\"./populate.js\");\nfunction literalTemplate(formatter, tpl, opts) {\n  const {\n    metadata,\n    names\n  } = buildLiteralData(formatter, tpl, opts);\n  return arg => {\n    const defaultReplacements = {};\n    arg.forEach((replacement, i) => {\n      defaultReplacements[names[i]] = replacement;\n    });\n    return arg => {\n      const replacements = (0, _options.normalizeReplacements)(arg);\n      if (replacements) {\n        Object.keys(replacements).forEach(key => {\n          if (hasOwnProperty.call(defaultReplacements, key)) {\n            throw new Error(\"Unexpected replacement overlap.\");\n          }\n        });\n      }\n      return formatter.unwrap((0, _populate.default)(metadata, replacements ? Object.assign(replacements, defaultReplacements) : defaultReplacements));\n    };\n  };\n}\nfunction buildLiteralData(formatter, tpl, opts) {\n  let prefix = \"BABEL_TPL$\";\n  const raw = tpl.join(\"\");\n  do {\n    prefix = \"$$\" + prefix;\n  } while (raw.includes(prefix));\n  const {\n    names,\n    code\n  } = buildTemplateCode(tpl, prefix);\n  const metadata = (0, _parse.default)(formatter, formatter.code(code), {\n    parser: opts.parser,\n    placeholderWhitelist: new Set(names.concat(opts.placeholderWhitelist ? Array.from(opts.placeholderWhitelist) : [])),\n    placeholderPattern: opts.placeholderPattern,\n    preserveComments: opts.preserveComments,\n    syntacticPlaceholders: opts.syntacticPlaceholders\n  });\n  return {\n    metadata,\n    names\n  };\n}\nfunction buildTemplateCode(tpl, prefix) {\n  const names = [];\n  let code = tpl[0];\n  for (let i = 1; i < tpl.length; i++) {\n    const value = `${prefix}${i - 1}`;\n    names.push(value);\n    code += value + tpl[i];\n  }\n  return {\n    names,\n    code\n  };\n}\n\n//# sourceMappingURL=literal.js.map\n",
-      "start": 1727785257140,
-      "end": 1727785257193,
+      "start": 1728160681901,
+      "end": 1728160682009,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785257193,
-      "end": 1727785257193,
+      "start": 1728160682009,
+      "end": 1728160682009,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160682009,
+      "end": 1728160682009,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785257193,
-      "end": 1727785257193,
+      "start": 1728160682009,
+      "end": 1728160682009,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785257193,
-      "end": 1727785257193,
+      "start": 1728160682009,
+      "end": 1728160682009,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785257193,
-      "end": 1727785257193,
+      "start": 1728160682009,
+      "end": 1728160682009,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785257193,
-      "end": 1727785257193,
+      "start": 1728160682009,
+      "end": 1728160682009,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785257193,
-      "end": 1727785257193,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785257193,
-      "end": 1727785257193,
+      "start": 1728160682009,
+      "end": 1728160682009,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785257193,
-      "end": 1727785257193,
+      "start": 1728160682009,
+      "end": 1728160682009,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785257193,
-      "end": 1727785257193,
+      "start": 1728160682010,
+      "end": 1728160682010,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785257193,
-      "end": 1727785257193,
+      "start": 1728160682010,
+      "end": 1728160682010,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785257193,
-      "end": 1727785257193,
+      "start": 1728160682010,
+      "end": 1728160682010,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785257193,
-      "end": 1727785257193,
+      "start": 1728160682010,
+      "end": 1728160682010,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as literal } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/template/lib/literal.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/template/lib/options.js?commonjs-proxy\";\nimport require$$1 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/template/lib/parse.js?commonjs-proxy\";\nimport require$$2 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/template/lib/populate.js?commonjs-proxy\";\n\n\"use strict\";\n\nObject.defineProperty(literal, \"__esModule\", {\n  value: true\n});\nvar _default = literal.default = literalTemplate;\nvar _options = require$$0;\nvar _parse = require$$1;\nvar _populate = require$$2;\nfunction literalTemplate(formatter, tpl, opts) {\n  const {\n    metadata,\n    names\n  } = buildLiteralData(formatter, tpl, opts);\n  return arg => {\n    const defaultReplacements = {};\n    arg.forEach((replacement, i) => {\n      defaultReplacements[names[i]] = replacement;\n    });\n    return arg => {\n      const replacements = (0, _options.normalizeReplacements)(arg);\n      if (replacements) {\n        Object.keys(replacements).forEach(key => {\n          if (hasOwnProperty.call(defaultReplacements, key)) {\n            throw new Error(\"Unexpected replacement overlap.\");\n          }\n        });\n      }\n      return formatter.unwrap((0, _populate.default)(metadata, replacements ? Object.assign(replacements, defaultReplacements) : defaultReplacements));\n    };\n  };\n}\nfunction buildLiteralData(formatter, tpl, opts) {\n  let prefix = \"BABEL_TPL$\";\n  const raw = tpl.join(\"\");\n  do {\n    prefix = \"$$\" + prefix;\n  } while (raw.includes(prefix));\n  const {\n    names,\n    code\n  } = buildTemplateCode(tpl, prefix);\n  const metadata = (0, _parse.default)(formatter, formatter.code(code), {\n    parser: opts.parser,\n    placeholderWhitelist: new Set(names.concat(opts.placeholderWhitelist ? Array.from(opts.placeholderWhitelist) : [])),\n    placeholderPattern: opts.placeholderPattern,\n    preserveComments: opts.preserveComments,\n    syntacticPlaceholders: opts.syntacticPlaceholders\n  });\n  return {\n    metadata,\n    names\n  };\n}\nfunction buildTemplateCode(tpl, prefix) {\n  const names = [];\n  let code = tpl[0];\n  for (let i = 1; i < tpl.length; i++) {\n    const value = `${prefix}${i - 1}`;\n    names.push(value);\n    code += value + tpl[i];\n  }\n  return {\n    names,\n    code\n  };\n}\n\n//# sourceMappingURL=literal.js.map\n\nexport { literal as __moduleExports, _default as default };",
-      "start": 1727785257193,
-      "end": 1727785257397,
+      "start": 1728160682010,
+      "end": 1728160682826,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160682827,
+      "end": 1728160682827,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785257397,
-      "end": 1727785257397,
+      "start": 1728160682827,
+      "end": 1728160682827,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785257397,
-      "end": 1727785257397,
+      "start": 1728160682827,
+      "end": 1728160682827,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785257397,
-      "end": 1727785257397,
+      "start": 1728160682827,
+      "end": 1728160682827,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785257397,
-      "end": 1727785257397,
+      "start": 1728160682827,
+      "end": 1728160682827,
       "order": "normal"
     }
   ]

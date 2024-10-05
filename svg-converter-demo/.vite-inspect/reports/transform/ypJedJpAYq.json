@@ -1,0 +1,129 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/modifications/flow/removeTypeDuplicates.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = removeTypeDuplicates;\nvar _index = require(\"../../validators/generated/index.js\");\nfunction getQualifiedName(node) {\n  return (0, _index.isIdentifier)(node) ? node.name : `${node.id.name}.${getQualifiedName(node.qualification)}`;\n}\nfunction removeTypeDuplicates(nodesIn) {\n  const nodes = Array.from(nodesIn);\n  const generics = new Map();\n  const bases = new Map();\n  const typeGroups = new Set();\n  const types = [];\n  for (let i = 0; i < nodes.length; i++) {\n    const node = nodes[i];\n    if (!node) continue;\n    if (types.includes(node)) {\n      continue;\n    }\n    if ((0, _index.isAnyTypeAnnotation)(node)) {\n      return [node];\n    }\n    if ((0, _index.isFlowBaseAnnotation)(node)) {\n      bases.set(node.type, node);\n      continue;\n    }\n    if ((0, _index.isUnionTypeAnnotation)(node)) {\n      if (!typeGroups.has(node.types)) {\n        nodes.push(...node.types);\n        typeGroups.add(node.types);\n      }\n      continue;\n    }\n    if ((0, _index.isGenericTypeAnnotation)(node)) {\n      const name = getQualifiedName(node.id);\n      if (generics.has(name)) {\n        let existing = generics.get(name);\n        if (existing.typeParameters) {\n          if (node.typeParameters) {\n            existing.typeParameters.params.push(...node.typeParameters.params);\n            existing.typeParameters.params = removeTypeDuplicates(existing.typeParameters.params);\n          }\n        } else {\n          existing = node.typeParameters;\n        }\n      } else {\n        generics.set(name, node);\n      }\n      continue;\n    }\n    types.push(node);\n  }\n  for (const [, baseType] of bases) {\n    types.push(baseType);\n  }\n  for (const [, genericName] of generics) {\n    types.push(genericName);\n  }\n  return types;\n}\n\n//# sourceMappingURL=removeTypeDuplicates.js.map\n",
+      "start": 1728160681525,
+      "end": 1728160681582,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1728160681582,
+      "end": 1728160681582,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160681582,
+      "end": 1728160681582,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1728160681582,
+      "end": 1728160681582,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1728160681582,
+      "end": 1728160681582,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1728160681582,
+      "end": 1728160681582,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1728160681582,
+      "end": 1728160681582,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1728160681582,
+      "end": 1728160681582,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1728160681583,
+      "end": 1728160681583,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1728160681583,
+      "end": 1728160681583,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1728160681583,
+      "end": 1728160681583,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1728160681583,
+      "end": 1728160681583,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1728160681583,
+      "end": 1728160681583,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as removeTypeDuplicates_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/modifications/flow/removeTypeDuplicates.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/validators/generated/index.js?commonjs-proxy\";\n\n\"use strict\";\n\nObject.defineProperty(removeTypeDuplicates_1, \"__esModule\", {\n  value: true\n});\nvar _default = removeTypeDuplicates_1.default = removeTypeDuplicates;\nvar _index = require$$0;\nfunction getQualifiedName(node) {\n  return (0, _index.isIdentifier)(node) ? node.name : `${node.id.name}.${getQualifiedName(node.qualification)}`;\n}\nfunction removeTypeDuplicates(nodesIn) {\n  const nodes = Array.from(nodesIn);\n  const generics = new Map();\n  const bases = new Map();\n  const typeGroups = new Set();\n  const types = [];\n  for (let i = 0; i < nodes.length; i++) {\n    const node = nodes[i];\n    if (!node) continue;\n    if (types.includes(node)) {\n      continue;\n    }\n    if ((0, _index.isAnyTypeAnnotation)(node)) {\n      return [node];\n    }\n    if ((0, _index.isFlowBaseAnnotation)(node)) {\n      bases.set(node.type, node);\n      continue;\n    }\n    if ((0, _index.isUnionTypeAnnotation)(node)) {\n      if (!typeGroups.has(node.types)) {\n        nodes.push(...node.types);\n        typeGroups.add(node.types);\n      }\n      continue;\n    }\n    if ((0, _index.isGenericTypeAnnotation)(node)) {\n      const name = getQualifiedName(node.id);\n      if (generics.has(name)) {\n        let existing = generics.get(name);\n        if (existing.typeParameters) {\n          if (node.typeParameters) {\n            existing.typeParameters.params.push(...node.typeParameters.params);\n            existing.typeParameters.params = removeTypeDuplicates(existing.typeParameters.params);\n          }\n        } else {\n          existing = node.typeParameters;\n        }\n      } else {\n        generics.set(name, node);\n      }\n      continue;\n    }\n    types.push(node);\n  }\n  for (const [, baseType] of bases) {\n    types.push(baseType);\n  }\n  for (const [, genericName] of generics) {\n    types.push(genericName);\n  }\n  return types;\n}\n\n//# sourceMappingURL=removeTypeDuplicates.js.map\n\nexport { removeTypeDuplicates_1 as __moduleExports, _default as default };",
+      "start": 1728160681583,
+      "end": 1728160681675,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": "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"
+      }
+    },
+    {
+      "name": "inject",
+      "start": 1728160681676,
+      "end": 1728160681676,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1728160681676,
+      "end": 1728160681676,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1728160681676,
+      "end": 1728160681676,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1728160681676,
+      "end": 1728160681676,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1728160681676,
+      "end": 1728160681676,
+      "order": "normal"
+    }
+  ]
+}

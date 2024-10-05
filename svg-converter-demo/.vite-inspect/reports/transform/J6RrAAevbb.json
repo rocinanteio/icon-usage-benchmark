@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = getAssignmentIdentifiers;\nfunction getAssignmentIdentifiers(node) {\n  const search = [].concat(node);\n  const ids = Object.create(null);\n  while (search.length) {\n    const id = search.pop();\n    if (!id) continue;\n    switch (id.type) {\n      case \"ArrayPattern\":\n        search.push(...id.elements);\n        break;\n      case \"AssignmentExpression\":\n      case \"AssignmentPattern\":\n      case \"ForInStatement\":\n      case \"ForOfStatement\":\n        search.push(id.left);\n        break;\n      case \"ObjectPattern\":\n        search.push(...id.properties);\n        break;\n      case \"ObjectProperty\":\n        search.push(id.value);\n        break;\n      case \"RestElement\":\n      case \"UpdateExpression\":\n        search.push(id.argument);\n        break;\n      case \"UnaryExpression\":\n        if (id.operator === \"delete\") {\n          search.push(id.argument);\n        }\n        break;\n      case \"Identifier\":\n        ids[id.name] = id;\n        break;\n      default:\n        break;\n    }\n  }\n  return ids;\n}\n\n//# sourceMappingURL=getAssignmentIdentifiers.js.map\n",
-      "start": 1727785256912,
-      "end": 1727785256925,
+      "start": 1728160652457,
+      "end": 1728160652499,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785256925,
-      "end": 1727785256925,
+      "start": 1728160652499,
+      "end": 1728160652499,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160652499,
+      "end": 1728160652499,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785256925,
-      "end": 1727785256925,
+      "start": 1728160652499,
+      "end": 1728160652499,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785256925,
-      "end": 1727785256925,
+      "start": 1728160652499,
+      "end": 1728160652499,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785256925,
-      "end": 1727785256925,
+      "start": 1728160652499,
+      "end": 1728160652499,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785256925,
-      "end": 1727785256925,
+      "start": 1728160652499,
+      "end": 1728160652499,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785256925,
-      "end": 1727785256925,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785256925,
-      "end": 1727785256925,
+      "start": 1728160652500,
+      "end": 1728160652500,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785256925,
-      "end": 1727785256925,
+      "start": 1728160652500,
+      "end": 1728160652500,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785256925,
-      "end": 1727785256925,
+      "start": 1728160652500,
+      "end": 1728160652500,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785256925,
-      "end": 1727785256925,
+      "start": 1728160652500,
+      "end": 1728160652500,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785256925,
-      "end": 1727785256925,
+      "start": 1728160652500,
+      "end": 1728160652500,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785256925,
-      "end": 1727785256925,
+      "start": 1728160652500,
+      "end": 1728160652500,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as getAssignmentIdentifiers_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/retrievers/getAssignmentIdentifiers.js?commonjs-exports\";\n\n\"use strict\";\n\nObject.defineProperty(getAssignmentIdentifiers_1, \"__esModule\", {\n  value: true\n});\nvar _default = getAssignmentIdentifiers_1.default = getAssignmentIdentifiers;\nfunction getAssignmentIdentifiers(node) {\n  const search = [].concat(node);\n  const ids = Object.create(null);\n  while (search.length) {\n    const id = search.pop();\n    if (!id) continue;\n    switch (id.type) {\n      case \"ArrayPattern\":\n        search.push(...id.elements);\n        break;\n      case \"AssignmentExpression\":\n      case \"AssignmentPattern\":\n      case \"ForInStatement\":\n      case \"ForOfStatement\":\n        search.push(id.left);\n        break;\n      case \"ObjectPattern\":\n        search.push(...id.properties);\n        break;\n      case \"ObjectProperty\":\n        search.push(id.value);\n        break;\n      case \"RestElement\":\n      case \"UpdateExpression\":\n        search.push(id.argument);\n        break;\n      case \"UnaryExpression\":\n        if (id.operator === \"delete\") {\n          search.push(id.argument);\n        }\n        break;\n      case \"Identifier\":\n        ids[id.name] = id;\n        break;\n      default:\n        break;\n    }\n  }\n  return ids;\n}\n\n//# sourceMappingURL=getAssignmentIdentifiers.js.map\n\nexport { getAssignmentIdentifiers_1 as __moduleExports, _default as default };",
-      "start": 1727785256925,
-      "end": 1727785256925,
+      "start": 1728160652500,
+      "end": 1728160652500,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160652500,
+      "end": 1728160652500,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785256926,
-      "end": 1727785256926,
+      "start": 1728160652500,
+      "end": 1728160652500,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785256926,
-      "end": 1727785256926,
+      "start": 1728160652500,
+      "end": 1728160652500,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785256926,
-      "end": 1727785256926,
+      "start": 1728160652500,
+      "end": 1728160652500,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785256926,
-      "end": 1727785256926,
+      "start": 1728160652500,
+      "end": 1728160652500,
       "order": "normal"
     }
   ]

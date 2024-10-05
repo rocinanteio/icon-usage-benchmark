@@ -1,0 +1,11 @@
+{
+  "resolvedId": "\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/converters/ensureBlock.js?commonjs-exports",
+  "transforms": [
+    {
+      "name": "commonjs",
+      "result": "var ensureBlock = {}; export {ensureBlock as __exports}",
+      "start": 1728160682725,
+      "end": 1728160682725
+    }
+  ]
+}

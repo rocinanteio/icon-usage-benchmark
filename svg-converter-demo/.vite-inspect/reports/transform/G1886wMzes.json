@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = cloneDeepWithoutLoc;\nvar _cloneNode = require(\"./cloneNode.js\");\nfunction cloneDeepWithoutLoc(node) {\n  return (0, _cloneNode.default)(node, true, true);\n}\n\n//# sourceMappingURL=cloneDeepWithoutLoc.js.map\n",
-      "start": 1727785256870,
-      "end": 1727785256910,
+      "start": 1728160652375,
+      "end": 1728160652448,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785256910,
-      "end": 1727785256910,
+      "start": 1728160652448,
+      "end": 1728160652448,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160652448,
+      "end": 1728160652448,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785256910,
-      "end": 1727785256910,
+      "start": 1728160652448,
+      "end": 1728160652448,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785256910,
-      "end": 1727785256910,
+      "start": 1728160652448,
+      "end": 1728160652448,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785256910,
-      "end": 1727785256910,
+      "start": 1728160652448,
+      "end": 1728160652448,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785256910,
-      "end": 1727785256910,
+      "start": 1728160652448,
+      "end": 1728160652448,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785256910,
-      "end": 1727785256910,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785256910,
-      "end": 1727785256910,
+      "start": 1728160652448,
+      "end": 1728160652448,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785256910,
-      "end": 1727785256910,
+      "start": 1728160652449,
+      "end": 1728160652449,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785256910,
-      "end": 1727785256910,
+      "start": 1728160652449,
+      "end": 1728160652449,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785256910,
-      "end": 1727785256910,
+      "start": 1728160652449,
+      "end": 1728160652449,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785256910,
-      "end": 1727785256910,
+      "start": 1728160652449,
+      "end": 1728160652449,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785256910,
-      "end": 1727785256910,
+      "start": 1728160652449,
+      "end": 1728160652449,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as cloneDeepWithoutLoc_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/clone/cloneDeepWithoutLoc.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/clone/cloneNode.js?commonjs-proxy\";\n\n\"use strict\";\n\nObject.defineProperty(cloneDeepWithoutLoc_1, \"__esModule\", {\n  value: true\n});\nvar _default = cloneDeepWithoutLoc_1.default = cloneDeepWithoutLoc;\nvar _cloneNode = require$$0;\nfunction cloneDeepWithoutLoc(node) {\n  return (0, _cloneNode.default)(node, true, true);\n}\n\n//# sourceMappingURL=cloneDeepWithoutLoc.js.map\n\nexport { cloneDeepWithoutLoc_1 as __moduleExports, _default as default };",
-      "start": 1727785256910,
-      "end": 1727785257275,
+      "start": 1728160652449,
+      "end": 1728160681892,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160681892,
+      "end": 1728160681892,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785257275,
-      "end": 1727785257275,
+      "start": 1728160681892,
+      "end": 1728160681892,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785257275,
-      "end": 1727785257275,
+      "start": 1728160681892,
+      "end": 1728160681892,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785257275,
-      "end": 1727785257275,
+      "start": 1728160681892,
+      "end": 1728160681892,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785257275,
-      "end": 1727785257275,
+      "start": 1728160681892,
+      "end": 1728160681892,
       "order": "normal"
     }
   ]

@@ -4,8 +4,8 @@
     {
       "name": "commonjs",
       "result": "export { __moduleExports as default } from \"/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/template/lib/populate.js\";",
-      "start": 1727785257422,
-      "end": 1727785257422,
+      "start": 1728160682965,
+      "end": 1728160682965,
       "sourcemaps": null
     }
   ]

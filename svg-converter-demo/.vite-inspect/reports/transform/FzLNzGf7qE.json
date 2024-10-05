@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = deprecationWarning;\nconst warnings = new Set();\nfunction deprecationWarning(oldName, newName, prefix = \"\") {\n  if (warnings.has(oldName)) return;\n  warnings.add(oldName);\n  const {\n    internal,\n    trace\n  } = captureShortStackTrace(1, 2);\n  if (internal) {\n    return;\n  }\n  console.warn(`${prefix}\\`${oldName}\\` has been deprecated, please migrate to \\`${newName}\\`\\n${trace}`);\n}\nfunction captureShortStackTrace(skip, length) {\n  const {\n    stackTraceLimit,\n    prepareStackTrace\n  } = Error;\n  let stackTrace;\n  Error.stackTraceLimit = 1 + skip + length;\n  Error.prepareStackTrace = function (err, stack) {\n    stackTrace = stack;\n  };\n  new Error().stack;\n  Error.stackTraceLimit = stackTraceLimit;\n  Error.prepareStackTrace = prepareStackTrace;\n  if (!stackTrace) return {\n    internal: false,\n    trace: \"\"\n  };\n  const shortStackTrace = stackTrace.slice(1 + skip, 1 + skip + length);\n  return {\n    internal: /[\\\\/]@babel[\\\\/]/.test(shortStackTrace[1].getFileName()),\n    trace: shortStackTrace.map(frame => `    at ${frame}`).join(\"\\n\")\n  };\n}\n\n//# sourceMappingURL=deprecationWarning.js.map\n",
-      "start": 1727785256928,
-      "end": 1727785256950,
+      "start": 1728160680926,
+      "end": 1728160680973,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785256950,
-      "end": 1727785256950,
+      "start": 1728160680973,
+      "end": 1728160680974,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160680974,
+      "end": 1728160680974,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785256950,
-      "end": 1727785256950,
+      "start": 1728160680974,
+      "end": 1728160680974,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785256950,
-      "end": 1727785256950,
+      "start": 1728160680974,
+      "end": 1728160680974,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785256950,
-      "end": 1727785256950,
+      "start": 1728160680974,
+      "end": 1728160680974,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785256950,
-      "end": 1727785256950,
+      "start": 1728160680974,
+      "end": 1728160680974,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785256950,
-      "end": 1727785256951,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785256951,
-      "end": 1727785256951,
+      "start": 1728160680974,
+      "end": 1728160680974,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785256951,
-      "end": 1727785256951,
+      "start": 1728160680974,
+      "end": 1728160680974,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785256951,
-      "end": 1727785256951,
+      "start": 1728160680974,
+      "end": 1728160680974,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785256951,
-      "end": 1727785256951,
+      "start": 1728160680974,
+      "end": 1728160680974,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785256951,
-      "end": 1727785256951,
+      "start": 1728160680974,
+      "end": 1728160680974,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785256951,
-      "end": 1727785256951,
+      "start": 1728160680974,
+      "end": 1728160680974,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as deprecationWarning_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/utils/deprecationWarning.js?commonjs-exports\";\n\n\"use strict\";\n\nObject.defineProperty(deprecationWarning_1, \"__esModule\", {\n  value: true\n});\nvar _default = deprecationWarning_1.default = deprecationWarning;\nconst warnings = new Set();\nfunction deprecationWarning(oldName, newName, prefix = \"\") {\n  if (warnings.has(oldName)) return;\n  warnings.add(oldName);\n  const {\n    internal,\n    trace\n  } = captureShortStackTrace(1, 2);\n  if (internal) {\n    return;\n  }\n  console.warn(`${prefix}\\`${oldName}\\` has been deprecated, please migrate to \\`${newName}\\`\\n${trace}`);\n}\nfunction captureShortStackTrace(skip, length) {\n  const {\n    stackTraceLimit,\n    prepareStackTrace\n  } = Error;\n  let stackTrace;\n  Error.stackTraceLimit = 1 + skip + length;\n  Error.prepareStackTrace = function (err, stack) {\n    stackTrace = stack;\n  };\n  new Error().stack;\n  Error.stackTraceLimit = stackTraceLimit;\n  Error.prepareStackTrace = prepareStackTrace;\n  if (!stackTrace) return {\n    internal: false,\n    trace: \"\"\n  };\n  const shortStackTrace = stackTrace.slice(1 + skip, 1 + skip + length);\n  return {\n    internal: /[\\\\/]@babel[\\\\/]/.test(shortStackTrace[1].getFileName()),\n    trace: shortStackTrace.map(frame => `    at ${frame}`).join(\"\\n\")\n  };\n}\n\n//# sourceMappingURL=deprecationWarning.js.map\n\nexport { deprecationWarning_1 as __moduleExports, _default as default };",
-      "start": 1727785256951,
-      "end": 1727785256951,
+      "start": 1728160680974,
+      "end": 1728160680974,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160680974,
+      "end": 1728160680974,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785256951,
-      "end": 1727785256951,
+      "start": 1728160680974,
+      "end": 1728160680974,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785256951,
-      "end": 1727785256951,
+      "start": 1728160680974,
+      "end": 1728160680974,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785256951,
-      "end": 1727785256951,
+      "start": 1728160680974,
+      "end": 1728160680974,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785256951,
-      "end": 1727785256951,
+      "start": 1728160680974,
+      "end": 1728160680974,
       "order": "normal"
     }
   ]

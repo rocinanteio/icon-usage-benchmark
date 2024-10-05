@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\nvar t = require(\"@babel/types\");\nvar _t = t;\nvar _traverseNode = require(\"../../traverse-node.js\");\nvar _visitors = require(\"../../visitors.js\");\nvar _context = require(\"../../path/context.js\");\nconst {\n  getAssignmentIdentifiers\n} = _t;\nconst renameVisitor = {\n  ReferencedIdentifier({\n    node\n  }, state) {\n    if (node.name === state.oldName) {\n      node.name = state.newName;\n    }\n  },\n  Scope(path, state) {\n    if (!path.scope.bindingIdentifierEquals(state.oldName, state.binding.identifier)) {\n      path.skip();\n      if (path.isMethod()) {\n        if (!path.requeueComputedKeyAndDecorators) {\n          _context.requeueComputedKeyAndDecorators.call(path);\n        } else {\n          path.requeueComputedKeyAndDecorators();\n        }\n      }\n    }\n  },\n  ObjectProperty({\n    node,\n    scope\n  }, state) {\n    const {\n      name\n    } = node.key;\n    if (node.shorthand && (name === state.oldName || name === state.newName) && scope.getBindingIdentifier(name) === state.binding.identifier) {\n      node.shorthand = false;\n      {\n        var _node$extra;\n        if ((_node$extra = node.extra) != null && _node$extra.shorthand) node.extra.shorthand = false;\n      }\n    }\n  },\n  \"AssignmentExpression|Declaration|VariableDeclarator\"(path, state) {\n    if (path.isVariableDeclaration()) return;\n    const ids = path.isAssignmentExpression() ? getAssignmentIdentifiers(path.node) : path.getOuterBindingIdentifiers();\n    for (const name in ids) {\n      if (name === state.oldName) ids[name].name = state.newName;\n    }\n  }\n};\nclass Renamer {\n  constructor(binding, oldName, newName) {\n    this.newName = newName;\n    this.oldName = oldName;\n    this.binding = binding;\n  }\n  maybeConvertFromExportDeclaration(parentDeclar) {\n    const maybeExportDeclar = parentDeclar.parentPath;\n    if (!maybeExportDeclar.isExportDeclaration()) {\n      return;\n    }\n    if (maybeExportDeclar.isExportDefaultDeclaration()) {\n      const {\n        declaration\n      } = maybeExportDeclar.node;\n      if (t.isDeclaration(declaration) && !declaration.id) {\n        return;\n      }\n    }\n    if (maybeExportDeclar.isExportAllDeclaration()) {\n      return;\n    }\n    maybeExportDeclar.splitExportDeclaration();\n  }\n  maybeConvertFromClassFunctionDeclaration(path) {\n    return path;\n  }\n  maybeConvertFromClassFunctionExpression(path) {\n    return path;\n  }\n  rename() {\n    const {\n      binding,\n      oldName,\n      newName\n    } = this;\n    const {\n      scope,\n      path\n    } = binding;\n    const parentDeclar = path.find(path => path.isDeclaration() || path.isFunctionExpression() || path.isClassExpression());\n    if (parentDeclar) {\n      const bindingIds = parentDeclar.getOuterBindingIdentifiers();\n      if (bindingIds[oldName] === binding.identifier) {\n        this.maybeConvertFromExportDeclaration(parentDeclar);\n      }\n    }\n    const blockToTraverse = arguments[0] || scope.block;\n    const skipKeys = {\n      discriminant: true\n    };\n    if (t.isMethod(blockToTraverse)) {\n      if (blockToTraverse.computed) {\n        skipKeys.key = true;\n      }\n      if (!t.isObjectMethod(blockToTraverse)) {\n        skipKeys.decorators = true;\n      }\n    }\n    (0, _traverseNode.traverseNode)(blockToTraverse, (0, _visitors.explode)(renameVisitor), scope, this, scope.path, skipKeys);\n    if (!arguments[0]) {\n      scope.removeOwnBinding(oldName);\n      scope.bindings[newName] = binding;\n      this.binding.identifier.name = newName;\n    }\n    if (parentDeclar) {\n      this.maybeConvertFromClassFunctionDeclaration(path);\n      this.maybeConvertFromClassFunctionExpression(path);\n    }\n  }\n}\nexports.default = Renamer;\n\n//# sourceMappingURL=renamer.js.map\n",
-      "start": 1727785256939,
-      "end": 1727785257031,
+      "start": 1728160681014,
+      "end": 1728160681145,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785257031,
-      "end": 1727785257031,
+      "start": 1728160681145,
+      "end": 1728160681145,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160681145,
+      "end": 1728160681145,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785257031,
-      "end": 1727785257031,
+      "start": 1728160681145,
+      "end": 1728160681145,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785257031,
-      "end": 1727785257031,
+      "start": 1728160681145,
+      "end": 1728160681145,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785257031,
-      "end": 1727785257031,
+      "start": 1728160681145,
+      "end": 1728160681145,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785257031,
-      "end": 1727785257031,
+      "start": 1728160681145,
+      "end": 1728160681145,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785257031,
-      "end": 1727785257031,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785257031,
-      "end": 1727785257031,
+      "start": 1728160681145,
+      "end": 1728160681145,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785257031,
-      "end": 1727785257031,
+      "start": 1728160681145,
+      "end": 1728160681145,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785257031,
-      "end": 1727785257031,
+      "start": 1728160681145,
+      "end": 1728160681145,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785257031,
-      "end": 1727785257031,
+      "start": 1728160681145,
+      "end": 1728160681145,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785257031,
-      "end": 1727785257031,
+      "start": 1728160681145,
+      "end": 1728160681145,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785257031,
-      "end": 1727785257031,
+      "start": 1728160681146,
+      "end": 1728160681146,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as renamer } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/scope/lib/renamer.js?commonjs-exports\";\nimport { __require as require$$0 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/index.js?commonjs-wrapped\";\nimport { __require as require$$1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/traverse-node.js?commonjs-wrapped\";\nimport { __require as require$$2 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/visitors.js?commonjs-wrapped\";\nimport { __require as require$$3 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/path/context.js?commonjs-wrapped\";\n\nvar hasRequiredRenamer;\n\nfunction requireRenamer () {\n\tif (hasRequiredRenamer) return renamer;\n\thasRequiredRenamer = 1;\n\t\"use strict\";\n\n\tObject.defineProperty(renamer, \"__esModule\", {\n\t  value: true\n\t});\n\trenamer.default = void 0;\n\tvar t = require$$0();\n\tvar _t = t;\n\tvar _traverseNode = require$$1();\n\tvar _visitors = require$$2();\n\tvar _context = require$$3();\n\tconst {\n\t  getAssignmentIdentifiers\n\t} = _t;\n\tconst renameVisitor = {\n\t  ReferencedIdentifier({\n\t    node\n\t  }, state) {\n\t    if (node.name === state.oldName) {\n\t      node.name = state.newName;\n\t    }\n\t  },\n\t  Scope(path, state) {\n\t    if (!path.scope.bindingIdentifierEquals(state.oldName, state.binding.identifier)) {\n\t      path.skip();\n\t      if (path.isMethod()) {\n\t        if (!path.requeueComputedKeyAndDecorators) {\n\t          _context.requeueComputedKeyAndDecorators.call(path);\n\t        } else {\n\t          path.requeueComputedKeyAndDecorators();\n\t        }\n\t      }\n\t    }\n\t  },\n\t  ObjectProperty({\n\t    node,\n\t    scope\n\t  }, state) {\n\t    const {\n\t      name\n\t    } = node.key;\n\t    if (node.shorthand && (name === state.oldName || name === state.newName) && scope.getBindingIdentifier(name) === state.binding.identifier) {\n\t      node.shorthand = false;\n\t      {\n\t        var _node$extra;\n\t        if ((_node$extra = node.extra) != null && _node$extra.shorthand) node.extra.shorthand = false;\n\t      }\n\t    }\n\t  },\n\t  \"AssignmentExpression|Declaration|VariableDeclarator\"(path, state) {\n\t    if (path.isVariableDeclaration()) return;\n\t    const ids = path.isAssignmentExpression() ? getAssignmentIdentifiers(path.node) : path.getOuterBindingIdentifiers();\n\t    for (const name in ids) {\n\t      if (name === state.oldName) ids[name].name = state.newName;\n\t    }\n\t  }\n\t};\n\tclass Renamer {\n\t  constructor(binding, oldName, newName) {\n\t    this.newName = newName;\n\t    this.oldName = oldName;\n\t    this.binding = binding;\n\t  }\n\t  maybeConvertFromExportDeclaration(parentDeclar) {\n\t    const maybeExportDeclar = parentDeclar.parentPath;\n\t    if (!maybeExportDeclar.isExportDeclaration()) {\n\t      return;\n\t    }\n\t    if (maybeExportDeclar.isExportDefaultDeclaration()) {\n\t      const {\n\t        declaration\n\t      } = maybeExportDeclar.node;\n\t      if (t.isDeclaration(declaration) && !declaration.id) {\n\t        return;\n\t      }\n\t    }\n\t    if (maybeExportDeclar.isExportAllDeclaration()) {\n\t      return;\n\t    }\n\t    maybeExportDeclar.splitExportDeclaration();\n\t  }\n\t  maybeConvertFromClassFunctionDeclaration(path) {\n\t    return path;\n\t  }\n\t  maybeConvertFromClassFunctionExpression(path) {\n\t    return path;\n\t  }\n\t  rename() {\n\t    const {\n\t      binding,\n\t      oldName,\n\t      newName\n\t    } = this;\n\t    const {\n\t      scope,\n\t      path\n\t    } = binding;\n\t    const parentDeclar = path.find(path => path.isDeclaration() || path.isFunctionExpression() || path.isClassExpression());\n\t    if (parentDeclar) {\n\t      const bindingIds = parentDeclar.getOuterBindingIdentifiers();\n\t      if (bindingIds[oldName] === binding.identifier) {\n\t        this.maybeConvertFromExportDeclaration(parentDeclar);\n\t      }\n\t    }\n\t    const blockToTraverse = arguments[0] || scope.block;\n\t    const skipKeys = {\n\t      discriminant: true\n\t    };\n\t    if (t.isMethod(blockToTraverse)) {\n\t      if (blockToTraverse.computed) {\n\t        skipKeys.key = true;\n\t      }\n\t      if (!t.isObjectMethod(blockToTraverse)) {\n\t        skipKeys.decorators = true;\n\t      }\n\t    }\n\t    (0, _traverseNode.traverseNode)(blockToTraverse, (0, _visitors.explode)(renameVisitor), scope, this, scope.path, skipKeys);\n\t    if (!arguments[0]) {\n\t      scope.removeOwnBinding(oldName);\n\t      scope.bindings[newName] = binding;\n\t      this.binding.identifier.name = newName;\n\t    }\n\t    if (parentDeclar) {\n\t      this.maybeConvertFromClassFunctionDeclaration(path);\n\t      this.maybeConvertFromClassFunctionExpression(path);\n\t    }\n\t  }\n\t}\n\trenamer.default = Renamer;\n\n\t//# sourceMappingURL=renamer.js.map\n\treturn renamer;\n}\n\nexport { requireRenamer as __require };",
-      "start": 1727785257031,
-      "end": 1727785257032,
+      "start": 1728160681146,
+      "end": 1728160681148,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160681148,
+      "end": 1728160681148,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785257032,
-      "end": 1727785257032,
+      "start": 1728160681148,
+      "end": 1728160681148,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785257032,
-      "end": 1727785257032,
+      "start": 1728160681148,
+      "end": 1728160681148,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785257032,
-      "end": 1727785257032,
+      "start": 1728160681148,
+      "end": 1728160681148,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785257032,
-      "end": 1727785257032,
+      "start": 1728160681148,
+      "end": 1728160681148,
       "order": "normal"
     }
   ]

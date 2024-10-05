@@ -4,8 +4,8 @@
     {
       "name": "commonjs",
       "result": "var inherit = {}; export {inherit as __exports}",
-      "start": 1727785257370,
-      "end": 1727785257370
+      "start": 1728160682246,
+      "end": 1728160682246
     }
   ]
 }

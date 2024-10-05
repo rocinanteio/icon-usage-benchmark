@@ -1,0 +1,129 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/builders/flow/createFlowUnionType.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = createFlowUnionType;\nvar _index = require(\"../generated/index.js\");\nvar _removeTypeDuplicates = require(\"../../modifications/flow/removeTypeDuplicates.js\");\nfunction createFlowUnionType(types) {\n  const flattened = (0, _removeTypeDuplicates.default)(types);\n  if (flattened.length === 1) {\n    return flattened[0];\n  } else {\n    return (0, _index.unionTypeAnnotation)(flattened);\n  }\n}\n\n//# sourceMappingURL=createFlowUnionType.js.map\n",
+      "start": 1728160681371,
+      "end": 1728160681486,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1728160681486,
+      "end": 1728160681486,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160681486,
+      "end": 1728160681486,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1728160681486,
+      "end": 1728160681486,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1728160681486,
+      "end": 1728160681486,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1728160681486,
+      "end": 1728160681486,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1728160681486,
+      "end": 1728160681486,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1728160681487,
+      "end": 1728160681487,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1728160681487,
+      "end": 1728160681487,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1728160681487,
+      "end": 1728160681487,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1728160681487,
+      "end": 1728160681487,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1728160681487,
+      "end": 1728160681487,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1728160681487,
+      "end": 1728160681487,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as createFlowUnionType_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/builders/flow/createFlowUnionType.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/builders/generated/index.js?commonjs-proxy\";\nimport require$$1 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/modifications/flow/removeTypeDuplicates.js?commonjs-proxy\";\n\n\"use strict\";\n\nObject.defineProperty(createFlowUnionType_1, \"__esModule\", {\n  value: true\n});\nvar _default = createFlowUnionType_1.default = createFlowUnionType;\nvar _index = require$$0;\nvar _removeTypeDuplicates = require$$1;\nfunction createFlowUnionType(types) {\n  const flattened = (0, _removeTypeDuplicates.default)(types);\n  if (flattened.length === 1) {\n    return flattened[0];\n  } else {\n    return (0, _index.unionTypeAnnotation)(flattened);\n  }\n}\n\n//# sourceMappingURL=createFlowUnionType.js.map\n\nexport { createFlowUnionType_1 as __moduleExports, _default as default };",
+      "start": 1728160681487,
+      "end": 1728160682453,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;;AAAA,YAAY,CAAC;AACb;AACA,MAAM,CAAC,cAAc,CAAC,qBAAO,EAAE,YAAY,EAAE;AAC7C,EAAE,KAAK,EAAE,IAAI;AACb,CAAC,CAAC,CAAC;AACH,4CAAe,GAAG,mBAAmB,CAAC;AACtC,IAAI,MAAM,GAAG,UAAgC,CAAC;AAC9C,IAAI,qBAAqB,GAAG,UAA2D,CAAC;AACxF,SAAS,mBAAmB,CAAC,KAAK,EAAE;AACpC,EAAE,MAAM,SAAS,GAAG,CAAC,CAAC,EAAE,qBAAqB,CAAC,OAAO,EAAE,KAAK,CAAC,CAAC;AAC9D,EAAE,IAAI,SAAS,CAAC,MAAM,KAAK,CAAC,EAAE;AAC9B,IAAI,OAAO,SAAS,CAAC,CAAC,CAAC,CAAC;AACxB,GAAG,MAAM;AACT,IAAI,OAAO,CAAC,CAAC,EAAE,MAAM,CAAC,mBAAmB,EAAE,SAAS,CAAC,CAAC;AACtD,GAAG;AACH,CAAC;AACD;AACA"
+      }
+    },
+    {
+      "name": "inject",
+      "start": 1728160682454,
+      "end": 1728160682454,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1728160682454,
+      "end": 1728160682454,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1728160682454,
+      "end": 1728160682454,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1728160682455,
+      "end": 1728160682455,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1728160682455,
+      "end": 1728160682455,
+      "order": "normal"
+    }
+  ]
+}

@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = isScope;\nvar _index = require(\"./generated/index.js\");\nfunction isScope(node, parent) {\n  if ((0, _index.isBlockStatement)(node) && ((0, _index.isFunction)(parent) || (0, _index.isCatchClause)(parent))) {\n    return false;\n  }\n  if ((0, _index.isPattern)(node) && ((0, _index.isFunction)(parent) || (0, _index.isCatchClause)(parent))) {\n    return true;\n  }\n  return (0, _index.isScopable)(node);\n}\n\n//# sourceMappingURL=isScope.js.map\n",
-      "start": 1727785256924,
-      "end": 1727785256935,
+      "start": 1728160652491,
+      "end": 1728160680959,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785256935,
-      "end": 1727785256935,
+      "start": 1728160680959,
+      "end": 1728160680959,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160680959,
+      "end": 1728160680959,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785256935,
-      "end": 1727785256935,
+      "start": 1728160680959,
+      "end": 1728160680959,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785256935,
-      "end": 1727785256935,
+      "start": 1728160680959,
+      "end": 1728160680959,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785256935,
-      "end": 1727785256935,
+      "start": 1728160680959,
+      "end": 1728160680959,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785256935,
-      "end": 1727785256935,
+      "start": 1728160680959,
+      "end": 1728160680959,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785256935,
-      "end": 1727785256935,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785256935,
-      "end": 1727785256935,
+      "start": 1728160680959,
+      "end": 1728160680959,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785256935,
-      "end": 1727785256935,
+      "start": 1728160680959,
+      "end": 1728160680959,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785256935,
-      "end": 1727785256935,
+      "start": 1728160680959,
+      "end": 1728160680960,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785256935,
-      "end": 1727785256935,
+      "start": 1728160680960,
+      "end": 1728160680960,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785256935,
-      "end": 1727785256935,
+      "start": 1728160680960,
+      "end": 1728160680960,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785256935,
-      "end": 1727785256935,
+      "start": 1728160680960,
+      "end": 1728160680960,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as isScope_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/validators/isScope.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/validators/generated/index.js?commonjs-proxy\";\n\n\"use strict\";\n\nObject.defineProperty(isScope_1, \"__esModule\", {\n  value: true\n});\nvar _default = isScope_1.default = isScope;\nvar _index = require$$0;\nfunction isScope(node, parent) {\n  if ((0, _index.isBlockStatement)(node) && ((0, _index.isFunction)(parent) || (0, _index.isCatchClause)(parent))) {\n    return false;\n  }\n  if ((0, _index.isPattern)(node) && ((0, _index.isFunction)(parent) || (0, _index.isCatchClause)(parent))) {\n    return true;\n  }\n  return (0, _index.isScopable)(node);\n}\n\n//# sourceMappingURL=isScope.js.map\n\nexport { isScope_1 as __moduleExports, _default as default };",
-      "start": 1727785256935,
-      "end": 1727785257027,
+      "start": 1728160680960,
+      "end": 1728160681106,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160681106,
+      "end": 1728160681106,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785257027,
-      "end": 1727785257027,
+      "start": 1728160681106,
+      "end": 1728160681106,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785257027,
-      "end": 1727785257027,
+      "start": 1728160681106,
+      "end": 1728160681106,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785257027,
-      "end": 1727785257027,
+      "start": 1728160681106,
+      "end": 1728160681106,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785257027,
-      "end": 1727785257027,
+      "start": 1728160681107,
+      "end": 1728160681107,
       "order": "normal"
     }
   ]

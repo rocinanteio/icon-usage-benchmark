@@ -11,16 +11,10 @@ function App() {
     return (
         <>
             <svg ty-icon={"name"} />
-            <ty-icon name="drag-icon" />
-
-            <svg>
-                <path></path>
-                <path></path>
-                <path></path>
-            </svg>
-
-
+            {/*<ty-icon name="drag-icon" />*/}
             <MyComponent />
+
+            <i ty-icon="drag-icon"></i>
 
             <div>
                 <a href="https://vitejs.dev" target="_blank">

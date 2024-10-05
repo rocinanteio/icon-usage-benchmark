@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = cleanJSXElementLiteralChild;\nvar _index = require(\"../../builders/generated/index.js\");\nvar _index2 = require(\"../../index.js\");\nfunction cleanJSXElementLiteralChild(child, args) {\n  const lines = child.value.split(/\\r\\n|\\n|\\r/);\n  let lastNonEmptyLine = 0;\n  for (let i = 0; i < lines.length; i++) {\n    if (/[^ \\t]/.exec(lines[i])) {\n      lastNonEmptyLine = i;\n    }\n  }\n  let str = \"\";\n  for (let i = 0; i < lines.length; i++) {\n    const line = lines[i];\n    const isFirstLine = i === 0;\n    const isLastLine = i === lines.length - 1;\n    const isLastNonEmptyLine = i === lastNonEmptyLine;\n    let trimmedLine = line.replace(/\\t/g, \" \");\n    if (!isFirstLine) {\n      trimmedLine = trimmedLine.replace(/^ +/, \"\");\n    }\n    if (!isLastLine) {\n      trimmedLine = trimmedLine.replace(/ +$/, \"\");\n    }\n    if (trimmedLine) {\n      if (!isLastNonEmptyLine) {\n        trimmedLine += \" \";\n      }\n      str += trimmedLine;\n    }\n  }\n  if (str) args.push((0, _index2.inherits)((0, _index.stringLiteral)(str), child));\n}\n\n//# sourceMappingURL=cleanJSXElementLiteralChild.js.map\n",
-      "start": 1727785256951,
-      "end": 1727785257045,
+      "start": 1728160681119,
+      "end": 1728160681207,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785257045,
-      "end": 1727785257045,
+      "start": 1728160681207,
+      "end": 1728160681207,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160681207,
+      "end": 1728160681207,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785257045,
-      "end": 1727785257045,
+      "start": 1728160681207,
+      "end": 1728160681207,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785257045,
-      "end": 1727785257045,
+      "start": 1728160681207,
+      "end": 1728160681207,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785257045,
-      "end": 1727785257045,
+      "start": 1728160681207,
+      "end": 1728160681207,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785257045,
-      "end": 1727785257045,
+      "start": 1728160681207,
+      "end": 1728160681207,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785257045,
-      "end": 1727785257045,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785257045,
-      "end": 1727785257045,
+      "start": 1728160681207,
+      "end": 1728160681207,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785257045,
-      "end": 1727785257045,
+      "start": 1728160681207,
+      "end": 1728160681207,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785257045,
-      "end": 1727785257045,
+      "start": 1728160681207,
+      "end": 1728160681207,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785257045,
-      "end": 1727785257045,
+      "start": 1728160681207,
+      "end": 1728160681207,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785257045,
-      "end": 1727785257045,
+      "start": 1728160681207,
+      "end": 1728160681207,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785257045,
-      "end": 1727785257045,
+      "start": 1728160681207,
+      "end": 1728160681207,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as cleanJSXElementLiteralChild_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/utils/react/cleanJSXElementLiteralChild.js?commonjs-exports\";\nimport { __require as require$$0 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/builders/generated/index.js?commonjs-wrapped\";\nimport { __require as require$$1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/index.js?commonjs-wrapped\";\n\nvar hasRequiredCleanJSXElementLiteralChild;\n\nfunction requireCleanJSXElementLiteralChild () {\n\tif (hasRequiredCleanJSXElementLiteralChild) return cleanJSXElementLiteralChild_1;\n\thasRequiredCleanJSXElementLiteralChild = 1;\n\t\"use strict\";\n\n\tObject.defineProperty(cleanJSXElementLiteralChild_1, \"__esModule\", {\n\t  value: true\n\t});\n\tcleanJSXElementLiteralChild_1.default = cleanJSXElementLiteralChild;\n\tvar _index = require$$0();\n\tvar _index2 = require$$1();\n\tfunction cleanJSXElementLiteralChild(child, args) {\n\t  const lines = child.value.split(/\\r\\n|\\n|\\r/);\n\t  let lastNonEmptyLine = 0;\n\t  for (let i = 0; i < lines.length; i++) {\n\t    if (/[^ \\t]/.exec(lines[i])) {\n\t      lastNonEmptyLine = i;\n\t    }\n\t  }\n\t  let str = \"\";\n\t  for (let i = 0; i < lines.length; i++) {\n\t    const line = lines[i];\n\t    const isFirstLine = i === 0;\n\t    const isLastLine = i === lines.length - 1;\n\t    const isLastNonEmptyLine = i === lastNonEmptyLine;\n\t    let trimmedLine = line.replace(/\\t/g, \" \");\n\t    if (!isFirstLine) {\n\t      trimmedLine = trimmedLine.replace(/^ +/, \"\");\n\t    }\n\t    if (!isLastLine) {\n\t      trimmedLine = trimmedLine.replace(/ +$/, \"\");\n\t    }\n\t    if (trimmedLine) {\n\t      if (!isLastNonEmptyLine) {\n\t        trimmedLine += \" \";\n\t      }\n\t      str += trimmedLine;\n\t    }\n\t  }\n\t  if (str) args.push((0, _index2.inherits)((0, _index.stringLiteral)(str), child));\n\t}\n\n\t//# sourceMappingURL=cleanJSXElementLiteralChild.js.map\n\treturn cleanJSXElementLiteralChild_1;\n}\n\nexport { requireCleanJSXElementLiteralChild as __require };",
-      "start": 1727785257045,
-      "end": 1727785257325,
+      "start": 1728160681207,
+      "end": 1728160681954,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160681954,
+      "end": 1728160681954,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785257325,
-      "end": 1727785257325,
+      "start": 1728160681954,
+      "end": 1728160681954,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785257325,
-      "end": 1727785257325,
+      "start": 1728160681955,
+      "end": 1728160681955,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785257325,
-      "end": 1727785257325,
+      "start": 1728160681955,
+      "end": 1728160681955,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785257325,
-      "end": 1727785257325,
+      "start": 1728160681955,
+      "end": 1728160681955,
       "order": "normal"
     }
   ]

@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports._call = _call;\nexports._getQueueContexts = _getQueueContexts;\nexports._resyncKey = _resyncKey;\nexports._resyncList = _resyncList;\nexports._resyncParent = _resyncParent;\nexports._resyncRemoved = _resyncRemoved;\nexports.call = call;\nexports.isDenylisted = isDenylisted;\nexports.popContext = popContext;\nexports.pushContext = pushContext;\nexports.requeue = requeue;\nexports.requeueComputedKeyAndDecorators = requeueComputedKeyAndDecorators;\nexports.resync = resync;\nexports.setContext = setContext;\nexports.setKey = setKey;\nexports.setScope = setScope;\nexports.setup = setup;\nexports.skip = skip;\nexports.skipKey = skipKey;\nexports.stop = stop;\nexports.visit = visit;\nvar _traverseNode = require(\"../traverse-node.js\");\nvar _index = require(\"./index.js\");\nvar _removal = require(\"./removal.js\");\nvar t = require(\"@babel/types\");\nfunction call(key) {\n  const opts = this.opts;\n  this.debug(key);\n  if (this.node) {\n    if (_call.call(this, opts[key])) return true;\n  }\n  if (this.node) {\n    var _opts$this$node$type;\n    return _call.call(this, (_opts$this$node$type = opts[this.node.type]) == null ? void 0 : _opts$this$node$type[key]);\n  }\n  return false;\n}\nfunction _call(fns) {\n  if (!fns) return false;\n  for (const fn of fns) {\n    if (!fn) continue;\n    const node = this.node;\n    if (!node) return true;\n    const ret = fn.call(this.state, this, this.state);\n    if (ret && typeof ret === \"object\" && typeof ret.then === \"function\") {\n      throw new Error(`You appear to be using a plugin with an async traversal visitor, ` + `which your current version of Babel does not support. ` + `If you're using a published plugin, you may need to upgrade ` + `your @babel/core version.`);\n    }\n    if (ret) {\n      throw new Error(`Unexpected return value from visitor method ${fn}`);\n    }\n    if (this.node !== node) return true;\n    if (this._traverseFlags > 0) return true;\n  }\n  return false;\n}\nfunction isDenylisted() {\n  var _this$opts$denylist;\n  const denylist = (_this$opts$denylist = this.opts.denylist) != null ? _this$opts$denylist : this.opts.blacklist;\n  return denylist && denylist.indexOf(this.node.type) > -1;\n}\n{\n  exports.isBlacklisted = isDenylisted;\n}\nfunction restoreContext(path, context) {\n  if (path.context !== context) {\n    path.context = context;\n    path.state = context.state;\n    path.opts = context.opts;\n  }\n}\nfunction visit() {\n  var _this$opts$shouldSkip, _this$opts;\n  if (!this.node) {\n    return false;\n  }\n  if (this.isDenylisted()) {\n    return false;\n  }\n  if ((_this$opts$shouldSkip = (_this$opts = this.opts).shouldSkip) != null && _this$opts$shouldSkip.call(_this$opts, this)) {\n    return false;\n  }\n  const currentContext = this.context;\n  if (this.shouldSkip || call.call(this, \"enter\")) {\n    this.debug(\"Skip...\");\n    return this.shouldStop;\n  }\n  restoreContext(this, currentContext);\n  this.debug(\"Recursing into...\");\n  this.shouldStop = (0, _traverseNode.traverseNode)(this.node, this.opts, this.scope, this.state, this, this.skipKeys);\n  restoreContext(this, currentContext);\n  call.call(this, \"exit\");\n  return this.shouldStop;\n}\nfunction skip() {\n  this.shouldSkip = true;\n}\nfunction skipKey(key) {\n  if (this.skipKeys == null) {\n    this.skipKeys = {};\n  }\n  this.skipKeys[key] = true;\n}\nfunction stop() {\n  this._traverseFlags |= _index.SHOULD_SKIP | _index.SHOULD_STOP;\n}\nfunction setScope() {\n  var _this$opts2, _this$scope;\n  if ((_this$opts2 = this.opts) != null && _this$opts2.noScope) return;\n  let path = this.parentPath;\n  if ((this.key === \"key\" || this.listKey === \"decorators\") && path.isMethod() || this.key === \"discriminant\" && path.isSwitchStatement()) {\n    path = path.parentPath;\n  }\n  let target;\n  while (path && !target) {\n    var _path$opts;\n    if ((_path$opts = path.opts) != null && _path$opts.noScope) return;\n    target = path.scope;\n    path = path.parentPath;\n  }\n  this.scope = this.getScope(target);\n  (_this$scope = this.scope) == null || _this$scope.init();\n}\nfunction setContext(context) {\n  if (this.skipKeys != null) {\n    this.skipKeys = {};\n  }\n  this._traverseFlags = 0;\n  if (context) {\n    this.context = context;\n    this.state = context.state;\n    this.opts = context.opts;\n  }\n  setScope.call(this);\n  return this;\n}\nfunction resync() {\n  if (this.removed) return;\n  _resyncParent.call(this);\n  _resyncList.call(this);\n  _resyncKey.call(this);\n}\nfunction _resyncParent() {\n  if (this.parentPath) {\n    this.parent = this.parentPath.node;\n  }\n}\nfunction _resyncKey() {\n  if (!this.container) return;\n  if (this.node === this.container[this.key]) {\n    return;\n  }\n  if (Array.isArray(this.container)) {\n    for (let i = 0; i < this.container.length; i++) {\n      if (this.container[i] === this.node) {\n        setKey.call(this, i);\n        return;\n      }\n    }\n  } else {\n    for (const key of Object.keys(this.container)) {\n      if (this.container[key] === this.node) {\n        setKey.call(this, key);\n        return;\n      }\n    }\n  }\n  this.key = null;\n}\nfunction _resyncList() {\n  if (!this.parent || !this.inList) return;\n  const newContainer = this.parent[this.listKey];\n  if (this.container === newContainer) return;\n  this.container = newContainer || null;\n}\nfunction _resyncRemoved() {\n  if (this.key == null || !this.container || this.container[this.key] !== this.node) {\n    _removal._markRemoved.call(this);\n  }\n}\nfunction popContext() {\n  this.contexts.pop();\n  if (this.contexts.length > 0) {\n    this.setContext(this.contexts[this.contexts.length - 1]);\n  } else {\n    this.setContext(undefined);\n  }\n}\nfunction pushContext(context) {\n  this.contexts.push(context);\n  this.setContext(context);\n}\nfunction setup(parentPath, container, listKey, key) {\n  this.listKey = listKey;\n  this.container = container;\n  this.parentPath = parentPath || this.parentPath;\n  setKey.call(this, key);\n}\nfunction setKey(key) {\n  var _this$node;\n  this.key = key;\n  this.node = this.container[this.key];\n  this.type = (_this$node = this.node) == null ? void 0 : _this$node.type;\n}\nfunction requeue(pathToQueue = this) {\n  if (pathToQueue.removed) return;\n  ;\n  const contexts = this.contexts;\n  for (const context of contexts) {\n    context.maybeQueue(pathToQueue);\n  }\n}\nfunction requeueComputedKeyAndDecorators() {\n  const {\n    context,\n    node\n  } = this;\n  if (!t.isPrivate(node) && node.computed) {\n    context.maybeQueue(this.get(\"key\"));\n  }\n  if (node.decorators) {\n    for (const decorator of this.get(\"decorators\")) {\n      context.maybeQueue(decorator);\n    }\n  }\n}\nfunction _getQueueContexts() {\n  let path = this;\n  let contexts = this.contexts;\n  while (!contexts.length) {\n    path = path.parentPath;\n    if (!path) break;\n    contexts = path.contexts;\n  }\n  return contexts;\n}\n\n//# sourceMappingURL=context.js.map\n",
-      "start": 1727785256803,
-      "end": 1727785256868,
+      "start": 1728160651956,
+      "end": 1728160652372,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785256868,
-      "end": 1727785256868,
+      "start": 1728160652372,
+      "end": 1728160652372,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160652372,
+      "end": 1728160652372,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785256869,
-      "end": 1727785256869,
+      "start": 1728160652372,
+      "end": 1728160652372,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785256869,
-      "end": 1727785256869,
+      "start": 1728160652372,
+      "end": 1728160652372,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785256869,
-      "end": 1727785256869,
+      "start": 1728160652372,
+      "end": 1728160652372,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785256869,
-      "end": 1727785256869,
+      "start": 1728160652372,
+      "end": 1728160652372,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785256869,
-      "end": 1727785256869,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785256869,
-      "end": 1727785256869,
+      "start": 1728160652372,
+      "end": 1728160652372,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785256869,
-      "end": 1727785256869,
+      "start": 1728160652372,
+      "end": 1728160652372,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785256869,
-      "end": 1727785256869,
+      "start": 1728160652372,
+      "end": 1728160652372,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785256869,
-      "end": 1727785256869,
+      "start": 1728160652372,
+      "end": 1728160652372,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785256869,
-      "end": 1727785256869,
+      "start": 1728160652372,
+      "end": 1728160652372,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785256869,
-      "end": 1727785256869,
+      "start": 1728160652373,
+      "end": 1728160652373,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as context } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/path/context.js?commonjs-exports\";\nimport { __require as require$$0 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/traverse-node.js?commonjs-wrapped\";\nimport { __require as require$$1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/path/index.js?commonjs-wrapped\";\nimport { __require as require$$2 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/path/removal.js?commonjs-wrapped\";\nimport { __require as require$$3 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/index.js?commonjs-wrapped\";\n\nvar hasRequiredContext;\n\nfunction requireContext () {\n\tif (hasRequiredContext) return context;\n\thasRequiredContext = 1;\n\t\"use strict\";\n\n\tObject.defineProperty(context, \"__esModule\", {\n\t  value: true\n\t});\n\tcontext._call = _call;\n\tcontext._getQueueContexts = _getQueueContexts;\n\tcontext._resyncKey = _resyncKey;\n\tcontext._resyncList = _resyncList;\n\tcontext._resyncParent = _resyncParent;\n\tcontext._resyncRemoved = _resyncRemoved;\n\tcontext.call = call;\n\tcontext.isDenylisted = isDenylisted;\n\tcontext.popContext = popContext;\n\tcontext.pushContext = pushContext;\n\tcontext.requeue = requeue;\n\tcontext.requeueComputedKeyAndDecorators = requeueComputedKeyAndDecorators;\n\tcontext.resync = resync;\n\tcontext.setContext = setContext;\n\tcontext.setKey = setKey;\n\tcontext.setScope = setScope;\n\tcontext.setup = setup;\n\tcontext.skip = skip;\n\tcontext.skipKey = skipKey;\n\tcontext.stop = stop;\n\tcontext.visit = visit;\n\tvar _traverseNode = require$$0();\n\tvar _index = require$$1();\n\tvar _removal = require$$2();\n\tvar t = require$$3();\n\tfunction call(key) {\n\t  const opts = this.opts;\n\t  this.debug(key);\n\t  if (this.node) {\n\t    if (_call.call(this, opts[key])) return true;\n\t  }\n\t  if (this.node) {\n\t    var _opts$this$node$type;\n\t    return _call.call(this, (_opts$this$node$type = opts[this.node.type]) == null ? void 0 : _opts$this$node$type[key]);\n\t  }\n\t  return false;\n\t}\n\tfunction _call(fns) {\n\t  if (!fns) return false;\n\t  for (const fn of fns) {\n\t    if (!fn) continue;\n\t    const node = this.node;\n\t    if (!node) return true;\n\t    const ret = fn.call(this.state, this, this.state);\n\t    if (ret && typeof ret === \"object\" && typeof ret.then === \"function\") {\n\t      throw new Error(`You appear to be using a plugin with an async traversal visitor, ` + `which your current version of Babel does not support. ` + `If you're using a published plugin, you may need to upgrade ` + `your @babel/core version.`);\n\t    }\n\t    if (ret) {\n\t      throw new Error(`Unexpected return value from visitor method ${fn}`);\n\t    }\n\t    if (this.node !== node) return true;\n\t    if (this._traverseFlags > 0) return true;\n\t  }\n\t  return false;\n\t}\n\tfunction isDenylisted() {\n\t  var _this$opts$denylist;\n\t  const denylist = (_this$opts$denylist = this.opts.denylist) != null ? _this$opts$denylist : this.opts.blacklist;\n\t  return denylist && denylist.indexOf(this.node.type) > -1;\n\t}\n\t{\n\t  context.isBlacklisted = isDenylisted;\n\t}\n\tfunction restoreContext(path, context) {\n\t  if (path.context !== context) {\n\t    path.context = context;\n\t    path.state = context.state;\n\t    path.opts = context.opts;\n\t  }\n\t}\n\tfunction visit() {\n\t  var _this$opts$shouldSkip, _this$opts;\n\t  if (!this.node) {\n\t    return false;\n\t  }\n\t  if (this.isDenylisted()) {\n\t    return false;\n\t  }\n\t  if ((_this$opts$shouldSkip = (_this$opts = this.opts).shouldSkip) != null && _this$opts$shouldSkip.call(_this$opts, this)) {\n\t    return false;\n\t  }\n\t  const currentContext = this.context;\n\t  if (this.shouldSkip || call.call(this, \"enter\")) {\n\t    this.debug(\"Skip...\");\n\t    return this.shouldStop;\n\t  }\n\t  restoreContext(this, currentContext);\n\t  this.debug(\"Recursing into...\");\n\t  this.shouldStop = (0, _traverseNode.traverseNode)(this.node, this.opts, this.scope, this.state, this, this.skipKeys);\n\t  restoreContext(this, currentContext);\n\t  call.call(this, \"exit\");\n\t  return this.shouldStop;\n\t}\n\tfunction skip() {\n\t  this.shouldSkip = true;\n\t}\n\tfunction skipKey(key) {\n\t  if (this.skipKeys == null) {\n\t    this.skipKeys = {};\n\t  }\n\t  this.skipKeys[key] = true;\n\t}\n\tfunction stop() {\n\t  this._traverseFlags |= _index.SHOULD_SKIP | _index.SHOULD_STOP;\n\t}\n\tfunction setScope() {\n\t  var _this$opts2, _this$scope;\n\t  if ((_this$opts2 = this.opts) != null && _this$opts2.noScope) return;\n\t  let path = this.parentPath;\n\t  if ((this.key === \"key\" || this.listKey === \"decorators\") && path.isMethod() || this.key === \"discriminant\" && path.isSwitchStatement()) {\n\t    path = path.parentPath;\n\t  }\n\t  let target;\n\t  while (path && !target) {\n\t    var _path$opts;\n\t    if ((_path$opts = path.opts) != null && _path$opts.noScope) return;\n\t    target = path.scope;\n\t    path = path.parentPath;\n\t  }\n\t  this.scope = this.getScope(target);\n\t  (_this$scope = this.scope) == null || _this$scope.init();\n\t}\n\tfunction setContext(context) {\n\t  if (this.skipKeys != null) {\n\t    this.skipKeys = {};\n\t  }\n\t  this._traverseFlags = 0;\n\t  if (context) {\n\t    this.context = context;\n\t    this.state = context.state;\n\t    this.opts = context.opts;\n\t  }\n\t  setScope.call(this);\n\t  return this;\n\t}\n\tfunction resync() {\n\t  if (this.removed) return;\n\t  _resyncParent.call(this);\n\t  _resyncList.call(this);\n\t  _resyncKey.call(this);\n\t}\n\tfunction _resyncParent() {\n\t  if (this.parentPath) {\n\t    this.parent = this.parentPath.node;\n\t  }\n\t}\n\tfunction _resyncKey() {\n\t  if (!this.container) return;\n\t  if (this.node === this.container[this.key]) {\n\t    return;\n\t  }\n\t  if (Array.isArray(this.container)) {\n\t    for (let i = 0; i < this.container.length; i++) {\n\t      if (this.container[i] === this.node) {\n\t        setKey.call(this, i);\n\t        return;\n\t      }\n\t    }\n\t  } else {\n\t    for (const key of Object.keys(this.container)) {\n\t      if (this.container[key] === this.node) {\n\t        setKey.call(this, key);\n\t        return;\n\t      }\n\t    }\n\t  }\n\t  this.key = null;\n\t}\n\tfunction _resyncList() {\n\t  if (!this.parent || !this.inList) return;\n\t  const newContainer = this.parent[this.listKey];\n\t  if (this.container === newContainer) return;\n\t  this.container = newContainer || null;\n\t}\n\tfunction _resyncRemoved() {\n\t  if (this.key == null || !this.container || this.container[this.key] !== this.node) {\n\t    _removal._markRemoved.call(this);\n\t  }\n\t}\n\tfunction popContext() {\n\t  this.contexts.pop();\n\t  if (this.contexts.length > 0) {\n\t    this.setContext(this.contexts[this.contexts.length - 1]);\n\t  } else {\n\t    this.setContext(undefined);\n\t  }\n\t}\n\tfunction pushContext(context) {\n\t  this.contexts.push(context);\n\t  this.setContext(context);\n\t}\n\tfunction setup(parentPath, container, listKey, key) {\n\t  this.listKey = listKey;\n\t  this.container = container;\n\t  this.parentPath = parentPath || this.parentPath;\n\t  setKey.call(this, key);\n\t}\n\tfunction setKey(key) {\n\t  var _this$node;\n\t  this.key = key;\n\t  this.node = this.container[this.key];\n\t  this.type = (_this$node = this.node) == null ? void 0 : _this$node.type;\n\t}\n\tfunction requeue(pathToQueue = this) {\n\t  if (pathToQueue.removed) return;\n\t  ;\n\t  const contexts = this.contexts;\n\t  for (const context of contexts) {\n\t    context.maybeQueue(pathToQueue);\n\t  }\n\t}\n\tfunction requeueComputedKeyAndDecorators() {\n\t  const {\n\t    context,\n\t    node\n\t  } = this;\n\t  if (!t.isPrivate(node) && node.computed) {\n\t    context.maybeQueue(this.get(\"key\"));\n\t  }\n\t  if (node.decorators) {\n\t    for (const decorator of this.get(\"decorators\")) {\n\t      context.maybeQueue(decorator);\n\t    }\n\t  }\n\t}\n\tfunction _getQueueContexts() {\n\t  let path = this;\n\t  let contexts = this.contexts;\n\t  while (!contexts.length) {\n\t    path = path.parentPath;\n\t    if (!path) break;\n\t    contexts = path.contexts;\n\t  }\n\t  return contexts;\n\t}\n\n\t//# sourceMappingURL=context.js.map\n\treturn context;\n}\n\nexport { requireContext as __require };",
-      "start": 1727785256869,
-      "end": 1727785257408,
+      "start": 1728160652373,
+      "end": 1728160682838,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160682838,
+      "end": 1728160682838,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785257408,
-      "end": 1727785257408,
+      "start": 1728160682838,
+      "end": 1728160682838,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785257408,
-      "end": 1727785257408,
+      "start": 1728160682838,
+      "end": 1728160682838,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785257408,
-      "end": 1727785257408,
+      "start": 1728160682838,
+      "end": 1728160682838,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785257408,
-      "end": 1727785257408,
+      "start": 1728160682838,
+      "end": 1728160682838,
       "order": "normal"
     }
   ]

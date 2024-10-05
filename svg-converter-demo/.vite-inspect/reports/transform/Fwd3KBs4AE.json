@@ -4,8 +4,8 @@
     {
       "name": "commonjs",
       "result": "export { __moduleExports as default } from \"/Users/ibrahim.dagdelen/Projects/Github/icon-usage-benchmark/svg-converter-demo/node_modules/scheduler/index.js\";",
-      "start": 1727785257345,
-      "end": 1727785257345,
+      "start": 1728160682000,
+      "end": 1728160682000,
       "sourcemaps": null
     }
   ]

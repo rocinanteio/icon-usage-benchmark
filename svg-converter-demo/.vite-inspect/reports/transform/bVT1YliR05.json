@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\nvar _genMapping = require(\"@jridgewell/gen-mapping\");\nvar _traceMapping = require(\"@jridgewell/trace-mapping\");\nclass SourceMap {\n  constructor(opts, code) {\n    var _opts$sourceFileName;\n    this._map = void 0;\n    this._rawMappings = void 0;\n    this._sourceFileName = void 0;\n    this._lastGenLine = 0;\n    this._lastSourceLine = 0;\n    this._lastSourceColumn = 0;\n    this._inputMap = void 0;\n    const map = this._map = new _genMapping.GenMapping({\n      sourceRoot: opts.sourceRoot\n    });\n    this._sourceFileName = (_opts$sourceFileName = opts.sourceFileName) == null ? void 0 : _opts$sourceFileName.replace(/\\\\/g, \"/\");\n    this._rawMappings = undefined;\n    if (opts.inputSourceMap) {\n      this._inputMap = new _traceMapping.TraceMap(opts.inputSourceMap);\n      const resolvedSources = this._inputMap.resolvedSources;\n      if (resolvedSources.length) {\n        for (let i = 0; i < resolvedSources.length; i++) {\n          var _this$_inputMap$sourc;\n          (0, _genMapping.setSourceContent)(map, resolvedSources[i], (_this$_inputMap$sourc = this._inputMap.sourcesContent) == null ? void 0 : _this$_inputMap$sourc[i]);\n        }\n      }\n    }\n    if (typeof code === \"string\" && !opts.inputSourceMap) {\n      (0, _genMapping.setSourceContent)(map, this._sourceFileName, code);\n    } else if (typeof code === \"object\") {\n      for (const sourceFileName of Object.keys(code)) {\n        (0, _genMapping.setSourceContent)(map, sourceFileName.replace(/\\\\/g, \"/\"), code[sourceFileName]);\n      }\n    }\n  }\n  get() {\n    return (0, _genMapping.toEncodedMap)(this._map);\n  }\n  getDecoded() {\n    return (0, _genMapping.toDecodedMap)(this._map);\n  }\n  getRawMappings() {\n    return this._rawMappings || (this._rawMappings = (0, _genMapping.allMappings)(this._map));\n  }\n  mark(generated, line, column, identifierName, identifierNamePos, filename) {\n    var _originalMapping;\n    this._rawMappings = undefined;\n    let originalMapping;\n    if (line != null) {\n      if (this._inputMap) {\n        originalMapping = (0, _traceMapping.originalPositionFor)(this._inputMap, {\n          line,\n          column\n        });\n        if (!originalMapping.name && identifierNamePos) {\n          const originalIdentifierMapping = (0, _traceMapping.originalPositionFor)(this._inputMap, identifierNamePos);\n          if (originalIdentifierMapping.name) {\n            identifierName = originalIdentifierMapping.name;\n          }\n        }\n      } else {\n        originalMapping = {\n          source: (filename == null ? void 0 : filename.replace(/\\\\/g, \"/\")) || this._sourceFileName,\n          line: line,\n          column: column\n        };\n      }\n    }\n    (0, _genMapping.maybeAddMapping)(this._map, {\n      name: identifierName,\n      generated,\n      source: (_originalMapping = originalMapping) == null ? void 0 : _originalMapping.source,\n      original: originalMapping\n    });\n  }\n}\nexports.default = SourceMap;\n\n//# sourceMappingURL=source-map.js.map\n",
-      "start": 1727785257031,
-      "end": 1727785257060,
+      "start": 1728160651962,
+      "end": 1728160652405,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785257060,
-      "end": 1727785257060,
+      "start": 1728160652405,
+      "end": 1728160652405,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160652405,
+      "end": 1728160652405,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785257060,
-      "end": 1727785257060,
+      "start": 1728160652405,
+      "end": 1728160652405,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785257060,
-      "end": 1727785257060,
+      "start": 1728160652405,
+      "end": 1728160652405,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785257060,
-      "end": 1727785257060,
+      "start": 1728160652405,
+      "end": 1728160652405,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785257060,
-      "end": 1727785257060,
+      "start": 1728160652405,
+      "end": 1728160652405,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785257060,
-      "end": 1727785257060,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785257060,
-      "end": 1727785257060,
+      "start": 1728160652405,
+      "end": 1728160652405,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785257060,
-      "end": 1727785257060,
+      "start": 1728160652405,
+      "end": 1728160652405,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785257060,
-      "end": 1727785257060,
+      "start": 1728160652405,
+      "end": 1728160652405,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785257060,
-      "end": 1727785257060,
+      "start": 1728160652405,
+      "end": 1728160652405,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785257060,
-      "end": 1727785257060,
+      "start": 1728160652405,
+      "end": 1728160652405,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785257060,
-      "end": 1727785257060,
+      "start": 1728160652405,
+      "end": 1728160652405,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as sourceMap } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/lib/source-map.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@jridgewell/gen-mapping/dist/gen-mapping.umd.js?commonjs-proxy\";\nimport require$$1 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@jridgewell/trace-mapping/dist/trace-mapping.umd.js?commonjs-proxy\";\n\n\"use strict\";\n\nObject.defineProperty(sourceMap, \"__esModule\", {\n  value: true\n});\nvar _default = sourceMap.default = void 0;\nvar _genMapping = require$$0;\nvar _traceMapping = require$$1;\nclass SourceMap {\n  constructor(opts, code) {\n    var _opts$sourceFileName;\n    this._map = void 0;\n    this._rawMappings = void 0;\n    this._sourceFileName = void 0;\n    this._lastGenLine = 0;\n    this._lastSourceLine = 0;\n    this._lastSourceColumn = 0;\n    this._inputMap = void 0;\n    const map = this._map = new _genMapping.GenMapping({\n      sourceRoot: opts.sourceRoot\n    });\n    this._sourceFileName = (_opts$sourceFileName = opts.sourceFileName) == null ? void 0 : _opts$sourceFileName.replace(/\\\\/g, \"/\");\n    this._rawMappings = undefined;\n    if (opts.inputSourceMap) {\n      this._inputMap = new _traceMapping.TraceMap(opts.inputSourceMap);\n      const resolvedSources = this._inputMap.resolvedSources;\n      if (resolvedSources.length) {\n        for (let i = 0; i < resolvedSources.length; i++) {\n          var _this$_inputMap$sourc;\n          (0, _genMapping.setSourceContent)(map, resolvedSources[i], (_this$_inputMap$sourc = this._inputMap.sourcesContent) == null ? void 0 : _this$_inputMap$sourc[i]);\n        }\n      }\n    }\n    if (typeof code === \"string\" && !opts.inputSourceMap) {\n      (0, _genMapping.setSourceContent)(map, this._sourceFileName, code);\n    } else if (typeof code === \"object\") {\n      for (const sourceFileName of Object.keys(code)) {\n        (0, _genMapping.setSourceContent)(map, sourceFileName.replace(/\\\\/g, \"/\"), code[sourceFileName]);\n      }\n    }\n  }\n  get() {\n    return (0, _genMapping.toEncodedMap)(this._map);\n  }\n  getDecoded() {\n    return (0, _genMapping.toDecodedMap)(this._map);\n  }\n  getRawMappings() {\n    return this._rawMappings || (this._rawMappings = (0, _genMapping.allMappings)(this._map));\n  }\n  mark(generated, line, column, identifierName, identifierNamePos, filename) {\n    var _originalMapping;\n    this._rawMappings = undefined;\n    let originalMapping;\n    if (line != null) {\n      if (this._inputMap) {\n        originalMapping = (0, _traceMapping.originalPositionFor)(this._inputMap, {\n          line,\n          column\n        });\n        if (!originalMapping.name && identifierNamePos) {\n          const originalIdentifierMapping = (0, _traceMapping.originalPositionFor)(this._inputMap, identifierNamePos);\n          if (originalIdentifierMapping.name) {\n            identifierName = originalIdentifierMapping.name;\n          }\n        }\n      } else {\n        originalMapping = {\n          source: (filename == null ? void 0 : filename.replace(/\\\\/g, \"/\")) || this._sourceFileName,\n          line: line,\n          column: column\n        };\n      }\n    }\n    (0, _genMapping.maybeAddMapping)(this._map, {\n      name: identifierName,\n      generated,\n      source: (_originalMapping = originalMapping) == null ? void 0 : _originalMapping.source,\n      original: originalMapping\n    });\n  }\n}\n_default = sourceMap.default = SourceMap;\n\n//# sourceMappingURL=source-map.js.map\n\nexport { sourceMap as __moduleExports, _default as default };",
-      "start": 1727785257060,
-      "end": 1727785257197,
+      "start": 1728160652405,
+      "end": 1728160681470,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160681470,
+      "end": 1728160681470,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785257197,
-      "end": 1727785257197,
+      "start": 1728160681470,
+      "end": 1728160681470,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785257197,
-      "end": 1727785257197,
+      "start": 1728160681470,
+      "end": 1728160681470,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785257197,
-      "end": 1727785257197,
+      "start": 1728160681470,
+      "end": 1728160681470,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785257197,
-      "end": 1727785257197,
+      "start": 1728160681470,
+      "end": 1728160681470,
       "order": "normal"
     }
   ]

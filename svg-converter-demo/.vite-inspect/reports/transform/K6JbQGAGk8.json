@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = populatePlaceholders;\nvar _t = require(\"@babel/types\");\nconst {\n  blockStatement,\n  cloneNode,\n  emptyStatement,\n  expressionStatement,\n  identifier,\n  isStatement,\n  isStringLiteral,\n  stringLiteral,\n  validate\n} = _t;\nfunction populatePlaceholders(metadata, replacements) {\n  const ast = cloneNode(metadata.ast);\n  if (replacements) {\n    metadata.placeholders.forEach(placeholder => {\n      if (!hasOwnProperty.call(replacements, placeholder.name)) {\n        const placeholderName = placeholder.name;\n        throw new Error(`Error: No substitution given for \"${placeholderName}\". If this is not meant to be a\n            placeholder you may want to consider passing one of the following options to @babel/template:\n            - { placeholderPattern: false, placeholderWhitelist: new Set(['${placeholderName}'])}\n            - { placeholderPattern: /^${placeholderName}$/ }`);\n      }\n    });\n    Object.keys(replacements).forEach(key => {\n      if (!metadata.placeholderNames.has(key)) {\n        throw new Error(`Unknown substitution \"${key}\" given`);\n      }\n    });\n  }\n  metadata.placeholders.slice().reverse().forEach(placeholder => {\n    try {\n      applyReplacement(placeholder, ast, replacements && replacements[placeholder.name] || null);\n    } catch (e) {\n      e.message = `@babel/template placeholder \"${placeholder.name}\": ${e.message}`;\n      throw e;\n    }\n  });\n  return ast;\n}\nfunction applyReplacement(placeholder, ast, replacement) {\n  if (placeholder.isDuplicate) {\n    if (Array.isArray(replacement)) {\n      replacement = replacement.map(node => cloneNode(node));\n    } else if (typeof replacement === \"object\") {\n      replacement = cloneNode(replacement);\n    }\n  }\n  const {\n    parent,\n    key,\n    index\n  } = placeholder.resolve(ast);\n  if (placeholder.type === \"string\") {\n    if (typeof replacement === \"string\") {\n      replacement = stringLiteral(replacement);\n    }\n    if (!replacement || !isStringLiteral(replacement)) {\n      throw new Error(\"Expected string substitution\");\n    }\n  } else if (placeholder.type === \"statement\") {\n    if (index === undefined) {\n      if (!replacement) {\n        replacement = emptyStatement();\n      } else if (Array.isArray(replacement)) {\n        replacement = blockStatement(replacement);\n      } else if (typeof replacement === \"string\") {\n        replacement = expressionStatement(identifier(replacement));\n      } else if (!isStatement(replacement)) {\n        replacement = expressionStatement(replacement);\n      }\n    } else {\n      if (replacement && !Array.isArray(replacement)) {\n        if (typeof replacement === \"string\") {\n          replacement = identifier(replacement);\n        }\n        if (!isStatement(replacement)) {\n          replacement = expressionStatement(replacement);\n        }\n      }\n    }\n  } else if (placeholder.type === \"param\") {\n    if (typeof replacement === \"string\") {\n      replacement = identifier(replacement);\n    }\n    if (index === undefined) throw new Error(\"Assertion failure.\");\n  } else {\n    if (typeof replacement === \"string\") {\n      replacement = identifier(replacement);\n    }\n    if (Array.isArray(replacement)) {\n      throw new Error(\"Cannot replace single expression with an array.\");\n    }\n  }\n  function set(parent, key, value) {\n    const node = parent[key];\n    parent[key] = value;\n    if (node.type === \"Identifier\") {\n      if (node.typeAnnotation) {\n        value.typeAnnotation = node.typeAnnotation;\n      }\n      if (node.optional) {\n        value.optional = node.optional;\n      }\n      if (node.decorators) {\n        value.decorators = node.decorators;\n      }\n    }\n  }\n  if (index === undefined) {\n    validate(parent, key, replacement);\n    set(parent, key, replacement);\n  } else {\n    const items = parent[key].slice();\n    if (placeholder.type === \"statement\" || placeholder.type === \"param\") {\n      if (replacement == null) {\n        items.splice(index, 1);\n      } else if (Array.isArray(replacement)) {\n        items.splice(index, 1, ...replacement);\n      } else {\n        set(items, index, replacement);\n      }\n    } else {\n      set(items, index, replacement);\n    }\n    validate(parent, key, items);\n    parent[key] = items;\n  }\n}\n\n//# sourceMappingURL=populate.js.map\n",
-      "start": 1727785257192,
-      "end": 1727785257234,
+      "start": 1728160682008,
+      "end": 1728160682251,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785257234,
-      "end": 1727785257234,
+      "start": 1728160682251,
+      "end": 1728160682251,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160682251,
+      "end": 1728160682251,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785257234,
-      "end": 1727785257234,
+      "start": 1728160682251,
+      "end": 1728160682251,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785257234,
-      "end": 1727785257234,
+      "start": 1728160682251,
+      "end": 1728160682251,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785257234,
-      "end": 1727785257234,
+      "start": 1728160682251,
+      "end": 1728160682251,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785257234,
-      "end": 1727785257234,
+      "start": 1728160682251,
+      "end": 1728160682251,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785257234,
-      "end": 1727785257234,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785257234,
-      "end": 1727785257234,
+      "start": 1728160682251,
+      "end": 1728160682251,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785257234,
-      "end": 1727785257234,
+      "start": 1728160682251,
+      "end": 1728160682251,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785257234,
-      "end": 1727785257234,
+      "start": 1728160682251,
+      "end": 1728160682251,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785257234,
-      "end": 1727785257234,
+      "start": 1728160682251,
+      "end": 1728160682251,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785257234,
-      "end": 1727785257234,
+      "start": 1728160682251,
+      "end": 1728160682251,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785257234,
-      "end": 1727785257234,
+      "start": 1728160682251,
+      "end": 1728160682251,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as populate } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/template/lib/populate.js?commonjs-exports\";\nimport { __require as require$$0 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/index.js?commonjs-wrapped\";\n\n\"use strict\";\n\nObject.defineProperty(populate, \"__esModule\", {\n  value: true\n});\nvar _default = populate.default = populatePlaceholders;\nvar _t = require$$0();\nconst {\n  blockStatement,\n  cloneNode,\n  emptyStatement,\n  expressionStatement,\n  identifier,\n  isStatement,\n  isStringLiteral,\n  stringLiteral,\n  validate\n} = _t;\nfunction populatePlaceholders(metadata, replacements) {\n  const ast = cloneNode(metadata.ast);\n  if (replacements) {\n    metadata.placeholders.forEach(placeholder => {\n      if (!hasOwnProperty.call(replacements, placeholder.name)) {\n        const placeholderName = placeholder.name;\n        throw new Error(`Error: No substitution given for \"${placeholderName}\". If this is not meant to be a\n            placeholder you may want to consider passing one of the following options to @babel/template:\n            - { placeholderPattern: false, placeholderWhitelist: new Set(['${placeholderName}'])}\n            - { placeholderPattern: /^${placeholderName}$/ }`);\n      }\n    });\n    Object.keys(replacements).forEach(key => {\n      if (!metadata.placeholderNames.has(key)) {\n        throw new Error(`Unknown substitution \"${key}\" given`);\n      }\n    });\n  }\n  metadata.placeholders.slice().reverse().forEach(placeholder => {\n    try {\n      applyReplacement(placeholder, ast, replacements && replacements[placeholder.name] || null);\n    } catch (e) {\n      e.message = `@babel/template placeholder \"${placeholder.name}\": ${e.message}`;\n      throw e;\n    }\n  });\n  return ast;\n}\nfunction applyReplacement(placeholder, ast, replacement) {\n  if (placeholder.isDuplicate) {\n    if (Array.isArray(replacement)) {\n      replacement = replacement.map(node => cloneNode(node));\n    } else if (typeof replacement === \"object\") {\n      replacement = cloneNode(replacement);\n    }\n  }\n  const {\n    parent,\n    key,\n    index\n  } = placeholder.resolve(ast);\n  if (placeholder.type === \"string\") {\n    if (typeof replacement === \"string\") {\n      replacement = stringLiteral(replacement);\n    }\n    if (!replacement || !isStringLiteral(replacement)) {\n      throw new Error(\"Expected string substitution\");\n    }\n  } else if (placeholder.type === \"statement\") {\n    if (index === undefined) {\n      if (!replacement) {\n        replacement = emptyStatement();\n      } else if (Array.isArray(replacement)) {\n        replacement = blockStatement(replacement);\n      } else if (typeof replacement === \"string\") {\n        replacement = expressionStatement(identifier(replacement));\n      } else if (!isStatement(replacement)) {\n        replacement = expressionStatement(replacement);\n      }\n    } else {\n      if (replacement && !Array.isArray(replacement)) {\n        if (typeof replacement === \"string\") {\n          replacement = identifier(replacement);\n        }\n        if (!isStatement(replacement)) {\n          replacement = expressionStatement(replacement);\n        }\n      }\n    }\n  } else if (placeholder.type === \"param\") {\n    if (typeof replacement === \"string\") {\n      replacement = identifier(replacement);\n    }\n    if (index === undefined) throw new Error(\"Assertion failure.\");\n  } else {\n    if (typeof replacement === \"string\") {\n      replacement = identifier(replacement);\n    }\n    if (Array.isArray(replacement)) {\n      throw new Error(\"Cannot replace single expression with an array.\");\n    }\n  }\n  function set(parent, key, value) {\n    const node = parent[key];\n    parent[key] = value;\n    if (node.type === \"Identifier\") {\n      if (node.typeAnnotation) {\n        value.typeAnnotation = node.typeAnnotation;\n      }\n      if (node.optional) {\n        value.optional = node.optional;\n      }\n      if (node.decorators) {\n        value.decorators = node.decorators;\n      }\n    }\n  }\n  if (index === undefined) {\n    validate(parent, key, replacement);\n    set(parent, key, replacement);\n  } else {\n    const items = parent[key].slice();\n    if (placeholder.type === \"statement\" || placeholder.type === \"param\") {\n      if (replacement == null) {\n        items.splice(index, 1);\n      } else if (Array.isArray(replacement)) {\n        items.splice(index, 1, ...replacement);\n      } else {\n        set(items, index, replacement);\n      }\n    } else {\n      set(items, index, replacement);\n    }\n    validate(parent, key, items);\n    parent[key] = items;\n  }\n}\n\n//# sourceMappingURL=populate.js.map\n\nexport { populate as __moduleExports, _default as default };",
-      "start": 1727785257234,
-      "end": 1727785257235,
+      "start": 1728160682251,
+      "end": 1728160682253,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160682253,
+      "end": 1728160682253,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785257235,
-      "end": 1727785257235,
+      "start": 1728160682253,
+      "end": 1728160682253,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785257235,
-      "end": 1727785257235,
+      "start": 1728160682253,
+      "end": 1728160682253,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785257235,
-      "end": 1727785257235,
+      "start": 1728160682253,
+      "end": 1728160682253,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785257235,
-      "end": 1727785257235,
+      "start": 1728160682253,
+      "end": 1728160682253,
       "order": "normal"
     }
   ]

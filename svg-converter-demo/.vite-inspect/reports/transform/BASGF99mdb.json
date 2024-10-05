@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = prependToMemberExpression;\nvar _index = require(\"../builders/generated/index.js\");\nvar _index2 = require(\"../index.js\");\nfunction prependToMemberExpression(member, prepend) {\n  if ((0, _index2.isSuper)(member.object)) {\n    throw new Error(\"Cannot prepend node to super property access (`super.foo`).\");\n  }\n  member.object = (0, _index.memberExpression)(prepend, member.object);\n  return member;\n}\n\n//# sourceMappingURL=prependToMemberExpression.js.map\n",
-      "start": 1727785256911,
-      "end": 1727785256924,
+      "start": 1728160652452,
+      "end": 1728160652491,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785256924,
-      "end": 1727785256924,
+      "start": 1728160652491,
+      "end": 1728160652491,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160652491,
+      "end": 1728160652491,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785256924,
-      "end": 1727785256924,
+      "start": 1728160652491,
+      "end": 1728160652491,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785256924,
-      "end": 1727785256924,
+      "start": 1728160652491,
+      "end": 1728160652491,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785256924,
-      "end": 1727785256924,
+      "start": 1728160652491,
+      "end": 1728160652491,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785256924,
-      "end": 1727785256924,
+      "start": 1728160652491,
+      "end": 1728160652491,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785256924,
-      "end": 1727785256924,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785256924,
-      "end": 1727785256924,
+      "start": 1728160652491,
+      "end": 1728160652491,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785256924,
-      "end": 1727785256924,
+      "start": 1728160652491,
+      "end": 1728160652491,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785256924,
-      "end": 1727785256924,
+      "start": 1728160652491,
+      "end": 1728160652491,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785256924,
-      "end": 1727785256924,
+      "start": 1728160652491,
+      "end": 1728160652491,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785256924,
-      "end": 1727785256924,
+      "start": 1728160652491,
+      "end": 1728160652491,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785256924,
-      "end": 1727785256924,
+      "start": 1728160652491,
+      "end": 1728160652491,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as prependToMemberExpression_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/modifications/prependToMemberExpression.js?commonjs-exports\";\nimport { __require as require$$0 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/builders/generated/index.js?commonjs-wrapped\";\nimport { __require as require$$1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/index.js?commonjs-wrapped\";\n\nvar hasRequiredPrependToMemberExpression;\n\nfunction requirePrependToMemberExpression () {\n\tif (hasRequiredPrependToMemberExpression) return prependToMemberExpression_1;\n\thasRequiredPrependToMemberExpression = 1;\n\t\"use strict\";\n\n\tObject.defineProperty(prependToMemberExpression_1, \"__esModule\", {\n\t  value: true\n\t});\n\tprependToMemberExpression_1.default = prependToMemberExpression;\n\tvar _index = require$$0();\n\tvar _index2 = require$$1();\n\tfunction prependToMemberExpression(member, prepend) {\n\t  if ((0, _index2.isSuper)(member.object)) {\n\t    throw new Error(\"Cannot prepend node to super property access (`super.foo`).\");\n\t  }\n\t  member.object = (0, _index.memberExpression)(prepend, member.object);\n\t  return member;\n\t}\n\n\t//# sourceMappingURL=prependToMemberExpression.js.map\n\treturn prependToMemberExpression_1;\n}\n\nexport { requirePrependToMemberExpression as __require };",
-      "start": 1727785256924,
-      "end": 1727785257325,
+      "start": 1728160652491,
+      "end": 1728160681954,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160681954,
+      "end": 1728160681954,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785257325,
-      "end": 1727785257325,
+      "start": 1728160681954,
+      "end": 1728160681954,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785257325,
-      "end": 1727785257325,
+      "start": 1728160681955,
+      "end": 1728160681955,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785257325,
-      "end": 1727785257325,
+      "start": 1728160681955,
+      "end": 1728160681955,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785257325,
-      "end": 1727785257325,
+      "start": 1728160681955,
+      "end": 1728160681955,
       "order": "normal"
     }
   ]

@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = parseAndBuildMetadata;\nvar _t = require(\"@babel/types\");\nvar _parser = require(\"@babel/parser\");\nvar _codeFrame = require(\"@babel/code-frame\");\nconst {\n  isCallExpression,\n  isExpressionStatement,\n  isFunction,\n  isIdentifier,\n  isJSXIdentifier,\n  isNewExpression,\n  isPlaceholder,\n  isStatement,\n  isStringLiteral,\n  removePropertiesDeep,\n  traverse\n} = _t;\nconst PATTERN = /^[_$A-Z0-9]+$/;\nfunction parseAndBuildMetadata(formatter, code, opts) {\n  const {\n    placeholderWhitelist,\n    placeholderPattern,\n    preserveComments,\n    syntacticPlaceholders\n  } = opts;\n  const ast = parseWithCodeFrame(code, opts.parser, syntacticPlaceholders);\n  removePropertiesDeep(ast, {\n    preserveComments\n  });\n  formatter.validate(ast);\n  const state = {\n    syntactic: {\n      placeholders: [],\n      placeholderNames: new Set()\n    },\n    legacy: {\n      placeholders: [],\n      placeholderNames: new Set()\n    },\n    placeholderWhitelist,\n    placeholderPattern,\n    syntacticPlaceholders\n  };\n  traverse(ast, placeholderVisitorHandler, state);\n  return Object.assign({\n    ast\n  }, state.syntactic.placeholders.length ? state.syntactic : state.legacy);\n}\nfunction placeholderVisitorHandler(node, ancestors, state) {\n  var _state$placeholderWhi;\n  let name;\n  let hasSyntacticPlaceholders = state.syntactic.placeholders.length > 0;\n  if (isPlaceholder(node)) {\n    if (state.syntacticPlaceholders === false) {\n      throw new Error(\"%%foo%%-style placeholders can't be used when \" + \"'.syntacticPlaceholders' is false.\");\n    }\n    name = node.name.name;\n    hasSyntacticPlaceholders = true;\n  } else if (hasSyntacticPlaceholders || state.syntacticPlaceholders) {\n    return;\n  } else if (isIdentifier(node) || isJSXIdentifier(node)) {\n    name = node.name;\n  } else if (isStringLiteral(node)) {\n    name = node.value;\n  } else {\n    return;\n  }\n  if (hasSyntacticPlaceholders && (state.placeholderPattern != null || state.placeholderWhitelist != null)) {\n    throw new Error(\"'.placeholderWhitelist' and '.placeholderPattern' aren't compatible\" + \" with '.syntacticPlaceholders: true'\");\n  }\n  if (!hasSyntacticPlaceholders && (state.placeholderPattern === false || !(state.placeholderPattern || PATTERN).test(name)) && !((_state$placeholderWhi = state.placeholderWhitelist) != null && _state$placeholderWhi.has(name))) {\n    return;\n  }\n  ancestors = ancestors.slice();\n  const {\n    node: parent,\n    key\n  } = ancestors[ancestors.length - 1];\n  let type;\n  if (isStringLiteral(node) || isPlaceholder(node, {\n    expectedNode: \"StringLiteral\"\n  })) {\n    type = \"string\";\n  } else if (isNewExpression(parent) && key === \"arguments\" || isCallExpression(parent) && key === \"arguments\" || isFunction(parent) && key === \"params\") {\n    type = \"param\";\n  } else if (isExpressionStatement(parent) && !isPlaceholder(node)) {\n    type = \"statement\";\n    ancestors = ancestors.slice(0, -1);\n  } else if (isStatement(node) && isPlaceholder(node)) {\n    type = \"statement\";\n  } else {\n    type = \"other\";\n  }\n  const {\n    placeholders,\n    placeholderNames\n  } = !hasSyntacticPlaceholders ? state.legacy : state.syntactic;\n  placeholders.push({\n    name,\n    type,\n    resolve: ast => resolveAncestors(ast, ancestors),\n    isDuplicate: placeholderNames.has(name)\n  });\n  placeholderNames.add(name);\n}\nfunction resolveAncestors(ast, ancestors) {\n  let parent = ast;\n  for (let i = 0; i < ancestors.length - 1; i++) {\n    const {\n      key,\n      index\n    } = ancestors[i];\n    if (index === undefined) {\n      parent = parent[key];\n    } else {\n      parent = parent[key][index];\n    }\n  }\n  const {\n    key,\n    index\n  } = ancestors[ancestors.length - 1];\n  return {\n    parent,\n    key,\n    index\n  };\n}\nfunction parseWithCodeFrame(code, parserOpts, syntacticPlaceholders) {\n  const plugins = (parserOpts.plugins || []).slice();\n  if (syntacticPlaceholders !== false) {\n    plugins.push(\"placeholders\");\n  }\n  parserOpts = Object.assign({\n    allowReturnOutsideFunction: true,\n    allowSuperOutsideMethod: true,\n    sourceType: \"module\"\n  }, parserOpts, {\n    plugins\n  });\n  try {\n    return (0, _parser.parse)(code, parserOpts);\n  } catch (err) {\n    const loc = err.loc;\n    if (loc) {\n      err.message += \"\\n\" + (0, _codeFrame.codeFrameColumns)(code, {\n        start: loc\n      });\n      err.code = \"BABEL_TEMPLATE_PARSE_ERROR\";\n    }\n    throw err;\n  }\n}\n\n//# sourceMappingURL=parse.js.map\n",
-      "start": 1727785257192,
-      "end": 1727785257233,
+      "start": 1728160682008,
+      "end": 1728160682253,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785257233,
-      "end": 1727785257233,
+      "start": 1728160682253,
+      "end": 1728160682253,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160682253,
+      "end": 1728160682253,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785257233,
-      "end": 1727785257233,
+      "start": 1728160682253,
+      "end": 1728160682253,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785257233,
-      "end": 1727785257233,
+      "start": 1728160682253,
+      "end": 1728160682253,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785257233,
-      "end": 1727785257233,
+      "start": 1728160682253,
+      "end": 1728160682253,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785257233,
-      "end": 1727785257233,
+      "start": 1728160682253,
+      "end": 1728160682253,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785257233,
-      "end": 1727785257233,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785257233,
-      "end": 1727785257233,
+      "start": 1728160682253,
+      "end": 1728160682253,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785257233,
-      "end": 1727785257233,
+      "start": 1728160682253,
+      "end": 1728160682253,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785257233,
-      "end": 1727785257233,
+      "start": 1728160682253,
+      "end": 1728160682253,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785257233,
-      "end": 1727785257233,
+      "start": 1728160682253,
+      "end": 1728160682253,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785257233,
-      "end": 1727785257233,
+      "start": 1728160682253,
+      "end": 1728160682253,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785257233,
-      "end": 1727785257233,
+      "start": 1728160682253,
+      "end": 1728160682253,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as parse } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/template/lib/parse.js?commonjs-exports\";\nimport { __require as require$$0 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/index.js?commonjs-wrapped\";\nimport require$$1 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/parser/lib/index.js?commonjs-proxy\";\nimport require$$2 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/code-frame/lib/index.js?commonjs-proxy\";\n\n\"use strict\";\n\nObject.defineProperty(parse, \"__esModule\", {\n  value: true\n});\nvar _default = parse.default = parseAndBuildMetadata;\nvar _t = require$$0();\nvar _parser = require$$1;\nvar _codeFrame = require$$2;\nconst {\n  isCallExpression,\n  isExpressionStatement,\n  isFunction,\n  isIdentifier,\n  isJSXIdentifier,\n  isNewExpression,\n  isPlaceholder,\n  isStatement,\n  isStringLiteral,\n  removePropertiesDeep,\n  traverse\n} = _t;\nconst PATTERN = /^[_$A-Z0-9]+$/;\nfunction parseAndBuildMetadata(formatter, code, opts) {\n  const {\n    placeholderWhitelist,\n    placeholderPattern,\n    preserveComments,\n    syntacticPlaceholders\n  } = opts;\n  const ast = parseWithCodeFrame(code, opts.parser, syntacticPlaceholders);\n  removePropertiesDeep(ast, {\n    preserveComments\n  });\n  formatter.validate(ast);\n  const state = {\n    syntactic: {\n      placeholders: [],\n      placeholderNames: new Set()\n    },\n    legacy: {\n      placeholders: [],\n      placeholderNames: new Set()\n    },\n    placeholderWhitelist,\n    placeholderPattern,\n    syntacticPlaceholders\n  };\n  traverse(ast, placeholderVisitorHandler, state);\n  return Object.assign({\n    ast\n  }, state.syntactic.placeholders.length ? state.syntactic : state.legacy);\n}\nfunction placeholderVisitorHandler(node, ancestors, state) {\n  var _state$placeholderWhi;\n  let name;\n  let hasSyntacticPlaceholders = state.syntactic.placeholders.length > 0;\n  if (isPlaceholder(node)) {\n    if (state.syntacticPlaceholders === false) {\n      throw new Error(\"%%foo%%-style placeholders can't be used when \" + \"'.syntacticPlaceholders' is false.\");\n    }\n    name = node.name.name;\n    hasSyntacticPlaceholders = true;\n  } else if (hasSyntacticPlaceholders || state.syntacticPlaceholders) {\n    return;\n  } else if (isIdentifier(node) || isJSXIdentifier(node)) {\n    name = node.name;\n  } else if (isStringLiteral(node)) {\n    name = node.value;\n  } else {\n    return;\n  }\n  if (hasSyntacticPlaceholders && (state.placeholderPattern != null || state.placeholderWhitelist != null)) {\n    throw new Error(\"'.placeholderWhitelist' and '.placeholderPattern' aren't compatible\" + \" with '.syntacticPlaceholders: true'\");\n  }\n  if (!hasSyntacticPlaceholders && (state.placeholderPattern === false || !(state.placeholderPattern || PATTERN).test(name)) && !((_state$placeholderWhi = state.placeholderWhitelist) != null && _state$placeholderWhi.has(name))) {\n    return;\n  }\n  ancestors = ancestors.slice();\n  const {\n    node: parent,\n    key\n  } = ancestors[ancestors.length - 1];\n  let type;\n  if (isStringLiteral(node) || isPlaceholder(node, {\n    expectedNode: \"StringLiteral\"\n  })) {\n    type = \"string\";\n  } else if (isNewExpression(parent) && key === \"arguments\" || isCallExpression(parent) && key === \"arguments\" || isFunction(parent) && key === \"params\") {\n    type = \"param\";\n  } else if (isExpressionStatement(parent) && !isPlaceholder(node)) {\n    type = \"statement\";\n    ancestors = ancestors.slice(0, -1);\n  } else if (isStatement(node) && isPlaceholder(node)) {\n    type = \"statement\";\n  } else {\n    type = \"other\";\n  }\n  const {\n    placeholders,\n    placeholderNames\n  } = !hasSyntacticPlaceholders ? state.legacy : state.syntactic;\n  placeholders.push({\n    name,\n    type,\n    resolve: ast => resolveAncestors(ast, ancestors),\n    isDuplicate: placeholderNames.has(name)\n  });\n  placeholderNames.add(name);\n}\nfunction resolveAncestors(ast, ancestors) {\n  let parent = ast;\n  for (let i = 0; i < ancestors.length - 1; i++) {\n    const {\n      key,\n      index\n    } = ancestors[i];\n    if (index === undefined) {\n      parent = parent[key];\n    } else {\n      parent = parent[key][index];\n    }\n  }\n  const {\n    key,\n    index\n  } = ancestors[ancestors.length - 1];\n  return {\n    parent,\n    key,\n    index\n  };\n}\nfunction parseWithCodeFrame(code, parserOpts, syntacticPlaceholders) {\n  const plugins = (parserOpts.plugins || []).slice();\n  if (syntacticPlaceholders !== false) {\n    plugins.push(\"placeholders\");\n  }\n  parserOpts = Object.assign({\n    allowReturnOutsideFunction: true,\n    allowSuperOutsideMethod: true,\n    sourceType: \"module\"\n  }, parserOpts, {\n    plugins\n  });\n  try {\n    return (0, _parser.parse)(code, parserOpts);\n  } catch (err) {\n    const loc = err.loc;\n    if (loc) {\n      err.message += \"\\n\" + (0, _codeFrame.codeFrameColumns)(code, {\n        start: loc\n      });\n      err.code = \"BABEL_TEMPLATE_PARSE_ERROR\";\n    }\n    throw err;\n  }\n}\n\n//# sourceMappingURL=parse.js.map\n\nexport { parse as __moduleExports, _default as default };",
-      "start": 1727785257233,
-      "end": 1727785257396,
+      "start": 1728160682254,
+      "end": 1728160682819,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160682819,
+      "end": 1728160682820,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785257397,
-      "end": 1727785257397,
+      "start": 1728160682820,
+      "end": 1728160682820,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785257397,
-      "end": 1727785257397,
+      "start": 1728160682820,
+      "end": 1728160682820,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785257397,
-      "end": 1727785257397,
+      "start": 1728160682820,
+      "end": 1728160682820,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785257397,
-      "end": 1727785257397,
+      "start": 1728160682820,
+      "end": 1728160682820,
       "order": "normal"
     }
   ]

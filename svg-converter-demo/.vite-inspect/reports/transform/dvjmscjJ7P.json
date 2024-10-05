@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = _default;\nvar _t = require(\"@babel/types\");\nvar _util = require(\"./util.js\");\nconst {\n  BOOLEAN_NUMBER_BINARY_OPERATORS,\n  createTypeAnnotationBasedOnTypeof,\n  numberTypeAnnotation,\n  voidTypeAnnotation\n} = _t;\nfunction _default(node) {\n  if (!this.isReferenced()) return;\n  const binding = this.scope.getBinding(node.name);\n  if (binding) {\n    if (binding.identifier.typeAnnotation) {\n      return binding.identifier.typeAnnotation;\n    } else {\n      return getTypeAnnotationBindingConstantViolations(binding, this, node.name);\n    }\n  }\n  if (node.name === \"undefined\") {\n    return voidTypeAnnotation();\n  } else if (node.name === \"NaN\" || node.name === \"Infinity\") {\n    return numberTypeAnnotation();\n  } else if (node.name === \"arguments\") {}\n}\nfunction getTypeAnnotationBindingConstantViolations(binding, path, name) {\n  const types = [];\n  const functionConstantViolations = [];\n  let constantViolations = getConstantViolationsBefore(binding, path, functionConstantViolations);\n  const testType = getConditionalAnnotation(binding, path, name);\n  if (testType) {\n    const testConstantViolations = getConstantViolationsBefore(binding, testType.ifStatement);\n    constantViolations = constantViolations.filter(path => !testConstantViolations.includes(path));\n    types.push(testType.typeAnnotation);\n  }\n  if (constantViolations.length) {\n    constantViolations.push(...functionConstantViolations);\n    for (const violation of constantViolations) {\n      types.push(violation.getTypeAnnotation());\n    }\n  }\n  if (!types.length) {\n    return;\n  }\n  return (0, _util.createUnionType)(types);\n}\nfunction getConstantViolationsBefore(binding, path, functions) {\n  const violations = binding.constantViolations.slice();\n  violations.unshift(binding.path);\n  return violations.filter(violation => {\n    violation = violation.resolve();\n    const status = violation._guessExecutionStatusRelativeTo(path);\n    if (functions && status === \"unknown\") functions.push(violation);\n    return status === \"before\";\n  });\n}\nfunction inferAnnotationFromBinaryExpression(name, path) {\n  const operator = path.node.operator;\n  const right = path.get(\"right\").resolve();\n  const left = path.get(\"left\").resolve();\n  let target;\n  if (left.isIdentifier({\n    name\n  })) {\n    target = right;\n  } else if (right.isIdentifier({\n    name\n  })) {\n    target = left;\n  }\n  if (target) {\n    if (operator === \"===\") {\n      return target.getTypeAnnotation();\n    }\n    if (BOOLEAN_NUMBER_BINARY_OPERATORS.includes(operator)) {\n      return numberTypeAnnotation();\n    }\n    return;\n  }\n  if (operator !== \"===\" && operator !== \"==\") return;\n  let typeofPath;\n  let typePath;\n  if (left.isUnaryExpression({\n    operator: \"typeof\"\n  })) {\n    typeofPath = left;\n    typePath = right;\n  } else if (right.isUnaryExpression({\n    operator: \"typeof\"\n  })) {\n    typeofPath = right;\n    typePath = left;\n  }\n  if (!typeofPath) return;\n  if (!typeofPath.get(\"argument\").isIdentifier({\n    name\n  })) return;\n  typePath = typePath.resolve();\n  if (!typePath.isLiteral()) return;\n  const typeValue = typePath.node.value;\n  if (typeof typeValue !== \"string\") return;\n  return createTypeAnnotationBasedOnTypeof(typeValue);\n}\nfunction getParentConditionalPath(binding, path, name) {\n  let parentPath;\n  while (parentPath = path.parentPath) {\n    if (parentPath.isIfStatement() || parentPath.isConditionalExpression()) {\n      if (path.key === \"test\") {\n        return;\n      }\n      return parentPath;\n    }\n    if (parentPath.isFunction()) {\n      if (parentPath.parentPath.scope.getBinding(name) !== binding) return;\n    }\n    path = parentPath;\n  }\n}\nfunction getConditionalAnnotation(binding, path, name) {\n  const ifStatement = getParentConditionalPath(binding, path, name);\n  if (!ifStatement) return;\n  const test = ifStatement.get(\"test\");\n  const paths = [test];\n  const types = [];\n  for (let i = 0; i < paths.length; i++) {\n    const path = paths[i];\n    if (path.isLogicalExpression()) {\n      if (path.node.operator === \"&&\") {\n        paths.push(path.get(\"left\"));\n        paths.push(path.get(\"right\"));\n      }\n    } else if (path.isBinaryExpression()) {\n      const type = inferAnnotationFromBinaryExpression(name, path);\n      if (type) types.push(type);\n    }\n  }\n  if (types.length) {\n    return {\n      typeAnnotation: (0, _util.createUnionType)(types),\n      ifStatement\n    };\n  }\n  return getConditionalAnnotation(binding, ifStatement, name);\n}\n\n//# sourceMappingURL=inferer-reference.js.map\n",
-      "start": 1727785257075,
-      "end": 1727785257117,
+      "start": 1728160681639,
+      "end": 1728160681751,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785257117,
-      "end": 1727785257117,
+      "start": 1728160681751,
+      "end": 1728160681751,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160681751,
+      "end": 1728160681751,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785257117,
-      "end": 1727785257117,
+      "start": 1728160681751,
+      "end": 1728160681752,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785257117,
-      "end": 1727785257117,
+      "start": 1728160681752,
+      "end": 1728160681752,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785257117,
-      "end": 1727785257117,
+      "start": 1728160681752,
+      "end": 1728160681752,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785257117,
-      "end": 1727785257117,
+      "start": 1728160681752,
+      "end": 1728160681752,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785257117,
-      "end": 1727785257117,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785257117,
-      "end": 1727785257117,
+      "start": 1728160681752,
+      "end": 1728160681752,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785257117,
-      "end": 1727785257117,
+      "start": 1728160681752,
+      "end": 1728160681752,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785257117,
-      "end": 1727785257117,
+      "start": 1728160681752,
+      "end": 1728160681752,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785257117,
-      "end": 1727785257117,
+      "start": 1728160681752,
+      "end": 1728160681752,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785257117,
-      "end": 1727785257117,
+      "start": 1728160681752,
+      "end": 1728160681752,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785257117,
-      "end": 1727785257117,
+      "start": 1728160681752,
+      "end": 1728160681752,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as infererReference } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/path/inference/inferer-reference.js?commonjs-exports\";\nimport { __require as require$$0 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/index.js?commonjs-wrapped\";\nimport require$$1 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/path/inference/util.js?commonjs-proxy\";\n\n\"use strict\";\n\nObject.defineProperty(infererReference, \"__esModule\", {\n  value: true\n});\nvar default_1 = infererReference.default = _default;\nvar _t = require$$0();\nvar _util = require$$1;\nconst {\n  BOOLEAN_NUMBER_BINARY_OPERATORS,\n  createTypeAnnotationBasedOnTypeof,\n  numberTypeAnnotation,\n  voidTypeAnnotation\n} = _t;\nfunction _default(node) {\n  if (!this.isReferenced()) return;\n  const binding = this.scope.getBinding(node.name);\n  if (binding) {\n    if (binding.identifier.typeAnnotation) {\n      return binding.identifier.typeAnnotation;\n    } else {\n      return getTypeAnnotationBindingConstantViolations(binding, this, node.name);\n    }\n  }\n  if (node.name === \"undefined\") {\n    return voidTypeAnnotation();\n  } else if (node.name === \"NaN\" || node.name === \"Infinity\") {\n    return numberTypeAnnotation();\n  } else if (node.name === \"arguments\") {}\n}\nfunction getTypeAnnotationBindingConstantViolations(binding, path, name) {\n  const types = [];\n  const functionConstantViolations = [];\n  let constantViolations = getConstantViolationsBefore(binding, path, functionConstantViolations);\n  const testType = getConditionalAnnotation(binding, path, name);\n  if (testType) {\n    const testConstantViolations = getConstantViolationsBefore(binding, testType.ifStatement);\n    constantViolations = constantViolations.filter(path => !testConstantViolations.includes(path));\n    types.push(testType.typeAnnotation);\n  }\n  if (constantViolations.length) {\n    constantViolations.push(...functionConstantViolations);\n    for (const violation of constantViolations) {\n      types.push(violation.getTypeAnnotation());\n    }\n  }\n  if (!types.length) {\n    return;\n  }\n  return (0, _util.createUnionType)(types);\n}\nfunction getConstantViolationsBefore(binding, path, functions) {\n  const violations = binding.constantViolations.slice();\n  violations.unshift(binding.path);\n  return violations.filter(violation => {\n    violation = violation.resolve();\n    const status = violation._guessExecutionStatusRelativeTo(path);\n    if (functions && status === \"unknown\") functions.push(violation);\n    return status === \"before\";\n  });\n}\nfunction inferAnnotationFromBinaryExpression(name, path) {\n  const operator = path.node.operator;\n  const right = path.get(\"right\").resolve();\n  const left = path.get(\"left\").resolve();\n  let target;\n  if (left.isIdentifier({\n    name\n  })) {\n    target = right;\n  } else if (right.isIdentifier({\n    name\n  })) {\n    target = left;\n  }\n  if (target) {\n    if (operator === \"===\") {\n      return target.getTypeAnnotation();\n    }\n    if (BOOLEAN_NUMBER_BINARY_OPERATORS.includes(operator)) {\n      return numberTypeAnnotation();\n    }\n    return;\n  }\n  if (operator !== \"===\" && operator !== \"==\") return;\n  let typeofPath;\n  let typePath;\n  if (left.isUnaryExpression({\n    operator: \"typeof\"\n  })) {\n    typeofPath = left;\n    typePath = right;\n  } else if (right.isUnaryExpression({\n    operator: \"typeof\"\n  })) {\n    typeofPath = right;\n    typePath = left;\n  }\n  if (!typeofPath) return;\n  if (!typeofPath.get(\"argument\").isIdentifier({\n    name\n  })) return;\n  typePath = typePath.resolve();\n  if (!typePath.isLiteral()) return;\n  const typeValue = typePath.node.value;\n  if (typeof typeValue !== \"string\") return;\n  return createTypeAnnotationBasedOnTypeof(typeValue);\n}\nfunction getParentConditionalPath(binding, path, name) {\n  let parentPath;\n  while (parentPath = path.parentPath) {\n    if (parentPath.isIfStatement() || parentPath.isConditionalExpression()) {\n      if (path.key === \"test\") {\n        return;\n      }\n      return parentPath;\n    }\n    if (parentPath.isFunction()) {\n      if (parentPath.parentPath.scope.getBinding(name) !== binding) return;\n    }\n    path = parentPath;\n  }\n}\nfunction getConditionalAnnotation(binding, path, name) {\n  const ifStatement = getParentConditionalPath(binding, path, name);\n  if (!ifStatement) return;\n  const test = ifStatement.get(\"test\");\n  const paths = [test];\n  const types = [];\n  for (let i = 0; i < paths.length; i++) {\n    const path = paths[i];\n    if (path.isLogicalExpression()) {\n      if (path.node.operator === \"&&\") {\n        paths.push(path.get(\"left\"));\n        paths.push(path.get(\"right\"));\n      }\n    } else if (path.isBinaryExpression()) {\n      const type = inferAnnotationFromBinaryExpression(name, path);\n      if (type) types.push(type);\n    }\n  }\n  if (types.length) {\n    return {\n      typeAnnotation: (0, _util.createUnionType)(types),\n      ifStatement\n    };\n  }\n  return getConditionalAnnotation(binding, ifStatement, name);\n}\n\n//# sourceMappingURL=inferer-reference.js.map\n\nexport { infererReference as __moduleExports, default_1 as default };",
-      "start": 1727785257117,
-      "end": 1727785257128,
+      "start": 1728160681752,
+      "end": 1728160681764,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160681764,
+      "end": 1728160681764,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785257128,
-      "end": 1727785257128,
+      "start": 1728160681764,
+      "end": 1728160681764,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785257128,
-      "end": 1727785257128,
+      "start": 1728160681764,
+      "end": 1728160681764,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785257128,
-      "end": 1727785257128,
+      "start": 1728160681764,
+      "end": 1728160681764,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785257128,
-      "end": 1727785257128,
+      "start": 1728160681764,
+      "end": 1728160681764,
       "order": "normal"
     }
   ]

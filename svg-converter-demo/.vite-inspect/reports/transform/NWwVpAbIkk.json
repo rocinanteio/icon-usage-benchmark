@@ -1,0 +1,129 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/modifications/appendToMemberExpression.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = appendToMemberExpression;\nvar _index = require(\"../builders/generated/index.js\");\nfunction appendToMemberExpression(member, append, computed = false) {\n  member.object = (0, _index.memberExpression)(member.object, member.property, member.computed);\n  member.property = append;\n  member.computed = !!computed;\n  return member;\n}\n\n//# sourceMappingURL=appendToMemberExpression.js.map\n",
+      "start": 1728160681517,
+      "end": 1728160681556,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1728160681556,
+      "end": 1728160681556,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160681556,
+      "end": 1728160681557,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1728160681557,
+      "end": 1728160681557,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1728160681557,
+      "end": 1728160681557,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1728160681557,
+      "end": 1728160681557,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1728160681557,
+      "end": 1728160681557,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1728160681557,
+      "end": 1728160681557,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1728160681557,
+      "end": 1728160681557,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1728160681557,
+      "end": 1728160681557,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1728160681557,
+      "end": 1728160681557,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1728160681557,
+      "end": 1728160681557,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1728160681557,
+      "end": 1728160681557,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as appendToMemberExpression_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/modifications/appendToMemberExpression.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/builders/generated/index.js?commonjs-proxy\";\n\n\"use strict\";\n\nObject.defineProperty(appendToMemberExpression_1, \"__esModule\", {\n  value: true\n});\nvar _default = appendToMemberExpression_1.default = appendToMemberExpression;\nvar _index = require$$0;\nfunction appendToMemberExpression(member, append, computed = false) {\n  member.object = (0, _index.memberExpression)(member.object, member.property, member.computed);\n  member.property = append;\n  member.computed = !!computed;\n  return member;\n}\n\n//# sourceMappingURL=appendToMemberExpression.js.map\n\nexport { appendToMemberExpression_1 as __moduleExports, _default as default };",
+      "start": 1728160681557,
+      "end": 1728160682453,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;AAAA,YAAY,CAAC;AACb;AACA,MAAM,CAAC,cAAc,CAAC,0BAAO,EAAE,YAAY,EAAE;AAC7C,EAAE,KAAK,EAAE,IAAI;AACb,CAAC,CAAC,CAAC;AACH,iDAAe,GAAG,wBAAwB,CAAC;AAC3C,IAAI,MAAM,GAAG,UAAyC,CAAC;AACvD,SAAS,wBAAwB,CAAC,MAAM,EAAE,MAAM,EAAE,QAAQ,GAAG,KAAK,EAAE;AACpE,EAAE,MAAM,CAAC,MAAM,GAAG,CAAC,CAAC,EAAE,MAAM,CAAC,gBAAgB,EAAE,MAAM,CAAC,MAAM,EAAE,MAAM,CAAC,QAAQ,EAAE,MAAM,CAAC,QAAQ,CAAC,CAAC;AAChG,EAAE,MAAM,CAAC,QAAQ,GAAG,MAAM,CAAC;AAC3B,EAAE,MAAM,CAAC,QAAQ,GAAG,CAAC,CAAC,QAAQ,CAAC;AAC/B,EAAE,OAAO,MAAM,CAAC;AAChB,CAAC;AACD;AACA"
+      }
+    },
+    {
+      "name": "inject",
+      "start": 1728160682454,
+      "end": 1728160682454,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1728160682454,
+      "end": 1728160682454,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1728160682454,
+      "end": 1728160682454,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1728160682455,
+      "end": 1728160682455,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1728160682455,
+      "end": 1728160682455,
+      "order": "normal"
+    }
+  ]
+}

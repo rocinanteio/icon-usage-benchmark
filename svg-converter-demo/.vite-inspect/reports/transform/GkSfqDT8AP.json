@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\nvar _index = require(\"./path/index.js\");\nvar _t = require(\"@babel/types\");\nvar _context = require(\"./path/context.js\");\nconst {\n  VISITOR_KEYS\n} = _t;\nclass TraversalContext {\n  constructor(scope, opts, state, parentPath) {\n    this.queue = null;\n    this.priorityQueue = null;\n    this.parentPath = parentPath;\n    this.scope = scope;\n    this.state = state;\n    this.opts = opts;\n  }\n  shouldVisit(node) {\n    const opts = this.opts;\n    if (opts.enter || opts.exit) return true;\n    if (opts[node.type]) return true;\n    const keys = VISITOR_KEYS[node.type];\n    if (!(keys != null && keys.length)) return false;\n    for (const key of keys) {\n      if (node[key]) {\n        return true;\n      }\n    }\n    return false;\n  }\n  create(node, container, key, listKey) {\n    return _index.default.get({\n      parentPath: this.parentPath,\n      parent: node,\n      container,\n      key: key,\n      listKey\n    });\n  }\n  maybeQueue(path, notPriority) {\n    if (this.queue) {\n      if (notPriority) {\n        this.queue.push(path);\n      } else {\n        this.priorityQueue.push(path);\n      }\n    }\n  }\n  visitMultiple(container, parent, listKey) {\n    if (container.length === 0) return false;\n    const queue = [];\n    for (let key = 0; key < container.length; key++) {\n      const node = container[key];\n      if (node && this.shouldVisit(node)) {\n        queue.push(this.create(parent, container, key, listKey));\n      }\n    }\n    return this.visitQueue(queue);\n  }\n  visitSingle(node, key) {\n    if (this.shouldVisit(node[key])) {\n      return this.visitQueue([this.create(node, node, key)]);\n    } else {\n      return false;\n    }\n  }\n  visitQueue(queue) {\n    this.queue = queue;\n    this.priorityQueue = [];\n    const visited = new WeakSet();\n    let stop = false;\n    let visitIndex = 0;\n    for (; visitIndex < queue.length;) {\n      const path = queue[visitIndex];\n      visitIndex++;\n      _context.resync.call(path);\n      if (path.contexts.length === 0 || path.contexts[path.contexts.length - 1] !== this) {\n        _context.pushContext.call(path, this);\n      }\n      if (path.key === null) continue;\n      const {\n        node\n      } = path;\n      if (visited.has(node)) continue;\n      if (node) visited.add(node);\n      if (path.visit()) {\n        stop = true;\n        break;\n      }\n      if (this.priorityQueue.length) {\n        stop = this.visitQueue(this.priorityQueue);\n        this.priorityQueue = [];\n        this.queue = queue;\n        if (stop) break;\n      }\n    }\n    for (let i = 0; i < visitIndex; i++) {\n      _context.popContext.call(queue[i]);\n    }\n    this.queue = null;\n    return stop;\n  }\n  visit(node, key) {\n    const nodes = node[key];\n    if (!nodes) return false;\n    if (Array.isArray(nodes)) {\n      return this.visitMultiple(nodes, node, key);\n    } else {\n      return this.visitSingle(node, key);\n    }\n  }\n}\nexports.default = TraversalContext;\n\n//# sourceMappingURL=context.js.map\n",
-      "start": 1727785256933,
-      "end": 1727785256951,
+      "start": 1728160680976,
+      "end": 1728160681112,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785256951,
-      "end": 1727785256951,
+      "start": 1728160681113,
+      "end": 1728160681113,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160681113,
+      "end": 1728160681113,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785256951,
-      "end": 1727785256951,
+      "start": 1728160681113,
+      "end": 1728160681113,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785256951,
-      "end": 1727785256951,
+      "start": 1728160681113,
+      "end": 1728160681113,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785256951,
-      "end": 1727785256951,
+      "start": 1728160681113,
+      "end": 1728160681113,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785256951,
-      "end": 1727785256951,
+      "start": 1728160681113,
+      "end": 1728160681113,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785256951,
-      "end": 1727785256951,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785256951,
-      "end": 1727785256951,
+      "start": 1728160681113,
+      "end": 1728160681113,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785256951,
-      "end": 1727785256951,
+      "start": 1728160681113,
+      "end": 1728160681113,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785256951,
-      "end": 1727785256951,
+      "start": 1728160681113,
+      "end": 1728160681113,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785256951,
-      "end": 1727785256951,
+      "start": 1728160681113,
+      "end": 1728160681113,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785256951,
-      "end": 1727785256951,
+      "start": 1728160681113,
+      "end": 1728160681113,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785256951,
-      "end": 1727785256951,
+      "start": 1728160681113,
+      "end": 1728160681113,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as context } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/context.js?commonjs-exports\";\nimport { __require as require$$0 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/path/index.js?commonjs-wrapped\";\nimport { __require as require$$1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/index.js?commonjs-wrapped\";\nimport { __require as require$$2 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/path/context.js?commonjs-wrapped\";\n\nvar hasRequiredContext;\n\nfunction requireContext () {\n\tif (hasRequiredContext) return context;\n\thasRequiredContext = 1;\n\t\"use strict\";\n\n\tObject.defineProperty(context, \"__esModule\", {\n\t  value: true\n\t});\n\tcontext.default = void 0;\n\tvar _index = require$$0();\n\tvar _t = require$$1();\n\tvar _context = require$$2();\n\tconst {\n\t  VISITOR_KEYS\n\t} = _t;\n\tclass TraversalContext {\n\t  constructor(scope, opts, state, parentPath) {\n\t    this.queue = null;\n\t    this.priorityQueue = null;\n\t    this.parentPath = parentPath;\n\t    this.scope = scope;\n\t    this.state = state;\n\t    this.opts = opts;\n\t  }\n\t  shouldVisit(node) {\n\t    const opts = this.opts;\n\t    if (opts.enter || opts.exit) return true;\n\t    if (opts[node.type]) return true;\n\t    const keys = VISITOR_KEYS[node.type];\n\t    if (!(keys != null && keys.length)) return false;\n\t    for (const key of keys) {\n\t      if (node[key]) {\n\t        return true;\n\t      }\n\t    }\n\t    return false;\n\t  }\n\t  create(node, container, key, listKey) {\n\t    return _index.default.get({\n\t      parentPath: this.parentPath,\n\t      parent: node,\n\t      container,\n\t      key: key,\n\t      listKey\n\t    });\n\t  }\n\t  maybeQueue(path, notPriority) {\n\t    if (this.queue) {\n\t      if (notPriority) {\n\t        this.queue.push(path);\n\t      } else {\n\t        this.priorityQueue.push(path);\n\t      }\n\t    }\n\t  }\n\t  visitMultiple(container, parent, listKey) {\n\t    if (container.length === 0) return false;\n\t    const queue = [];\n\t    for (let key = 0; key < container.length; key++) {\n\t      const node = container[key];\n\t      if (node && this.shouldVisit(node)) {\n\t        queue.push(this.create(parent, container, key, listKey));\n\t      }\n\t    }\n\t    return this.visitQueue(queue);\n\t  }\n\t  visitSingle(node, key) {\n\t    if (this.shouldVisit(node[key])) {\n\t      return this.visitQueue([this.create(node, node, key)]);\n\t    } else {\n\t      return false;\n\t    }\n\t  }\n\t  visitQueue(queue) {\n\t    this.queue = queue;\n\t    this.priorityQueue = [];\n\t    const visited = new WeakSet();\n\t    let stop = false;\n\t    let visitIndex = 0;\n\t    for (; visitIndex < queue.length;) {\n\t      const path = queue[visitIndex];\n\t      visitIndex++;\n\t      _context.resync.call(path);\n\t      if (path.contexts.length === 0 || path.contexts[path.contexts.length - 1] !== this) {\n\t        _context.pushContext.call(path, this);\n\t      }\n\t      if (path.key === null) continue;\n\t      const {\n\t        node\n\t      } = path;\n\t      if (visited.has(node)) continue;\n\t      if (node) visited.add(node);\n\t      if (path.visit()) {\n\t        stop = true;\n\t        break;\n\t      }\n\t      if (this.priorityQueue.length) {\n\t        stop = this.visitQueue(this.priorityQueue);\n\t        this.priorityQueue = [];\n\t        this.queue = queue;\n\t        if (stop) break;\n\t      }\n\t    }\n\t    for (let i = 0; i < visitIndex; i++) {\n\t      _context.popContext.call(queue[i]);\n\t    }\n\t    this.queue = null;\n\t    return stop;\n\t  }\n\t  visit(node, key) {\n\t    const nodes = node[key];\n\t    if (!nodes) return false;\n\t    if (Array.isArray(nodes)) {\n\t      return this.visitMultiple(nodes, node, key);\n\t    } else {\n\t      return this.visitSingle(node, key);\n\t    }\n\t  }\n\t}\n\tcontext.default = TraversalContext;\n\n\t//# sourceMappingURL=context.js.map\n\treturn context;\n}\n\nexport { requireContext as __require };",
-      "start": 1727785256951,
-      "end": 1727785256953,
+      "start": 1728160681113,
+      "end": 1728160681115,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160681115,
+      "end": 1728160681115,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785256953,
-      "end": 1727785256953,
+      "start": 1728160681115,
+      "end": 1728160681115,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785256953,
-      "end": 1727785256953,
+      "start": 1728160681115,
+      "end": 1728160681115,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785256953,
-      "end": 1727785256953,
+      "start": 1728160681115,
+      "end": 1728160681115,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785256953,
-      "end": 1727785256953,
+      "start": 1728160681115,
+      "end": 1728160681115,
       "order": "normal"
     }
   ]

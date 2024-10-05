@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = createTSUnionType;\nvar _index = require(\"../generated/index.js\");\nvar _removeTypeDuplicates = require(\"../../modifications/typescript/removeTypeDuplicates.js\");\nvar _index2 = require(\"../../validators/generated/index.js\");\nfunction createTSUnionType(typeAnnotations) {\n  const types = typeAnnotations.map(type => {\n    return (0, _index2.isTSTypeAnnotation)(type) ? type.typeAnnotation : type;\n  });\n  const flattened = (0, _removeTypeDuplicates.default)(types);\n  if (flattened.length === 1) {\n    return flattened[0];\n  } else {\n    return (0, _index.tsUnionType)(flattened);\n  }\n}\n\n//# sourceMappingURL=createTSUnionType.js.map\n",
-      "start": 1727785256814,
-      "end": 1727785256894,
+      "start": 1728160651988,
+      "end": 1728160652422,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785256894,
-      "end": 1727785256894,
+      "start": 1728160652422,
+      "end": 1728160652422,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160652422,
+      "end": 1728160652422,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785256894,
-      "end": 1727785256894,
+      "start": 1728160652422,
+      "end": 1728160652422,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785256894,
-      "end": 1727785256894,
+      "start": 1728160652422,
+      "end": 1728160652422,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785256894,
-      "end": 1727785256894,
+      "start": 1728160652423,
+      "end": 1728160652423,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785256894,
-      "end": 1727785256894,
+      "start": 1728160652423,
+      "end": 1728160652423,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785256894,
-      "end": 1727785256894,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785256894,
-      "end": 1727785256894,
+      "start": 1728160652423,
+      "end": 1728160652423,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785256894,
-      "end": 1727785256894,
+      "start": 1728160652423,
+      "end": 1728160652423,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785256894,
-      "end": 1727785256894,
+      "start": 1728160652423,
+      "end": 1728160652423,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785256894,
-      "end": 1727785256894,
+      "start": 1728160652423,
+      "end": 1728160652423,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785256894,
-      "end": 1727785256894,
+      "start": 1728160652423,
+      "end": 1728160652423,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785256894,
-      "end": 1727785256894,
+      "start": 1728160652423,
+      "end": 1728160652423,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as createTSUnionType_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/builders/typescript/createTSUnionType.js?commonjs-exports\";\nimport { __require as require$$0 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/builders/generated/index.js?commonjs-wrapped\";\nimport require$$1 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/modifications/typescript/removeTypeDuplicates.js?commonjs-proxy\";\nimport require$$2 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/validators/generated/index.js?commonjs-proxy\";\n\nvar hasRequiredCreateTSUnionType;\n\nfunction requireCreateTSUnionType () {\n\tif (hasRequiredCreateTSUnionType) return createTSUnionType_1;\n\thasRequiredCreateTSUnionType = 1;\n\t\"use strict\";\n\n\tObject.defineProperty(createTSUnionType_1, \"__esModule\", {\n\t  value: true\n\t});\n\tcreateTSUnionType_1.default = createTSUnionType;\n\tvar _index = require$$0();\n\tvar _removeTypeDuplicates = require$$1;\n\tvar _index2 = require$$2;\n\tfunction createTSUnionType(typeAnnotations) {\n\t  const types = typeAnnotations.map(type => {\n\t    return (0, _index2.isTSTypeAnnotation)(type) ? type.typeAnnotation : type;\n\t  });\n\t  const flattened = (0, _removeTypeDuplicates.default)(types);\n\t  if (flattened.length === 1) {\n\t    return flattened[0];\n\t  } else {\n\t    return (0, _index.tsUnionType)(flattened);\n\t  }\n\t}\n\n\t//# sourceMappingURL=createTSUnionType.js.map\n\treturn createTSUnionType_1;\n}\n\nexport { requireCreateTSUnionType as __require };",
-      "start": 1727785256894,
-      "end": 1727785257325,
+      "start": 1728160652423,
+      "end": 1728160681954,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160681954,
+      "end": 1728160681954,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785257325,
-      "end": 1727785257325,
+      "start": 1728160681954,
+      "end": 1728160681954,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785257325,
-      "end": 1727785257325,
+      "start": 1728160681955,
+      "end": 1728160681955,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785257325,
-      "end": 1727785257325,
+      "start": 1728160681955,
+      "end": 1728160681955,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785257325,
-      "end": 1727785257325,
+      "start": 1728160681955,
+      "end": 1728160681955,
       "order": "normal"
     }
   ]

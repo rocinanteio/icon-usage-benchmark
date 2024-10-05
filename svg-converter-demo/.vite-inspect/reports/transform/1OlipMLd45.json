@@ -1,0 +1,129 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/node_modules/@babel/generator/lib/node/whitespace.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.nodes = void 0;\nvar _t = require(\"@babel/types\");\nconst {\n  FLIPPED_ALIAS_KEYS,\n  isArrayExpression,\n  isAssignmentExpression,\n  isBinary,\n  isBlockStatement,\n  isCallExpression,\n  isFunction,\n  isIdentifier,\n  isLiteral,\n  isMemberExpression,\n  isObjectExpression,\n  isOptionalCallExpression,\n  isOptionalMemberExpression,\n  isStringLiteral\n} = _t;\nfunction crawlInternal(node, state) {\n  if (!node) return state;\n  if (isMemberExpression(node) || isOptionalMemberExpression(node)) {\n    crawlInternal(node.object, state);\n    if (node.computed) crawlInternal(node.property, state);\n  } else if (isBinary(node) || isAssignmentExpression(node)) {\n    crawlInternal(node.left, state);\n    crawlInternal(node.right, state);\n  } else if (isCallExpression(node) || isOptionalCallExpression(node)) {\n    state.hasCall = true;\n    crawlInternal(node.callee, state);\n  } else if (isFunction(node)) {\n    state.hasFunction = true;\n  } else if (isIdentifier(node)) {\n    state.hasHelper = state.hasHelper || node.callee && isHelper(node.callee);\n  }\n  return state;\n}\nfunction crawl(node) {\n  return crawlInternal(node, {\n    hasCall: false,\n    hasFunction: false,\n    hasHelper: false\n  });\n}\nfunction isHelper(node) {\n  if (!node) return false;\n  if (isMemberExpression(node)) {\n    return isHelper(node.object) || isHelper(node.property);\n  } else if (isIdentifier(node)) {\n    return node.name === \"require\" || node.name.charCodeAt(0) === 95;\n  } else if (isCallExpression(node)) {\n    return isHelper(node.callee);\n  } else if (isBinary(node) || isAssignmentExpression(node)) {\n    return isIdentifier(node.left) && isHelper(node.left) || isHelper(node.right);\n  } else {\n    return false;\n  }\n}\nfunction isType(node) {\n  return isLiteral(node) || isObjectExpression(node) || isArrayExpression(node) || isIdentifier(node) || isMemberExpression(node);\n}\nconst nodes = exports.nodes = {\n  AssignmentExpression(node) {\n    const state = crawl(node.right);\n    if (state.hasCall && state.hasHelper || state.hasFunction) {\n      return state.hasFunction ? 1 | 2 : 2;\n    }\n  },\n  SwitchCase(node, parent) {\n    return (!!node.consequent.length || parent.cases[0] === node ? 1 : 0) | (!node.consequent.length && parent.cases[parent.cases.length - 1] === node ? 2 : 0);\n  },\n  LogicalExpression(node) {\n    if (isFunction(node.left) || isFunction(node.right)) {\n      return 2;\n    }\n  },\n  Literal(node) {\n    if (isStringLiteral(node) && node.value === \"use strict\") {\n      return 2;\n    }\n  },\n  CallExpression(node) {\n    if (isFunction(node.callee) || isHelper(node)) {\n      return 1 | 2;\n    }\n  },\n  OptionalCallExpression(node) {\n    if (isFunction(node.callee)) {\n      return 1 | 2;\n    }\n  },\n  VariableDeclaration(node) {\n    for (let i = 0; i < node.declarations.length; i++) {\n      const declar = node.declarations[i];\n      let enabled = isHelper(declar.id) && !isType(declar.init);\n      if (!enabled && declar.init) {\n        const state = crawl(declar.init);\n        enabled = isHelper(declar.init) && state.hasCall || state.hasFunction;\n      }\n      if (enabled) {\n        return 1 | 2;\n      }\n    }\n  },\n  IfStatement(node) {\n    if (isBlockStatement(node.consequent)) {\n      return 1 | 2;\n    }\n  }\n};\nnodes.ObjectProperty = nodes.ObjectTypeProperty = nodes.ObjectMethod = function (node, parent) {\n  if (parent.properties[0] === node) {\n    return 1;\n  }\n};\nnodes.ObjectTypeCallProperty = function (node, parent) {\n  var _parent$properties;\n  if (parent.callProperties[0] === node && !((_parent$properties = parent.properties) != null && _parent$properties.length)) {\n    return 1;\n  }\n};\nnodes.ObjectTypeIndexer = function (node, parent) {\n  var _parent$properties2, _parent$callPropertie;\n  if (parent.indexers[0] === node && !((_parent$properties2 = parent.properties) != null && _parent$properties2.length) && !((_parent$callPropertie = parent.callProperties) != null && _parent$callPropertie.length)) {\n    return 1;\n  }\n};\nnodes.ObjectTypeInternalSlot = function (node, parent) {\n  var _parent$properties3, _parent$callPropertie2, _parent$indexers;\n  if (parent.internalSlots[0] === node && !((_parent$properties3 = parent.properties) != null && _parent$properties3.length) && !((_parent$callPropertie2 = parent.callProperties) != null && _parent$callPropertie2.length) && !((_parent$indexers = parent.indexers) != null && _parent$indexers.length)) {\n    return 1;\n  }\n};\n[[\"Function\", true], [\"Class\", true], [\"Loop\", true], [\"LabeledStatement\", true], [\"SwitchStatement\", true], [\"TryStatement\", true]].forEach(function ([type, amounts]) {\n  [type].concat(FLIPPED_ALIAS_KEYS[type] || []).forEach(function (type) {\n    const ret = amounts ? 1 | 2 : 0;\n    nodes[type] = () => ret;\n  });\n});\n\n//# sourceMappingURL=whitespace.js.map\n",
+      "start": 1728160681801,
+      "end": 1728160681917,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1728160681917,
+      "end": 1728160681917,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160681917,
+      "end": 1728160681917,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1728160681917,
+      "end": 1728160681917,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1728160681918,
+      "end": 1728160681918,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1728160681918,
+      "end": 1728160681918,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1728160681918,
+      "end": 1728160681918,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1728160681918,
+      "end": 1728160681918,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1728160681918,
+      "end": 1728160681918,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1728160681918,
+      "end": 1728160681918,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1728160681918,
+      "end": 1728160681918,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1728160681918,
+      "end": 1728160681918,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1728160681918,
+      "end": 1728160681918,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as whitespace } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/node_modules/@babel/generator/lib/node/whitespace.js?commonjs-exports\";\nimport { __require as require$$0 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/index.js?commonjs-wrapped\";\n\n\"use strict\";\n\nObject.defineProperty(whitespace, \"__esModule\", {\n  value: true\n});\nvar nodes_1 = whitespace.nodes = void 0;\nvar _t = require$$0();\nconst {\n  FLIPPED_ALIAS_KEYS,\n  isArrayExpression,\n  isAssignmentExpression,\n  isBinary,\n  isBlockStatement,\n  isCallExpression,\n  isFunction,\n  isIdentifier,\n  isLiteral,\n  isMemberExpression,\n  isObjectExpression,\n  isOptionalCallExpression,\n  isOptionalMemberExpression,\n  isStringLiteral\n} = _t;\nfunction crawlInternal(node, state) {\n  if (!node) return state;\n  if (isMemberExpression(node) || isOptionalMemberExpression(node)) {\n    crawlInternal(node.object, state);\n    if (node.computed) crawlInternal(node.property, state);\n  } else if (isBinary(node) || isAssignmentExpression(node)) {\n    crawlInternal(node.left, state);\n    crawlInternal(node.right, state);\n  } else if (isCallExpression(node) || isOptionalCallExpression(node)) {\n    state.hasCall = true;\n    crawlInternal(node.callee, state);\n  } else if (isFunction(node)) {\n    state.hasFunction = true;\n  } else if (isIdentifier(node)) {\n    state.hasHelper = state.hasHelper || node.callee && isHelper(node.callee);\n  }\n  return state;\n}\nfunction crawl(node) {\n  return crawlInternal(node, {\n    hasCall: false,\n    hasFunction: false,\n    hasHelper: false\n  });\n}\nfunction isHelper(node) {\n  if (!node) return false;\n  if (isMemberExpression(node)) {\n    return isHelper(node.object) || isHelper(node.property);\n  } else if (isIdentifier(node)) {\n    return node.name === \"require\" || node.name.charCodeAt(0) === 95;\n  } else if (isCallExpression(node)) {\n    return isHelper(node.callee);\n  } else if (isBinary(node) || isAssignmentExpression(node)) {\n    return isIdentifier(node.left) && isHelper(node.left) || isHelper(node.right);\n  } else {\n    return false;\n  }\n}\nfunction isType(node) {\n  return isLiteral(node) || isObjectExpression(node) || isArrayExpression(node) || isIdentifier(node) || isMemberExpression(node);\n}\nconst nodes = nodes_1 = whitespace.nodes = {\n  AssignmentExpression(node) {\n    const state = crawl(node.right);\n    if (state.hasCall && state.hasHelper || state.hasFunction) {\n      return state.hasFunction ? 1 | 2 : 2;\n    }\n  },\n  SwitchCase(node, parent) {\n    return (!!node.consequent.length || parent.cases[0] === node ? 1 : 0) | (!node.consequent.length && parent.cases[parent.cases.length - 1] === node ? 2 : 0);\n  },\n  LogicalExpression(node) {\n    if (isFunction(node.left) || isFunction(node.right)) {\n      return 2;\n    }\n  },\n  Literal(node) {\n    if (isStringLiteral(node) && node.value === \"use strict\") {\n      return 2;\n    }\n  },\n  CallExpression(node) {\n    if (isFunction(node.callee) || isHelper(node)) {\n      return 1 | 2;\n    }\n  },\n  OptionalCallExpression(node) {\n    if (isFunction(node.callee)) {\n      return 1 | 2;\n    }\n  },\n  VariableDeclaration(node) {\n    for (let i = 0; i < node.declarations.length; i++) {\n      const declar = node.declarations[i];\n      let enabled = isHelper(declar.id) && !isType(declar.init);\n      if (!enabled && declar.init) {\n        const state = crawl(declar.init);\n        enabled = isHelper(declar.init) && state.hasCall || state.hasFunction;\n      }\n      if (enabled) {\n        return 1 | 2;\n      }\n    }\n  },\n  IfStatement(node) {\n    if (isBlockStatement(node.consequent)) {\n      return 1 | 2;\n    }\n  }\n};\nnodes.ObjectProperty = nodes.ObjectTypeProperty = nodes.ObjectMethod = function (node, parent) {\n  if (parent.properties[0] === node) {\n    return 1;\n  }\n};\nnodes.ObjectTypeCallProperty = function (node, parent) {\n  var _parent$properties;\n  if (parent.callProperties[0] === node && !((_parent$properties = parent.properties) != null && _parent$properties.length)) {\n    return 1;\n  }\n};\nnodes.ObjectTypeIndexer = function (node, parent) {\n  var _parent$properties2, _parent$callPropertie;\n  if (parent.indexers[0] === node && !((_parent$properties2 = parent.properties) != null && _parent$properties2.length) && !((_parent$callPropertie = parent.callProperties) != null && _parent$callPropertie.length)) {\n    return 1;\n  }\n};\nnodes.ObjectTypeInternalSlot = function (node, parent) {\n  var _parent$properties3, _parent$callPropertie2, _parent$indexers;\n  if (parent.internalSlots[0] === node && !((_parent$properties3 = parent.properties) != null && _parent$properties3.length) && !((_parent$callPropertie2 = parent.callProperties) != null && _parent$callPropertie2.length) && !((_parent$indexers = parent.indexers) != null && _parent$indexers.length)) {\n    return 1;\n  }\n};\n[[\"Function\", true], [\"Class\", true], [\"Loop\", true], [\"LabeledStatement\", true], [\"SwitchStatement\", true], [\"TryStatement\", true]].forEach(function ([type, amounts]) {\n  [type].concat(FLIPPED_ALIAS_KEYS[type] || []).forEach(function (type) {\n    const ret = amounts ? 1 | 2 : 0;\n    nodes[type] = () => ret;\n  });\n});\n\n//# sourceMappingURL=whitespace.js.map\n\nexport { whitespace as __moduleExports, nodes_1 as nodes, whitespace as default };",
+      "start": 1728160681918,
+      "end": 1728160681919,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": "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"
+      }
+    },
+    {
+      "name": "inject",
+      "start": 1728160681919,
+      "end": 1728160681919,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1728160681919,
+      "end": 1728160681919,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1728160681919,
+      "end": 1728160681920,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1728160681920,
+      "end": 1728160681920,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1728160681920,
+      "end": 1728160681920,
+      "order": "normal"
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/helper-validator-identifier/lib/keyword.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.isKeyword = isKeyword;\nexports.isReservedWord = isReservedWord;\nexports.isStrictBindOnlyReservedWord = isStrictBindOnlyReservedWord;\nexports.isStrictBindReservedWord = isStrictBindReservedWord;\nexports.isStrictReservedWord = isStrictReservedWord;\nconst reservedWords = {\n  keyword: [\"break\", \"case\", \"catch\", \"continue\", \"debugger\", \"default\", \"do\", \"else\", \"finally\", \"for\", \"function\", \"if\", \"return\", \"switch\", \"throw\", \"try\", \"var\", \"const\", \"while\", \"with\", \"new\", \"this\", \"super\", \"class\", \"extends\", \"export\", \"import\", \"null\", \"true\", \"false\", \"in\", \"instanceof\", \"typeof\", \"void\", \"delete\"],\n  strict: [\"implements\", \"interface\", \"let\", \"package\", \"private\", \"protected\", \"public\", \"static\", \"yield\"],\n  strictBind: [\"eval\", \"arguments\"]\n};\nconst keywords = new Set(reservedWords.keyword);\nconst reservedWordsStrictSet = new Set(reservedWords.strict);\nconst reservedWordsStrictBindSet = new Set(reservedWords.strictBind);\nfunction isReservedWord(word, inModule) {\n  return inModule && word === \"await\" || word === \"enum\";\n}\nfunction isStrictReservedWord(word, inModule) {\n  return isReservedWord(word, inModule) || reservedWordsStrictSet.has(word);\n}\nfunction isStrictBindOnlyReservedWord(word) {\n  return reservedWordsStrictBindSet.has(word);\n}\nfunction isStrictBindReservedWord(word, inModule) {\n  return isStrictReservedWord(word, inModule) || isStrictBindOnlyReservedWord(word);\n}\nfunction isKeyword(word) {\n  return keywords.has(word);\n}\n\n//# sourceMappingURL=keyword.js.map\n",
+      "start": 1728160681916,
+      "end": 1728160682015,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1728160682015,
+      "end": 1728160682015,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160682015,
+      "end": 1728160682015,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1728160682015,
+      "end": 1728160682015,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1728160682015,
+      "end": 1728160682015,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1728160682015,
+      "end": 1728160682015,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1728160682015,
+      "end": 1728160682015,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1728160682015,
+      "end": 1728160682015,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1728160682015,
+      "end": 1728160682015,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1728160682015,
+      "end": 1728160682015,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1728160682015,
+      "end": 1728160682015,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1728160682015,
+      "end": 1728160682015,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1728160682015,
+      "end": 1728160682015,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as keyword } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/helper-validator-identifier/lib/keyword.js?commonjs-exports\";\n\n\"use strict\";\n\nObject.defineProperty(keyword, \"__esModule\", {\n  value: true\n});\nvar isKeyword_1 = keyword.isKeyword = isKeyword;\nvar isReservedWord_1 = keyword.isReservedWord = isReservedWord;\nvar isStrictBindOnlyReservedWord_1 = keyword.isStrictBindOnlyReservedWord = isStrictBindOnlyReservedWord;\nvar isStrictBindReservedWord_1 = keyword.isStrictBindReservedWord = isStrictBindReservedWord;\nvar isStrictReservedWord_1 = keyword.isStrictReservedWord = isStrictReservedWord;\nconst reservedWords = {\n  keyword: [\"break\", \"case\", \"catch\", \"continue\", \"debugger\", \"default\", \"do\", \"else\", \"finally\", \"for\", \"function\", \"if\", \"return\", \"switch\", \"throw\", \"try\", \"var\", \"const\", \"while\", \"with\", \"new\", \"this\", \"super\", \"class\", \"extends\", \"export\", \"import\", \"null\", \"true\", \"false\", \"in\", \"instanceof\", \"typeof\", \"void\", \"delete\"],\n  strict: [\"implements\", \"interface\", \"let\", \"package\", \"private\", \"protected\", \"public\", \"static\", \"yield\"],\n  strictBind: [\"eval\", \"arguments\"]\n};\nconst keywords = new Set(reservedWords.keyword);\nconst reservedWordsStrictSet = new Set(reservedWords.strict);\nconst reservedWordsStrictBindSet = new Set(reservedWords.strictBind);\nfunction isReservedWord(word, inModule) {\n  return inModule && word === \"await\" || word === \"enum\";\n}\nfunction isStrictReservedWord(word, inModule) {\n  return isReservedWord(word, inModule) || reservedWordsStrictSet.has(word);\n}\nfunction isStrictBindOnlyReservedWord(word) {\n  return reservedWordsStrictBindSet.has(word);\n}\nfunction isStrictBindReservedWord(word, inModule) {\n  return isStrictReservedWord(word, inModule) || isStrictBindOnlyReservedWord(word);\n}\nfunction isKeyword(word) {\n  return keywords.has(word);\n}\n\n//# sourceMappingURL=keyword.js.map\n\nexport { keyword as __moduleExports, isKeyword_1 as isKeyword, isReservedWord_1 as isReservedWord, isStrictBindOnlyReservedWord_1 as isStrictBindOnlyReservedWord, isStrictBindReservedWord_1 as isStrictBindReservedWord, isStrictReservedWord_1 as isStrictReservedWord, keyword as default };",
+      "start": 1728160682015,
+      "end": 1728160682016,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;AAAA,YAAY,CAAC;AACb;AACA,MAAM,CAAC,cAAc,CAAC,OAAO,EAAE,YAAY,EAAE;AAC7C,EAAE,KAAK,EAAE,IAAI;AACb,CAAC,CAAC,CAAC;AACH,mCAAiB,GAAG,SAAS,CAAC;AAC9B,6CAAsB,GAAG,cAAc,CAAC;AACxC,yEAAoC,GAAG,4BAA4B,CAAC;AACpE,iEAAgC,GAAG,wBAAwB,CAAC;AAC5D,yDAA4B,GAAG,oBAAoB,CAAC;AACpD,MAAM,aAAa,GAAG;AACtB,EAAE,OAAO,EAAE,CAAC,OAAO,EAAE,MAAM,EAAE,OAAO,EAAE,UAAU,EAAE,UAAU,EAAE,SAAS,EAAE,IAAI,EAAE,MAAM,EAAE,SAAS,EAAE,KAAK,EAAE,UAAU,EAAE,IAAI,EAAE,QAAQ,EAAE,QAAQ,EAAE,OAAO,EAAE,KAAK,EAAE,KAAK,EAAE,OAAO,EAAE,OAAO,EAAE,MAAM,EAAE,KAAK,EAAE,MAAM,EAAE,OAAO,EAAE,OAAO,EAAE,SAAS,EAAE,QAAQ,EAAE,QAAQ,EAAE,MAAM,EAAE,MAAM,EAAE,OAAO,EAAE,IAAI,EAAE,YAAY,EAAE,QAAQ,EAAE,MAAM,EAAE,QAAQ,CAAC;AACxU,EAAE,MAAM,EAAE,CAAC,YAAY,EAAE,WAAW,EAAE,KAAK,EAAE,SAAS,EAAE,SAAS,EAAE,WAAW,EAAE,QAAQ,EAAE,QAAQ,EAAE,OAAO,CAAC;AAC5G,EAAE,UAAU,EAAE,CAAC,MAAM,EAAE,WAAW,CAAC;AACnC,CAAC,CAAC;AACF,MAAM,QAAQ,GAAG,IAAI,GAAG,CAAC,aAAa,CAAC,OAAO,CAAC,CAAC;AAChD,MAAM,sBAAsB,GAAG,IAAI,GAAG,CAAC,aAAa,CAAC,MAAM,CAAC,CAAC;AAC7D,MAAM,0BAA0B,GAAG,IAAI,GAAG,CAAC,aAAa,CAAC,UAAU,CAAC,CAAC;AACrE,SAAS,cAAc,CAAC,IAAI,EAAE,QAAQ,EAAE;AACxC,EAAE,OAAO,QAAQ,IAAI,IAAI,KAAK,OAAO,IAAI,IAAI,KAAK,MAAM,CAAC;AACzD,CAAC;AACD,SAAS,oBAAoB,CAAC,IAAI,EAAE,QAAQ,EAAE;AAC9C,EAAE,OAAO,cAAc,CAAC,IAAI,EAAE,QAAQ,CAAC,IAAI,sBAAsB,CAAC,GAAG,CAAC,IAAI,CAAC,CAAC;AAC5E,CAAC;AACD,SAAS,4BAA4B,CAAC,IAAI,EAAE;AAC5C,EAAE,OAAO,0BAA0B,CAAC,GAAG,CAAC,IAAI,CAAC,CAAC;AAC9C,CAAC;AACD,SAAS,wBAAwB,CAAC,IAAI,EAAE,QAAQ,EAAE;AAClD,EAAE,OAAO,oBAAoB,CAAC,IAAI,EAAE,QAAQ,CAAC,IAAI,4BAA4B,CAAC,IAAI,CAAC,CAAC;AACpF,CAAC;AACD,SAAS,SAAS,CAAC,IAAI,EAAE;AACzB,EAAE,OAAO,QAAQ,CAAC,GAAG,CAAC,IAAI,CAAC,CAAC;AAC5B,CAAC;AACD;AACA"
+      }
+    },
+    {
+      "name": "inject",
+      "start": 1728160682016,
+      "end": 1728160682016,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1728160682016,
+      "end": 1728160682016,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1728160682016,
+      "end": 1728160682016,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1728160682016,
+      "end": 1728160682016,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1728160682016,
+      "end": 1728160682016,
+      "order": "normal"
+    }
+  ]
+}

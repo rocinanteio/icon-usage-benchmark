@@ -1,0 +1,129 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/validators/is.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = is;\nvar _shallowEqual = require(\"../utils/shallowEqual.js\");\nvar _isType = require(\"./isType.js\");\nvar _isPlaceholderType = require(\"./isPlaceholderType.js\");\nvar _index = require(\"../definitions/index.js\");\nfunction is(type, node, opts) {\n  if (!node) return false;\n  const matches = (0, _isType.default)(node.type, type);\n  if (!matches) {\n    if (!opts && node.type === \"Placeholder\" && type in _index.FLIPPED_ALIAS_KEYS) {\n      return (0, _isPlaceholderType.default)(node.expectedNode, type);\n    }\n    return false;\n  }\n  if (opts === undefined) {\n    return true;\n  } else {\n    return (0, _shallowEqual.default)(node, opts);\n  }\n}\n\n//# sourceMappingURL=is.js.map\n",
+      "start": 1728160681546,
+      "end": 1728160681593,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1728160681593,
+      "end": 1728160681593,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160681593,
+      "end": 1728160681593,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1728160681593,
+      "end": 1728160681593,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1728160681593,
+      "end": 1728160681593,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1728160681593,
+      "end": 1728160681593,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1728160681593,
+      "end": 1728160681593,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1728160681593,
+      "end": 1728160681593,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1728160681593,
+      "end": 1728160681593,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1728160681594,
+      "end": 1728160681594,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1728160681594,
+      "end": 1728160681594,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1728160681594,
+      "end": 1728160681594,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1728160681594,
+      "end": 1728160681594,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as is_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/validators/is.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/utils/shallowEqual.js?commonjs-proxy\";\nimport { __require as require$$1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/validators/isType.js?commonjs-wrapped\";\nimport { __require as require$$2 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/validators/isPlaceholderType.js?commonjs-wrapped\";\nimport { __require as require$$3 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/definitions/index.js?commonjs-wrapped\";\n\nvar hasRequiredIs;\n\nfunction requireIs () {\n\tif (hasRequiredIs) return is_1;\n\thasRequiredIs = 1;\n\t\"use strict\";\n\n\tObject.defineProperty(is_1, \"__esModule\", {\n\t  value: true\n\t});\n\tis_1.default = is;\n\tvar _shallowEqual = require$$0;\n\tvar _isType = require$$1();\n\tvar _isPlaceholderType = require$$2();\n\tvar _index = require$$3();\n\tfunction is(type, node, opts) {\n\t  if (!node) return false;\n\t  const matches = (0, _isType.default)(node.type, type);\n\t  if (!matches) {\n\t    if (!opts && node.type === \"Placeholder\" && type in _index.FLIPPED_ALIAS_KEYS) {\n\t      return (0, _isPlaceholderType.default)(node.expectedNode, type);\n\t    }\n\t    return false;\n\t  }\n\t  if (opts === undefined) {\n\t    return true;\n\t  } else {\n\t    return (0, _shallowEqual.default)(node, opts);\n\t  }\n\t}\n\n\t//# sourceMappingURL=is.js.map\n\treturn is_1;\n}\n\nexport { requireIs as __require };",
+      "start": 1728160681594,
+      "end": 1728160682402,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;;;;;;;;;CAAA,YAAY,CAAC;AACb;CACA,MAAM,CAAC,cAAc,CAAC,IAAO,EAAE,YAAY,EAAE;CAC7C,EAAE,KAAK,EAAE,IAAI;CACb,CAAC,CAAC,CAAC;AACH,aAAe,GAAG,EAAE,CAAC;CACrB,IAAI,aAAa,GAAG,UAAmC,CAAC;CACxD,IAAI,OAAO,GAAG,YAAsB,CAAC;CACrC,IAAI,kBAAkB,GAAG,YAAiC,CAAC;CAC3D,IAAI,MAAM,GAAG,YAAkC,CAAC;CAChD,SAAS,EAAE,CAAC,IAAI,EAAE,IAAI,EAAE,IAAI,EAAE;CAC9B,EAAE,IAAI,CAAC,IAAI,EAAE,OAAO,KAAK,CAAC;CAC1B,EAAE,MAAM,OAAO,GAAG,CAAC,CAAC,EAAE,OAAO,CAAC,OAAO,EAAE,IAAI,CAAC,IAAI,EAAE,IAAI,CAAC,CAAC;CACxD,EAAE,IAAI,CAAC,OAAO,EAAE;CAChB,IAAI,IAAI,CAAC,IAAI,IAAI,IAAI,CAAC,IAAI,KAAK,aAAa,IAAI,IAAI,IAAI,MAAM,CAAC,kBAAkB,EAAE;CACnF,MAAM,OAAO,CAAC,CAAC,EAAE,kBAAkB,CAAC,OAAO,EAAE,IAAI,CAAC,YAAY,EAAE,IAAI,CAAC,CAAC;CACtE,KAAK;CACL,IAAI,OAAO,KAAK,CAAC;CACjB,GAAG;CACH,EAAE,IAAI,IAAI,KAAK,SAAS,EAAE;CAC1B,IAAI,OAAO,IAAI,CAAC;CAChB,GAAG,MAAM;CACT,IAAI,OAAO,CAAC,CAAC,EAAE,aAAa,CAAC,OAAO,EAAE,IAAI,EAAE,IAAI,CAAC,CAAC;CAClD,GAAG;CACH,CAAC;AACD;CACA"
+      }
+    },
+    {
+      "name": "inject",
+      "start": 1728160682402,
+      "end": 1728160682402,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1728160682402,
+      "end": 1728160682402,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1728160682402,
+      "end": 1728160682402,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1728160682402,
+      "end": 1728160682402,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1728160682402,
+      "end": 1728160682402,
+      "order": "normal"
+    }
+  ]
+}

@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.isBindingIdentifier = isBindingIdentifier;\nexports.isBlockScoped = isBlockScoped;\nexports.isExpression = isExpression;\nexports.isFlow = isFlow;\nexports.isForAwaitStatement = isForAwaitStatement;\nexports.isGenerated = isGenerated;\nexports.isPure = isPure;\nexports.isReferenced = isReferenced;\nexports.isReferencedIdentifier = isReferencedIdentifier;\nexports.isReferencedMemberExpression = isReferencedMemberExpression;\nexports.isRestProperty = isRestProperty;\nexports.isScope = isScope;\nexports.isSpreadProperty = isSpreadProperty;\nexports.isStatement = isStatement;\nexports.isUser = isUser;\nexports.isVar = isVar;\nvar _t = require(\"@babel/types\");\nconst {\n  isBinding,\n  isBlockScoped: nodeIsBlockScoped,\n  isExportDeclaration,\n  isExpression: nodeIsExpression,\n  isFlow: nodeIsFlow,\n  isForStatement,\n  isForXStatement,\n  isIdentifier,\n  isImportDeclaration,\n  isImportSpecifier,\n  isJSXIdentifier,\n  isJSXMemberExpression,\n  isMemberExpression,\n  isRestElement: nodeIsRestElement,\n  isReferenced: nodeIsReferenced,\n  isScope: nodeIsScope,\n  isStatement: nodeIsStatement,\n  isVar: nodeIsVar,\n  isVariableDeclaration,\n  react,\n  isForOfStatement\n} = _t;\nconst {\n  isCompatTag\n} = react;\nfunction isReferencedIdentifier(opts) {\n  const {\n    node,\n    parent\n  } = this;\n  if (!isIdentifier(node, opts) && !isJSXMemberExpression(parent, opts)) {\n    if (isJSXIdentifier(node, opts)) {\n      if (isCompatTag(node.name)) return false;\n    } else {\n      return false;\n    }\n  }\n  return nodeIsReferenced(node, parent, this.parentPath.parent);\n}\nfunction isReferencedMemberExpression() {\n  const {\n    node,\n    parent\n  } = this;\n  return isMemberExpression(node) && nodeIsReferenced(node, parent);\n}\nfunction isBindingIdentifier() {\n  const {\n    node,\n    parent\n  } = this;\n  const grandparent = this.parentPath.parent;\n  return isIdentifier(node) && isBinding(node, parent, grandparent);\n}\nfunction isStatement() {\n  const {\n    node,\n    parent\n  } = this;\n  if (nodeIsStatement(node)) {\n    if (isVariableDeclaration(node)) {\n      if (isForXStatement(parent, {\n        left: node\n      })) return false;\n      if (isForStatement(parent, {\n        init: node\n      })) return false;\n    }\n    return true;\n  } else {\n    return false;\n  }\n}\nfunction isExpression() {\n  if (this.isIdentifier()) {\n    return this.isReferencedIdentifier();\n  } else {\n    return nodeIsExpression(this.node);\n  }\n}\nfunction isScope() {\n  return nodeIsScope(this.node, this.parent);\n}\nfunction isReferenced() {\n  return nodeIsReferenced(this.node, this.parent);\n}\nfunction isBlockScoped() {\n  return nodeIsBlockScoped(this.node);\n}\nfunction isVar() {\n  return nodeIsVar(this.node);\n}\nfunction isUser() {\n  return this.node && !!this.node.loc;\n}\nfunction isGenerated() {\n  return !this.isUser();\n}\nfunction isPure(constantsOnly) {\n  return this.scope.isPure(this.node, constantsOnly);\n}\nfunction isFlow() {\n  const {\n    node\n  } = this;\n  if (nodeIsFlow(node)) {\n    return true;\n  } else if (isImportDeclaration(node)) {\n    return node.importKind === \"type\" || node.importKind === \"typeof\";\n  } else if (isExportDeclaration(node)) {\n    return node.exportKind === \"type\";\n  } else if (isImportSpecifier(node)) {\n    return node.importKind === \"type\" || node.importKind === \"typeof\";\n  } else {\n    return false;\n  }\n}\nfunction isRestProperty() {\n  var _this$parentPath;\n  return nodeIsRestElement(this.node) && ((_this$parentPath = this.parentPath) == null ? void 0 : _this$parentPath.isObjectPattern());\n}\nfunction isSpreadProperty() {\n  var _this$parentPath2;\n  return nodeIsRestElement(this.node) && ((_this$parentPath2 = this.parentPath) == null ? void 0 : _this$parentPath2.isObjectExpression());\n}\nfunction isForAwaitStatement() {\n  return isForOfStatement(this.node, {\n    await: true\n  });\n}\n{\n  exports.isExistentialTypeParam = function isExistentialTypeParam() {\n    throw new Error(\"`path.isExistentialTypeParam` has been renamed to `path.isExistsTypeAnnotation()` in Babel 7.\");\n  };\n  exports.isNumericLiteralTypeAnnotation = function isNumericLiteralTypeAnnotation() {\n    throw new Error(\"`path.isNumericLiteralTypeAnnotation()` has been renamed to `path.isNumberLiteralTypeAnnotation()` in Babel 7.\");\n  };\n}\n\n//# sourceMappingURL=virtual-types-validator.js.map\n",
-      "start": 1727785256934,
-      "end": 1727785256954,
+      "start": 1728160680973,
+      "end": 1728160681053,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785256954,
-      "end": 1727785256954,
+      "start": 1728160681053,
+      "end": 1728160681053,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160681053,
+      "end": 1728160681053,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785256954,
-      "end": 1727785256954,
+      "start": 1728160681053,
+      "end": 1728160681053,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785256954,
-      "end": 1727785256954,
+      "start": 1728160681054,
+      "end": 1728160681054,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785256954,
-      "end": 1727785256954,
+      "start": 1728160681054,
+      "end": 1728160681054,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785256954,
-      "end": 1727785256954,
+      "start": 1728160681054,
+      "end": 1728160681054,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785256954,
-      "end": 1727785256954,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785256954,
-      "end": 1727785256954,
+      "start": 1728160681054,
+      "end": 1728160681054,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785256954,
-      "end": 1727785256954,
+      "start": 1728160681054,
+      "end": 1728160681054,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785256954,
-      "end": 1727785256954,
+      "start": 1728160681054,
+      "end": 1728160681054,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785256954,
-      "end": 1727785256954,
+      "start": 1728160681054,
+      "end": 1728160681054,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785256954,
-      "end": 1727785256954,
+      "start": 1728160681054,
+      "end": 1728160681054,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785256954,
-      "end": 1727785256954,
+      "start": 1728160681054,
+      "end": 1728160681054,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as virtualTypesValidator } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/path/lib/virtual-types-validator.js?commonjs-exports\";\nimport { __require as require$$0 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/index.js?commonjs-wrapped\";\n\nvar isNumericLiteralTypeAnnotation;\nvar isExistentialTypeParam;\n\"use strict\";\n\nObject.defineProperty(virtualTypesValidator, \"__esModule\", {\n  value: true\n});\nvar isBindingIdentifier_1 = virtualTypesValidator.isBindingIdentifier = isBindingIdentifier;\nvar isBlockScoped_1 = virtualTypesValidator.isBlockScoped = isBlockScoped;\nvar isExpression_1 = virtualTypesValidator.isExpression = isExpression;\nvar isFlow_1 = virtualTypesValidator.isFlow = isFlow;\nvar isForAwaitStatement_1 = virtualTypesValidator.isForAwaitStatement = isForAwaitStatement;\nvar isGenerated_1 = virtualTypesValidator.isGenerated = isGenerated;\nvar isPure_1 = virtualTypesValidator.isPure = isPure;\nvar isReferenced_1 = virtualTypesValidator.isReferenced = isReferenced;\nvar isReferencedIdentifier_1 = virtualTypesValidator.isReferencedIdentifier = isReferencedIdentifier;\nvar isReferencedMemberExpression_1 = virtualTypesValidator.isReferencedMemberExpression = isReferencedMemberExpression;\nvar isRestProperty_1 = virtualTypesValidator.isRestProperty = isRestProperty;\nvar isScope_1 = virtualTypesValidator.isScope = isScope;\nvar isSpreadProperty_1 = virtualTypesValidator.isSpreadProperty = isSpreadProperty;\nvar isStatement_1 = virtualTypesValidator.isStatement = isStatement;\nvar isUser_1 = virtualTypesValidator.isUser = isUser;\nvar isVar_1 = virtualTypesValidator.isVar = isVar;\nvar _t = require$$0();\nconst {\n  isBinding,\n  isBlockScoped: nodeIsBlockScoped,\n  isExportDeclaration,\n  isExpression: nodeIsExpression,\n  isFlow: nodeIsFlow,\n  isForStatement,\n  isForXStatement,\n  isIdentifier,\n  isImportDeclaration,\n  isImportSpecifier,\n  isJSXIdentifier,\n  isJSXMemberExpression,\n  isMemberExpression,\n  isRestElement: nodeIsRestElement,\n  isReferenced: nodeIsReferenced,\n  isScope: nodeIsScope,\n  isStatement: nodeIsStatement,\n  isVar: nodeIsVar,\n  isVariableDeclaration,\n  react,\n  isForOfStatement\n} = _t;\nconst {\n  isCompatTag\n} = react;\nfunction isReferencedIdentifier(opts) {\n  const {\n    node,\n    parent\n  } = this;\n  if (!isIdentifier(node, opts) && !isJSXMemberExpression(parent, opts)) {\n    if (isJSXIdentifier(node, opts)) {\n      if (isCompatTag(node.name)) return false;\n    } else {\n      return false;\n    }\n  }\n  return nodeIsReferenced(node, parent, this.parentPath.parent);\n}\nfunction isReferencedMemberExpression() {\n  const {\n    node,\n    parent\n  } = this;\n  return isMemberExpression(node) && nodeIsReferenced(node, parent);\n}\nfunction isBindingIdentifier() {\n  const {\n    node,\n    parent\n  } = this;\n  const grandparent = this.parentPath.parent;\n  return isIdentifier(node) && isBinding(node, parent, grandparent);\n}\nfunction isStatement() {\n  const {\n    node,\n    parent\n  } = this;\n  if (nodeIsStatement(node)) {\n    if (isVariableDeclaration(node)) {\n      if (isForXStatement(parent, {\n        left: node\n      })) return false;\n      if (isForStatement(parent, {\n        init: node\n      })) return false;\n    }\n    return true;\n  } else {\n    return false;\n  }\n}\nfunction isExpression() {\n  if (this.isIdentifier()) {\n    return this.isReferencedIdentifier();\n  } else {\n    return nodeIsExpression(this.node);\n  }\n}\nfunction isScope() {\n  return nodeIsScope(this.node, this.parent);\n}\nfunction isReferenced() {\n  return nodeIsReferenced(this.node, this.parent);\n}\nfunction isBlockScoped() {\n  return nodeIsBlockScoped(this.node);\n}\nfunction isVar() {\n  return nodeIsVar(this.node);\n}\nfunction isUser() {\n  return this.node && !!this.node.loc;\n}\nfunction isGenerated() {\n  return !this.isUser();\n}\nfunction isPure(constantsOnly) {\n  return this.scope.isPure(this.node, constantsOnly);\n}\nfunction isFlow() {\n  const {\n    node\n  } = this;\n  if (nodeIsFlow(node)) {\n    return true;\n  } else if (isImportDeclaration(node)) {\n    return node.importKind === \"type\" || node.importKind === \"typeof\";\n  } else if (isExportDeclaration(node)) {\n    return node.exportKind === \"type\";\n  } else if (isImportSpecifier(node)) {\n    return node.importKind === \"type\" || node.importKind === \"typeof\";\n  } else {\n    return false;\n  }\n}\nfunction isRestProperty() {\n  var _this$parentPath;\n  return nodeIsRestElement(this.node) && ((_this$parentPath = this.parentPath) == null ? void 0 : _this$parentPath.isObjectPattern());\n}\nfunction isSpreadProperty() {\n  var _this$parentPath2;\n  return nodeIsRestElement(this.node) && ((_this$parentPath2 = this.parentPath) == null ? void 0 : _this$parentPath2.isObjectExpression());\n}\nfunction isForAwaitStatement() {\n  return isForOfStatement(this.node, {\n    await: true\n  });\n}\n{\n  isExistentialTypeParam = virtualTypesValidator.isExistentialTypeParam = function isExistentialTypeParam() {\n    throw new Error(\"`path.isExistentialTypeParam` has been renamed to `path.isExistsTypeAnnotation()` in Babel 7.\");\n  };\n  isNumericLiteralTypeAnnotation = virtualTypesValidator.isNumericLiteralTypeAnnotation = function isNumericLiteralTypeAnnotation() {\n    throw new Error(\"`path.isNumericLiteralTypeAnnotation()` has been renamed to `path.isNumberLiteralTypeAnnotation()` in Babel 7.\");\n  };\n}\n\n//# sourceMappingURL=virtual-types-validator.js.map\n\nexport { virtualTypesValidator as __moduleExports, isBindingIdentifier_1 as isBindingIdentifier, isBlockScoped_1 as isBlockScoped, isExpression_1 as isExpression, isFlow_1 as isFlow, isForAwaitStatement_1 as isForAwaitStatement, isGenerated_1 as isGenerated, isPure_1 as isPure, isReferenced_1 as isReferenced, isReferencedIdentifier_1 as isReferencedIdentifier, isReferencedMemberExpression_1 as isReferencedMemberExpression, isRestProperty_1 as isRestProperty, isScope_1 as isScope, isSpreadProperty_1 as isSpreadProperty, isStatement_1 as isStatement, isUser_1 as isUser, isVar_1 as isVar, isExistentialTypeParam, isNumericLiteralTypeAnnotation, virtualTypesValidator as default };",
-      "start": 1727785256954,
-      "end": 1727785256955,
+      "start": 1728160681054,
+      "end": 1728160681055,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160681055,
+      "end": 1728160681055,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785256955,
-      "end": 1727785256955,
+      "start": 1728160681055,
+      "end": 1728160681055,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785256955,
-      "end": 1727785256955,
+      "start": 1728160681055,
+      "end": 1728160681055,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785256955,
-      "end": 1727785256955,
+      "start": 1728160681055,
+      "end": 1728160681055,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785256955,
-      "end": 1727785256955,
+      "start": 1728160681055,
+      "end": 1728160681055,
       "order": "normal"
     }
   ]

@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = validateNode;\nvar _validate = require(\"../validators/validate.js\");\nvar _index = require(\"../index.js\");\nfunction validateNode(node) {\n  const keys = _index.BUILDER_KEYS[node.type];\n  for (const key of keys) {\n    (0, _validate.default)(node, key, node[key]);\n  }\n  return node;\n}\n\n//# sourceMappingURL=validateNode.js.map\n",
-      "start": 1727785256953,
-      "end": 1727785257046,
+      "start": 1728160681129,
+      "end": 1728160681212,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785257046,
-      "end": 1727785257046,
+      "start": 1728160681213,
+      "end": 1728160681213,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160681213,
+      "end": 1728160681213,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785257046,
-      "end": 1727785257046,
+      "start": 1728160681213,
+      "end": 1728160681213,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785257046,
-      "end": 1727785257046,
+      "start": 1728160681213,
+      "end": 1728160681213,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785257046,
-      "end": 1727785257046,
+      "start": 1728160681213,
+      "end": 1728160681213,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785257046,
-      "end": 1727785257046,
+      "start": 1728160681213,
+      "end": 1728160681213,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785257046,
-      "end": 1727785257046,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785257046,
-      "end": 1727785257046,
+      "start": 1728160681213,
+      "end": 1728160681213,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785257046,
-      "end": 1727785257046,
+      "start": 1728160681213,
+      "end": 1728160681213,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785257046,
-      "end": 1727785257046,
+      "start": 1728160681213,
+      "end": 1728160681213,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785257046,
-      "end": 1727785257046,
+      "start": 1728160681213,
+      "end": 1728160681213,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785257046,
-      "end": 1727785257046,
+      "start": 1728160681213,
+      "end": 1728160681213,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785257046,
-      "end": 1727785257046,
+      "start": 1728160681213,
+      "end": 1728160681213,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as validateNode_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/builders/validateNode.js?commonjs-exports\";\nimport { __require as require$$0 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/validators/validate.js?commonjs-wrapped\";\nimport { __require as require$$1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/index.js?commonjs-wrapped\";\n\nvar hasRequiredValidateNode;\n\nfunction requireValidateNode () {\n\tif (hasRequiredValidateNode) return validateNode_1;\n\thasRequiredValidateNode = 1;\n\t\"use strict\";\n\n\tObject.defineProperty(validateNode_1, \"__esModule\", {\n\t  value: true\n\t});\n\tvalidateNode_1.default = validateNode;\n\tvar _validate = require$$0();\n\tvar _index = require$$1();\n\tfunction validateNode(node) {\n\t  const keys = _index.BUILDER_KEYS[node.type];\n\t  for (const key of keys) {\n\t    (0, _validate.default)(node, key, node[key]);\n\t  }\n\t  return node;\n\t}\n\n\t//# sourceMappingURL=validateNode.js.map\n\treturn validateNode_1;\n}\n\nexport { requireValidateNode as __require };",
-      "start": 1727785257046,
-      "end": 1727785257278,
+      "start": 1728160681213,
+      "end": 1728160681895,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160681895,
+      "end": 1728160681895,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785257278,
-      "end": 1727785257278,
+      "start": 1728160681895,
+      "end": 1728160681895,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785257278,
-      "end": 1727785257278,
+      "start": 1728160681895,
+      "end": 1728160681895,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785257278,
-      "end": 1727785257278,
+      "start": 1728160681895,
+      "end": 1728160681895,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785257278,
-      "end": 1727785257278,
+      "start": 1728160681895,
+      "end": 1728160681895,
       "order": "normal"
     }
   ]

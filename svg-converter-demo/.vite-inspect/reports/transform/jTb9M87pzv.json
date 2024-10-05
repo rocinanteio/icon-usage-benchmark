@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.Var = exports.User = exports.Statement = exports.SpreadProperty = exports.Scope = exports.RestProperty = exports.ReferencedMemberExpression = exports.ReferencedIdentifier = exports.Referenced = exports.Pure = exports.NumericLiteralTypeAnnotation = exports.Generated = exports.ForAwaitStatement = exports.Flow = exports.Expression = exports.ExistentialTypeParam = exports.BlockScoped = exports.BindingIdentifier = void 0;\nconst ReferencedIdentifier = exports.ReferencedIdentifier = [\"Identifier\", \"JSXIdentifier\"];\nconst ReferencedMemberExpression = exports.ReferencedMemberExpression = [\"MemberExpression\"];\nconst BindingIdentifier = exports.BindingIdentifier = [\"Identifier\"];\nconst Statement = exports.Statement = [\"Statement\"];\nconst Expression = exports.Expression = [\"Expression\"];\nconst Scope = exports.Scope = [\"Scopable\", \"Pattern\"];\nconst Referenced = exports.Referenced = null;\nconst BlockScoped = exports.BlockScoped = null;\nconst Var = exports.Var = [\"VariableDeclaration\"];\nconst User = exports.User = null;\nconst Generated = exports.Generated = null;\nconst Pure = exports.Pure = null;\nconst Flow = exports.Flow = [\"Flow\", \"ImportDeclaration\", \"ExportDeclaration\", \"ImportSpecifier\"];\nconst RestProperty = exports.RestProperty = [\"RestElement\"];\nconst SpreadProperty = exports.SpreadProperty = [\"RestElement\"];\nconst ExistentialTypeParam = exports.ExistentialTypeParam = [\"ExistsTypeAnnotation\"];\nconst NumericLiteralTypeAnnotation = exports.NumericLiteralTypeAnnotation = [\"NumberLiteralTypeAnnotation\"];\nconst ForAwaitStatement = exports.ForAwaitStatement = [\"ForOfStatement\"];\n\n//# sourceMappingURL=virtual-types.js.map\n",
-      "start": 1727785256934,
-      "end": 1727785256953,
+      "start": 1728160680971,
+      "end": 1728160681051,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785256953,
-      "end": 1727785256953,
+      "start": 1728160681052,
+      "end": 1728160681052,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160681052,
+      "end": 1728160681052,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785256953,
-      "end": 1727785256953,
+      "start": 1728160681052,
+      "end": 1728160681052,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785256953,
-      "end": 1727785256953,
+      "start": 1728160681052,
+      "end": 1728160681052,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785256953,
-      "end": 1727785256953,
+      "start": 1728160681052,
+      "end": 1728160681052,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785256953,
-      "end": 1727785256953,
+      "start": 1728160681052,
+      "end": 1728160681052,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785256953,
-      "end": 1727785256953,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785256953,
-      "end": 1727785256953,
+      "start": 1728160681052,
+      "end": 1728160681052,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785256953,
-      "end": 1727785256953,
+      "start": 1728160681052,
+      "end": 1728160681052,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785256953,
-      "end": 1727785256954,
+      "start": 1728160681052,
+      "end": 1728160681052,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785256954,
-      "end": 1727785256954,
+      "start": 1728160681052,
+      "end": 1728160681052,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785256954,
-      "end": 1727785256954,
+      "start": 1728160681052,
+      "end": 1728160681052,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785256954,
-      "end": 1727785256954,
+      "start": 1728160681052,
+      "end": 1728160681052,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as virtualTypes } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/path/lib/virtual-types.js?commonjs-exports\";\n\nvar BindingIdentifier_1;\nvar BlockScoped_1;\nvar ExistentialTypeParam_1;\nvar Expression_1;\nvar Flow_1;\nvar ForAwaitStatement_1;\nvar Generated_1;\nvar NumericLiteralTypeAnnotation_1;\nvar Pure_1;\nvar Referenced_1;\nvar ReferencedIdentifier_1;\nvar ReferencedMemberExpression_1;\nvar RestProperty_1;\nvar Scope_1;\nvar SpreadProperty_1;\nvar Statement_1;\nvar User_1;\n\"use strict\";\n\nObject.defineProperty(virtualTypes, \"__esModule\", {\n  value: true\n});\nvar Var_1 = virtualTypes.Var = User_1 = virtualTypes.User = Statement_1 = virtualTypes.Statement = SpreadProperty_1 = virtualTypes.SpreadProperty = Scope_1 = virtualTypes.Scope = RestProperty_1 = virtualTypes.RestProperty = ReferencedMemberExpression_1 = virtualTypes.ReferencedMemberExpression = ReferencedIdentifier_1 = virtualTypes.ReferencedIdentifier = Referenced_1 = virtualTypes.Referenced = Pure_1 = virtualTypes.Pure = NumericLiteralTypeAnnotation_1 = virtualTypes.NumericLiteralTypeAnnotation = Generated_1 = virtualTypes.Generated = ForAwaitStatement_1 = virtualTypes.ForAwaitStatement = Flow_1 = virtualTypes.Flow = Expression_1 = virtualTypes.Expression = ExistentialTypeParam_1 = virtualTypes.ExistentialTypeParam = BlockScoped_1 = virtualTypes.BlockScoped = BindingIdentifier_1 = virtualTypes.BindingIdentifier = void 0;\nconst ReferencedIdentifier = ReferencedIdentifier_1 = virtualTypes.ReferencedIdentifier = [\"Identifier\", \"JSXIdentifier\"];\nconst ReferencedMemberExpression = ReferencedMemberExpression_1 = virtualTypes.ReferencedMemberExpression = [\"MemberExpression\"];\nconst BindingIdentifier = BindingIdentifier_1 = virtualTypes.BindingIdentifier = [\"Identifier\"];\nconst Statement = Statement_1 = virtualTypes.Statement = [\"Statement\"];\nconst Expression = Expression_1 = virtualTypes.Expression = [\"Expression\"];\nconst Scope = Scope_1 = virtualTypes.Scope = [\"Scopable\", \"Pattern\"];\nconst Referenced = Referenced_1 = virtualTypes.Referenced = null;\nconst BlockScoped = BlockScoped_1 = virtualTypes.BlockScoped = null;\nconst Var = Var_1 = virtualTypes.Var = [\"VariableDeclaration\"];\nconst User = User_1 = virtualTypes.User = null;\nconst Generated = Generated_1 = virtualTypes.Generated = null;\nconst Pure = Pure_1 = virtualTypes.Pure = null;\nconst Flow = Flow_1 = virtualTypes.Flow = [\"Flow\", \"ImportDeclaration\", \"ExportDeclaration\", \"ImportSpecifier\"];\nconst RestProperty = RestProperty_1 = virtualTypes.RestProperty = [\"RestElement\"];\nconst SpreadProperty = SpreadProperty_1 = virtualTypes.SpreadProperty = [\"RestElement\"];\nconst ExistentialTypeParam = ExistentialTypeParam_1 = virtualTypes.ExistentialTypeParam = [\"ExistsTypeAnnotation\"];\nconst NumericLiteralTypeAnnotation = NumericLiteralTypeAnnotation_1 = virtualTypes.NumericLiteralTypeAnnotation = [\"NumberLiteralTypeAnnotation\"];\nconst ForAwaitStatement = ForAwaitStatement_1 = virtualTypes.ForAwaitStatement = [\"ForOfStatement\"];\n\n//# sourceMappingURL=virtual-types.js.map\n\nexport { virtualTypes as __moduleExports, Var_1 as Var, User_1 as User, Statement_1 as Statement, SpreadProperty_1 as SpreadProperty, Scope_1 as Scope, RestProperty_1 as RestProperty, ReferencedMemberExpression_1 as ReferencedMemberExpression, ReferencedIdentifier_1 as ReferencedIdentifier, Referenced_1 as Referenced, Pure_1 as Pure, NumericLiteralTypeAnnotation_1 as NumericLiteralTypeAnnotation, Generated_1 as Generated, ForAwaitStatement_1 as ForAwaitStatement, Flow_1 as Flow, Expression_1 as Expression, ExistentialTypeParam_1 as ExistentialTypeParam, BlockScoped_1 as BlockScoped, BindingIdentifier_1 as BindingIdentifier, virtualTypes as default };",
-      "start": 1727785256954,
-      "end": 1727785256954,
+      "start": 1728160681052,
+      "end": 1728160681053,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160681053,
+      "end": 1728160681053,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785256954,
-      "end": 1727785256954,
+      "start": 1728160681053,
+      "end": 1728160681053,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785256954,
-      "end": 1727785256954,
+      "start": 1728160681053,
+      "end": 1728160681053,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785256954,
-      "end": 1727785256954,
+      "start": 1728160681053,
+      "end": 1728160681053,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785256954,
-      "end": 1727785256954,
+      "start": 1728160681053,
+      "end": 1728160681053,
       "order": "normal"
     }
   ]

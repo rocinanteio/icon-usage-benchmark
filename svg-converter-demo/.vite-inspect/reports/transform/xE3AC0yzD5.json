@@ -1,0 +1,129 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/modifications/removePropertiesDeep.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = removePropertiesDeep;\nvar _traverseFast = require(\"../traverse/traverseFast.js\");\nvar _removeProperties = require(\"./removeProperties.js\");\nfunction removePropertiesDeep(tree, opts) {\n  (0, _traverseFast.default)(tree, _removeProperties.default, opts);\n  return tree;\n}\n\n//# sourceMappingURL=removePropertiesDeep.js.map\n",
+      "start": 1728160681524,
+      "end": 1728160681583,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1728160681584,
+      "end": 1728160681584,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160681584,
+      "end": 1728160681584,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1728160681584,
+      "end": 1728160681584,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1728160681584,
+      "end": 1728160681584,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1728160681584,
+      "end": 1728160681584,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1728160681584,
+      "end": 1728160681584,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1728160681584,
+      "end": 1728160681584,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1728160681584,
+      "end": 1728160681584,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1728160681584,
+      "end": 1728160681584,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1728160681584,
+      "end": 1728160681584,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1728160681584,
+      "end": 1728160681584,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1728160681584,
+      "end": 1728160681584,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as removePropertiesDeep_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/modifications/removePropertiesDeep.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/traverse/traverseFast.js?commonjs-proxy\";\nimport require$$1 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/modifications/removeProperties.js?commonjs-proxy\";\n\n\"use strict\";\n\nObject.defineProperty(removePropertiesDeep_1, \"__esModule\", {\n  value: true\n});\nvar _default = removePropertiesDeep_1.default = removePropertiesDeep;\nvar _traverseFast = require$$0;\nvar _removeProperties = require$$1;\nfunction removePropertiesDeep(tree, opts) {\n  (0, _traverseFast.default)(tree, _removeProperties.default, opts);\n  return tree;\n}\n\n//# sourceMappingURL=removePropertiesDeep.js.map\n\nexport { removePropertiesDeep_1 as __moduleExports, _default as default };",
+      "start": 1728160681584,
+      "end": 1728160682398,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;;AAAA,YAAY,CAAC;AACb;AACA,MAAM,CAAC,cAAc,CAAC,sBAAO,EAAE,YAAY,EAAE;AAC7C,EAAE,KAAK,EAAE,IAAI;AACb,CAAC,CAAC,CAAC;AACH,6CAAe,GAAG,oBAAoB,CAAC;AACvC,IAAI,aAAa,GAAG,UAAsC,CAAC;AAC3D,IAAI,iBAAiB,GAAG,UAAgC,CAAC;AACzD,SAAS,oBAAoB,CAAC,IAAI,EAAE,IAAI,EAAE;AAC1C,EAAE,CAAC,CAAC,EAAE,aAAa,CAAC,OAAO,EAAE,IAAI,EAAE,iBAAiB,CAAC,OAAO,EAAE,IAAI,CAAC,CAAC;AACpE,EAAE,OAAO,IAAI,CAAC;AACd,CAAC;AACD;AACA"
+      }
+    },
+    {
+      "name": "inject",
+      "start": 1728160682398,
+      "end": 1728160682398,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1728160682398,
+      "end": 1728160682398,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1728160682398,
+      "end": 1728160682398,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1728160682398,
+      "end": 1728160682398,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1728160682398,
+      "end": 1728160682398,
+      "order": "normal"
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@lit/reactive-element/decorators/query-assigned-elements.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "import{desc as t}from\"./base.js\";\n/**\n * @license\n * Copyright 2021 Google LLC\n * SPDX-License-Identifier: BSD-3-Clause\n */function o(o){return(e,n)=>{const{slot:r,selector:s}=o??{},c=\"slot\"+(r?`[name=${r}]`:\":not([name])\");return t(e,n,{get(){const t=this.renderRoot?.querySelector(c),e=t?.assignedElements(o)??[];return void 0===s?e:e.filter((t=>t.matches(s)))}})}}export{o as queryAssignedElements};\n//# sourceMappingURL=query-assigned-elements.js.map\n",
+      "start": 1728160680958,
+      "end": 1728160681017,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1728160681017,
+      "end": 1728160681017,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160681017,
+      "end": 1728160681017,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1728160681018,
+      "end": 1728160681018,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1728160681018,
+      "end": 1728160681018,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1728160681018,
+      "end": 1728160681018,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1728160681018,
+      "end": 1728160681018,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1728160681018,
+      "end": 1728160681018,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1728160681018,
+      "end": 1728160681018,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1728160681018,
+      "end": 1728160681018,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1728160681018,
+      "end": 1728160681018,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1728160681018,
+      "end": 1728160681018,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1728160681018,
+      "end": 1728160681018,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1728160681018,
+      "end": 1728160681018,
+      "order": "normal"
+    },
+    {
+      "name": "inject",
+      "start": 1728160681018,
+      "end": 1728160681018,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1728160681018,
+      "end": 1728160681018,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1728160681018,
+      "end": 1728160681018,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1728160681018,
+      "end": 1728160681018,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1728160681018,
+      "end": 1728160681018,
+      "order": "normal"
+    }
+  ]
+}

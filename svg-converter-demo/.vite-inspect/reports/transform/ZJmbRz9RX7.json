@@ -4,89 +4,89 @@
     {
       "name": "vite:load-fallback",
       "result": "'use strict';\n\nvar m = require('react-dom');\nif (process.env.NODE_ENV === 'production') {\n  exports.createRoot = m.createRoot;\n  exports.hydrateRoot = m.hydrateRoot;\n} else {\n  var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;\n  exports.createRoot = function(c, o) {\n    i.usingClientEntryPoint = true;\n    try {\n      return m.createRoot(c, o);\n    } finally {\n      i.usingClientEntryPoint = false;\n    }\n  };\n  exports.hydrateRoot = function(c, h, o) {\n    i.usingClientEntryPoint = true;\n    try {\n      return m.hydrateRoot(c, h, o);\n    } finally {\n      i.usingClientEntryPoint = false;\n    }\n  };\n}\n",
-      "start": 1727785256639,
-      "end": 1727785256648,
+      "start": 1728160641316,
+      "end": 1728160641318,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785256648,
-      "end": 1727785256648,
+      "start": 1728160641318,
+      "end": 1728160641318,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160641318,
+      "end": 1728160641318,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785256648,
-      "end": 1727785256648,
+      "start": 1728160641318,
+      "end": 1728160641318,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785256648,
-      "end": 1727785256648,
+      "start": 1728160641318,
+      "end": 1728160641318,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785256648,
-      "end": 1727785256648,
+      "start": 1728160641318,
+      "end": 1728160641318,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785256648,
-      "end": 1727785256648,
+      "start": 1728160641318,
+      "end": 1728160641318,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785256648,
-      "end": 1727785256648,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785256648,
-      "end": 1727785256648,
+      "start": 1728160641318,
+      "end": 1728160641318,
       "order": "normal"
     },
     {
       "name": "vite:define",
       "result": "\"use strict\";\nvar m = require(\"react-dom\");\nif (true) {\n  exports.createRoot = m.createRoot;\n  exports.hydrateRoot = m.hydrateRoot;\n} else {\n  var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;\n  exports.createRoot = function(c, o) {\n    i.usingClientEntryPoint = true;\n    try {\n      return m.createRoot(c, o);\n    } finally {\n      i.usingClientEntryPoint = false;\n    }\n  };\n  exports.hydrateRoot = function(c, h, o) {\n    i.usingClientEntryPoint = true;\n    try {\n      return m.hydrateRoot(c, h, o);\n    } finally {\n      i.usingClientEntryPoint = false;\n    }\n  };\n}\n",
-      "start": 1727785256648,
-      "end": 1727785256669,
+      "start": 1728160641318,
+      "end": 1728160651941,
       "order": "normal",
       "sourcemaps": null
     },
     {
       "name": "vite:css-post",
-      "start": 1727785256669,
-      "end": 1727785256669,
+      "start": 1728160651941,
+      "end": 1728160651941,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785256669,
-      "end": 1727785256669,
+      "start": 1728160651941,
+      "end": 1728160651941,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785256669,
-      "end": 1727785256669,
+      "start": 1728160651941,
+      "end": 1728160651941,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785256675,
-      "end": 1727785256675,
+      "start": 1728160651941,
+      "end": 1728160651941,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as client } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-usage-benchmark/svg-converter-demo/node_modules/react-dom/client.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-usage-benchmark/svg-converter-demo/node_modules/react-dom/index.js?commonjs-proxy\";\n\nvar hydrateRoot;\nvar createRoot;\n\"use strict\";\nvar m = require$$0;\nif (true) {\n  createRoot = client.createRoot = m.createRoot;\n  hydrateRoot = client.hydrateRoot = m.hydrateRoot;\n} else {\n  var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;\n  exports.createRoot = function(c, o) {\n    i.usingClientEntryPoint = true;\n    try {\n      return m.createRoot(c, o);\n    } finally {\n      i.usingClientEntryPoint = false;\n    }\n  };\n  exports.hydrateRoot = function(c, h, o) {\n    i.usingClientEntryPoint = true;\n    try {\n      return m.hydrateRoot(c, h, o);\n    } finally {\n      i.usingClientEntryPoint = false;\n    }\n  };\n}\n\nexport { client as __moduleExports, createRoot, hydrateRoot, client as default };",
-      "start": 1727785256677,
-      "end": 1727785257326,
+      "start": 1728160651941,
+      "end": 1728160681880,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -98,27 +98,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160681880,
+      "end": 1728160681880,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785257326,
-      "end": 1727785257326,
+      "start": 1728160681880,
+      "end": 1728160681880,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785257326,
-      "end": 1727785257326,
+      "start": 1728160681880,
+      "end": 1728160681880,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785257326,
-      "end": 1727785257326,
+      "start": 1728160681880,
+      "end": 1728160681880,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785257326,
-      "end": 1727785257326,
+      "start": 1728160681880,
+      "end": 1728160681880,
       "order": "normal"
     }
   ]

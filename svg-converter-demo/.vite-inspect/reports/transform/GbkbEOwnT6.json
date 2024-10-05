@@ -4,8 +4,8 @@
     {
       "name": "commonjs",
       "result": "export { __moduleExports as default } from \"/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/path/inference/inferers.js\";",
-      "start": 1727785257417,
-      "end": 1727785257417,
+      "start": 1728160682899,
+      "end": 1728160682899,
       "sourcemaps": null
     }
   ]

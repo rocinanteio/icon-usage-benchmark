@@ -1,0 +1,129 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/converters/toExpression.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\nvar _index = require(\"../validators/generated/index.js\");\nvar _default = exports.default = toExpression;\nfunction toExpression(node) {\n  if ((0, _index.isExpressionStatement)(node)) {\n    node = node.expression;\n  }\n  if ((0, _index.isExpression)(node)) {\n    return node;\n  }\n  if ((0, _index.isClass)(node)) {\n    node.type = \"ClassExpression\";\n  } else if ((0, _index.isFunction)(node)) {\n    node.type = \"FunctionExpression\";\n  }\n  if (!(0, _index.isExpression)(node)) {\n    throw new Error(`cannot turn ${node.type} to an expression`);\n  }\n  return node;\n}\n\n//# sourceMappingURL=toExpression.js.map\n",
+      "start": 1728160681493,
+      "end": 1728160681547,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1728160681547,
+      "end": 1728160681547,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160681547,
+      "end": 1728160681547,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1728160681547,
+      "end": 1728160681547,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1728160681547,
+      "end": 1728160681547,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1728160681548,
+      "end": 1728160681548,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1728160681548,
+      "end": 1728160681548,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1728160681548,
+      "end": 1728160681548,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1728160681548,
+      "end": 1728160681548,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1728160681548,
+      "end": 1728160681548,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1728160681548,
+      "end": 1728160681548,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1728160681548,
+      "end": 1728160681548,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1728160681548,
+      "end": 1728160681548,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as toExpression_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/converters/toExpression.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/validators/generated/index.js?commonjs-proxy\";\n\n\"use strict\";\n\nObject.defineProperty(toExpression_1, \"__esModule\", {\n  value: true\n});\nvar default_1 = toExpression_1.default = void 0;\nvar _index = require$$0;\nvar _default = default_1 = toExpression_1.default = toExpression;\nfunction toExpression(node) {\n  if ((0, _index.isExpressionStatement)(node)) {\n    node = node.expression;\n  }\n  if ((0, _index.isExpression)(node)) {\n    return node;\n  }\n  if ((0, _index.isClass)(node)) {\n    node.type = \"ClassExpression\";\n  } else if ((0, _index.isFunction)(node)) {\n    node.type = \"FunctionExpression\";\n  }\n  if (!(0, _index.isExpression)(node)) {\n    throw new Error(`cannot turn ${node.type} to an expression`);\n  }\n  return node;\n}\n\n//# sourceMappingURL=toExpression.js.map\n\nexport { toExpression_1 as __moduleExports, default_1 as default };",
+      "start": 1728160681548,
+      "end": 1728160681675,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;AAAA,YAAY,CAAC;AACb;AACA,MAAM,CAAC,cAAc,CAAC,cAAO,EAAE,YAAY,EAAE;AAC7C,EAAE,KAAK,EAAE,IAAI;AACb,CAAC,CAAC,CAAC;AACH,sCAAe,GAAG,KAAK,CAAC,CAAC;AACzB,IAAI,MAAM,GAAG,UAA2C,CAAC;AACzD,IAAI,QAAQ,GAAG,kCAAe,GAAG,YAAY,CAAC;AAC9C,SAAS,YAAY,CAAC,IAAI,EAAE;AAC5B,EAAE,IAAI,CAAC,CAAC,EAAE,MAAM,CAAC,qBAAqB,EAAE,IAAI,CAAC,EAAE;AAC/C,IAAI,IAAI,GAAG,IAAI,CAAC,UAAU,CAAC;AAC3B,GAAG;AACH,EAAE,IAAI,CAAC,CAAC,EAAE,MAAM,CAAC,YAAY,EAAE,IAAI,CAAC,EAAE;AACtC,IAAI,OAAO,IAAI,CAAC;AAChB,GAAG;AACH,EAAE,IAAI,CAAC,CAAC,EAAE,MAAM,CAAC,OAAO,EAAE,IAAI,CAAC,EAAE;AACjC,IAAI,IAAI,CAAC,IAAI,GAAG,iBAAiB,CAAC;AAClC,GAAG,MAAM,IAAI,CAAC,CAAC,EAAE,MAAM,CAAC,UAAU,EAAE,IAAI,CAAC,EAAE;AAC3C,IAAI,IAAI,CAAC,IAAI,GAAG,oBAAoB,CAAC;AACrC,GAAG;AACH,EAAE,IAAI,CAAC,CAAC,CAAC,EAAE,MAAM,CAAC,YAAY,EAAE,IAAI,CAAC,EAAE;AACvC,IAAI,MAAM,IAAI,KAAK,CAAC,CAAC,YAAY,EAAE,IAAI,CAAC,IAAI,CAAC,iBAAiB,CAAC,CAAC,CAAC;AACjE,GAAG;AACH,EAAE,OAAO,IAAI,CAAC;AACd,CAAC;AACD;AACA"
+      }
+    },
+    {
+      "name": "inject",
+      "start": 1728160681676,
+      "end": 1728160681676,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1728160681676,
+      "end": 1728160681676,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1728160681676,
+      "end": 1728160681676,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1728160681676,
+      "end": 1728160681676,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1728160681676,
+      "end": 1728160681676,
+      "order": "normal"
+    }
+  ]
+}

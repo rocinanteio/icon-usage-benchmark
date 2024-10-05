@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.merge = merge;\nexports.normalizeReplacements = normalizeReplacements;\nexports.validate = validate;\nconst _excluded = [\"placeholderWhitelist\", \"placeholderPattern\", \"preserveComments\", \"syntacticPlaceholders\"];\nfunction _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }\nfunction merge(a, b) {\n  const {\n    placeholderWhitelist = a.placeholderWhitelist,\n    placeholderPattern = a.placeholderPattern,\n    preserveComments = a.preserveComments,\n    syntacticPlaceholders = a.syntacticPlaceholders\n  } = b;\n  return {\n    parser: Object.assign({}, a.parser, b.parser),\n    placeholderWhitelist,\n    placeholderPattern,\n    preserveComments,\n    syntacticPlaceholders\n  };\n}\nfunction validate(opts) {\n  if (opts != null && typeof opts !== \"object\") {\n    throw new Error(\"Unknown template options.\");\n  }\n  const _ref = opts || {},\n    {\n      placeholderWhitelist,\n      placeholderPattern,\n      preserveComments,\n      syntacticPlaceholders\n    } = _ref,\n    parser = _objectWithoutPropertiesLoose(_ref, _excluded);\n  if (placeholderWhitelist != null && !(placeholderWhitelist instanceof Set)) {\n    throw new Error(\"'.placeholderWhitelist' must be a Set, null, or undefined\");\n  }\n  if (placeholderPattern != null && !(placeholderPattern instanceof RegExp) && placeholderPattern !== false) {\n    throw new Error(\"'.placeholderPattern' must be a RegExp, false, null, or undefined\");\n  }\n  if (preserveComments != null && typeof preserveComments !== \"boolean\") {\n    throw new Error(\"'.preserveComments' must be a boolean, null, or undefined\");\n  }\n  if (syntacticPlaceholders != null && typeof syntacticPlaceholders !== \"boolean\") {\n    throw new Error(\"'.syntacticPlaceholders' must be a boolean, null, or undefined\");\n  }\n  if (syntacticPlaceholders === true && (placeholderWhitelist != null || placeholderPattern != null)) {\n    throw new Error(\"'.placeholderWhitelist' and '.placeholderPattern' aren't compatible\" + \" with '.syntacticPlaceholders: true'\");\n  }\n  return {\n    parser,\n    placeholderWhitelist: placeholderWhitelist || undefined,\n    placeholderPattern: placeholderPattern == null ? undefined : placeholderPattern,\n    preserveComments: preserveComments == null ? undefined : preserveComments,\n    syntacticPlaceholders: syntacticPlaceholders == null ? undefined : syntacticPlaceholders\n  };\n}\nfunction normalizeReplacements(replacements) {\n  if (Array.isArray(replacements)) {\n    return replacements.reduce((acc, replacement, i) => {\n      acc[\"$\" + i] = replacement;\n      return acc;\n    }, {});\n  } else if (typeof replacements === \"object\" || replacements == null) {\n    return replacements || undefined;\n  }\n  throw new Error(\"Template replacements must be an array, object, null, or undefined\");\n}\n\n//# sourceMappingURL=options.js.map\n",
-      "start": 1727785257140,
-      "end": 1727785257192,
+      "start": 1728160681898,
+      "end": 1728160682008,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785257192,
-      "end": 1727785257192,
+      "start": 1728160682008,
+      "end": 1728160682008,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160682008,
+      "end": 1728160682008,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785257192,
-      "end": 1727785257192,
+      "start": 1728160682008,
+      "end": 1728160682008,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785257192,
-      "end": 1727785257192,
+      "start": 1728160682008,
+      "end": 1728160682008,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785257192,
-      "end": 1727785257192,
+      "start": 1728160682008,
+      "end": 1728160682008,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785257192,
-      "end": 1727785257192,
+      "start": 1728160682008,
+      "end": 1728160682008,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785257192,
-      "end": 1727785257192,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785257192,
-      "end": 1727785257192,
+      "start": 1728160682008,
+      "end": 1728160682008,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785257192,
-      "end": 1727785257192,
+      "start": 1728160682008,
+      "end": 1728160682008,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785257192,
-      "end": 1727785257192,
+      "start": 1728160682008,
+      "end": 1728160682008,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785257192,
-      "end": 1727785257192,
+      "start": 1728160682008,
+      "end": 1728160682008,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785257192,
-      "end": 1727785257192,
+      "start": 1728160682008,
+      "end": 1728160682008,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785257192,
-      "end": 1727785257192,
+      "start": 1728160682008,
+      "end": 1728160682008,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as options } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/template/lib/options.js?commonjs-exports\";\n\n\"use strict\";\n\nObject.defineProperty(options, \"__esModule\", {\n  value: true\n});\nvar merge_1 = options.merge = merge;\nvar normalizeReplacements_1 = options.normalizeReplacements = normalizeReplacements;\nvar validate_1 = options.validate = validate;\nconst _excluded = [\"placeholderWhitelist\", \"placeholderPattern\", \"preserveComments\", \"syntacticPlaceholders\"];\nfunction _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }\nfunction merge(a, b) {\n  const {\n    placeholderWhitelist = a.placeholderWhitelist,\n    placeholderPattern = a.placeholderPattern,\n    preserveComments = a.preserveComments,\n    syntacticPlaceholders = a.syntacticPlaceholders\n  } = b;\n  return {\n    parser: Object.assign({}, a.parser, b.parser),\n    placeholderWhitelist,\n    placeholderPattern,\n    preserveComments,\n    syntacticPlaceholders\n  };\n}\nfunction validate(opts) {\n  if (opts != null && typeof opts !== \"object\") {\n    throw new Error(\"Unknown template options.\");\n  }\n  const _ref = opts || {},\n    {\n      placeholderWhitelist,\n      placeholderPattern,\n      preserveComments,\n      syntacticPlaceholders\n    } = _ref,\n    parser = _objectWithoutPropertiesLoose(_ref, _excluded);\n  if (placeholderWhitelist != null && !(placeholderWhitelist instanceof Set)) {\n    throw new Error(\"'.placeholderWhitelist' must be a Set, null, or undefined\");\n  }\n  if (placeholderPattern != null && !(placeholderPattern instanceof RegExp) && placeholderPattern !== false) {\n    throw new Error(\"'.placeholderPattern' must be a RegExp, false, null, or undefined\");\n  }\n  if (preserveComments != null && typeof preserveComments !== \"boolean\") {\n    throw new Error(\"'.preserveComments' must be a boolean, null, or undefined\");\n  }\n  if (syntacticPlaceholders != null && typeof syntacticPlaceholders !== \"boolean\") {\n    throw new Error(\"'.syntacticPlaceholders' must be a boolean, null, or undefined\");\n  }\n  if (syntacticPlaceholders === true && (placeholderWhitelist != null || placeholderPattern != null)) {\n    throw new Error(\"'.placeholderWhitelist' and '.placeholderPattern' aren't compatible\" + \" with '.syntacticPlaceholders: true'\");\n  }\n  return {\n    parser,\n    placeholderWhitelist: placeholderWhitelist || undefined,\n    placeholderPattern: placeholderPattern == null ? undefined : placeholderPattern,\n    preserveComments: preserveComments == null ? undefined : preserveComments,\n    syntacticPlaceholders: syntacticPlaceholders == null ? undefined : syntacticPlaceholders\n  };\n}\nfunction normalizeReplacements(replacements) {\n  if (Array.isArray(replacements)) {\n    return replacements.reduce((acc, replacement, i) => {\n      acc[\"$\" + i] = replacement;\n      return acc;\n    }, {});\n  } else if (typeof replacements === \"object\" || replacements == null) {\n    return replacements || undefined;\n  }\n  throw new Error(\"Template replacements must be an array, object, null, or undefined\");\n}\n\n//# sourceMappingURL=options.js.map\n\nexport { options as __moduleExports, merge_1 as merge, normalizeReplacements_1 as normalizeReplacements, validate_1 as validate, options as default };",
-      "start": 1727785257192,
-      "end": 1727785257192,
+      "start": 1728160682008,
+      "end": 1728160682009,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160682009,
+      "end": 1728160682009,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785257192,
-      "end": 1727785257192,
+      "start": 1728160682009,
+      "end": 1728160682009,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785257192,
-      "end": 1727785257192,
+      "start": 1728160682009,
+      "end": 1728160682009,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785257192,
-      "end": 1727785257192,
+      "start": 1728160682009,
+      "end": 1728160682009,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785257192,
-      "end": 1727785257192,
+      "start": 1728160682009,
+      "end": 1728160682009,
       "order": "normal"
     }
   ]

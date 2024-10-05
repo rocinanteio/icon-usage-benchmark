@@ -1,0 +1,12 @@
+{
+  "resolvedId": "\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/modifications/removePropertiesDeep.js?commonjs-proxy",
+  "transforms": [
+    {
+      "name": "commonjs",
+      "result": "export { __moduleExports as default } from \"/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/modifications/removePropertiesDeep.js\";",
+      "start": 1728160682621,
+      "end": 1728160682622,
+      "sourcemaps": null
+    }
+  ]
+}

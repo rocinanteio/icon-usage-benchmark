@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = isPlaceholderType;\nvar _index = require(\"../definitions/index.js\");\nfunction isPlaceholderType(placeholderType, targetType) {\n  if (placeholderType === targetType) return true;\n  const aliases = _index.PLACEHOLDERS_ALIAS[placeholderType];\n  if (aliases) {\n    for (const alias of aliases) {\n      if (targetType === alias) return true;\n    }\n  }\n  return false;\n}\n\n//# sourceMappingURL=isPlaceholderType.js.map\n",
-      "start": 1727785256923,
-      "end": 1727785256934,
+      "start": 1728160652488,
+      "end": 1728160680951,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785256934,
-      "end": 1727785256934,
+      "start": 1728160680951,
+      "end": 1728160680951,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160680951,
+      "end": 1728160680951,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785256934,
-      "end": 1727785256934,
+      "start": 1728160680951,
+      "end": 1728160680951,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785256934,
-      "end": 1727785256934,
+      "start": 1728160680951,
+      "end": 1728160680951,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785256934,
-      "end": 1727785256934,
+      "start": 1728160680951,
+      "end": 1728160680951,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785256934,
-      "end": 1727785256934,
+      "start": 1728160680951,
+      "end": 1728160680951,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785256934,
-      "end": 1727785256934,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785256934,
-      "end": 1727785256934,
+      "start": 1728160680951,
+      "end": 1728160680951,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785256934,
-      "end": 1727785256934,
+      "start": 1728160680952,
+      "end": 1728160680952,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785256934,
-      "end": 1727785256934,
+      "start": 1728160680952,
+      "end": 1728160680952,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785256934,
-      "end": 1727785256934,
+      "start": 1728160680952,
+      "end": 1728160680952,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785256934,
-      "end": 1727785256934,
+      "start": 1728160680952,
+      "end": 1728160680952,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785256934,
-      "end": 1727785256934,
+      "start": 1728160680952,
+      "end": 1728160680953,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as isPlaceholderType_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/validators/isPlaceholderType.js?commonjs-exports\";\nimport { __require as require$$0 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/definitions/index.js?commonjs-wrapped\";\n\nvar hasRequiredIsPlaceholderType;\n\nfunction requireIsPlaceholderType () {\n\tif (hasRequiredIsPlaceholderType) return isPlaceholderType_1;\n\thasRequiredIsPlaceholderType = 1;\n\t\"use strict\";\n\n\tObject.defineProperty(isPlaceholderType_1, \"__esModule\", {\n\t  value: true\n\t});\n\tisPlaceholderType_1.default = isPlaceholderType;\n\tvar _index = require$$0();\n\tfunction isPlaceholderType(placeholderType, targetType) {\n\t  if (placeholderType === targetType) return true;\n\t  const aliases = _index.PLACEHOLDERS_ALIAS[placeholderType];\n\t  if (aliases) {\n\t    for (const alias of aliases) {\n\t      if (targetType === alias) return true;\n\t    }\n\t  }\n\t  return false;\n\t}\n\n\t//# sourceMappingURL=isPlaceholderType.js.map\n\treturn isPlaceholderType_1;\n}\n\nexport { requireIsPlaceholderType as __require };",
-      "start": 1727785256934,
-      "end": 1727785257239,
+      "start": 1728160680953,
+      "end": 1728160681884,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160681884,
+      "end": 1728160681885,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785257239,
-      "end": 1727785257239,
+      "start": 1728160681885,
+      "end": 1728160681885,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785257239,
-      "end": 1727785257239,
+      "start": 1728160681885,
+      "end": 1728160681885,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785257239,
-      "end": 1727785257239,
+      "start": 1728160681885,
+      "end": 1728160681885,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785257239,
-      "end": 1727785257239,
+      "start": 1728160681885,
+      "end": 1728160681885,
       "order": "normal"
     }
   ]

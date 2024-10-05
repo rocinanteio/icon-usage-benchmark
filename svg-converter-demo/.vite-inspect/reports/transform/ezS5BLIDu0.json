@@ -1,0 +1,129 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/validators/isType.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = isType;\nvar _index = require(\"../definitions/index.js\");\nfunction isType(nodeType, targetType) {\n  if (nodeType === targetType) return true;\n  if (nodeType == null) return false;\n  if (_index.ALIAS_KEYS[targetType]) return false;\n  const aliases = _index.FLIPPED_ALIAS_KEYS[targetType];\n  if (aliases) {\n    if (aliases[0] === nodeType) return true;\n    for (const alias of aliases) {\n      if (nodeType === alias) return true;\n    }\n  }\n  return false;\n}\n\n//# sourceMappingURL=isType.js.map\n",
+      "start": 1728160681583,
+      "end": 1728160681609,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1728160681609,
+      "end": 1728160681609,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160681609,
+      "end": 1728160681609,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1728160681609,
+      "end": 1728160681609,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1728160681609,
+      "end": 1728160681609,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1728160681609,
+      "end": 1728160681609,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1728160681609,
+      "end": 1728160681609,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1728160681610,
+      "end": 1728160681610,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1728160681610,
+      "end": 1728160681610,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1728160681610,
+      "end": 1728160681610,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1728160681610,
+      "end": 1728160681610,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1728160681610,
+      "end": 1728160681610,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1728160681610,
+      "end": 1728160681610,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as isType_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/validators/isType.js?commonjs-exports\";\nimport { __require as require$$0 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/definitions/index.js?commonjs-wrapped\";\n\nvar hasRequiredIsType;\n\nfunction requireIsType () {\n\tif (hasRequiredIsType) return isType_1;\n\thasRequiredIsType = 1;\n\t\"use strict\";\n\n\tObject.defineProperty(isType_1, \"__esModule\", {\n\t  value: true\n\t});\n\tisType_1.default = isType;\n\tvar _index = require$$0();\n\tfunction isType(nodeType, targetType) {\n\t  if (nodeType === targetType) return true;\n\t  if (nodeType == null) return false;\n\t  if (_index.ALIAS_KEYS[targetType]) return false;\n\t  const aliases = _index.FLIPPED_ALIAS_KEYS[targetType];\n\t  if (aliases) {\n\t    if (aliases[0] === nodeType) return true;\n\t    for (const alias of aliases) {\n\t      if (nodeType === alias) return true;\n\t    }\n\t  }\n\t  return false;\n\t}\n\n\t//# sourceMappingURL=isType.js.map\n\treturn isType_1;\n}\n\nexport { requireIsType as __require };",
+      "start": 1728160681610,
+      "end": 1728160682363,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;;;;;;CAAA,YAAY,CAAC;AACb;CACA,MAAM,CAAC,cAAc,CAAC,QAAO,EAAE,YAAY,EAAE;CAC7C,EAAE,KAAK,EAAE,IAAI;CACb,CAAC,CAAC,CAAC;AACH,iBAAe,GAAG,MAAM,CAAC;CACzB,IAAI,MAAM,GAAG,YAAkC,CAAC;CAChD,SAAS,MAAM,CAAC,QAAQ,EAAE,UAAU,EAAE;CACtC,EAAE,IAAI,QAAQ,KAAK,UAAU,EAAE,OAAO,IAAI,CAAC;CAC3C,EAAE,IAAI,QAAQ,IAAI,IAAI,EAAE,OAAO,KAAK,CAAC;CACrC,EAAE,IAAI,MAAM,CAAC,UAAU,CAAC,UAAU,CAAC,EAAE,OAAO,KAAK,CAAC;CAClD,EAAE,MAAM,OAAO,GAAG,MAAM,CAAC,kBAAkB,CAAC,UAAU,CAAC,CAAC;CACxD,EAAE,IAAI,OAAO,EAAE;CACf,IAAI,IAAI,OAAO,CAAC,CAAC,CAAC,KAAK,QAAQ,EAAE,OAAO,IAAI,CAAC;CAC7C,IAAI,KAAK,MAAM,KAAK,IAAI,OAAO,EAAE;CACjC,MAAM,IAAI,QAAQ,KAAK,KAAK,EAAE,OAAO,IAAI,CAAC;CAC1C,KAAK;CACL,GAAG;CACH,EAAE,OAAO,KAAK,CAAC;CACf,CAAC;AACD;CACA"
+      }
+    },
+    {
+      "name": "inject",
+      "start": 1728160682364,
+      "end": 1728160682364,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1728160682364,
+      "end": 1728160682364,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1728160682365,
+      "end": 1728160682365,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1728160682365,
+      "end": 1728160682365,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1728160682366,
+      "end": 1728160682366,
+      "order": "normal"
+    }
+  ]
+}

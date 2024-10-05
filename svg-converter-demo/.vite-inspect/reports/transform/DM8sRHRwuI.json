@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\nclass Binding {\n  constructor({\n    identifier,\n    scope,\n    path,\n    kind\n  }) {\n    this.identifier = void 0;\n    this.scope = void 0;\n    this.path = void 0;\n    this.kind = void 0;\n    this.constantViolations = [];\n    this.constant = true;\n    this.referencePaths = [];\n    this.referenced = false;\n    this.references = 0;\n    this.identifier = identifier;\n    this.scope = scope;\n    this.path = path;\n    this.kind = kind;\n    if ((kind === \"var\" || kind === \"hoisted\") && isDeclaredInLoop(path)) {\n      this.reassign(path);\n    }\n    this.clearValue();\n  }\n  deoptValue() {\n    this.clearValue();\n    this.hasDeoptedValue = true;\n  }\n  setValue(value) {\n    if (this.hasDeoptedValue) return;\n    this.hasValue = true;\n    this.value = value;\n  }\n  clearValue() {\n    this.hasDeoptedValue = false;\n    this.hasValue = false;\n    this.value = null;\n  }\n  reassign(path) {\n    this.constant = false;\n    if (this.constantViolations.includes(path)) {\n      return;\n    }\n    this.constantViolations.push(path);\n  }\n  reference(path) {\n    if (this.referencePaths.includes(path)) {\n      return;\n    }\n    this.referenced = true;\n    this.references++;\n    this.referencePaths.push(path);\n  }\n  dereference() {\n    this.references--;\n    this.referenced = !!this.references;\n  }\n}\nexports.default = Binding;\nfunction isDeclaredInLoop(path) {\n  for (let {\n    parentPath,\n    key\n  } = path; parentPath; ({\n    parentPath,\n    key\n  } = parentPath)) {\n    if (parentPath.isFunctionParent()) return false;\n    if (parentPath.isWhile() || parentPath.isForXStatement() || parentPath.isForStatement() && key === \"body\") {\n      return true;\n    }\n  }\n  return false;\n}\n\n//# sourceMappingURL=binding.js.map\n",
-      "start": 1727785256950,
-      "end": 1727785257043,
+      "start": 1728160681016,
+      "end": 1728160681150,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785257043,
-      "end": 1727785257043,
+      "start": 1728160681150,
+      "end": 1728160681150,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160681150,
+      "end": 1728160681150,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785257043,
-      "end": 1727785257043,
+      "start": 1728160681150,
+      "end": 1728160681150,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785257043,
-      "end": 1727785257043,
+      "start": 1728160681150,
+      "end": 1728160681150,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785257043,
-      "end": 1727785257043,
+      "start": 1728160681150,
+      "end": 1728160681150,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785257043,
-      "end": 1727785257043,
+      "start": 1728160681150,
+      "end": 1728160681150,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785257043,
-      "end": 1727785257043,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785257043,
-      "end": 1727785257043,
+      "start": 1728160681150,
+      "end": 1728160681151,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785257043,
-      "end": 1727785257043,
+      "start": 1728160681151,
+      "end": 1728160681151,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785257044,
-      "end": 1727785257044,
+      "start": 1728160681151,
+      "end": 1728160681151,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785257044,
-      "end": 1727785257044,
+      "start": 1728160681151,
+      "end": 1728160681151,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785257044,
-      "end": 1727785257044,
+      "start": 1728160681151,
+      "end": 1728160681151,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785257044,
-      "end": 1727785257044,
+      "start": 1728160681151,
+      "end": 1728160681151,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as binding } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/scope/binding.js?commonjs-exports\";\n\n\"use strict\";\n\nObject.defineProperty(binding, \"__esModule\", {\n  value: true\n});\nvar _default = binding.default = void 0;\nclass Binding {\n  constructor({\n    identifier,\n    scope,\n    path,\n    kind\n  }) {\n    this.identifier = void 0;\n    this.scope = void 0;\n    this.path = void 0;\n    this.kind = void 0;\n    this.constantViolations = [];\n    this.constant = true;\n    this.referencePaths = [];\n    this.referenced = false;\n    this.references = 0;\n    this.identifier = identifier;\n    this.scope = scope;\n    this.path = path;\n    this.kind = kind;\n    if ((kind === \"var\" || kind === \"hoisted\") && isDeclaredInLoop(path)) {\n      this.reassign(path);\n    }\n    this.clearValue();\n  }\n  deoptValue() {\n    this.clearValue();\n    this.hasDeoptedValue = true;\n  }\n  setValue(value) {\n    if (this.hasDeoptedValue) return;\n    this.hasValue = true;\n    this.value = value;\n  }\n  clearValue() {\n    this.hasDeoptedValue = false;\n    this.hasValue = false;\n    this.value = null;\n  }\n  reassign(path) {\n    this.constant = false;\n    if (this.constantViolations.includes(path)) {\n      return;\n    }\n    this.constantViolations.push(path);\n  }\n  reference(path) {\n    if (this.referencePaths.includes(path)) {\n      return;\n    }\n    this.referenced = true;\n    this.references++;\n    this.referencePaths.push(path);\n  }\n  dereference() {\n    this.references--;\n    this.referenced = !!this.references;\n  }\n}\n_default = binding.default = Binding;\nfunction isDeclaredInLoop(path) {\n  for (let {\n    parentPath,\n    key\n  } = path; parentPath; ({\n    parentPath,\n    key\n  } = parentPath)) {\n    if (parentPath.isFunctionParent()) return false;\n    if (parentPath.isWhile() || parentPath.isForXStatement() || parentPath.isForStatement() && key === \"body\") {\n      return true;\n    }\n  }\n  return false;\n}\n\n//# sourceMappingURL=binding.js.map\n\nexport { binding as __moduleExports, _default as default };",
-      "start": 1727785257044,
-      "end": 1727785257044,
+      "start": 1728160681151,
+      "end": 1728160681151,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160681151,
+      "end": 1728160681151,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785257044,
-      "end": 1727785257044,
+      "start": 1728160681151,
+      "end": 1728160681151,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785257044,
-      "end": 1727785257044,
+      "start": 1728160681151,
+      "end": 1728160681151,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785257044,
-      "end": 1727785257044,
+      "start": 1728160681151,
+      "end": 1728160681151,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785257044,
-      "end": 1727785257044,
+      "start": 1728160681151,
+      "end": 1728160681152,
       "order": "normal"
     }
   ]

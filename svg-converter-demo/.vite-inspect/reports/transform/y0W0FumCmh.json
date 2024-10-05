@@ -4,8 +4,8 @@
     {
       "name": "commonjs",
       "result": "export { __moduleExports as default } from \"/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/lib/generators/jsx.js\";",
-      "start": 1727785257421,
-      "end": 1727785257421,
+      "start": 1728160682682,
+      "end": 1728160682682,
       "sourcemaps": null
     }
   ]

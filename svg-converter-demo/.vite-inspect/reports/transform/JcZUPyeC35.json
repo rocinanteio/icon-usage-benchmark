@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nObject.defineProperty(exports, \"isIdentifierChar\", {\n  enumerable: true,\n  get: function () {\n    return _identifier.isIdentifierChar;\n  }\n});\nObject.defineProperty(exports, \"isIdentifierName\", {\n  enumerable: true,\n  get: function () {\n    return _identifier.isIdentifierName;\n  }\n});\nObject.defineProperty(exports, \"isIdentifierStart\", {\n  enumerable: true,\n  get: function () {\n    return _identifier.isIdentifierStart;\n  }\n});\nObject.defineProperty(exports, \"isKeyword\", {\n  enumerable: true,\n  get: function () {\n    return _keyword.isKeyword;\n  }\n});\nObject.defineProperty(exports, \"isReservedWord\", {\n  enumerable: true,\n  get: function () {\n    return _keyword.isReservedWord;\n  }\n});\nObject.defineProperty(exports, \"isStrictBindOnlyReservedWord\", {\n  enumerable: true,\n  get: function () {\n    return _keyword.isStrictBindOnlyReservedWord;\n  }\n});\nObject.defineProperty(exports, \"isStrictBindReservedWord\", {\n  enumerable: true,\n  get: function () {\n    return _keyword.isStrictBindReservedWord;\n  }\n});\nObject.defineProperty(exports, \"isStrictReservedWord\", {\n  enumerable: true,\n  get: function () {\n    return _keyword.isStrictReservedWord;\n  }\n});\nvar _identifier = require(\"./identifier.js\");\nvar _keyword = require(\"./keyword.js\");\n\n//# sourceMappingURL=index.js.map\n",
-      "start": 1727785256954,
-      "end": 1727785257047,
+      "start": 1728160681149,
+      "end": 1728160681245,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785257047,
-      "end": 1727785257047,
+      "start": 1728160681245,
+      "end": 1728160681245,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160681245,
+      "end": 1728160681245,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785257047,
-      "end": 1727785257047,
+      "start": 1728160681245,
+      "end": 1728160681245,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785257047,
-      "end": 1727785257047,
+      "start": 1728160681245,
+      "end": 1728160681245,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785257047,
-      "end": 1727785257047,
+      "start": 1728160681245,
+      "end": 1728160681245,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785257047,
-      "end": 1727785257047,
+      "start": 1728160681245,
+      "end": 1728160681245,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785257047,
-      "end": 1727785257047,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785257047,
-      "end": 1727785257047,
+      "start": 1728160681245,
+      "end": 1728160681245,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785257047,
-      "end": 1727785257047,
+      "start": 1728160681245,
+      "end": 1728160681245,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785257047,
-      "end": 1727785257047,
+      "start": 1728160681245,
+      "end": 1728160681245,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785257047,
-      "end": 1727785257047,
+      "start": 1728160681245,
+      "end": 1728160681245,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785257047,
-      "end": 1727785257047,
+      "start": 1728160681245,
+      "end": 1728160681245,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785257047,
-      "end": 1727785257047,
+      "start": 1728160681245,
+      "end": 1728160681245,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as lib } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/helper-validator-identifier/lib/index.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/helper-validator-identifier/lib/identifier.js?commonjs-proxy\";\nimport require$$1 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/helper-validator-identifier/lib/keyword.js?commonjs-proxy\";\n\n(function (exports) {\n\t\"use strict\";\n\n\tObject.defineProperty(exports, \"__esModule\", {\n\t  value: true\n\t});\n\tObject.defineProperty(exports, \"isIdentifierChar\", {\n\t  enumerable: true,\n\t  get: function () {\n\t    return _identifier.isIdentifierChar;\n\t  }\n\t});\n\tObject.defineProperty(exports, \"isIdentifierName\", {\n\t  enumerable: true,\n\t  get: function () {\n\t    return _identifier.isIdentifierName;\n\t  }\n\t});\n\tObject.defineProperty(exports, \"isIdentifierStart\", {\n\t  enumerable: true,\n\t  get: function () {\n\t    return _identifier.isIdentifierStart;\n\t  }\n\t});\n\tObject.defineProperty(exports, \"isKeyword\", {\n\t  enumerable: true,\n\t  get: function () {\n\t    return _keyword.isKeyword;\n\t  }\n\t});\n\tObject.defineProperty(exports, \"isReservedWord\", {\n\t  enumerable: true,\n\t  get: function () {\n\t    return _keyword.isReservedWord;\n\t  }\n\t});\n\tObject.defineProperty(exports, \"isStrictBindOnlyReservedWord\", {\n\t  enumerable: true,\n\t  get: function () {\n\t    return _keyword.isStrictBindOnlyReservedWord;\n\t  }\n\t});\n\tObject.defineProperty(exports, \"isStrictBindReservedWord\", {\n\t  enumerable: true,\n\t  get: function () {\n\t    return _keyword.isStrictBindReservedWord;\n\t  }\n\t});\n\tObject.defineProperty(exports, \"isStrictReservedWord\", {\n\t  enumerable: true,\n\t  get: function () {\n\t    return _keyword.isStrictReservedWord;\n\t  }\n\t});\n\tvar _identifier = require$$0;\n\tvar _keyword = require$$1;\n\n\t//# sourceMappingURL=index.js.map \n} (lib));\n\nexport default /*@__PURE__*/commonjsHelpers.getDefaultExportFromCjs(lib);\nexport { lib as __moduleExports };",
-      "start": 1727785257047,
-      "end": 1727785257120,
+      "start": 1728160681245,
+      "end": 1728160681663,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160681663,
+      "end": 1728160681663,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785257120,
-      "end": 1727785257120,
+      "start": 1728160681663,
+      "end": 1728160681663,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785257120,
-      "end": 1727785257120,
+      "start": 1728160681663,
+      "end": 1728160681663,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785257120,
-      "end": 1727785257120,
+      "start": 1728160681663,
+      "end": 1728160681663,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785257120,
-      "end": 1727785257120,
+      "start": 1728160681663,
+      "end": 1728160681663,
       "order": "normal"
     }
   ]

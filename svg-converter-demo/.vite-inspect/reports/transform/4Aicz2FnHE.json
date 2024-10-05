@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = createTemplateBuilder;\nvar _options = require(\"./options.js\");\nvar _string = require(\"./string.js\");\nvar _literal = require(\"./literal.js\");\nconst NO_PLACEHOLDER = (0, _options.validate)({\n  placeholderPattern: false\n});\nfunction createTemplateBuilder(formatter, defaultOpts) {\n  const templateFnCache = new WeakMap();\n  const templateAstCache = new WeakMap();\n  const cachedOpts = defaultOpts || (0, _options.validate)(null);\n  return Object.assign((tpl, ...args) => {\n    if (typeof tpl === \"string\") {\n      if (args.length > 1) throw new Error(\"Unexpected extra params.\");\n      return extendedTrace((0, _string.default)(formatter, tpl, (0, _options.merge)(cachedOpts, (0, _options.validate)(args[0]))));\n    } else if (Array.isArray(tpl)) {\n      let builder = templateFnCache.get(tpl);\n      if (!builder) {\n        builder = (0, _literal.default)(formatter, tpl, cachedOpts);\n        templateFnCache.set(tpl, builder);\n      }\n      return extendedTrace(builder(args));\n    } else if (typeof tpl === \"object\" && tpl) {\n      if (args.length > 0) throw new Error(\"Unexpected extra params.\");\n      return createTemplateBuilder(formatter, (0, _options.merge)(cachedOpts, (0, _options.validate)(tpl)));\n    }\n    throw new Error(`Unexpected template param ${typeof tpl}`);\n  }, {\n    ast: (tpl, ...args) => {\n      if (typeof tpl === \"string\") {\n        if (args.length > 1) throw new Error(\"Unexpected extra params.\");\n        return (0, _string.default)(formatter, tpl, (0, _options.merge)((0, _options.merge)(cachedOpts, (0, _options.validate)(args[0])), NO_PLACEHOLDER))();\n      } else if (Array.isArray(tpl)) {\n        let builder = templateAstCache.get(tpl);\n        if (!builder) {\n          builder = (0, _literal.default)(formatter, tpl, (0, _options.merge)(cachedOpts, NO_PLACEHOLDER));\n          templateAstCache.set(tpl, builder);\n        }\n        return builder(args)();\n      }\n      throw new Error(`Unexpected template param ${typeof tpl}`);\n    }\n  });\n}\nfunction extendedTrace(fn) {\n  let rootStack = \"\";\n  try {\n    throw new Error();\n  } catch (error) {\n    if (error.stack) {\n      rootStack = error.stack.split(\"\\n\").slice(3).join(\"\\n\");\n    }\n  }\n  return arg => {\n    try {\n      return fn(arg);\n    } catch (err) {\n      err.stack += `\\n    =============\\n${rootStack}`;\n      throw err;\n    }\n  };\n}\n\n//# sourceMappingURL=builder.js.map\n",
-      "start": 1727785257083,
-      "end": 1727785257125,
+      "start": 1728160681648,
+      "end": 1728160681755,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785257126,
-      "end": 1727785257126,
+      "start": 1728160681755,
+      "end": 1728160681755,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160681755,
+      "end": 1728160681755,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785257126,
-      "end": 1727785257126,
+      "start": 1728160681756,
+      "end": 1728160681756,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785257126,
-      "end": 1727785257126,
+      "start": 1728160681756,
+      "end": 1728160681756,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785257126,
-      "end": 1727785257126,
+      "start": 1728160681756,
+      "end": 1728160681756,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785257126,
-      "end": 1727785257126,
+      "start": 1728160681756,
+      "end": 1728160681756,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785257126,
-      "end": 1727785257126,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785257126,
-      "end": 1727785257126,
+      "start": 1728160681756,
+      "end": 1728160681756,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785257126,
-      "end": 1727785257126,
+      "start": 1728160681756,
+      "end": 1728160681756,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785257126,
-      "end": 1727785257126,
+      "start": 1728160681756,
+      "end": 1728160681756,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785257126,
-      "end": 1727785257126,
+      "start": 1728160681756,
+      "end": 1728160681756,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785257126,
-      "end": 1727785257126,
+      "start": 1728160681756,
+      "end": 1728160681756,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785257126,
-      "end": 1727785257126,
+      "start": 1728160681756,
+      "end": 1728160681756,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as builder } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/template/lib/builder.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/template/lib/options.js?commonjs-proxy\";\nimport require$$1 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/template/lib/string.js?commonjs-proxy\";\nimport require$$2 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/template/lib/literal.js?commonjs-proxy\";\n\n\"use strict\";\n\nObject.defineProperty(builder, \"__esModule\", {\n  value: true\n});\nvar _default = builder.default = createTemplateBuilder;\nvar _options = require$$0;\nvar _string = require$$1;\nvar _literal = require$$2;\nconst NO_PLACEHOLDER = (0, _options.validate)({\n  placeholderPattern: false\n});\nfunction createTemplateBuilder(formatter, defaultOpts) {\n  const templateFnCache = new WeakMap();\n  const templateAstCache = new WeakMap();\n  const cachedOpts = defaultOpts || (0, _options.validate)(null);\n  return Object.assign((tpl, ...args) => {\n    if (typeof tpl === \"string\") {\n      if (args.length > 1) throw new Error(\"Unexpected extra params.\");\n      return extendedTrace((0, _string.default)(formatter, tpl, (0, _options.merge)(cachedOpts, (0, _options.validate)(args[0]))));\n    } else if (Array.isArray(tpl)) {\n      let builder = templateFnCache.get(tpl);\n      if (!builder) {\n        builder = (0, _literal.default)(formatter, tpl, cachedOpts);\n        templateFnCache.set(tpl, builder);\n      }\n      return extendedTrace(builder(args));\n    } else if (typeof tpl === \"object\" && tpl) {\n      if (args.length > 0) throw new Error(\"Unexpected extra params.\");\n      return createTemplateBuilder(formatter, (0, _options.merge)(cachedOpts, (0, _options.validate)(tpl)));\n    }\n    throw new Error(`Unexpected template param ${typeof tpl}`);\n  }, {\n    ast: (tpl, ...args) => {\n      if (typeof tpl === \"string\") {\n        if (args.length > 1) throw new Error(\"Unexpected extra params.\");\n        return (0, _string.default)(formatter, tpl, (0, _options.merge)((0, _options.merge)(cachedOpts, (0, _options.validate)(args[0])), NO_PLACEHOLDER))();\n      } else if (Array.isArray(tpl)) {\n        let builder = templateAstCache.get(tpl);\n        if (!builder) {\n          builder = (0, _literal.default)(formatter, tpl, (0, _options.merge)(cachedOpts, NO_PLACEHOLDER));\n          templateAstCache.set(tpl, builder);\n        }\n        return builder(args)();\n      }\n      throw new Error(`Unexpected template param ${typeof tpl}`);\n    }\n  });\n}\nfunction extendedTrace(fn) {\n  let rootStack = \"\";\n  try {\n    throw new Error();\n  } catch (error) {\n    if (error.stack) {\n      rootStack = error.stack.split(\"\\n\").slice(3).join(\"\\n\");\n    }\n  }\n  return arg => {\n    try {\n      return fn(arg);\n    } catch (err) {\n      err.stack += `\\n    =============\\n${rootStack}`;\n      throw err;\n    }\n  };\n}\n\n//# sourceMappingURL=builder.js.map\n\nexport { builder as __moduleExports, _default as default };",
-      "start": 1727785257126,
-      "end": 1727785257401,
+      "start": 1728160681756,
+      "end": 1728160682829,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160682829,
+      "end": 1728160682829,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785257401,
-      "end": 1727785257401,
+      "start": 1728160682829,
+      "end": 1728160682829,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785257401,
-      "end": 1727785257401,
+      "start": 1728160682829,
+      "end": 1728160682829,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785257401,
-      "end": 1727785257401,
+      "start": 1728160682829,
+      "end": 1728160682829,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785257401,
-      "end": 1727785257401,
+      "start": 1728160682829,
+      "end": 1728160682829,
       "order": "normal"
     }
   ]

@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.clear = clear;\nexports.clearPath = clearPath;\nexports.clearScope = clearScope;\nexports.getCachedPaths = getCachedPaths;\nexports.getOrCreateCachedPaths = getOrCreateCachedPaths;\nexports.scope = exports.path = void 0;\nlet pathsCache = exports.path = new WeakMap();\nlet scope = exports.scope = new WeakMap();\nfunction clear() {\n  clearPath();\n  clearScope();\n}\nfunction clearPath() {\n  exports.path = pathsCache = new WeakMap();\n}\nfunction clearScope() {\n  exports.scope = scope = new WeakMap();\n}\nconst nullHub = Object.freeze({});\nfunction getCachedPaths(hub, parent) {\n  var _pathsCache$get, _hub;\n  {\n    hub = null;\n  }\n  return (_pathsCache$get = pathsCache.get((_hub = hub) != null ? _hub : nullHub)) == null ? void 0 : _pathsCache$get.get(parent);\n}\nfunction getOrCreateCachedPaths(hub, parent) {\n  var _hub2, _hub3;\n  {\n    hub = null;\n  }\n  let parents = pathsCache.get((_hub2 = hub) != null ? _hub2 : nullHub);\n  if (!parents) pathsCache.set((_hub3 = hub) != null ? _hub3 : nullHub, parents = new WeakMap());\n  let paths = parents.get(parent);\n  if (!paths) parents.set(parent, paths = new Map());\n  return paths;\n}\n\n//# sourceMappingURL=cache.js.map\n",
-      "start": 1727785256803,
-      "end": 1727785256878,
+      "start": 1728160651956,
+      "end": 1728160652367,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785256878,
-      "end": 1727785256878,
+      "start": 1728160652367,
+      "end": 1728160652367,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160652367,
+      "end": 1728160652367,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785256878,
-      "end": 1727785256878,
+      "start": 1728160652367,
+      "end": 1728160652367,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785256878,
-      "end": 1727785256878,
+      "start": 1728160652367,
+      "end": 1728160652367,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785256878,
-      "end": 1727785256878,
+      "start": 1728160652367,
+      "end": 1728160652367,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785256878,
-      "end": 1727785256878,
+      "start": 1728160652367,
+      "end": 1728160652367,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785256878,
-      "end": 1727785256878,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785256878,
-      "end": 1727785256878,
+      "start": 1728160652367,
+      "end": 1728160652367,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785256878,
-      "end": 1727785256878,
+      "start": 1728160652367,
+      "end": 1728160652367,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785256878,
-      "end": 1727785256878,
+      "start": 1728160652367,
+      "end": 1728160652367,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785256878,
-      "end": 1727785256878,
+      "start": 1728160652367,
+      "end": 1728160652367,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785256878,
-      "end": 1727785256878,
+      "start": 1728160652368,
+      "end": 1728160652368,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785256878,
-      "end": 1727785256878,
+      "start": 1728160652368,
+      "end": 1728160652368,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as cache } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/cache.js?commonjs-exports\";\n\nvar path;\n\"use strict\";\n\nObject.defineProperty(cache, \"__esModule\", {\n  value: true\n});\nvar clear_1 = cache.clear = clear;\nvar clearPath_1 = cache.clearPath = clearPath;\nvar clearScope_1 = cache.clearScope = clearScope;\nvar getCachedPaths_1 = cache.getCachedPaths = getCachedPaths;\nvar getOrCreateCachedPaths_1 = cache.getOrCreateCachedPaths = getOrCreateCachedPaths;\nvar scope_1 = cache.scope = path = cache.path = void 0;\nlet pathsCache = path = cache.path = new WeakMap();\nlet scope = scope_1 = cache.scope = new WeakMap();\nfunction clear() {\n  clearPath();\n  clearScope();\n}\nfunction clearPath() {\n  path = cache.path = pathsCache = new WeakMap();\n}\nfunction clearScope() {\n  scope_1 = cache.scope = scope = new WeakMap();\n}\nconst nullHub = Object.freeze({});\nfunction getCachedPaths(hub, parent) {\n  var _pathsCache$get, _hub;\n  {\n    hub = null;\n  }\n  return (_pathsCache$get = pathsCache.get((_hub = hub) != null ? _hub : nullHub)) == null ? void 0 : _pathsCache$get.get(parent);\n}\nfunction getOrCreateCachedPaths(hub, parent) {\n  var _hub2, _hub3;\n  {\n    hub = null;\n  }\n  let parents = pathsCache.get((_hub2 = hub) != null ? _hub2 : nullHub);\n  if (!parents) pathsCache.set((_hub3 = hub) != null ? _hub3 : nullHub, parents = new WeakMap());\n  let paths = parents.get(parent);\n  if (!paths) parents.set(parent, paths = new Map());\n  return paths;\n}\n\n//# sourceMappingURL=cache.js.map\n\nexport { cache as __moduleExports, clear_1 as clear, clearPath_1 as clearPath, clearScope_1 as clearScope, getCachedPaths_1 as getCachedPaths, getOrCreateCachedPaths_1 as getOrCreateCachedPaths, scope_1 as scope, path, cache as default };",
-      "start": 1727785256878,
-      "end": 1727785256878,
+      "start": 1728160652368,
+      "end": 1728160652369,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160652369,
+      "end": 1728160652369,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785256878,
-      "end": 1727785256878,
+      "start": 1728160652369,
+      "end": 1728160652369,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785256878,
-      "end": 1727785256878,
+      "start": 1728160652369,
+      "end": 1728160652369,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785256878,
-      "end": 1727785256878,
+      "start": 1728160652369,
+      "end": 1728160652369,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785256878,
-      "end": 1727785256878,
+      "start": 1728160652369,
+      "end": 1728160652369,
       "order": "normal"
     }
   ]

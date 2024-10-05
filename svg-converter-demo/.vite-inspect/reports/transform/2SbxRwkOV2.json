@@ -1,0 +1,129 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/utils/shallowEqual.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = shallowEqual;\nfunction shallowEqual(actual, expected) {\n  const keys = Object.keys(expected);\n  for (const key of keys) {\n    if (actual[key] !== expected[key]) {\n      return false;\n    }\n  }\n  return true;\n}\n\n//# sourceMappingURL=shallowEqual.js.map\n",
+      "start": 1728160681545,
+      "end": 1728160681592,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1728160681592,
+      "end": 1728160681592,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160681592,
+      "end": 1728160681592,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1728160681592,
+      "end": 1728160681592,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1728160681592,
+      "end": 1728160681592,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1728160681592,
+      "end": 1728160681592,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1728160681592,
+      "end": 1728160681592,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1728160681592,
+      "end": 1728160681592,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1728160681593,
+      "end": 1728160681593,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1728160681593,
+      "end": 1728160681593,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1728160681593,
+      "end": 1728160681593,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1728160681593,
+      "end": 1728160681593,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1728160681593,
+      "end": 1728160681593,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as shallowEqual_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/utils/shallowEqual.js?commonjs-exports\";\n\n\"use strict\";\n\nObject.defineProperty(shallowEqual_1, \"__esModule\", {\n  value: true\n});\nvar _default = shallowEqual_1.default = shallowEqual;\nfunction shallowEqual(actual, expected) {\n  const keys = Object.keys(expected);\n  for (const key of keys) {\n    if (actual[key] !== expected[key]) {\n      return false;\n    }\n  }\n  return true;\n}\n\n//# sourceMappingURL=shallowEqual.js.map\n\nexport { shallowEqual_1 as __moduleExports, _default as default };",
+      "start": 1728160681593,
+      "end": 1728160681593,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;AAAA,YAAY,CAAC;AACb;AACA,MAAM,CAAC,cAAc,CAAC,cAAO,EAAE,YAAY,EAAE;AAC7C,EAAE,KAAK,EAAE,IAAI;AACb,CAAC,CAAC,CAAC;AACH,qCAAe,GAAG,YAAY,CAAC;AAC/B,SAAS,YAAY,CAAC,MAAM,EAAE,QAAQ,EAAE;AACxC,EAAE,MAAM,IAAI,GAAG,MAAM,CAAC,IAAI,CAAC,QAAQ,CAAC,CAAC;AACrC,EAAE,KAAK,MAAM,GAAG,IAAI,IAAI,EAAE;AAC1B,IAAI,IAAI,MAAM,CAAC,GAAG,CAAC,KAAK,QAAQ,CAAC,GAAG,CAAC,EAAE;AACvC,MAAM,OAAO,KAAK,CAAC;AACnB,KAAK;AACL,GAAG;AACH,EAAE,OAAO,IAAI,CAAC;AACd,CAAC;AACD;AACA"
+      }
+    },
+    {
+      "name": "inject",
+      "start": 1728160681593,
+      "end": 1728160681593,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1728160681593,
+      "end": 1728160681593,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1728160681593,
+      "end": 1728160681593,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1728160681593,
+      "end": 1728160681593,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1728160681593,
+      "end": 1728160681593,
+      "order": "normal"
+    }
+  ]
+}

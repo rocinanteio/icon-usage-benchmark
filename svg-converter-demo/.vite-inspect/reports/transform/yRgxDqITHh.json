@@ -1,0 +1,129 @@
+{
+  "resolvedId": "/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/asserts/assertNode.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = assertNode;\nvar _isNode = require(\"../validators/isNode.js\");\nfunction assertNode(node) {\n  if (!(0, _isNode.default)(node)) {\n    var _node$type;\n    const type = (_node$type = node == null ? void 0 : node.type) != null ? _node$type : JSON.stringify(node);\n    throw new TypeError(`Not a valid node of type \"${type}\"`);\n  }\n}\n\n//# sourceMappingURL=assertNode.js.map\n",
+      "start": 1728160681366,
+      "end": 1728160681478,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:react-babel",
+      "start": 1728160681478,
+      "end": 1728160681478,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160681478,
+      "end": 1728160681478,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1728160681478,
+      "end": 1728160681478,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1728160681478,
+      "end": 1728160681478,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1728160681478,
+      "end": 1728160681478,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1728160681478,
+      "end": 1728160681478,
+      "order": "normal"
+    },
+    {
+      "name": "vite-plugin-commonjs",
+      "start": 1728160681478,
+      "end": 1728160681478,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1728160681478,
+      "end": 1728160681478,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1728160681478,
+      "end": 1728160681478,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1728160681478,
+      "end": 1728160681478,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1728160681478,
+      "end": 1728160681478,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1728160681478,
+      "end": 1728160681478,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as assertNode_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/asserts/assertNode.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/validators/isNode.js?commonjs-proxy\";\n\n\"use strict\";\n\nObject.defineProperty(assertNode_1, \"__esModule\", {\n  value: true\n});\nvar _default = assertNode_1.default = assertNode;\nvar _isNode = require$$0;\nfunction assertNode(node) {\n  if (!(0, _isNode.default)(node)) {\n    var _node$type;\n    const type = (_node$type = node == null ? void 0 : node.type) != null ? _node$type : JSON.stringify(node);\n    throw new TypeError(`Not a valid node of type \"${type}\"`);\n  }\n}\n\n//# sourceMappingURL=assertNode.js.map\n\nexport { assertNode_1 as __moduleExports, _default as default };",
+      "start": 1728160681478,
+      "end": 1728160682404,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;AAAA,YAAY,CAAC;AACb;AACA,MAAM,CAAC,cAAc,CAAC,YAAO,EAAE,YAAY,EAAE;AAC7C,EAAE,KAAK,EAAE,IAAI;AACb,CAAC,CAAC,CAAC;AACH,mCAAe,GAAG,UAAU,CAAC;AAC7B,IAAI,OAAO,GAAG,UAAkC,CAAC;AACjD,SAAS,UAAU,CAAC,IAAI,EAAE;AAC1B,EAAE,IAAI,CAAC,CAAC,CAAC,EAAE,OAAO,CAAC,OAAO,EAAE,IAAI,CAAC,EAAE;AACnC,IAAI,IAAI,UAAU,CAAC;AACnB,IAAI,MAAM,IAAI,GAAG,CAAC,UAAU,GAAG,IAAI,IAAI,IAAI,GAAG,KAAK,CAAC,GAAG,IAAI,CAAC,IAAI,KAAK,IAAI,GAAG,UAAU,GAAG,IAAI,CAAC,SAAS,CAAC,IAAI,CAAC,CAAC;AAC9G,IAAI,MAAM,IAAI,SAAS,CAAC,CAAC,0BAA0B,EAAE,IAAI,CAAC,CAAC,CAAC,CAAC,CAAC;AAC9D,GAAG;AACH,CAAC;AACD;AACA"
+      }
+    },
+    {
+      "name": "inject",
+      "start": 1728160682404,
+      "end": 1728160682404,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1728160682404,
+      "end": 1728160682404,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1728160682404,
+      "end": 1728160682404,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1728160682404,
+      "end": 1728160682404,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1728160682404,
+      "end": 1728160682404,
+      "order": "normal"
+    }
+  ]
+}

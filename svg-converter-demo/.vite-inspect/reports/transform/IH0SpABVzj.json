@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.ExportAllDeclaration = ExportAllDeclaration;\nexports.ExportDefaultDeclaration = ExportDefaultDeclaration;\nexports.ExportDefaultSpecifier = ExportDefaultSpecifier;\nexports.ExportNamedDeclaration = ExportNamedDeclaration;\nexports.ExportNamespaceSpecifier = ExportNamespaceSpecifier;\nexports.ExportSpecifier = ExportSpecifier;\nexports.ImportAttribute = ImportAttribute;\nexports.ImportDeclaration = ImportDeclaration;\nexports.ImportDefaultSpecifier = ImportDefaultSpecifier;\nexports.ImportExpression = ImportExpression;\nexports.ImportNamespaceSpecifier = ImportNamespaceSpecifier;\nexports.ImportSpecifier = ImportSpecifier;\nexports._printAttributes = _printAttributes;\nvar _t = require(\"@babel/types\");\nvar _index = require(\"../node/index.js\");\nconst {\n  isClassDeclaration,\n  isExportDefaultSpecifier,\n  isExportNamespaceSpecifier,\n  isImportDefaultSpecifier,\n  isImportNamespaceSpecifier,\n  isStatement\n} = _t;\nfunction ImportSpecifier(node) {\n  if (node.importKind === \"type\" || node.importKind === \"typeof\") {\n    this.word(node.importKind);\n    this.space();\n  }\n  this.print(node.imported);\n  if (node.local && node.local.name !== node.imported.name) {\n    this.space();\n    this.word(\"as\");\n    this.space();\n    this.print(node.local);\n  }\n}\nfunction ImportDefaultSpecifier(node) {\n  this.print(node.local);\n}\nfunction ExportDefaultSpecifier(node) {\n  this.print(node.exported);\n}\nfunction ExportSpecifier(node) {\n  if (node.exportKind === \"type\") {\n    this.word(\"type\");\n    this.space();\n  }\n  this.print(node.local);\n  if (node.exported && node.local.name !== node.exported.name) {\n    this.space();\n    this.word(\"as\");\n    this.space();\n    this.print(node.exported);\n  }\n}\nfunction ExportNamespaceSpecifier(node) {\n  this.tokenChar(42);\n  this.space();\n  this.word(\"as\");\n  this.space();\n  this.print(node.exported);\n}\nlet warningShown = false;\nfunction _printAttributes(node) {\n  const {\n    importAttributesKeyword\n  } = this.format;\n  const {\n    attributes,\n    assertions\n  } = node;\n  if (attributes && !importAttributesKeyword && !warningShown) {\n    warningShown = true;\n    console.warn(`\\\nYou are using import attributes, without specifying the desired output syntax.\nPlease specify the \"importAttributesKeyword\" generator option, whose value can be one of:\n - \"with\"        : \\`import { a } from \"b\" with { type: \"json\" };\\`\n - \"assert\"      : \\`import { a } from \"b\" assert { type: \"json\" };\\`\n - \"with-legacy\" : \\`import { a } from \"b\" with type: \"json\";\\`\n`);\n  }\n  const useAssertKeyword = importAttributesKeyword === \"assert\" || !importAttributesKeyword && assertions;\n  this.word(useAssertKeyword ? \"assert\" : \"with\");\n  this.space();\n  if (!useAssertKeyword && importAttributesKeyword !== \"with\") {\n    this.printList(attributes || assertions);\n    return;\n  }\n  this.tokenChar(123);\n  this.space();\n  this.printList(attributes || assertions);\n  this.space();\n  this.tokenChar(125);\n}\nfunction ExportAllDeclaration(node) {\n  var _node$attributes, _node$assertions;\n  this.word(\"export\");\n  this.space();\n  if (node.exportKind === \"type\") {\n    this.word(\"type\");\n    this.space();\n  }\n  this.tokenChar(42);\n  this.space();\n  this.word(\"from\");\n  this.space();\n  if ((_node$attributes = node.attributes) != null && _node$attributes.length || (_node$assertions = node.assertions) != null && _node$assertions.length) {\n    this.print(node.source, true);\n    this.space();\n    this._printAttributes(node);\n  } else {\n    this.print(node.source);\n  }\n  this.semicolon();\n}\nfunction maybePrintDecoratorsBeforeExport(printer, node) {\n  if (isClassDeclaration(node.declaration) && printer._shouldPrintDecoratorsBeforeExport(node)) {\n    printer.printJoin(node.declaration.decorators);\n  }\n}\nfunction ExportNamedDeclaration(node) {\n  maybePrintDecoratorsBeforeExport(this, node);\n  this.word(\"export\");\n  this.space();\n  if (node.declaration) {\n    const declar = node.declaration;\n    this.print(declar);\n    if (!isStatement(declar)) this.semicolon();\n  } else {\n    if (node.exportKind === \"type\") {\n      this.word(\"type\");\n      this.space();\n    }\n    const specifiers = node.specifiers.slice(0);\n    let hasSpecial = false;\n    for (;;) {\n      const first = specifiers[0];\n      if (isExportDefaultSpecifier(first) || isExportNamespaceSpecifier(first)) {\n        hasSpecial = true;\n        this.print(specifiers.shift());\n        if (specifiers.length) {\n          this.tokenChar(44);\n          this.space();\n        }\n      } else {\n        break;\n      }\n    }\n    if (specifiers.length || !specifiers.length && !hasSpecial) {\n      this.tokenChar(123);\n      if (specifiers.length) {\n        this.space();\n        this.printList(specifiers);\n        this.space();\n      }\n      this.tokenChar(125);\n    }\n    if (node.source) {\n      var _node$attributes2, _node$assertions2;\n      this.space();\n      this.word(\"from\");\n      this.space();\n      if ((_node$attributes2 = node.attributes) != null && _node$attributes2.length || (_node$assertions2 = node.assertions) != null && _node$assertions2.length) {\n        this.print(node.source, true);\n        this.space();\n        this._printAttributes(node);\n      } else {\n        this.print(node.source);\n      }\n    }\n    this.semicolon();\n  }\n}\nfunction ExportDefaultDeclaration(node) {\n  maybePrintDecoratorsBeforeExport(this, node);\n  this.word(\"export\");\n  this.noIndentInnerCommentsHere();\n  this.space();\n  this.word(\"default\");\n  this.space();\n  this.tokenContext |= _index.TokenContext.exportDefault;\n  const declar = node.declaration;\n  this.print(declar);\n  if (!isStatement(declar)) this.semicolon();\n}\nfunction ImportDeclaration(node) {\n  var _node$attributes3, _node$assertions3;\n  this.word(\"import\");\n  this.space();\n  const isTypeKind = node.importKind === \"type\" || node.importKind === \"typeof\";\n  if (isTypeKind) {\n    this.noIndentInnerCommentsHere();\n    this.word(node.importKind);\n    this.space();\n  } else if (node.module) {\n    this.noIndentInnerCommentsHere();\n    this.word(\"module\");\n    this.space();\n  } else if (node.phase) {\n    this.noIndentInnerCommentsHere();\n    this.word(node.phase);\n    this.space();\n  }\n  const specifiers = node.specifiers.slice(0);\n  const hasSpecifiers = !!specifiers.length;\n  while (hasSpecifiers) {\n    const first = specifiers[0];\n    if (isImportDefaultSpecifier(first) || isImportNamespaceSpecifier(first)) {\n      this.print(specifiers.shift());\n      if (specifiers.length) {\n        this.tokenChar(44);\n        this.space();\n      }\n    } else {\n      break;\n    }\n  }\n  if (specifiers.length) {\n    this.tokenChar(123);\n    this.space();\n    this.printList(specifiers);\n    this.space();\n    this.tokenChar(125);\n  } else if (isTypeKind && !hasSpecifiers) {\n    this.tokenChar(123);\n    this.tokenChar(125);\n  }\n  if (hasSpecifiers || isTypeKind) {\n    this.space();\n    this.word(\"from\");\n    this.space();\n  }\n  if ((_node$attributes3 = node.attributes) != null && _node$attributes3.length || (_node$assertions3 = node.assertions) != null && _node$assertions3.length) {\n    this.print(node.source, true);\n    this.space();\n    this._printAttributes(node);\n  } else {\n    this.print(node.source);\n  }\n  this.semicolon();\n}\nfunction ImportAttribute(node) {\n  this.print(node.key);\n  this.tokenChar(58);\n  this.space();\n  this.print(node.value);\n}\nfunction ImportNamespaceSpecifier(node) {\n  this.tokenChar(42);\n  this.space();\n  this.word(\"as\");\n  this.space();\n  this.print(node.local);\n}\nfunction ImportExpression(node) {\n  this.word(\"import\");\n  if (node.phase) {\n    this.tokenChar(46);\n    this.word(node.phase);\n  }\n  this.tokenChar(40);\n  this.print(node.source);\n  if (node.options != null) {\n    this.tokenChar(44);\n    this.space();\n    this.print(node.options);\n  }\n  this.tokenChar(41);\n}\n\n//# sourceMappingURL=modules.js.map\n",
-      "start": 1727785257129,
-      "end": 1727785257169,
+      "start": 1728160681305,
+      "end": 1728160681369,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785257169,
-      "end": 1727785257169,
+      "start": 1728160681369,
+      "end": 1728160681369,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160681369,
+      "end": 1728160681369,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785257169,
-      "end": 1727785257169,
+      "start": 1728160681369,
+      "end": 1728160681369,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785257169,
-      "end": 1727785257169,
+      "start": 1728160681369,
+      "end": 1728160681369,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785257169,
-      "end": 1727785257169,
+      "start": 1728160681369,
+      "end": 1728160681369,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785257169,
-      "end": 1727785257169,
+      "start": 1728160681369,
+      "end": 1728160681369,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785257169,
-      "end": 1727785257169,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785257169,
-      "end": 1727785257169,
+      "start": 1728160681369,
+      "end": 1728160681369,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785257169,
-      "end": 1727785257169,
+      "start": 1728160681369,
+      "end": 1728160681369,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785257169,
-      "end": 1727785257169,
+      "start": 1728160681369,
+      "end": 1728160681369,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785257169,
-      "end": 1727785257169,
+      "start": 1728160681369,
+      "end": 1728160681369,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785257169,
-      "end": 1727785257169,
+      "start": 1728160681369,
+      "end": 1728160681369,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785257169,
-      "end": 1727785257169,
+      "start": 1728160681369,
+      "end": 1728160681369,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as modules } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/lib/generators/modules.js?commonjs-exports\";\nimport { __require as require$$0 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/index.js?commonjs-wrapped\";\nimport { __require as require$$1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/lib/node/index.js?commonjs-wrapped\";\n\n\"use strict\";\n\nObject.defineProperty(modules, \"__esModule\", {\n  value: true\n});\nvar ExportAllDeclaration_1 = modules.ExportAllDeclaration = ExportAllDeclaration;\nvar ExportDefaultDeclaration_1 = modules.ExportDefaultDeclaration = ExportDefaultDeclaration;\nvar ExportDefaultSpecifier_1 = modules.ExportDefaultSpecifier = ExportDefaultSpecifier;\nvar ExportNamedDeclaration_1 = modules.ExportNamedDeclaration = ExportNamedDeclaration;\nvar ExportNamespaceSpecifier_1 = modules.ExportNamespaceSpecifier = ExportNamespaceSpecifier;\nvar ExportSpecifier_1 = modules.ExportSpecifier = ExportSpecifier;\nvar ImportAttribute_1 = modules.ImportAttribute = ImportAttribute;\nvar ImportDeclaration_1 = modules.ImportDeclaration = ImportDeclaration;\nvar ImportDefaultSpecifier_1 = modules.ImportDefaultSpecifier = ImportDefaultSpecifier;\nvar ImportExpression_1 = modules.ImportExpression = ImportExpression;\nvar ImportNamespaceSpecifier_1 = modules.ImportNamespaceSpecifier = ImportNamespaceSpecifier;\nvar ImportSpecifier_1 = modules.ImportSpecifier = ImportSpecifier;\nvar _printAttributes_1 = modules._printAttributes = _printAttributes;\nvar _t = require$$0();\nvar _index = require$$1();\nconst {\n  isClassDeclaration,\n  isExportDefaultSpecifier,\n  isExportNamespaceSpecifier,\n  isImportDefaultSpecifier,\n  isImportNamespaceSpecifier,\n  isStatement\n} = _t;\nfunction ImportSpecifier(node) {\n  if (node.importKind === \"type\" || node.importKind === \"typeof\") {\n    this.word(node.importKind);\n    this.space();\n  }\n  this.print(node.imported);\n  if (node.local && node.local.name !== node.imported.name) {\n    this.space();\n    this.word(\"as\");\n    this.space();\n    this.print(node.local);\n  }\n}\nfunction ImportDefaultSpecifier(node) {\n  this.print(node.local);\n}\nfunction ExportDefaultSpecifier(node) {\n  this.print(node.exported);\n}\nfunction ExportSpecifier(node) {\n  if (node.exportKind === \"type\") {\n    this.word(\"type\");\n    this.space();\n  }\n  this.print(node.local);\n  if (node.exported && node.local.name !== node.exported.name) {\n    this.space();\n    this.word(\"as\");\n    this.space();\n    this.print(node.exported);\n  }\n}\nfunction ExportNamespaceSpecifier(node) {\n  this.tokenChar(42);\n  this.space();\n  this.word(\"as\");\n  this.space();\n  this.print(node.exported);\n}\nlet warningShown = false;\nfunction _printAttributes(node) {\n  const {\n    importAttributesKeyword\n  } = this.format;\n  const {\n    attributes,\n    assertions\n  } = node;\n  if (attributes && !importAttributesKeyword && !warningShown) {\n    warningShown = true;\n    console.warn(`\\\nYou are using import attributes, without specifying the desired output syntax.\nPlease specify the \"importAttributesKeyword\" generator option, whose value can be one of:\n - \"with\"        : \\`import { a } from \"b\" with { type: \"json\" };\\`\n - \"assert\"      : \\`import { a } from \"b\" assert { type: \"json\" };\\`\n - \"with-legacy\" : \\`import { a } from \"b\" with type: \"json\";\\`\n`);\n  }\n  const useAssertKeyword = importAttributesKeyword === \"assert\" || !importAttributesKeyword && assertions;\n  this.word(useAssertKeyword ? \"assert\" : \"with\");\n  this.space();\n  if (!useAssertKeyword && importAttributesKeyword !== \"with\") {\n    this.printList(attributes || assertions);\n    return;\n  }\n  this.tokenChar(123);\n  this.space();\n  this.printList(attributes || assertions);\n  this.space();\n  this.tokenChar(125);\n}\nfunction ExportAllDeclaration(node) {\n  var _node$attributes, _node$assertions;\n  this.word(\"export\");\n  this.space();\n  if (node.exportKind === \"type\") {\n    this.word(\"type\");\n    this.space();\n  }\n  this.tokenChar(42);\n  this.space();\n  this.word(\"from\");\n  this.space();\n  if ((_node$attributes = node.attributes) != null && _node$attributes.length || (_node$assertions = node.assertions) != null && _node$assertions.length) {\n    this.print(node.source, true);\n    this.space();\n    this._printAttributes(node);\n  } else {\n    this.print(node.source);\n  }\n  this.semicolon();\n}\nfunction maybePrintDecoratorsBeforeExport(printer, node) {\n  if (isClassDeclaration(node.declaration) && printer._shouldPrintDecoratorsBeforeExport(node)) {\n    printer.printJoin(node.declaration.decorators);\n  }\n}\nfunction ExportNamedDeclaration(node) {\n  maybePrintDecoratorsBeforeExport(this, node);\n  this.word(\"export\");\n  this.space();\n  if (node.declaration) {\n    const declar = node.declaration;\n    this.print(declar);\n    if (!isStatement(declar)) this.semicolon();\n  } else {\n    if (node.exportKind === \"type\") {\n      this.word(\"type\");\n      this.space();\n    }\n    const specifiers = node.specifiers.slice(0);\n    let hasSpecial = false;\n    for (;;) {\n      const first = specifiers[0];\n      if (isExportDefaultSpecifier(first) || isExportNamespaceSpecifier(first)) {\n        hasSpecial = true;\n        this.print(specifiers.shift());\n        if (specifiers.length) {\n          this.tokenChar(44);\n          this.space();\n        }\n      } else {\n        break;\n      }\n    }\n    if (specifiers.length || !specifiers.length && !hasSpecial) {\n      this.tokenChar(123);\n      if (specifiers.length) {\n        this.space();\n        this.printList(specifiers);\n        this.space();\n      }\n      this.tokenChar(125);\n    }\n    if (node.source) {\n      var _node$attributes2, _node$assertions2;\n      this.space();\n      this.word(\"from\");\n      this.space();\n      if ((_node$attributes2 = node.attributes) != null && _node$attributes2.length || (_node$assertions2 = node.assertions) != null && _node$assertions2.length) {\n        this.print(node.source, true);\n        this.space();\n        this._printAttributes(node);\n      } else {\n        this.print(node.source);\n      }\n    }\n    this.semicolon();\n  }\n}\nfunction ExportDefaultDeclaration(node) {\n  maybePrintDecoratorsBeforeExport(this, node);\n  this.word(\"export\");\n  this.noIndentInnerCommentsHere();\n  this.space();\n  this.word(\"default\");\n  this.space();\n  this.tokenContext |= _index.TokenContext.exportDefault;\n  const declar = node.declaration;\n  this.print(declar);\n  if (!isStatement(declar)) this.semicolon();\n}\nfunction ImportDeclaration(node) {\n  var _node$attributes3, _node$assertions3;\n  this.word(\"import\");\n  this.space();\n  const isTypeKind = node.importKind === \"type\" || node.importKind === \"typeof\";\n  if (isTypeKind) {\n    this.noIndentInnerCommentsHere();\n    this.word(node.importKind);\n    this.space();\n  } else if (node.module) {\n    this.noIndentInnerCommentsHere();\n    this.word(\"module\");\n    this.space();\n  } else if (node.phase) {\n    this.noIndentInnerCommentsHere();\n    this.word(node.phase);\n    this.space();\n  }\n  const specifiers = node.specifiers.slice(0);\n  const hasSpecifiers = !!specifiers.length;\n  while (hasSpecifiers) {\n    const first = specifiers[0];\n    if (isImportDefaultSpecifier(first) || isImportNamespaceSpecifier(first)) {\n      this.print(specifiers.shift());\n      if (specifiers.length) {\n        this.tokenChar(44);\n        this.space();\n      }\n    } else {\n      break;\n    }\n  }\n  if (specifiers.length) {\n    this.tokenChar(123);\n    this.space();\n    this.printList(specifiers);\n    this.space();\n    this.tokenChar(125);\n  } else if (isTypeKind && !hasSpecifiers) {\n    this.tokenChar(123);\n    this.tokenChar(125);\n  }\n  if (hasSpecifiers || isTypeKind) {\n    this.space();\n    this.word(\"from\");\n    this.space();\n  }\n  if ((_node$attributes3 = node.attributes) != null && _node$attributes3.length || (_node$assertions3 = node.assertions) != null && _node$assertions3.length) {\n    this.print(node.source, true);\n    this.space();\n    this._printAttributes(node);\n  } else {\n    this.print(node.source);\n  }\n  this.semicolon();\n}\nfunction ImportAttribute(node) {\n  this.print(node.key);\n  this.tokenChar(58);\n  this.space();\n  this.print(node.value);\n}\nfunction ImportNamespaceSpecifier(node) {\n  this.tokenChar(42);\n  this.space();\n  this.word(\"as\");\n  this.space();\n  this.print(node.local);\n}\nfunction ImportExpression(node) {\n  this.word(\"import\");\n  if (node.phase) {\n    this.tokenChar(46);\n    this.word(node.phase);\n  }\n  this.tokenChar(40);\n  this.print(node.source);\n  if (node.options != null) {\n    this.tokenChar(44);\n    this.space();\n    this.print(node.options);\n  }\n  this.tokenChar(41);\n}\n\n//# sourceMappingURL=modules.js.map\n\nexport { modules as __moduleExports, ExportAllDeclaration_1 as ExportAllDeclaration, ExportDefaultDeclaration_1 as ExportDefaultDeclaration, ExportDefaultSpecifier_1 as ExportDefaultSpecifier, ExportNamedDeclaration_1 as ExportNamedDeclaration, ExportNamespaceSpecifier_1 as ExportNamespaceSpecifier, ExportSpecifier_1 as ExportSpecifier, ImportAttribute_1 as ImportAttribute, ImportDeclaration_1 as ImportDeclaration, ImportDefaultSpecifier_1 as ImportDefaultSpecifier, ImportExpression_1 as ImportExpression, ImportNamespaceSpecifier_1 as ImportNamespaceSpecifier, ImportSpecifier_1 as ImportSpecifier, _printAttributes_1 as _printAttributes, modules as default };",
-      "start": 1727785257169,
-      "end": 1727785257215,
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as modules } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/lib/generators/modules.js?commonjs-exports\";\nimport { __require as require$$0 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/index.js?commonjs-wrapped\";\nimport { __require as require$$1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/lib/node/index.js?commonjs-wrapped\";\n\n\"use strict\";\n\nObject.defineProperty(modules, \"__esModule\", {\n  value: true\n});\nvar ExportAllDeclaration_1 = modules.ExportAllDeclaration = ExportAllDeclaration;\nvar ExportDefaultDeclaration_1 = modules.ExportDefaultDeclaration = ExportDefaultDeclaration;\nvar ExportDefaultSpecifier_1 = modules.ExportDefaultSpecifier = ExportDefaultSpecifier;\nvar ExportNamedDeclaration_1 = modules.ExportNamedDeclaration = ExportNamedDeclaration;\nvar ExportNamespaceSpecifier_1 = modules.ExportNamespaceSpecifier = ExportNamespaceSpecifier;\nvar ExportSpecifier_1 = modules.ExportSpecifier = ExportSpecifier;\nvar ImportAttribute_1 = modules.ImportAttribute = ImportAttribute;\nvar ImportDeclaration_1 = modules.ImportDeclaration = ImportDeclaration;\nvar ImportDefaultSpecifier_1 = modules.ImportDefaultSpecifier = ImportDefaultSpecifier;\nvar ImportExpression_1 = modules.ImportExpression = ImportExpression;\nvar ImportNamespaceSpecifier_1 = modules.ImportNamespaceSpecifier = ImportNamespaceSpecifier;\nvar ImportSpecifier_1 = modules.ImportSpecifier = ImportSpecifier;\nvar _printAttributes_1 = modules._printAttributes = _printAttributes;\nvar _t = require$$0();\nvar _index = require$$1();\nconst {\n  isClassDeclaration,\n  isExportDefaultSpecifier,\n  isExportNamespaceSpecifier,\n  isImportDefaultSpecifier,\n  isImportNamespaceSpecifier,\n  isStatement\n} = _t;\nfunction ImportSpecifier(node) {\n  if (node.importKind === \"type\" || node.importKind === \"typeof\") {\n    this.word(node.importKind);\n    this.space();\n  }\n  this.print(node.imported);\n  if (node.local && node.local.name !== node.imported.name) {\n    this.space();\n    this.word(\"as\");\n    this.space();\n    this.print(node.local);\n  }\n}\nfunction ImportDefaultSpecifier(node) {\n  this.print(node.local);\n}\nfunction ExportDefaultSpecifier(node) {\n  this.print(node.exported);\n}\nfunction ExportSpecifier(node) {\n  if (node.exportKind === \"type\") {\n    this.word(\"type\");\n    this.space();\n  }\n  this.print(node.local);\n  if (node.exported && node.local.name !== node.exported.name) {\n    this.space();\n    this.word(\"as\");\n    this.space();\n    this.print(node.exported);\n  }\n}\nfunction ExportNamespaceSpecifier(node) {\n  this.tokenChar(42);\n  this.space();\n  this.word(\"as\");\n  this.space();\n  this.print(node.exported);\n}\nlet warningShown = false;\nfunction _printAttributes(node) {\n  const {\n    importAttributesKeyword\n  } = this.format;\n  const {\n    attributes,\n    assertions\n  } = node;\n  if (attributes && !importAttributesKeyword && !warningShown) {\n    warningShown = true;\n    console.warn(`\\\nYou are using import attributes, without specifying the desired output syntax.\nPlease specify the \"importAttributesKeyword\" generator option, whose value can be one of:\n - \"with\"        : \\`import { a } from \"b\" with { type: \"json\" };\\`\n - \"assert\"      : \\`import { a } from \"b\" assert { type: \"json\" };\\`\n - \"with-legacy\" : \\`import { a } from \"b\" with type: \"json\";\\`\n`);\n  }\n  const useAssertKeyword = importAttributesKeyword === \"assert\" || !importAttributesKeyword && assertions;\n  this.word(useAssertKeyword ? \"assert\" : \"with\");\n  this.space();\n  if (!useAssertKeyword && importAttributesKeyword !== \"with\") {\n    this.printList(attributes || assertions);\n    return;\n  }\n  this.tokenChar(123);\n  this.space();\n  this.printList(attributes || assertions);\n  this.space();\n  this.tokenChar(125);\n}\nfunction ExportAllDeclaration(node) {\n  var _node$attributes, _node$assertions;\n  this.word(\"export\");\n  this.space();\n  if (node.exportKind === \"type\") {\n    this.word(\"type\");\n    this.space();\n  }\n  this.tokenChar(42);\n  this.space();\n  this.word(\"from\");\n  this.space();\n  if ((_node$attributes = node.attributes) != null && _node$attributes.length || (_node$assertions = node.assertions) != null && _node$assertions.length) {\n    this.print(node.source, true);\n    this.space();\n    this._printAttributes(node);\n  } else {\n    this.print(node.source);\n  }\n  this.semicolon();\n}\nfunction maybePrintDecoratorsBeforeExport(printer, node) {\n  if (isClassDeclaration(node.declaration) && printer._shouldPrintDecoratorsBeforeExport(node)) {\n    printer.printJoin(node.declaration.decorators);\n  }\n}\nfunction ExportNamedDeclaration(node) {\n  maybePrintDecoratorsBeforeExport(this, node);\n  this.word(\"export\");\n  this.space();\n  if (node.declaration) {\n    const declar = node.declaration;\n    this.print(declar);\n    if (!isStatement(declar)) this.semicolon();\n  } else {\n    if (node.exportKind === \"type\") {\n      this.word(\"type\");\n      this.space();\n    }\n    const specifiers = node.specifiers.slice(0);\n    let hasSpecial = false;\n    for (;;) {\n      const first = specifiers[0];\n      if (isExportDefaultSpecifier(first) || isExportNamespaceSpecifier(first)) {\n        hasSpecial = true;\n        this.print(specifiers.shift());\n        if (specifiers.length) {\n          this.tokenChar(44);\n          this.space();\n        }\n      } else {\n        break;\n      }\n    }\n    if (specifiers.length || !specifiers.length && !hasSpecial) {\n      this.tokenChar(123);\n      if (specifiers.length) {\n        this.space();\n        this.printList(specifiers);\n        this.space();\n      }\n      this.tokenChar(125);\n    }\n    if (node.source) {\n      var _node$attributes2, _node$assertions2;\n      this.space();\n      this.word(\"from\");\n      this.space();\n      if ((_node$attributes2 = node.attributes) != null && _node$attributes2.length || (_node$assertions2 = node.assertions) != null && _node$assertions2.length) {\n        this.print(node.source, true);\n        this.space();\n        this._printAttributes(node);\n      } else {\n        this.print(node.source);\n      }\n    }\n    this.semicolon();\n  }\n}\nfunction ExportDefaultDeclaration(node) {\n  maybePrintDecoratorsBeforeExport(this, node);\n  this.word(\"export\");\n  this.noIndentInnerCommentsHere();\n  this.space();\n  this.word(\"default\");\n  this.space();\n  this.tokenContext |= _index.TokenContext.exportDefault;\n  const declar = node.declaration;\n  this.print(declar);\n  if (!isStatement(declar)) this.semicolon();\n}\nfunction ImportDeclaration(node) {\n  var _node$attributes3, _node$assertions3;\n  this.word(\"import\");\n  this.space();\n  const isTypeKind = node.importKind === \"type\" || node.importKind === \"typeof\";\n  if (isTypeKind) {\n    this.noIndentInnerCommentsHere();\n    this.word(node.importKind);\n    this.space();\n  } else if (node.module) {\n    this.noIndentInnerCommentsHere();\n    this.word(\"module\");\n    this.space();\n  } else if (node.phase) {\n    this.noIndentInnerCommentsHere();\n    this.word(node.phase);\n    this.space();\n  }\n  const specifiers = node.specifiers.slice(0);\n  const hasSpecifiers = !!specifiers.length;\n  while (hasSpecifiers) {\n    const first = specifiers[0];\n    if (isImportDefaultSpecifier(first) || isImportNamespaceSpecifier(first)) {\n      this.print(specifiers.shift());\n      if (specifiers.length) {\n        this.tokenChar(44);\n        this.space();\n      }\n    } else {\n      break;\n    }\n  }\n  if (specifiers.length) {\n    this.tokenChar(123);\n    this.space();\n    this.printList(specifiers);\n    this.space();\n    this.tokenChar(125);\n  } else if (isTypeKind && !hasSpecifiers) {\n    this.tokenChar(123);\n    this.tokenChar(125);\n  }\n  if (hasSpecifiers || isTypeKind) {\n    this.space();\n    this.word(\"from\");\n    this.space();\n  }\n  if ((_node$attributes3 = node.attributes) != null && _node$attributes3.length || (_node$assertions3 = node.assertions) != null && _node$assertions3.length) {\n    this.print(node.source, true);\n    this.space();\n    this._printAttributes(node);\n  } else {\n    this.print(node.source);\n  }\n  this.semicolon();\n}\nfunction ImportAttribute(node) {\n  this.print(node.key);\n  this.tokenChar(58);\n  this.space();\n  this.print(node.value);\n}\nfunction ImportNamespaceSpecifier(node) {\n  this.tokenChar(42);\n  this.space();\n  this.word(\"as\");\n  this.space();\n  this.print(node.local);\n}\nfunction ImportExpression(node) {\n  this.word(\"import\");\n  if (node.phase) {\n    this.tokenChar(46);\n    this.word(node.phase);\n  }\n  this.tokenChar(40);\n  this.print(node.source);\n  if (node.options != null) {\n    this.tokenChar(44);\n    this.space();\n    this.print(node.options);\n  }\n  this.tokenChar(41);\n}\n\n//# sourceMappingURL=modules.js.map\n\nexport { modules as __moduleExports, ExportAllDeclaration_1 as ExportAllDeclaration, ExportDefaultDeclaration_1 as ExportDefaultDeclaration, ExportDefaultSpecifier_1 as ExportDefaultSpecifier, ExportNamedDeclaration_1 as ExportNamedDeclaration, ExportNamespaceSpecifier_1 as ExportNamespaceSpecifier, ExportSpecifier_1 as ExportSpecifier, ImportAttribute_1 as ImportAttribute, ImportDeclaration_1 as ImportDeclaration, ImportDefaultSpecifier_1 as ImportDefaultSpecifier, ImportExpression_1 as ImportExpression, ImportNamespaceSpecifier_1 as ImportNamespaceSpecifier, ImportSpecifier_1 as ImportSpecifier, _printAttributes_1 as _printAttributes, modules as default };",
+      "start": 1728160681369,
+      "end": 1728160682533,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160682539,
+      "end": 1728160682539,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785257215,
-      "end": 1727785257215,
+      "start": 1728160682539,
+      "end": 1728160682539,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785257215,
-      "end": 1727785257215,
+      "start": 1728160682539,
+      "end": 1728160682539,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785257215,
-      "end": 1727785257215,
+      "start": 1728160682540,
+      "end": 1728160682540,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785257215,
-      "end": 1727785257215,
+      "start": 1728160682541,
+      "end": 1728160682542,
       "order": "normal"
     }
   ]

@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = isSpecifierDefault;\nvar _index = require(\"./generated/index.js\");\nfunction isSpecifierDefault(specifier) {\n  return (0, _index.isImportDefaultSpecifier)(specifier) || (0, _index.isIdentifier)(specifier.imported || specifier.exported, {\n    name: \"default\"\n  });\n}\n\n//# sourceMappingURL=isSpecifierDefault.js.map\n",
-      "start": 1727785256924,
-      "end": 1727785256935,
+      "start": 1728160652493,
+      "end": 1728160680960,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785256935,
-      "end": 1727785256935,
+      "start": 1728160680961,
+      "end": 1728160680961,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160680961,
+      "end": 1728160680961,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785256935,
-      "end": 1727785256935,
+      "start": 1728160680961,
+      "end": 1728160680961,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785256935,
-      "end": 1727785256935,
+      "start": 1728160680961,
+      "end": 1728160680961,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785256935,
-      "end": 1727785256935,
+      "start": 1728160680961,
+      "end": 1728160680961,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785256935,
-      "end": 1727785256935,
+      "start": 1728160680961,
+      "end": 1728160680961,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785256936,
-      "end": 1727785256936,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785256936,
-      "end": 1727785256936,
+      "start": 1728160680961,
+      "end": 1728160680961,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785256936,
-      "end": 1727785256936,
+      "start": 1728160680961,
+      "end": 1728160680961,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785256936,
-      "end": 1727785256936,
+      "start": 1728160680961,
+      "end": 1728160680961,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785256936,
-      "end": 1727785256936,
+      "start": 1728160680961,
+      "end": 1728160680961,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785256936,
-      "end": 1727785256936,
+      "start": 1728160680962,
+      "end": 1728160680962,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785256936,
-      "end": 1727785256936,
+      "start": 1728160680962,
+      "end": 1728160680962,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as isSpecifierDefault_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/validators/isSpecifierDefault.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/validators/generated/index.js?commonjs-proxy\";\n\n\"use strict\";\n\nObject.defineProperty(isSpecifierDefault_1, \"__esModule\", {\n  value: true\n});\nvar _default = isSpecifierDefault_1.default = isSpecifierDefault;\nvar _index = require$$0;\nfunction isSpecifierDefault(specifier) {\n  return (0, _index.isImportDefaultSpecifier)(specifier) || (0, _index.isIdentifier)(specifier.imported || specifier.exported, {\n    name: \"default\"\n  });\n}\n\n//# sourceMappingURL=isSpecifierDefault.js.map\n\nexport { isSpecifierDefault_1 as __moduleExports, _default as default };",
-      "start": 1727785256936,
-      "end": 1727785257027,
+      "start": 1728160680962,
+      "end": 1728160681106,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160681106,
+      "end": 1728160681106,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785257027,
-      "end": 1727785257027,
+      "start": 1728160681106,
+      "end": 1728160681106,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785257027,
-      "end": 1727785257027,
+      "start": 1728160681106,
+      "end": 1728160681106,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785257027,
-      "end": 1727785257027,
+      "start": 1728160681106,
+      "end": 1728160681106,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785257027,
-      "end": 1727785257027,
+      "start": 1728160681107,
+      "end": 1728160681107,
       "order": "normal"
     }
   ]

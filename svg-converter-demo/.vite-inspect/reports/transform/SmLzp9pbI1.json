@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = getBindingIdentifiers;\nvar _index = require(\"../validators/generated/index.js\");\nfunction getBindingIdentifiers(node, duplicates, outerOnly, newBindingsOnly) {\n  const search = [].concat(node);\n  const ids = Object.create(null);\n  while (search.length) {\n    const id = search.shift();\n    if (!id) continue;\n    if (newBindingsOnly && ((0, _index.isAssignmentExpression)(id) || (0, _index.isUnaryExpression)(id) || (0, _index.isUpdateExpression)(id))) {\n      continue;\n    }\n    if ((0, _index.isIdentifier)(id)) {\n      if (duplicates) {\n        const _ids = ids[id.name] = ids[id.name] || [];\n        _ids.push(id);\n      } else {\n        ids[id.name] = id;\n      }\n      continue;\n    }\n    if ((0, _index.isExportDeclaration)(id) && !(0, _index.isExportAllDeclaration)(id)) {\n      if ((0, _index.isDeclaration)(id.declaration)) {\n        search.push(id.declaration);\n      }\n      continue;\n    }\n    if (outerOnly) {\n      if ((0, _index.isFunctionDeclaration)(id)) {\n        search.push(id.id);\n        continue;\n      }\n      if ((0, _index.isFunctionExpression)(id)) {\n        continue;\n      }\n    }\n    const keys = getBindingIdentifiers.keys[id.type];\n    if (keys) {\n      for (let i = 0; i < keys.length; i++) {\n        const key = keys[i];\n        const nodes = id[key];\n        if (nodes) {\n          if (Array.isArray(nodes)) {\n            search.push(...nodes);\n          } else {\n            search.push(nodes);\n          }\n        }\n      }\n    }\n  }\n  return ids;\n}\nconst keys = {\n  DeclareClass: [\"id\"],\n  DeclareFunction: [\"id\"],\n  DeclareModule: [\"id\"],\n  DeclareVariable: [\"id\"],\n  DeclareInterface: [\"id\"],\n  DeclareTypeAlias: [\"id\"],\n  DeclareOpaqueType: [\"id\"],\n  InterfaceDeclaration: [\"id\"],\n  TypeAlias: [\"id\"],\n  OpaqueType: [\"id\"],\n  CatchClause: [\"param\"],\n  LabeledStatement: [\"label\"],\n  UnaryExpression: [\"argument\"],\n  AssignmentExpression: [\"left\"],\n  ImportSpecifier: [\"local\"],\n  ImportNamespaceSpecifier: [\"local\"],\n  ImportDefaultSpecifier: [\"local\"],\n  ImportDeclaration: [\"specifiers\"],\n  ExportSpecifier: [\"exported\"],\n  ExportNamespaceSpecifier: [\"exported\"],\n  ExportDefaultSpecifier: [\"exported\"],\n  FunctionDeclaration: [\"id\", \"params\"],\n  FunctionExpression: [\"id\", \"params\"],\n  ArrowFunctionExpression: [\"params\"],\n  ObjectMethod: [\"params\"],\n  ClassMethod: [\"params\"],\n  ClassPrivateMethod: [\"params\"],\n  ForInStatement: [\"left\"],\n  ForOfStatement: [\"left\"],\n  ClassDeclaration: [\"id\"],\n  ClassExpression: [\"id\"],\n  RestElement: [\"argument\"],\n  UpdateExpression: [\"argument\"],\n  ObjectProperty: [\"value\"],\n  AssignmentPattern: [\"left\"],\n  ArrayPattern: [\"elements\"],\n  ObjectPattern: [\"properties\"],\n  VariableDeclaration: [\"declarations\"],\n  VariableDeclarator: [\"id\"]\n};\ngetBindingIdentifiers.keys = keys;\n\n//# sourceMappingURL=getBindingIdentifiers.js.map\n",
-      "start": 1727785256912,
-      "end": 1727785256926,
+      "start": 1728160652458,
+      "end": 1728160680914,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785256926,
-      "end": 1727785256926,
+      "start": 1728160680914,
+      "end": 1728160680914,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160680914,
+      "end": 1728160680914,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785256926,
-      "end": 1727785256926,
+      "start": 1728160680914,
+      "end": 1728160680914,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785256926,
-      "end": 1727785256926,
+      "start": 1728160680914,
+      "end": 1728160680914,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785256926,
-      "end": 1727785256926,
+      "start": 1728160680914,
+      "end": 1728160680914,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785256926,
-      "end": 1727785256926,
+      "start": 1728160680915,
+      "end": 1728160680915,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785256926,
-      "end": 1727785256926,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785256926,
-      "end": 1727785256926,
+      "start": 1728160680915,
+      "end": 1728160680915,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785256926,
-      "end": 1727785256926,
+      "start": 1728160680915,
+      "end": 1728160680915,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785256926,
-      "end": 1727785256926,
+      "start": 1728160680915,
+      "end": 1728160680915,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785256926,
-      "end": 1727785256926,
+      "start": 1728160680915,
+      "end": 1728160680915,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785256926,
-      "end": 1727785256926,
+      "start": 1728160680915,
+      "end": 1728160680915,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785256926,
-      "end": 1727785256926,
+      "start": 1728160680915,
+      "end": 1728160680915,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as getBindingIdentifiers_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/retrievers/getBindingIdentifiers.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/validators/generated/index.js?commonjs-proxy\";\n\n\"use strict\";\n\nObject.defineProperty(getBindingIdentifiers_1, \"__esModule\", {\n  value: true\n});\nvar _default = getBindingIdentifiers_1.default = getBindingIdentifiers;\nvar _index = require$$0;\nfunction getBindingIdentifiers(node, duplicates, outerOnly, newBindingsOnly) {\n  const search = [].concat(node);\n  const ids = Object.create(null);\n  while (search.length) {\n    const id = search.shift();\n    if (!id) continue;\n    if (newBindingsOnly && ((0, _index.isAssignmentExpression)(id) || (0, _index.isUnaryExpression)(id) || (0, _index.isUpdateExpression)(id))) {\n      continue;\n    }\n    if ((0, _index.isIdentifier)(id)) {\n      if (duplicates) {\n        const _ids = ids[id.name] = ids[id.name] || [];\n        _ids.push(id);\n      } else {\n        ids[id.name] = id;\n      }\n      continue;\n    }\n    if ((0, _index.isExportDeclaration)(id) && !(0, _index.isExportAllDeclaration)(id)) {\n      if ((0, _index.isDeclaration)(id.declaration)) {\n        search.push(id.declaration);\n      }\n      continue;\n    }\n    if (outerOnly) {\n      if ((0, _index.isFunctionDeclaration)(id)) {\n        search.push(id.id);\n        continue;\n      }\n      if ((0, _index.isFunctionExpression)(id)) {\n        continue;\n      }\n    }\n    const keys = getBindingIdentifiers.keys[id.type];\n    if (keys) {\n      for (let i = 0; i < keys.length; i++) {\n        const key = keys[i];\n        const nodes = id[key];\n        if (nodes) {\n          if (Array.isArray(nodes)) {\n            search.push(...nodes);\n          } else {\n            search.push(nodes);\n          }\n        }\n      }\n    }\n  }\n  return ids;\n}\nconst keys = {\n  DeclareClass: [\"id\"],\n  DeclareFunction: [\"id\"],\n  DeclareModule: [\"id\"],\n  DeclareVariable: [\"id\"],\n  DeclareInterface: [\"id\"],\n  DeclareTypeAlias: [\"id\"],\n  DeclareOpaqueType: [\"id\"],\n  InterfaceDeclaration: [\"id\"],\n  TypeAlias: [\"id\"],\n  OpaqueType: [\"id\"],\n  CatchClause: [\"param\"],\n  LabeledStatement: [\"label\"],\n  UnaryExpression: [\"argument\"],\n  AssignmentExpression: [\"left\"],\n  ImportSpecifier: [\"local\"],\n  ImportNamespaceSpecifier: [\"local\"],\n  ImportDefaultSpecifier: [\"local\"],\n  ImportDeclaration: [\"specifiers\"],\n  ExportSpecifier: [\"exported\"],\n  ExportNamespaceSpecifier: [\"exported\"],\n  ExportDefaultSpecifier: [\"exported\"],\n  FunctionDeclaration: [\"id\", \"params\"],\n  FunctionExpression: [\"id\", \"params\"],\n  ArrowFunctionExpression: [\"params\"],\n  ObjectMethod: [\"params\"],\n  ClassMethod: [\"params\"],\n  ClassPrivateMethod: [\"params\"],\n  ForInStatement: [\"left\"],\n  ForOfStatement: [\"left\"],\n  ClassDeclaration: [\"id\"],\n  ClassExpression: [\"id\"],\n  RestElement: [\"argument\"],\n  UpdateExpression: [\"argument\"],\n  ObjectProperty: [\"value\"],\n  AssignmentPattern: [\"left\"],\n  ArrayPattern: [\"elements\"],\n  ObjectPattern: [\"properties\"],\n  VariableDeclaration: [\"declarations\"],\n  VariableDeclarator: [\"id\"]\n};\ngetBindingIdentifiers.keys = keys;\n\n//# sourceMappingURL=getBindingIdentifiers.js.map\n\nexport { getBindingIdentifiers_1 as __moduleExports, _default as default };",
-      "start": 1727785256926,
-      "end": 1727785257027,
+      "start": 1728160680916,
+      "end": 1728160681106,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160681106,
+      "end": 1728160681106,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785257027,
-      "end": 1727785257027,
+      "start": 1728160681106,
+      "end": 1728160681106,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785257027,
-      "end": 1727785257027,
+      "start": 1728160681106,
+      "end": 1728160681106,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785257027,
-      "end": 1727785257027,
+      "start": 1728160681106,
+      "end": 1728160681106,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785257027,
-      "end": 1727785257027,
+      "start": 1728160681107,
+      "end": 1728160681107,
       "order": "normal"
     }
   ]

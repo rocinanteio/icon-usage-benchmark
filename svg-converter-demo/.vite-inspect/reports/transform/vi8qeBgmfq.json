@@ -1,0 +1,11 @@
+{
+  "resolvedId": "\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/generator/node_modules/@babel/types/lib/definitions/misc.js?commonjs-exports",
+  "transforms": [
+    {
+      "name": "commonjs",
+      "result": "var misc = {}; export {misc as __exports}",
+      "start": 1728160682659,
+      "end": 1728160682659
+    }
+  ]
+}

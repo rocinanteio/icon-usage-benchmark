@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = isValidIdentifier;\nvar _helperValidatorIdentifier = require(\"@babel/helper-validator-identifier\");\nfunction isValidIdentifier(name, reserved = true) {\n  if (typeof name !== \"string\") return false;\n  if (reserved) {\n    if ((0, _helperValidatorIdentifier.isKeyword)(name) || (0, _helperValidatorIdentifier.isStrictReservedWord)(name, true)) {\n      return false;\n    }\n  }\n  return (0, _helperValidatorIdentifier.isIdentifierName)(name);\n}\n\n//# sourceMappingURL=isValidIdentifier.js.map\n",
-      "start": 1727785256925,
-      "end": 1727785256936,
+      "start": 1728160652500,
+      "end": 1728160680965,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785256936,
-      "end": 1727785256936,
+      "start": 1728160680965,
+      "end": 1728160680965,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160680965,
+      "end": 1728160680965,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785256936,
-      "end": 1727785256936,
+      "start": 1728160680965,
+      "end": 1728160680965,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785256936,
-      "end": 1727785256936,
+      "start": 1728160680965,
+      "end": 1728160680965,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785256936,
-      "end": 1727785256936,
+      "start": 1728160680965,
+      "end": 1728160680965,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785256936,
-      "end": 1727785256936,
+      "start": 1728160680965,
+      "end": 1728160680965,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785256936,
-      "end": 1727785256936,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785256936,
-      "end": 1727785256936,
+      "start": 1728160680965,
+      "end": 1728160680965,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785256936,
-      "end": 1727785256936,
+      "start": 1728160680965,
+      "end": 1728160680965,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785256936,
-      "end": 1727785256936,
+      "start": 1728160680965,
+      "end": 1728160680965,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785256936,
-      "end": 1727785256936,
+      "start": 1728160680965,
+      "end": 1728160680965,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785256936,
-      "end": 1727785256936,
+      "start": 1728160680965,
+      "end": 1728160680965,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785256936,
-      "end": 1727785256936,
+      "start": 1728160680966,
+      "end": 1728160680966,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as isValidIdentifier_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/validators/isValidIdentifier.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/helper-validator-identifier/lib/index.js?commonjs-proxy\";\n\n\"use strict\";\n\nObject.defineProperty(isValidIdentifier_1, \"__esModule\", {\n  value: true\n});\nvar _default = isValidIdentifier_1.default = isValidIdentifier;\nvar _helperValidatorIdentifier = require$$0;\nfunction isValidIdentifier(name, reserved = true) {\n  if (typeof name !== \"string\") return false;\n  if (reserved) {\n    if ((0, _helperValidatorIdentifier.isKeyword)(name) || (0, _helperValidatorIdentifier.isStrictReservedWord)(name, true)) {\n      return false;\n    }\n  }\n  return (0, _helperValidatorIdentifier.isIdentifierName)(name);\n}\n\n//# sourceMappingURL=isValidIdentifier.js.map\n\nexport { isValidIdentifier_1 as __moduleExports, _default as default };",
-      "start": 1727785256936,
-      "end": 1727785257128,
+      "start": 1728160680966,
+      "end": 1728160681666,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160681667,
+      "end": 1728160681667,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785257128,
-      "end": 1727785257128,
+      "start": 1728160681667,
+      "end": 1728160681667,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785257128,
-      "end": 1727785257128,
+      "start": 1728160681667,
+      "end": 1728160681667,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785257128,
-      "end": 1727785257128,
+      "start": 1728160681667,
+      "end": 1728160681667,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785257128,
-      "end": 1727785257128,
+      "start": 1728160681667,
+      "end": 1728160681667,
       "order": "normal"
     }
   ]

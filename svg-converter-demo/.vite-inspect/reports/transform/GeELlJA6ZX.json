@@ -4,110 +4,116 @@
     {
       "name": "vite:load-fallback",
       "result": "import speedometer from \"./speedometer.js\";\nimport throttle from \"./throttle.js\";\nimport utils from \"../utils.js\";\n\nexport const progressEventReducer = (listener, isDownloadStream, freq = 3) => {\n  let bytesNotified = 0;\n  const _speedometer = speedometer(50, 250);\n\n  return throttle(e => {\n    const loaded = e.loaded;\n    const total = e.lengthComputable ? e.total : undefined;\n    const progressBytes = loaded - bytesNotified;\n    const rate = _speedometer(progressBytes);\n    const inRange = loaded <= total;\n\n    bytesNotified = loaded;\n\n    const data = {\n      loaded,\n      total,\n      progress: total ? (loaded / total) : undefined,\n      bytes: progressBytes,\n      rate: rate ? rate : undefined,\n      estimated: rate && total && inRange ? (total - loaded) / rate : undefined,\n      event: e,\n      lengthComputable: total != null,\n      [isDownloadStream ? 'download' : 'upload']: true\n    };\n\n    listener(data);\n  }, freq);\n}\n\nexport const progressEventDecorator = (total, throttled) => {\n  const lengthComputable = total != null;\n\n  return [(loaded) => throttled[0]({\n    lengthComputable,\n    total,\n    loaded\n  }), throttled[1]];\n}\n\nexport const asyncDecorator = (fn) => (...args) => utils.asap(() => fn(...args));\n",
-      "start": 1727785257181,
-      "end": 1727785257226,
+      "start": 1728160681780,
+      "end": 1728160681898,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785257226,
-      "end": 1727785257226,
+      "start": 1728160681898,
+      "end": 1728160681898,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160681898,
+      "end": 1728160681898,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785257226,
-      "end": 1727785257226,
+      "start": 1728160681898,
+      "end": 1728160681898,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785257226,
-      "end": 1727785257226,
+      "start": 1728160681898,
+      "end": 1728160681898,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785257226,
-      "end": 1727785257226,
+      "start": 1728160681898,
+      "end": 1728160681898,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785257226,
-      "end": 1727785257226,
+      "start": 1728160681898,
+      "end": 1728160681898,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785257226,
-      "end": 1727785257226,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785257226,
-      "end": 1727785257226,
+      "start": 1728160681898,
+      "end": 1728160681898,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785257226,
-      "end": 1727785257226,
+      "start": 1728160681898,
+      "end": 1728160681898,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785257226,
-      "end": 1727785257226,
+      "start": 1728160681898,
+      "end": 1728160681898,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785257226,
-      "end": 1727785257226,
+      "start": 1728160681898,
+      "end": 1728160681898,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785257226,
-      "end": 1727785257226,
+      "start": 1728160681898,
+      "end": 1728160681898,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785257226,
-      "end": 1727785257226,
+      "start": 1728160681898,
+      "end": 1728160681898,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1727785257226,
-      "end": 1727785257226,
+      "start": 1728160681898,
+      "end": 1728160681899,
+      "order": "normal"
+    },
+    {
+      "name": "inject",
+      "start": 1728160681899,
+      "end": 1728160681899,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785257226,
-      "end": 1727785257226,
+      "start": 1728160681899,
+      "end": 1728160681899,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785257226,
-      "end": 1727785257226,
+      "start": 1728160681899,
+      "end": 1728160681899,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785257226,
-      "end": 1727785257226,
+      "start": 1728160681899,
+      "end": 1728160681899,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785257226,
-      "end": 1727785257226,
+      "start": 1728160681899,
+      "end": 1728160681899,
       "order": "normal"
     }
   ]

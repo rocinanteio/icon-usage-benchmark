@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.PLACEHOLDERS_FLIPPED_ALIAS = exports.PLACEHOLDERS_ALIAS = exports.PLACEHOLDERS = void 0;\nvar _utils = require(\"./utils.js\");\nconst PLACEHOLDERS = exports.PLACEHOLDERS = [\"Identifier\", \"StringLiteral\", \"Expression\", \"Statement\", \"Declaration\", \"BlockStatement\", \"ClassBody\", \"Pattern\"];\nconst PLACEHOLDERS_ALIAS = exports.PLACEHOLDERS_ALIAS = {\n  Declaration: [\"Statement\"],\n  Pattern: [\"PatternLike\", \"LVal\"]\n};\nfor (const type of PLACEHOLDERS) {\n  const alias = _utils.ALIAS_KEYS[type];\n  if (alias != null && alias.length) PLACEHOLDERS_ALIAS[type] = alias;\n}\nconst PLACEHOLDERS_FLIPPED_ALIAS = exports.PLACEHOLDERS_FLIPPED_ALIAS = {};\nObject.keys(PLACEHOLDERS_ALIAS).forEach(type => {\n  PLACEHOLDERS_ALIAS[type].forEach(alias => {\n    if (!hasOwnProperty.call(PLACEHOLDERS_FLIPPED_ALIAS, alias)) {\n      PLACEHOLDERS_FLIPPED_ALIAS[alias] = [];\n    }\n    PLACEHOLDERS_FLIPPED_ALIAS[alias].push(type);\n  });\n});\n\n//# sourceMappingURL=placeholders.js.map\n",
-      "start": 1727785256983,
-      "end": 1727785257056,
+      "start": 1728160681173,
+      "end": 1728160681264,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785257056,
-      "end": 1727785257056,
+      "start": 1728160681264,
+      "end": 1728160681264,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160681264,
+      "end": 1728160681264,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785257056,
-      "end": 1727785257056,
+      "start": 1728160681264,
+      "end": 1728160681264,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785257056,
-      "end": 1727785257056,
+      "start": 1728160681264,
+      "end": 1728160681264,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785257056,
-      "end": 1727785257056,
+      "start": 1728160681264,
+      "end": 1728160681264,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785257056,
-      "end": 1727785257056,
+      "start": 1728160681264,
+      "end": 1728160681264,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785257056,
-      "end": 1727785257056,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785257056,
-      "end": 1727785257056,
+      "start": 1728160681264,
+      "end": 1728160681264,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785257056,
-      "end": 1727785257056,
+      "start": 1728160681264,
+      "end": 1728160681264,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785257056,
-      "end": 1727785257056,
+      "start": 1728160681264,
+      "end": 1728160681264,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785257056,
-      "end": 1727785257056,
+      "start": 1728160681264,
+      "end": 1728160681264,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785257056,
-      "end": 1727785257056,
+      "start": 1728160681264,
+      "end": 1728160681264,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785257056,
-      "end": 1727785257056,
+      "start": 1728160681264,
+      "end": 1728160681264,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as placeholders } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/definitions/placeholders.js?commonjs-exports\";\nimport { __require as require$$0 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/definitions/utils.js?commonjs-wrapped\";\n\nvar hasRequiredPlaceholders;\n\nfunction requirePlaceholders () {\n\tif (hasRequiredPlaceholders) return placeholders;\n\thasRequiredPlaceholders = 1;\n\t\"use strict\";\n\n\tObject.defineProperty(placeholders, \"__esModule\", {\n\t  value: true\n\t});\n\tplaceholders.PLACEHOLDERS_FLIPPED_ALIAS = placeholders.PLACEHOLDERS_ALIAS = placeholders.PLACEHOLDERS = void 0;\n\tvar _utils = require$$0();\n\tconst PLACEHOLDERS = placeholders.PLACEHOLDERS = [\"Identifier\", \"StringLiteral\", \"Expression\", \"Statement\", \"Declaration\", \"BlockStatement\", \"ClassBody\", \"Pattern\"];\n\tconst PLACEHOLDERS_ALIAS = placeholders.PLACEHOLDERS_ALIAS = {\n\t  Declaration: [\"Statement\"],\n\t  Pattern: [\"PatternLike\", \"LVal\"]\n\t};\n\tfor (const type of PLACEHOLDERS) {\n\t  const alias = _utils.ALIAS_KEYS[type];\n\t  if (alias != null && alias.length) PLACEHOLDERS_ALIAS[type] = alias;\n\t}\n\tconst PLACEHOLDERS_FLIPPED_ALIAS = placeholders.PLACEHOLDERS_FLIPPED_ALIAS = {};\n\tObject.keys(PLACEHOLDERS_ALIAS).forEach(type => {\n\t  PLACEHOLDERS_ALIAS[type].forEach(alias => {\n\t    if (!hasOwnProperty.call(PLACEHOLDERS_FLIPPED_ALIAS, alias)) {\n\t      PLACEHOLDERS_FLIPPED_ALIAS[alias] = [];\n\t    }\n\t    PLACEHOLDERS_FLIPPED_ALIAS[alias].push(type);\n\t  });\n\t});\n\n\t//# sourceMappingURL=placeholders.js.map\n\treturn placeholders;\n}\n\nexport { requirePlaceholders as __require };",
-      "start": 1727785257056,
-      "end": 1727785257086,
+      "start": 1728160681264,
+      "end": 1728160681423,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160681423,
+      "end": 1728160681424,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785257086,
-      "end": 1727785257086,
+      "start": 1728160681426,
+      "end": 1728160681426,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785257086,
-      "end": 1727785257086,
+      "start": 1728160681426,
+      "end": 1728160681426,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785257086,
-      "end": 1727785257086,
+      "start": 1728160681426,
+      "end": 1728160681426,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785257086,
-      "end": 1727785257086,
+      "start": 1728160681427,
+      "end": 1728160681427,
       "order": "normal"
     }
   ]

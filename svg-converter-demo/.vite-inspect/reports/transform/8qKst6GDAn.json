@@ -4,111 +4,117 @@
     {
       "name": "vite:load-fallback",
       "result": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <link rel=\"icon\" type=\"image/svg+xml\" href=\"/vite.svg\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Vite + React + TS</title>\n  </head>\n  <body>\n    <div id=\"root\"></div>\n    <script type=\"module\" src=\"/src/main.tsx\"></script>\n  </body>\n</html>\n",
-      "start": 1727785256603,
-      "end": 1727785256603,
+      "start": 1728160625329,
+      "end": 1728160625335,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785256604,
-      "end": 1727785256604,
+      "start": 1728160625335,
+      "end": 1728160625336,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160625336,
+      "end": 1728160625336,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785256604,
-      "end": 1727785256604,
+      "start": 1728160625336,
+      "end": 1728160625336,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785256604,
-      "end": 1727785256604,
+      "start": 1728160625336,
+      "end": 1728160625336,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785256604,
-      "end": 1727785256604,
+      "start": 1728160625336,
+      "end": 1728160625336,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785256604,
-      "end": 1727785256604,
+      "start": 1728160625336,
+      "end": 1728160625336,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785256604,
-      "end": 1727785256604,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785256604,
-      "end": 1727785256604,
+      "start": 1728160625336,
+      "end": 1728160625336,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785256604,
-      "end": 1727785256604,
+      "start": 1728160625337,
+      "end": 1728160625337,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785256605,
-      "end": 1727785256605,
+      "start": 1728160625337,
+      "end": 1728160625337,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
       "result": "import \"vite/modulepreload-polyfill\";\n\nimport \"/src/main.tsx\"",
-      "start": 1727785256605,
-      "end": 1727785256614,
+      "start": 1728160625337,
+      "end": 1728160625352,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785256614,
-      "end": 1727785256614,
+      "start": 1728160625352,
+      "end": 1728160625353,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785256614,
-      "end": 1727785256614,
+      "start": 1728160625353,
+      "end": 1728160625353,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1727785256614,
-      "end": 1727785256614,
+      "start": 1728160625353,
+      "end": 1728160625353,
+      "order": "normal"
+    },
+    {
+      "name": "inject",
+      "start": 1728160625353,
+      "end": 1728160625353,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785256614,
-      "end": 1727785256614,
+      "start": 1728160625353,
+      "end": 1728160625353,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785256614,
-      "end": 1727785256614,
+      "start": 1728160625353,
+      "end": 1728160625353,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785256614,
-      "end": 1727785256615,
+      "start": 1728160625353,
+      "end": 1728160625354,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785256615,
-      "end": 1727785256615,
+      "start": 1728160625354,
+      "end": 1728160625354,
       "order": "normal"
     }
   ]

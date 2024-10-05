@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.environmentVisitor = environmentVisitor;\nexports.explode = explode$1;\nexports.isExplodedVisitor = isExplodedVisitor;\nexports.merge = merge;\nexports.verify = verify$1;\nvar virtualTypes = require(\"./path/lib/virtual-types.js\");\nvar virtualTypesValidators = require(\"./path/lib/virtual-types-validator.js\");\nvar _t = require(\"@babel/types\");\nvar _context = require(\"./path/context.js\");\nconst {\n  DEPRECATED_KEYS,\n  DEPRECATED_ALIASES,\n  FLIPPED_ALIAS_KEYS,\n  TYPES,\n  __internal__deprecationWarning: deprecationWarning\n} = _t;\nfunction isVirtualType(type) {\n  return type in virtualTypes;\n}\nfunction isExplodedVisitor(visitor) {\n  return visitor == null ? void 0 : visitor._exploded;\n}\nfunction explode$1(visitor) {\n  if (isExplodedVisitor(visitor)) return visitor;\n  visitor._exploded = true;\n  for (const nodeType of Object.keys(visitor)) {\n    if (shouldIgnoreKey(nodeType)) continue;\n    const parts = nodeType.split(\"|\");\n    if (parts.length === 1) continue;\n    const fns = visitor[nodeType];\n    delete visitor[nodeType];\n    for (const part of parts) {\n      visitor[part] = fns;\n    }\n  }\n  verify$1(visitor);\n  delete visitor.__esModule;\n  ensureEntranceObjects(visitor);\n  ensureCallbackArrays(visitor);\n  for (const nodeType of Object.keys(visitor)) {\n    if (shouldIgnoreKey(nodeType)) continue;\n    if (!isVirtualType(nodeType)) continue;\n    const fns = visitor[nodeType];\n    for (const type of Object.keys(fns)) {\n      fns[type] = wrapCheck(nodeType, fns[type]);\n    }\n    delete visitor[nodeType];\n    const types = virtualTypes[nodeType];\n    if (types !== null) {\n      for (const type of types) {\n        if (visitor[type]) {\n          mergePair(visitor[type], fns);\n        } else {\n          visitor[type] = fns;\n        }\n      }\n    } else {\n      mergePair(visitor, fns);\n    }\n  }\n  for (const nodeType of Object.keys(visitor)) {\n    if (shouldIgnoreKey(nodeType)) continue;\n    let aliases = FLIPPED_ALIAS_KEYS[nodeType];\n    if (nodeType in DEPRECATED_KEYS) {\n      const deprecatedKey = DEPRECATED_KEYS[nodeType];\n      deprecationWarning(nodeType, deprecatedKey, \"Visitor \");\n      aliases = [deprecatedKey];\n    } else if (nodeType in DEPRECATED_ALIASES) {\n      const deprecatedAlias = DEPRECATED_ALIASES[nodeType];\n      deprecationWarning(nodeType, deprecatedAlias, \"Visitor \");\n      aliases = FLIPPED_ALIAS_KEYS[deprecatedAlias];\n    }\n    if (!aliases) continue;\n    const fns = visitor[nodeType];\n    delete visitor[nodeType];\n    for (const alias of aliases) {\n      const existing = visitor[alias];\n      if (existing) {\n        mergePair(existing, fns);\n      } else {\n        visitor[alias] = Object.assign({}, fns);\n      }\n    }\n  }\n  for (const nodeType of Object.keys(visitor)) {\n    if (shouldIgnoreKey(nodeType)) continue;\n    ensureCallbackArrays(visitor[nodeType]);\n  }\n  return visitor;\n}\nfunction verify$1(visitor) {\n  if (visitor._verified) return;\n  if (typeof visitor === \"function\") {\n    throw new Error(\"You passed `traverse()` a function when it expected a visitor object, \" + \"are you sure you didn't mean `{ enter: Function }`?\");\n  }\n  for (const nodeType of Object.keys(visitor)) {\n    if (nodeType === \"enter\" || nodeType === \"exit\") {\n      validateVisitorMethods(nodeType, visitor[nodeType]);\n    }\n    if (shouldIgnoreKey(nodeType)) continue;\n    if (!TYPES.includes(nodeType)) {\n      throw new Error(`You gave us a visitor for the node type ${nodeType} but it's not a valid type in @babel/traverse ${\"7.25.6\"}`);\n    }\n    const visitors = visitor[nodeType];\n    if (typeof visitors === \"object\") {\n      for (const visitorKey of Object.keys(visitors)) {\n        if (visitorKey === \"enter\" || visitorKey === \"exit\") {\n          validateVisitorMethods(`${nodeType}.${visitorKey}`, visitors[visitorKey]);\n        } else {\n          throw new Error(\"You passed `traverse()` a visitor object with the property \" + `${nodeType} that has the invalid property ${visitorKey}`);\n        }\n      }\n    }\n  }\n  visitor._verified = true;\n}\nfunction validateVisitorMethods(path, val) {\n  const fns = [].concat(val);\n  for (const fn of fns) {\n    if (typeof fn !== \"function\") {\n      throw new TypeError(`Non-function found defined in ${path} with type ${typeof fn}`);\n    }\n  }\n}\nfunction merge(visitors, states = [], wrapper) {\n  const mergedVisitor = {\n    _verified: true,\n    _exploded: true\n  };\n  {\n    Object.defineProperty(mergedVisitor, \"_exploded\", {\n      enumerable: false\n    });\n    Object.defineProperty(mergedVisitor, \"_verified\", {\n      enumerable: false\n    });\n  }\n  for (let i = 0; i < visitors.length; i++) {\n    const visitor = explode$1(visitors[i]);\n    const state = states[i];\n    let topVisitor = visitor;\n    if (state || wrapper) {\n      topVisitor = wrapWithStateOrWrapper(topVisitor, state, wrapper);\n    }\n    mergePair(mergedVisitor, topVisitor);\n    for (const key of Object.keys(visitor)) {\n      if (shouldIgnoreKey(key)) continue;\n      let typeVisitor = visitor[key];\n      if (state || wrapper) {\n        typeVisitor = wrapWithStateOrWrapper(typeVisitor, state, wrapper);\n      }\n      const nodeVisitor = mergedVisitor[key] || (mergedVisitor[key] = {});\n      mergePair(nodeVisitor, typeVisitor);\n    }\n  }\n  return mergedVisitor;\n}\nfunction wrapWithStateOrWrapper(oldVisitor, state, wrapper) {\n  const newVisitor = {};\n  for (const phase of [\"enter\", \"exit\"]) {\n    let fns = oldVisitor[phase];\n    if (!Array.isArray(fns)) continue;\n    fns = fns.map(function (fn) {\n      let newFn = fn;\n      if (state) {\n        newFn = function (path) {\n          fn.call(state, path, state);\n        };\n      }\n      if (wrapper) {\n        newFn = wrapper(state == null ? void 0 : state.key, phase, newFn);\n      }\n      if (newFn !== fn) {\n        newFn.toString = () => fn.toString();\n      }\n      return newFn;\n    });\n    newVisitor[phase] = fns;\n  }\n  return newVisitor;\n}\nfunction ensureEntranceObjects(obj) {\n  for (const key of Object.keys(obj)) {\n    if (shouldIgnoreKey(key)) continue;\n    const fns = obj[key];\n    if (typeof fns === \"function\") {\n      obj[key] = {\n        enter: fns\n      };\n    }\n  }\n}\nfunction ensureCallbackArrays(obj) {\n  if (obj.enter && !Array.isArray(obj.enter)) obj.enter = [obj.enter];\n  if (obj.exit && !Array.isArray(obj.exit)) obj.exit = [obj.exit];\n}\nfunction wrapCheck(nodeType, fn) {\n  const fnKey = `is${nodeType}`;\n  const validator = virtualTypesValidators[fnKey];\n  const newFn = function (path) {\n    if (validator.call(path)) {\n      return fn.apply(this, arguments);\n    }\n  };\n  newFn.toString = () => fn.toString();\n  return newFn;\n}\nfunction shouldIgnoreKey(key) {\n  if (key[0] === \"_\") return true;\n  if (key === \"enter\" || key === \"exit\" || key === \"shouldSkip\") return true;\n  if (key === \"denylist\" || key === \"noScope\" || key === \"skipKeys\") {\n    return true;\n  }\n  {\n    if (key === \"blacklist\") {\n      return true;\n    }\n  }\n  return false;\n}\nfunction mergePair(dest, src) {\n  for (const phase of [\"enter\", \"exit\"]) {\n    if (!src[phase]) continue;\n    dest[phase] = [].concat(dest[phase] || [], src[phase]);\n  }\n}\nconst _environmentVisitor = {\n  FunctionParent(path) {\n    if (path.isArrowFunctionExpression()) return;\n    path.skip();\n    if (path.isMethod()) {\n      if (!path.requeueComputedKeyAndDecorators) {\n        _context.requeueComputedKeyAndDecorators.call(path);\n      } else {\n        path.requeueComputedKeyAndDecorators();\n      }\n    }\n  },\n  Property(path) {\n    if (path.isObjectProperty()) return;\n    path.skip();\n    if (!path.requeueComputedKeyAndDecorators) {\n      _context.requeueComputedKeyAndDecorators.call(path);\n    } else {\n      path.requeueComputedKeyAndDecorators();\n    }\n  }\n};\nfunction environmentVisitor(visitor) {\n  return merge([_environmentVisitor, visitor]);\n}\n\n//# sourceMappingURL=visitors.js.map\n",
-      "start": 1727785256803,
-      "end": 1727785256871,
+      "start": 1728160651956,
+      "end": 1728160652369,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785256871,
-      "end": 1727785256871,
+      "start": 1728160652369,
+      "end": 1728160652369,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160652369,
+      "end": 1728160652369,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785256871,
-      "end": 1727785256871,
+      "start": 1728160652369,
+      "end": 1728160652369,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785256871,
-      "end": 1727785256871,
+      "start": 1728160652369,
+      "end": 1728160652369,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785256871,
-      "end": 1727785256871,
+      "start": 1728160652369,
+      "end": 1728160652369,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785256871,
-      "end": 1727785256871,
+      "start": 1728160652369,
+      "end": 1728160652369,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785256871,
-      "end": 1727785256871,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785256871,
-      "end": 1727785256871,
+      "start": 1728160652369,
+      "end": 1728160652369,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785256871,
-      "end": 1727785256871,
+      "start": 1728160652369,
+      "end": 1728160652369,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785256871,
-      "end": 1727785256871,
+      "start": 1728160652369,
+      "end": 1728160652369,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785256871,
-      "end": 1727785256871,
+      "start": 1728160652369,
+      "end": 1728160652369,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785256871,
-      "end": 1727785256871,
+      "start": 1728160652369,
+      "end": 1728160652369,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785256871,
-      "end": 1727785256871,
+      "start": 1728160652369,
+      "end": 1728160652369,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as visitors } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/visitors.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/path/lib/virtual-types.js?commonjs-proxy\";\nimport require$$1 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/path/lib/virtual-types-validator.js?commonjs-proxy\";\nimport { __require as require$$2 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/index.js?commonjs-wrapped\";\nimport { __require as require$$3 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/path/context.js?commonjs-wrapped\";\n\nvar hasRequiredVisitors;\n\nfunction requireVisitors () {\n\tif (hasRequiredVisitors) return visitors;\n\thasRequiredVisitors = 1;\n\t\"use strict\";\n\n\tObject.defineProperty(visitors, \"__esModule\", {\n\t  value: true\n\t});\n\tvisitors.environmentVisitor = environmentVisitor;\n\tvisitors.explode = explode$1;\n\tvisitors.isExplodedVisitor = isExplodedVisitor;\n\tvisitors.merge = merge;\n\tvisitors.verify = verify$1;\n\tvar virtualTypes = require$$0;\n\tvar virtualTypesValidators = require$$1;\n\tvar _t = require$$2();\n\tvar _context = require$$3();\n\tconst {\n\t  DEPRECATED_KEYS,\n\t  DEPRECATED_ALIASES,\n\t  FLIPPED_ALIAS_KEYS,\n\t  TYPES,\n\t  __internal__deprecationWarning: deprecationWarning\n\t} = _t;\n\tfunction isVirtualType(type) {\n\t  return type in virtualTypes;\n\t}\n\tfunction isExplodedVisitor(visitor) {\n\t  return visitor == null ? void 0 : visitor._exploded;\n\t}\n\tfunction explode$1(visitor) {\n\t  if (isExplodedVisitor(visitor)) return visitor;\n\t  visitor._exploded = true;\n\t  for (const nodeType of Object.keys(visitor)) {\n\t    if (shouldIgnoreKey(nodeType)) continue;\n\t    const parts = nodeType.split(\"|\");\n\t    if (parts.length === 1) continue;\n\t    const fns = visitor[nodeType];\n\t    delete visitor[nodeType];\n\t    for (const part of parts) {\n\t      visitor[part] = fns;\n\t    }\n\t  }\n\t  verify$1(visitor);\n\t  delete visitor.__esModule;\n\t  ensureEntranceObjects(visitor);\n\t  ensureCallbackArrays(visitor);\n\t  for (const nodeType of Object.keys(visitor)) {\n\t    if (shouldIgnoreKey(nodeType)) continue;\n\t    if (!isVirtualType(nodeType)) continue;\n\t    const fns = visitor[nodeType];\n\t    for (const type of Object.keys(fns)) {\n\t      fns[type] = wrapCheck(nodeType, fns[type]);\n\t    }\n\t    delete visitor[nodeType];\n\t    const types = virtualTypes[nodeType];\n\t    if (types !== null) {\n\t      for (const type of types) {\n\t        if (visitor[type]) {\n\t          mergePair(visitor[type], fns);\n\t        } else {\n\t          visitor[type] = fns;\n\t        }\n\t      }\n\t    } else {\n\t      mergePair(visitor, fns);\n\t    }\n\t  }\n\t  for (const nodeType of Object.keys(visitor)) {\n\t    if (shouldIgnoreKey(nodeType)) continue;\n\t    let aliases = FLIPPED_ALIAS_KEYS[nodeType];\n\t    if (nodeType in DEPRECATED_KEYS) {\n\t      const deprecatedKey = DEPRECATED_KEYS[nodeType];\n\t      deprecationWarning(nodeType, deprecatedKey, \"Visitor \");\n\t      aliases = [deprecatedKey];\n\t    } else if (nodeType in DEPRECATED_ALIASES) {\n\t      const deprecatedAlias = DEPRECATED_ALIASES[nodeType];\n\t      deprecationWarning(nodeType, deprecatedAlias, \"Visitor \");\n\t      aliases = FLIPPED_ALIAS_KEYS[deprecatedAlias];\n\t    }\n\t    if (!aliases) continue;\n\t    const fns = visitor[nodeType];\n\t    delete visitor[nodeType];\n\t    for (const alias of aliases) {\n\t      const existing = visitor[alias];\n\t      if (existing) {\n\t        mergePair(existing, fns);\n\t      } else {\n\t        visitor[alias] = Object.assign({}, fns);\n\t      }\n\t    }\n\t  }\n\t  for (const nodeType of Object.keys(visitor)) {\n\t    if (shouldIgnoreKey(nodeType)) continue;\n\t    ensureCallbackArrays(visitor[nodeType]);\n\t  }\n\t  return visitor;\n\t}\n\tfunction verify$1(visitor) {\n\t  if (visitor._verified) return;\n\t  if (typeof visitor === \"function\") {\n\t    throw new Error(\"You passed `traverse()` a function when it expected a visitor object, \" + \"are you sure you didn't mean `{ enter: Function }`?\");\n\t  }\n\t  for (const nodeType of Object.keys(visitor)) {\n\t    if (nodeType === \"enter\" || nodeType === \"exit\") {\n\t      validateVisitorMethods(nodeType, visitor[nodeType]);\n\t    }\n\t    if (shouldIgnoreKey(nodeType)) continue;\n\t    if (!TYPES.includes(nodeType)) {\n\t      throw new Error(`You gave us a visitor for the node type ${nodeType} but it's not a valid type in @babel/traverse ${\"7.25.6\"}`);\n\t    }\n\t    const visitors = visitor[nodeType];\n\t    if (typeof visitors === \"object\") {\n\t      for (const visitorKey of Object.keys(visitors)) {\n\t        if (visitorKey === \"enter\" || visitorKey === \"exit\") {\n\t          validateVisitorMethods(`${nodeType}.${visitorKey}`, visitors[visitorKey]);\n\t        } else {\n\t          throw new Error(\"You passed `traverse()` a visitor object with the property \" + `${nodeType} that has the invalid property ${visitorKey}`);\n\t        }\n\t      }\n\t    }\n\t  }\n\t  visitor._verified = true;\n\t}\n\tfunction validateVisitorMethods(path, val) {\n\t  const fns = [].concat(val);\n\t  for (const fn of fns) {\n\t    if (typeof fn !== \"function\") {\n\t      throw new TypeError(`Non-function found defined in ${path} with type ${typeof fn}`);\n\t    }\n\t  }\n\t}\n\tfunction merge(visitors, states = [], wrapper) {\n\t  const mergedVisitor = {\n\t    _verified: true,\n\t    _exploded: true\n\t  };\n\t  {\n\t    Object.defineProperty(mergedVisitor, \"_exploded\", {\n\t      enumerable: false\n\t    });\n\t    Object.defineProperty(mergedVisitor, \"_verified\", {\n\t      enumerable: false\n\t    });\n\t  }\n\t  for (let i = 0; i < visitors.length; i++) {\n\t    const visitor = explode$1(visitors[i]);\n\t    const state = states[i];\n\t    let topVisitor = visitor;\n\t    if (state || wrapper) {\n\t      topVisitor = wrapWithStateOrWrapper(topVisitor, state, wrapper);\n\t    }\n\t    mergePair(mergedVisitor, topVisitor);\n\t    for (const key of Object.keys(visitor)) {\n\t      if (shouldIgnoreKey(key)) continue;\n\t      let typeVisitor = visitor[key];\n\t      if (state || wrapper) {\n\t        typeVisitor = wrapWithStateOrWrapper(typeVisitor, state, wrapper);\n\t      }\n\t      const nodeVisitor = mergedVisitor[key] || (mergedVisitor[key] = {});\n\t      mergePair(nodeVisitor, typeVisitor);\n\t    }\n\t  }\n\t  return mergedVisitor;\n\t}\n\tfunction wrapWithStateOrWrapper(oldVisitor, state, wrapper) {\n\t  const newVisitor = {};\n\t  for (const phase of [\"enter\", \"exit\"]) {\n\t    let fns = oldVisitor[phase];\n\t    if (!Array.isArray(fns)) continue;\n\t    fns = fns.map(function (fn) {\n\t      let newFn = fn;\n\t      if (state) {\n\t        newFn = function (path) {\n\t          fn.call(state, path, state);\n\t        };\n\t      }\n\t      if (wrapper) {\n\t        newFn = wrapper(state == null ? void 0 : state.key, phase, newFn);\n\t      }\n\t      if (newFn !== fn) {\n\t        newFn.toString = () => fn.toString();\n\t      }\n\t      return newFn;\n\t    });\n\t    newVisitor[phase] = fns;\n\t  }\n\t  return newVisitor;\n\t}\n\tfunction ensureEntranceObjects(obj) {\n\t  for (const key of Object.keys(obj)) {\n\t    if (shouldIgnoreKey(key)) continue;\n\t    const fns = obj[key];\n\t    if (typeof fns === \"function\") {\n\t      obj[key] = {\n\t        enter: fns\n\t      };\n\t    }\n\t  }\n\t}\n\tfunction ensureCallbackArrays(obj) {\n\t  if (obj.enter && !Array.isArray(obj.enter)) obj.enter = [obj.enter];\n\t  if (obj.exit && !Array.isArray(obj.exit)) obj.exit = [obj.exit];\n\t}\n\tfunction wrapCheck(nodeType, fn) {\n\t  const fnKey = `is${nodeType}`;\n\t  const validator = virtualTypesValidators[fnKey];\n\t  const newFn = function (path) {\n\t    if (validator.call(path)) {\n\t      return fn.apply(this, arguments);\n\t    }\n\t  };\n\t  newFn.toString = () => fn.toString();\n\t  return newFn;\n\t}\n\tfunction shouldIgnoreKey(key) {\n\t  if (key[0] === \"_\") return true;\n\t  if (key === \"enter\" || key === \"exit\" || key === \"shouldSkip\") return true;\n\t  if (key === \"denylist\" || key === \"noScope\" || key === \"skipKeys\") {\n\t    return true;\n\t  }\n\t  {\n\t    if (key === \"blacklist\") {\n\t      return true;\n\t    }\n\t  }\n\t  return false;\n\t}\n\tfunction mergePair(dest, src) {\n\t  for (const phase of [\"enter\", \"exit\"]) {\n\t    if (!src[phase]) continue;\n\t    dest[phase] = [].concat(dest[phase] || [], src[phase]);\n\t  }\n\t}\n\tconst _environmentVisitor = {\n\t  FunctionParent(path) {\n\t    if (path.isArrowFunctionExpression()) return;\n\t    path.skip();\n\t    if (path.isMethod()) {\n\t      if (!path.requeueComputedKeyAndDecorators) {\n\t        _context.requeueComputedKeyAndDecorators.call(path);\n\t      } else {\n\t        path.requeueComputedKeyAndDecorators();\n\t      }\n\t    }\n\t  },\n\t  Property(path) {\n\t    if (path.isObjectProperty()) return;\n\t    path.skip();\n\t    if (!path.requeueComputedKeyAndDecorators) {\n\t      _context.requeueComputedKeyAndDecorators.call(path);\n\t    } else {\n\t      path.requeueComputedKeyAndDecorators();\n\t    }\n\t  }\n\t};\n\tfunction environmentVisitor(visitor) {\n\t  return merge([_environmentVisitor, visitor]);\n\t}\n\n\t//# sourceMappingURL=visitors.js.map\n\treturn visitors;\n}\n\nexport { requireVisitors as __require };",
-      "start": 1727785256871,
-      "end": 1727785257409,
+      "start": 1728160652369,
+      "end": 1728160682840,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160682840,
+      "end": 1728160682840,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785257409,
-      "end": 1727785257409,
+      "start": 1728160682840,
+      "end": 1728160682840,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785257409,
-      "end": 1727785257409,
+      "start": 1728160682840,
+      "end": 1728160682840,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785257409,
-      "end": 1727785257409,
+      "start": 1728160682840,
+      "end": 1728160682840,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785257409,
-      "end": 1727785257409,
+      "start": 1728160682840,
+      "end": 1728160682840,
       "order": "normal"
     }
   ]

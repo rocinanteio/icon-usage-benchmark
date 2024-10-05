@@ -1,0 +1,12 @@
+{
+  "resolvedId": "\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/node_modules/@babel/generator/lib/generators/base.js?commonjs-proxy",
+  "transforms": [
+    {
+      "name": "commonjs",
+      "result": "export { __moduleExports as default } from \"/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/node_modules/@babel/generator/lib/generators/base.js\";",
+      "start": 1728160682950,
+      "end": 1728160682950,
+      "sourcemaps": null
+    }
+  ]
+}

@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = getFunctionName;\nvar _index = require(\"../validators/generated/index.js\");\nfunction getNameFromLiteralId(id) {\n  if ((0, _index.isNullLiteral)(id)) {\n    return \"null\";\n  }\n  if ((0, _index.isRegExpLiteral)(id)) {\n    return `/${id.pattern}/${id.flags}`;\n  }\n  if ((0, _index.isTemplateLiteral)(id)) {\n    return id.quasis.map(quasi => quasi.value.raw).join(\"\");\n  }\n  if (id.value !== undefined) {\n    return String(id.value);\n  }\n  return null;\n}\nfunction getObjectMemberKey(node) {\n  if (!node.computed || (0, _index.isLiteral)(node.key)) {\n    return node.key;\n  }\n}\nfunction getFunctionName(node, parent) {\n  if (\"id\" in node && node.id) {\n    return {\n      name: node.id.name,\n      originalNode: node.id\n    };\n  }\n  let prefix = \"\";\n  let id;\n  if ((0, _index.isObjectProperty)(parent, {\n    value: node\n  })) {\n    id = getObjectMemberKey(parent);\n  } else if ((0, _index.isObjectMethod)(node) || (0, _index.isClassMethod)(node)) {\n    id = getObjectMemberKey(node);\n    if (node.kind === \"get\") prefix = \"get \";else if (node.kind === \"set\") prefix = \"set \";\n  } else if ((0, _index.isVariableDeclarator)(parent, {\n    init: node\n  })) {\n    id = parent.id;\n  } else if ((0, _index.isAssignmentExpression)(parent, {\n    operator: \"=\",\n    right: node\n  })) {\n    id = parent.left;\n  }\n  if (!id) return null;\n  const name = (0, _index.isLiteral)(id) ? getNameFromLiteralId(id) : (0, _index.isIdentifier)(id) ? id.name : (0, _index.isPrivateName)(id) ? id.id.name : null;\n  if (name == null) return null;\n  return {\n    name: prefix + name,\n    originalNode: id\n  };\n}\n\n//# sourceMappingURL=getFunctionName.js.map\n",
-      "start": 1727785256913,
-      "end": 1727785256927,
+      "start": 1728160652461,
+      "end": 1728160680919,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785256927,
-      "end": 1727785256927,
+      "start": 1728160680919,
+      "end": 1728160680919,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160680920,
+      "end": 1728160680920,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785256927,
-      "end": 1727785256927,
+      "start": 1728160680920,
+      "end": 1728160680920,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785256927,
-      "end": 1727785256927,
+      "start": 1728160680920,
+      "end": 1728160680920,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785256927,
-      "end": 1727785256927,
+      "start": 1728160680920,
+      "end": 1728160680920,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785256927,
-      "end": 1727785256927,
+      "start": 1728160680920,
+      "end": 1728160680920,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785256927,
-      "end": 1727785256927,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785256927,
-      "end": 1727785256927,
+      "start": 1728160680920,
+      "end": 1728160680920,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785256927,
-      "end": 1727785256927,
+      "start": 1728160680920,
+      "end": 1728160680920,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785256927,
-      "end": 1727785256927,
+      "start": 1728160680920,
+      "end": 1728160680920,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785256927,
-      "end": 1727785256927,
+      "start": 1728160680920,
+      "end": 1728160680920,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785256927,
-      "end": 1727785256927,
+      "start": 1728160680920,
+      "end": 1728160680920,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785256927,
-      "end": 1727785256927,
+      "start": 1728160680920,
+      "end": 1728160680920,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as getFunctionName_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/retrievers/getFunctionName.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/validators/generated/index.js?commonjs-proxy\";\n\n\"use strict\";\n\nObject.defineProperty(getFunctionName_1, \"__esModule\", {\n  value: true\n});\nvar _default = getFunctionName_1.default = getFunctionName;\nvar _index = require$$0;\nfunction getNameFromLiteralId(id) {\n  if ((0, _index.isNullLiteral)(id)) {\n    return \"null\";\n  }\n  if ((0, _index.isRegExpLiteral)(id)) {\n    return `/${id.pattern}/${id.flags}`;\n  }\n  if ((0, _index.isTemplateLiteral)(id)) {\n    return id.quasis.map(quasi => quasi.value.raw).join(\"\");\n  }\n  if (id.value !== undefined) {\n    return String(id.value);\n  }\n  return null;\n}\nfunction getObjectMemberKey(node) {\n  if (!node.computed || (0, _index.isLiteral)(node.key)) {\n    return node.key;\n  }\n}\nfunction getFunctionName(node, parent) {\n  if (\"id\" in node && node.id) {\n    return {\n      name: node.id.name,\n      originalNode: node.id\n    };\n  }\n  let prefix = \"\";\n  let id;\n  if ((0, _index.isObjectProperty)(parent, {\n    value: node\n  })) {\n    id = getObjectMemberKey(parent);\n  } else if ((0, _index.isObjectMethod)(node) || (0, _index.isClassMethod)(node)) {\n    id = getObjectMemberKey(node);\n    if (node.kind === \"get\") prefix = \"get \";else if (node.kind === \"set\") prefix = \"set \";\n  } else if ((0, _index.isVariableDeclarator)(parent, {\n    init: node\n  })) {\n    id = parent.id;\n  } else if ((0, _index.isAssignmentExpression)(parent, {\n    operator: \"=\",\n    right: node\n  })) {\n    id = parent.left;\n  }\n  if (!id) return null;\n  const name = (0, _index.isLiteral)(id) ? getNameFromLiteralId(id) : (0, _index.isIdentifier)(id) ? id.name : (0, _index.isPrivateName)(id) ? id.id.name : null;\n  if (name == null) return null;\n  return {\n    name: prefix + name,\n    originalNode: id\n  };\n}\n\n//# sourceMappingURL=getFunctionName.js.map\n\nexport { getFunctionName_1 as __moduleExports, _default as default };",
-      "start": 1727785256927,
-      "end": 1727785257027,
+      "start": 1728160680920,
+      "end": 1728160681106,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160681106,
+      "end": 1728160681106,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785257027,
-      "end": 1727785257027,
+      "start": 1728160681106,
+      "end": 1728160681106,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785257027,
-      "end": 1727785257027,
+      "start": 1728160681106,
+      "end": 1728160681106,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785257027,
-      "end": 1727785257027,
+      "start": 1728160681106,
+      "end": 1728160681106,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785257027,
-      "end": 1727785257027,
+      "start": 1728160681107,
+      "end": 1728160681107,
       "order": "normal"
     }
   ]

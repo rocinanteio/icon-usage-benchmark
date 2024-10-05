@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = addComments;\nfunction addComments(node, type, comments) {\n  if (!comments || !node) return node;\n  const key = `${type}Comments`;\n  if (node[key]) {\n    if (type === \"leading\") {\n      node[key] = comments.concat(node[key]);\n    } else {\n      node[key].push(...comments);\n    }\n  } else {\n    node[key] = comments;\n  }\n  return node;\n}\n\n//# sourceMappingURL=addComments.js.map\n",
-      "start": 1727785256878,
-      "end": 1727785256911,
+      "start": 1728160652385,
+      "end": 1728160652453,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785256911,
-      "end": 1727785256911,
+      "start": 1728160652453,
+      "end": 1728160652453,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160652453,
+      "end": 1728160652453,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785256911,
-      "end": 1727785256911,
+      "start": 1728160652453,
+      "end": 1728160652453,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785256911,
-      "end": 1727785256911,
+      "start": 1728160652453,
+      "end": 1728160652453,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785256911,
-      "end": 1727785256911,
+      "start": 1728160652453,
+      "end": 1728160652453,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785256911,
-      "end": 1727785256911,
+      "start": 1728160652453,
+      "end": 1728160652453,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785256911,
-      "end": 1727785256911,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785256911,
-      "end": 1727785256911,
+      "start": 1728160652453,
+      "end": 1728160652453,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785256911,
-      "end": 1727785256911,
+      "start": 1728160652453,
+      "end": 1728160652453,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785256911,
-      "end": 1727785256911,
+      "start": 1728160652453,
+      "end": 1728160652453,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785256911,
-      "end": 1727785256911,
+      "start": 1728160652453,
+      "end": 1728160652453,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785256911,
-      "end": 1727785256911,
+      "start": 1728160652453,
+      "end": 1728160652453,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785256911,
-      "end": 1727785256911,
+      "start": 1728160652453,
+      "end": 1728160652453,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as addComments_1 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/comments/addComments.js?commonjs-exports\";\n\n\"use strict\";\n\nObject.defineProperty(addComments_1, \"__esModule\", {\n  value: true\n});\nvar _default = addComments_1.default = addComments;\nfunction addComments(node, type, comments) {\n  if (!comments || !node) return node;\n  const key = `${type}Comments`;\n  if (node[key]) {\n    if (type === \"leading\") {\n      node[key] = comments.concat(node[key]);\n    } else {\n      node[key].push(...comments);\n    }\n  } else {\n    node[key] = comments;\n  }\n  return node;\n}\n\n//# sourceMappingURL=addComments.js.map\n\nexport { addComments_1 as __moduleExports, _default as default };",
-      "start": 1727785256911,
-      "end": 1727785256911,
+      "start": 1728160652453,
+      "end": 1728160652453,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160652454,
+      "end": 1728160652454,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785256911,
-      "end": 1727785256911,
+      "start": 1728160652454,
+      "end": 1728160652454,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785256911,
-      "end": 1727785256911,
+      "start": 1728160652454,
+      "end": 1728160652454,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785256911,
-      "end": 1727785256911,
+      "start": 1728160652454,
+      "end": 1728160652454,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785256911,
-      "end": 1727785256911,
+      "start": 1728160652454,
+      "end": 1728160652454,
       "order": "normal"
     }
   ]

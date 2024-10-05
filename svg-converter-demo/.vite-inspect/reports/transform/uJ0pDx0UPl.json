@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports._containerInsert = _containerInsert;\nexports._containerInsertAfter = _containerInsertAfter;\nexports._containerInsertBefore = _containerInsertBefore;\nexports._verifyNodeList = _verifyNodeList;\nexports.insertAfter = insertAfter;\nexports.insertBefore = insertBefore;\nexports.pushContainer = pushContainer;\nexports.unshiftContainer = unshiftContainer;\nexports.updateSiblingKeys = updateSiblingKeys;\nvar _cache = require(\"../cache.js\");\nvar _hoister = require(\"./lib/hoister.js\");\nvar _index = require(\"./index.js\");\nvar _context = require(\"./context.js\");\nvar _removal = require(\"./removal.js\");\nvar _t = require(\"@babel/types\");\nconst {\n  arrowFunctionExpression,\n  assertExpression,\n  assignmentExpression,\n  blockStatement,\n  callExpression,\n  cloneNode,\n  expressionStatement,\n  isAssignmentExpression,\n  isCallExpression,\n  isExportNamedDeclaration,\n  isExpression,\n  isIdentifier,\n  isSequenceExpression,\n  isSuper,\n  thisExpression\n} = _t;\nfunction insertBefore(nodes_) {\n  _removal._assertUnremoved.call(this);\n  const nodes = _verifyNodeList.call(this, nodes_);\n  const {\n    parentPath,\n    parent\n  } = this;\n  if (parentPath.isExpressionStatement() || parentPath.isLabeledStatement() || isExportNamedDeclaration(parent) || parentPath.isExportDefaultDeclaration() && this.isDeclaration()) {\n    return parentPath.insertBefore(nodes);\n  } else if (this.isNodeType(\"Expression\") && !this.isJSXElement() || parentPath.isForStatement() && this.key === \"init\") {\n    if (this.node) nodes.push(this.node);\n    return this.replaceExpressionWithStatements(nodes);\n  } else if (Array.isArray(this.container)) {\n    return _containerInsertBefore.call(this, nodes);\n  } else if (this.isStatementOrBlock()) {\n    const node = this.node;\n    const shouldInsertCurrentNode = node && (!this.isExpressionStatement() || node.expression != null);\n    this.replaceWith(blockStatement(shouldInsertCurrentNode ? [node] : []));\n    return this.unshiftContainer(\"body\", nodes);\n  } else {\n    throw new Error(\"We don't know what to do with this node type. \" + \"We were previously a Statement but we can't fit in here?\");\n  }\n}\nfunction _containerInsert(from, nodes) {\n  updateSiblingKeys.call(this, from, nodes.length);\n  const paths = [];\n  this.container.splice(from, 0, ...nodes);\n  for (let i = 0; i < nodes.length; i++) {\n    var _this$context;\n    const to = from + i;\n    const path = this.getSibling(to);\n    paths.push(path);\n    if ((_this$context = this.context) != null && _this$context.queue) {\n      _context.pushContext.call(path, this.context);\n    }\n  }\n  const contexts = _context._getQueueContexts.call(this);\n  for (const path of paths) {\n    _context.setScope.call(path);\n    path.debug(\"Inserted.\");\n    for (const context of contexts) {\n      context.maybeQueue(path, true);\n    }\n  }\n  return paths;\n}\nfunction _containerInsertBefore(nodes) {\n  return _containerInsert.call(this, this.key, nodes);\n}\nfunction _containerInsertAfter(nodes) {\n  return _containerInsert.call(this, this.key + 1, nodes);\n}\nconst last = arr => arr[arr.length - 1];\nfunction isHiddenInSequenceExpression(path) {\n  return isSequenceExpression(path.parent) && (last(path.parent.expressions) !== path.node || isHiddenInSequenceExpression(path.parentPath));\n}\nfunction isAlmostConstantAssignment(node, scope) {\n  if (!isAssignmentExpression(node) || !isIdentifier(node.left)) {\n    return false;\n  }\n  const blockScope = scope.getBlockParent();\n  return blockScope.hasOwnBinding(node.left.name) && blockScope.getOwnBinding(node.left.name).constantViolations.length <= 1;\n}\nfunction insertAfter(nodes_) {\n  _removal._assertUnremoved.call(this);\n  if (this.isSequenceExpression()) {\n    return last(this.get(\"expressions\")).insertAfter(nodes_);\n  }\n  const nodes = _verifyNodeList.call(this, nodes_);\n  const {\n    parentPath,\n    parent\n  } = this;\n  if (parentPath.isExpressionStatement() || parentPath.isLabeledStatement() || isExportNamedDeclaration(parent) || parentPath.isExportDefaultDeclaration() && this.isDeclaration()) {\n    return parentPath.insertAfter(nodes.map(node => {\n      return isExpression(node) ? expressionStatement(node) : node;\n    }));\n  } else if (this.isNodeType(\"Expression\") && !this.isJSXElement() && !parentPath.isJSXElement() || parentPath.isForStatement() && this.key === \"init\") {\n    const self = this;\n    if (self.node) {\n      const node = self.node;\n      let {\n        scope\n      } = this;\n      if (scope.path.isPattern()) {\n        assertExpression(node);\n        self.replaceWith(callExpression(arrowFunctionExpression([], node), []));\n        self.get(\"callee.body\").insertAfter(nodes);\n        return [self];\n      }\n      if (isHiddenInSequenceExpression(self)) {\n        nodes.unshift(node);\n      } else if (isCallExpression(node) && isSuper(node.callee)) {\n        nodes.unshift(node);\n        nodes.push(thisExpression());\n      } else if (isAlmostConstantAssignment(node, scope)) {\n        nodes.unshift(node);\n        nodes.push(cloneNode(node.left));\n      } else if (scope.isPure(node, true)) {\n        nodes.push(node);\n      } else {\n        if (parentPath.isMethod({\n          computed: true,\n          key: node\n        })) {\n          scope = scope.parent;\n        }\n        const temp = scope.generateDeclaredUidIdentifier();\n        nodes.unshift(expressionStatement(assignmentExpression(\"=\", cloneNode(temp), node)));\n        nodes.push(expressionStatement(cloneNode(temp)));\n      }\n    }\n    return this.replaceExpressionWithStatements(nodes);\n  } else if (Array.isArray(this.container)) {\n    return _containerInsertAfter.call(this, nodes);\n  } else if (this.isStatementOrBlock()) {\n    const node = this.node;\n    const shouldInsertCurrentNode = node && (!this.isExpressionStatement() || node.expression != null);\n    this.replaceWith(blockStatement(shouldInsertCurrentNode ? [node] : []));\n    return this.pushContainer(\"body\", nodes);\n  } else {\n    throw new Error(\"We don't know what to do with this node type. \" + \"We were previously a Statement but we can't fit in here?\");\n  }\n}\nfunction updateSiblingKeys(fromIndex, incrementBy) {\n  if (!this.parent) return;\n  const paths = (0, _cache.getCachedPaths)(this.hub, this.parent) || [];\n  for (const [, path] of paths) {\n    if (typeof path.key === \"number\" && path.key >= fromIndex) {\n      path.key += incrementBy;\n    }\n  }\n}\nfunction _verifyNodeList(nodes) {\n  if (!nodes) {\n    return [];\n  }\n  if (!Array.isArray(nodes)) {\n    nodes = [nodes];\n  }\n  for (let i = 0; i < nodes.length; i++) {\n    const node = nodes[i];\n    let msg;\n    if (!node) {\n      msg = \"has falsy node\";\n    } else if (typeof node !== \"object\") {\n      msg = \"contains a non-object node\";\n    } else if (!node.type) {\n      msg = \"without a type\";\n    } else if (node instanceof _index.default) {\n      msg = \"has a NodePath when it expected a raw object\";\n    }\n    if (msg) {\n      const type = Array.isArray(node) ? \"array\" : typeof node;\n      throw new Error(`Node list ${msg} with the index of ${i} and type of ${type}`);\n    }\n  }\n  return nodes;\n}\nfunction unshiftContainer(listKey, nodes) {\n  _removal._assertUnremoved.call(this);\n  nodes = _verifyNodeList.call(this, nodes);\n  const path = _index.default.get({\n    parentPath: this,\n    parent: this.node,\n    container: this.node[listKey],\n    listKey,\n    key: 0\n  }).setContext(this.context);\n  return _containerInsertBefore.call(path, nodes);\n}\nfunction pushContainer(listKey, nodes) {\n  _removal._assertUnremoved.call(this);\n  const verifiedNodes = _verifyNodeList.call(this, nodes);\n  const container = this.node[listKey];\n  const path = _index.default.get({\n    parentPath: this,\n    parent: this.node,\n    container: container,\n    listKey,\n    key: container.length\n  }).setContext(this.context);\n  return path.replaceWithMultiple(verifiedNodes);\n}\n{\n  exports.hoist = function hoist(scope = this.scope) {\n    const hoister = new _hoister.default(this, scope);\n    return hoister.run();\n  };\n}\n\n//# sourceMappingURL=modification.js.map\n",
-      "start": 1727785256938,
-      "end": 1727785256983,
+      "start": 1728160681052,
+      "end": 1728160681173,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785256983,
-      "end": 1727785256983,
+      "start": 1728160681173,
+      "end": 1728160681173,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160681173,
+      "end": 1728160681173,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785256983,
-      "end": 1727785256983,
+      "start": 1728160681173,
+      "end": 1728160681173,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785256983,
-      "end": 1727785256983,
+      "start": 1728160681173,
+      "end": 1728160681173,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785256983,
-      "end": 1727785256983,
+      "start": 1728160681173,
+      "end": 1728160681173,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785256983,
-      "end": 1727785256983,
+      "start": 1728160681173,
+      "end": 1728160681173,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785256983,
-      "end": 1727785256983,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785256983,
-      "end": 1727785256983,
+      "start": 1728160681173,
+      "end": 1728160681173,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785256983,
-      "end": 1727785256983,
+      "start": 1728160681173,
+      "end": 1728160681173,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785256983,
-      "end": 1727785256983,
+      "start": 1728160681173,
+      "end": 1728160681173,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785256983,
-      "end": 1727785256983,
+      "start": 1728160681173,
+      "end": 1728160681173,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785256983,
-      "end": 1727785256983,
+      "start": 1728160681173,
+      "end": 1728160681173,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785256983,
-      "end": 1727785256983,
+      "start": 1728160681173,
+      "end": 1728160681173,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as modification } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/path/modification.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/cache.js?commonjs-proxy\";\nimport require$$1 from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/path/lib/hoister.js?commonjs-proxy\";\nimport { __require as require$$2 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/path/index.js?commonjs-wrapped\";\nimport { __require as require$$3 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/path/context.js?commonjs-wrapped\";\nimport { __require as require$$4 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/path/removal.js?commonjs-wrapped\";\nimport { __require as require$$5 } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/types/lib/index.js?commonjs-wrapped\";\n\nvar hasRequiredModification;\n\nfunction requireModification () {\n\tif (hasRequiredModification) return modification;\n\thasRequiredModification = 1;\n\t\"use strict\";\n\n\tObject.defineProperty(modification, \"__esModule\", {\n\t  value: true\n\t});\n\tmodification._containerInsert = _containerInsert;\n\tmodification._containerInsertAfter = _containerInsertAfter;\n\tmodification._containerInsertBefore = _containerInsertBefore;\n\tmodification._verifyNodeList = _verifyNodeList;\n\tmodification.insertAfter = insertAfter;\n\tmodification.insertBefore = insertBefore;\n\tmodification.pushContainer = pushContainer;\n\tmodification.unshiftContainer = unshiftContainer;\n\tmodification.updateSiblingKeys = updateSiblingKeys;\n\tvar _cache = require$$0;\n\tvar _hoister = require$$1;\n\tvar _index = require$$2();\n\tvar _context = require$$3();\n\tvar _removal = require$$4();\n\tvar _t = require$$5();\n\tconst {\n\t  arrowFunctionExpression,\n\t  assertExpression,\n\t  assignmentExpression,\n\t  blockStatement,\n\t  callExpression,\n\t  cloneNode,\n\t  expressionStatement,\n\t  isAssignmentExpression,\n\t  isCallExpression,\n\t  isExportNamedDeclaration,\n\t  isExpression,\n\t  isIdentifier,\n\t  isSequenceExpression,\n\t  isSuper,\n\t  thisExpression\n\t} = _t;\n\tfunction insertBefore(nodes_) {\n\t  _removal._assertUnremoved.call(this);\n\t  const nodes = _verifyNodeList.call(this, nodes_);\n\t  const {\n\t    parentPath,\n\t    parent\n\t  } = this;\n\t  if (parentPath.isExpressionStatement() || parentPath.isLabeledStatement() || isExportNamedDeclaration(parent) || parentPath.isExportDefaultDeclaration() && this.isDeclaration()) {\n\t    return parentPath.insertBefore(nodes);\n\t  } else if (this.isNodeType(\"Expression\") && !this.isJSXElement() || parentPath.isForStatement() && this.key === \"init\") {\n\t    if (this.node) nodes.push(this.node);\n\t    return this.replaceExpressionWithStatements(nodes);\n\t  } else if (Array.isArray(this.container)) {\n\t    return _containerInsertBefore.call(this, nodes);\n\t  } else if (this.isStatementOrBlock()) {\n\t    const node = this.node;\n\t    const shouldInsertCurrentNode = node && (!this.isExpressionStatement() || node.expression != null);\n\t    this.replaceWith(blockStatement(shouldInsertCurrentNode ? [node] : []));\n\t    return this.unshiftContainer(\"body\", nodes);\n\t  } else {\n\t    throw new Error(\"We don't know what to do with this node type. \" + \"We were previously a Statement but we can't fit in here?\");\n\t  }\n\t}\n\tfunction _containerInsert(from, nodes) {\n\t  updateSiblingKeys.call(this, from, nodes.length);\n\t  const paths = [];\n\t  this.container.splice(from, 0, ...nodes);\n\t  for (let i = 0; i < nodes.length; i++) {\n\t    var _this$context;\n\t    const to = from + i;\n\t    const path = this.getSibling(to);\n\t    paths.push(path);\n\t    if ((_this$context = this.context) != null && _this$context.queue) {\n\t      _context.pushContext.call(path, this.context);\n\t    }\n\t  }\n\t  const contexts = _context._getQueueContexts.call(this);\n\t  for (const path of paths) {\n\t    _context.setScope.call(path);\n\t    path.debug(\"Inserted.\");\n\t    for (const context of contexts) {\n\t      context.maybeQueue(path, true);\n\t    }\n\t  }\n\t  return paths;\n\t}\n\tfunction _containerInsertBefore(nodes) {\n\t  return _containerInsert.call(this, this.key, nodes);\n\t}\n\tfunction _containerInsertAfter(nodes) {\n\t  return _containerInsert.call(this, this.key + 1, nodes);\n\t}\n\tconst last = arr => arr[arr.length - 1];\n\tfunction isHiddenInSequenceExpression(path) {\n\t  return isSequenceExpression(path.parent) && (last(path.parent.expressions) !== path.node || isHiddenInSequenceExpression(path.parentPath));\n\t}\n\tfunction isAlmostConstantAssignment(node, scope) {\n\t  if (!isAssignmentExpression(node) || !isIdentifier(node.left)) {\n\t    return false;\n\t  }\n\t  const blockScope = scope.getBlockParent();\n\t  return blockScope.hasOwnBinding(node.left.name) && blockScope.getOwnBinding(node.left.name).constantViolations.length <= 1;\n\t}\n\tfunction insertAfter(nodes_) {\n\t  _removal._assertUnremoved.call(this);\n\t  if (this.isSequenceExpression()) {\n\t    return last(this.get(\"expressions\")).insertAfter(nodes_);\n\t  }\n\t  const nodes = _verifyNodeList.call(this, nodes_);\n\t  const {\n\t    parentPath,\n\t    parent\n\t  } = this;\n\t  if (parentPath.isExpressionStatement() || parentPath.isLabeledStatement() || isExportNamedDeclaration(parent) || parentPath.isExportDefaultDeclaration() && this.isDeclaration()) {\n\t    return parentPath.insertAfter(nodes.map(node => {\n\t      return isExpression(node) ? expressionStatement(node) : node;\n\t    }));\n\t  } else if (this.isNodeType(\"Expression\") && !this.isJSXElement() && !parentPath.isJSXElement() || parentPath.isForStatement() && this.key === \"init\") {\n\t    const self = this;\n\t    if (self.node) {\n\t      const node = self.node;\n\t      let {\n\t        scope\n\t      } = this;\n\t      if (scope.path.isPattern()) {\n\t        assertExpression(node);\n\t        self.replaceWith(callExpression(arrowFunctionExpression([], node), []));\n\t        self.get(\"callee.body\").insertAfter(nodes);\n\t        return [self];\n\t      }\n\t      if (isHiddenInSequenceExpression(self)) {\n\t        nodes.unshift(node);\n\t      } else if (isCallExpression(node) && isSuper(node.callee)) {\n\t        nodes.unshift(node);\n\t        nodes.push(thisExpression());\n\t      } else if (isAlmostConstantAssignment(node, scope)) {\n\t        nodes.unshift(node);\n\t        nodes.push(cloneNode(node.left));\n\t      } else if (scope.isPure(node, true)) {\n\t        nodes.push(node);\n\t      } else {\n\t        if (parentPath.isMethod({\n\t          computed: true,\n\t          key: node\n\t        })) {\n\t          scope = scope.parent;\n\t        }\n\t        const temp = scope.generateDeclaredUidIdentifier();\n\t        nodes.unshift(expressionStatement(assignmentExpression(\"=\", cloneNode(temp), node)));\n\t        nodes.push(expressionStatement(cloneNode(temp)));\n\t      }\n\t    }\n\t    return this.replaceExpressionWithStatements(nodes);\n\t  } else if (Array.isArray(this.container)) {\n\t    return _containerInsertAfter.call(this, nodes);\n\t  } else if (this.isStatementOrBlock()) {\n\t    const node = this.node;\n\t    const shouldInsertCurrentNode = node && (!this.isExpressionStatement() || node.expression != null);\n\t    this.replaceWith(blockStatement(shouldInsertCurrentNode ? [node] : []));\n\t    return this.pushContainer(\"body\", nodes);\n\t  } else {\n\t    throw new Error(\"We don't know what to do with this node type. \" + \"We were previously a Statement but we can't fit in here?\");\n\t  }\n\t}\n\tfunction updateSiblingKeys(fromIndex, incrementBy) {\n\t  if (!this.parent) return;\n\t  const paths = (0, _cache.getCachedPaths)(this.hub, this.parent) || [];\n\t  for (const [, path] of paths) {\n\t    if (typeof path.key === \"number\" && path.key >= fromIndex) {\n\t      path.key += incrementBy;\n\t    }\n\t  }\n\t}\n\tfunction _verifyNodeList(nodes) {\n\t  if (!nodes) {\n\t    return [];\n\t  }\n\t  if (!Array.isArray(nodes)) {\n\t    nodes = [nodes];\n\t  }\n\t  for (let i = 0; i < nodes.length; i++) {\n\t    const node = nodes[i];\n\t    let msg;\n\t    if (!node) {\n\t      msg = \"has falsy node\";\n\t    } else if (typeof node !== \"object\") {\n\t      msg = \"contains a non-object node\";\n\t    } else if (!node.type) {\n\t      msg = \"without a type\";\n\t    } else if (node instanceof _index.default) {\n\t      msg = \"has a NodePath when it expected a raw object\";\n\t    }\n\t    if (msg) {\n\t      const type = Array.isArray(node) ? \"array\" : typeof node;\n\t      throw new Error(`Node list ${msg} with the index of ${i} and type of ${type}`);\n\t    }\n\t  }\n\t  return nodes;\n\t}\n\tfunction unshiftContainer(listKey, nodes) {\n\t  _removal._assertUnremoved.call(this);\n\t  nodes = _verifyNodeList.call(this, nodes);\n\t  const path = _index.default.get({\n\t    parentPath: this,\n\t    parent: this.node,\n\t    container: this.node[listKey],\n\t    listKey,\n\t    key: 0\n\t  }).setContext(this.context);\n\t  return _containerInsertBefore.call(path, nodes);\n\t}\n\tfunction pushContainer(listKey, nodes) {\n\t  _removal._assertUnremoved.call(this);\n\t  const verifiedNodes = _verifyNodeList.call(this, nodes);\n\t  const container = this.node[listKey];\n\t  const path = _index.default.get({\n\t    parentPath: this,\n\t    parent: this.node,\n\t    container: container,\n\t    listKey,\n\t    key: container.length\n\t  }).setContext(this.context);\n\t  return path.replaceWithMultiple(verifiedNodes);\n\t}\n\t{\n\t  modification.hoist = function hoist(scope = this.scope) {\n\t    const hoister = new _hoister.default(this, scope);\n\t    return hoister.run();\n\t  };\n\t}\n\n\t//# sourceMappingURL=modification.js.map\n\treturn modification;\n}\n\nexport { requireModification as __require };",
-      "start": 1727785256983,
-      "end": 1727785257119,
+      "start": 1728160681173,
+      "end": 1728160681445,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -96,27 +96,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160681445,
+      "end": 1728160681445,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785257119,
-      "end": 1727785257119,
+      "start": 1728160681445,
+      "end": 1728160681445,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785257119,
-      "end": 1727785257119,
+      "start": 1728160681445,
+      "end": 1728160681445,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785257119,
-      "end": 1727785257119,
+      "start": 1728160681445,
+      "end": 1728160681445,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785257119,
-      "end": 1727785257119,
+      "start": 1728160681445,
+      "end": 1728160681445,
       "order": "normal"
     }
   ]

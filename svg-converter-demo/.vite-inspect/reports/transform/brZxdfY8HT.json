@@ -4,87 +4,87 @@
     {
       "name": "vite:load-fallback",
       "result": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.evaluate = evaluate;\nexports.evaluateTruthy = evaluateTruthy;\nconst VALID_OBJECT_CALLEES = [\"Number\", \"String\", \"Math\"];\nconst VALID_IDENTIFIER_CALLEES = [\"isFinite\", \"isNaN\", \"parseFloat\", \"parseInt\", \"decodeURI\", \"decodeURIComponent\", \"encodeURI\", \"encodeURIComponent\", null, null];\nconst INVALID_METHODS = [\"random\"];\nfunction isValidObjectCallee(val) {\n  return VALID_OBJECT_CALLEES.includes(val);\n}\nfunction isValidIdentifierCallee(val) {\n  return VALID_IDENTIFIER_CALLEES.includes(val);\n}\nfunction isInvalidMethod(val) {\n  return INVALID_METHODS.includes(val);\n}\nfunction evaluateTruthy() {\n  const res = this.evaluate();\n  if (res.confident) return !!res.value;\n}\nfunction deopt(path, state) {\n  if (!state.confident) return;\n  state.deoptPath = path;\n  state.confident = false;\n}\nconst Globals = new Map([[\"undefined\", undefined], [\"Infinity\", Infinity], [\"NaN\", NaN]]);\nfunction evaluateCached(path, state) {\n  const {\n    node\n  } = path;\n  const {\n    seen\n  } = state;\n  if (seen.has(node)) {\n    const existing = seen.get(node);\n    if (existing.resolved) {\n      return existing.value;\n    } else {\n      deopt(path, state);\n      return;\n    }\n  } else {\n    const item = {\n      resolved: false\n    };\n    seen.set(node, item);\n    const val = _evaluate(path, state);\n    if (state.confident) {\n      item.resolved = true;\n      item.value = val;\n    }\n    return val;\n  }\n}\nfunction _evaluate(path, state) {\n  if (!state.confident) return;\n  if (path.isSequenceExpression()) {\n    const exprs = path.get(\"expressions\");\n    return evaluateCached(exprs[exprs.length - 1], state);\n  }\n  if (path.isStringLiteral() || path.isNumericLiteral() || path.isBooleanLiteral()) {\n    return path.node.value;\n  }\n  if (path.isNullLiteral()) {\n    return null;\n  }\n  if (path.isTemplateLiteral()) {\n    return evaluateQuasis(path, path.node.quasis, state);\n  }\n  if (path.isTaggedTemplateExpression() && path.get(\"tag\").isMemberExpression()) {\n    const object = path.get(\"tag.object\");\n    const {\n      node: {\n        name\n      }\n    } = object;\n    const property = path.get(\"tag.property\");\n    if (object.isIdentifier() && name === \"String\" && !path.scope.getBinding(name) && property.isIdentifier() && property.node.name === \"raw\") {\n      return evaluateQuasis(path, path.node.quasi.quasis, state, true);\n    }\n  }\n  if (path.isConditionalExpression()) {\n    const testResult = evaluateCached(path.get(\"test\"), state);\n    if (!state.confident) return;\n    if (testResult) {\n      return evaluateCached(path.get(\"consequent\"), state);\n    } else {\n      return evaluateCached(path.get(\"alternate\"), state);\n    }\n  }\n  if (path.isExpressionWrapper()) {\n    return evaluateCached(path.get(\"expression\"), state);\n  }\n  if (path.isMemberExpression() && !path.parentPath.isCallExpression({\n    callee: path.node\n  })) {\n    const property = path.get(\"property\");\n    const object = path.get(\"object\");\n    if (object.isLiteral()) {\n      const value = object.node.value;\n      const type = typeof value;\n      let key = null;\n      if (path.node.computed) {\n        key = evaluateCached(property, state);\n        if (!state.confident) return;\n      } else if (property.isIdentifier()) {\n        key = property.node.name;\n      }\n      if ((type === \"number\" || type === \"string\") && key != null && (typeof key === \"number\" || typeof key === \"string\")) {\n        return value[key];\n      }\n    }\n  }\n  if (path.isReferencedIdentifier()) {\n    const binding = path.scope.getBinding(path.node.name);\n    if (binding) {\n      if (binding.constantViolations.length > 0 || path.node.start < binding.path.node.end) {\n        deopt(binding.path, state);\n        return;\n      }\n      if (binding.hasValue) {\n        return binding.value;\n      }\n    }\n    const name = path.node.name;\n    if (Globals.has(name)) {\n      if (!binding) {\n        return Globals.get(name);\n      }\n      deopt(binding.path, state);\n      return;\n    }\n    const resolved = path.resolve();\n    if (resolved === path) {\n      deopt(path, state);\n      return;\n    } else {\n      return evaluateCached(resolved, state);\n    }\n  }\n  if (path.isUnaryExpression({\n    prefix: true\n  })) {\n    if (path.node.operator === \"void\") {\n      return undefined;\n    }\n    const argument = path.get(\"argument\");\n    if (path.node.operator === \"typeof\" && (argument.isFunction() || argument.isClass())) {\n      return \"function\";\n    }\n    const arg = evaluateCached(argument, state);\n    if (!state.confident) return;\n    switch (path.node.operator) {\n      case \"!\":\n        return !arg;\n      case \"+\":\n        return +arg;\n      case \"-\":\n        return -arg;\n      case \"~\":\n        return ~arg;\n      case \"typeof\":\n        return typeof arg;\n    }\n  }\n  if (path.isArrayExpression()) {\n    const arr = [];\n    const elems = path.get(\"elements\");\n    for (const elem of elems) {\n      const elemValue = elem.evaluate();\n      if (elemValue.confident) {\n        arr.push(elemValue.value);\n      } else {\n        deopt(elemValue.deopt, state);\n        return;\n      }\n    }\n    return arr;\n  }\n  if (path.isObjectExpression()) {\n    const obj = {};\n    const props = path.get(\"properties\");\n    for (const prop of props) {\n      if (prop.isObjectMethod() || prop.isSpreadElement()) {\n        deopt(prop, state);\n        return;\n      }\n      const keyPath = prop.get(\"key\");\n      let key;\n      if (prop.node.computed) {\n        key = keyPath.evaluate();\n        if (!key.confident) {\n          deopt(key.deopt, state);\n          return;\n        }\n        key = key.value;\n      } else if (keyPath.isIdentifier()) {\n        key = keyPath.node.name;\n      } else {\n        key = keyPath.node.value;\n      }\n      const valuePath = prop.get(\"value\");\n      let value = valuePath.evaluate();\n      if (!value.confident) {\n        deopt(value.deopt, state);\n        return;\n      }\n      value = value.value;\n      obj[key] = value;\n    }\n    return obj;\n  }\n  if (path.isLogicalExpression()) {\n    const wasConfident = state.confident;\n    const left = evaluateCached(path.get(\"left\"), state);\n    const leftConfident = state.confident;\n    state.confident = wasConfident;\n    const right = evaluateCached(path.get(\"right\"), state);\n    const rightConfident = state.confident;\n    switch (path.node.operator) {\n      case \"||\":\n        state.confident = leftConfident && (!!left || rightConfident);\n        if (!state.confident) return;\n        return left || right;\n      case \"&&\":\n        state.confident = leftConfident && (!left || rightConfident);\n        if (!state.confident) return;\n        return left && right;\n      case \"??\":\n        state.confident = leftConfident && (left != null || rightConfident);\n        if (!state.confident) return;\n        return left != null ? left : right;\n    }\n  }\n  if (path.isBinaryExpression()) {\n    const left = evaluateCached(path.get(\"left\"), state);\n    if (!state.confident) return;\n    const right = evaluateCached(path.get(\"right\"), state);\n    if (!state.confident) return;\n    switch (path.node.operator) {\n      case \"-\":\n        return left - right;\n      case \"+\":\n        return left + right;\n      case \"/\":\n        return left / right;\n      case \"*\":\n        return left * right;\n      case \"%\":\n        return left % right;\n      case \"**\":\n        return Math.pow(left, right);\n      case \"<\":\n        return left < right;\n      case \">\":\n        return left > right;\n      case \"<=\":\n        return left <= right;\n      case \">=\":\n        return left >= right;\n      case \"==\":\n        return left == right;\n      case \"!=\":\n        return left != right;\n      case \"===\":\n        return left === right;\n      case \"!==\":\n        return left !== right;\n      case \"|\":\n        return left | right;\n      case \"&\":\n        return left & right;\n      case \"^\":\n        return left ^ right;\n      case \"<<\":\n        return left << right;\n      case \">>\":\n        return left >> right;\n      case \">>>\":\n        return left >>> right;\n    }\n  }\n  if (path.isCallExpression()) {\n    const callee = path.get(\"callee\");\n    let context;\n    let func;\n    if (callee.isIdentifier() && !path.scope.getBinding(callee.node.name) && (isValidObjectCallee(callee.node.name) || isValidIdentifierCallee(callee.node.name))) {\n      func = global[callee.node.name];\n    }\n    if (callee.isMemberExpression()) {\n      const object = callee.get(\"object\");\n      const property = callee.get(\"property\");\n      if (object.isIdentifier() && property.isIdentifier() && isValidObjectCallee(object.node.name) && !isInvalidMethod(property.node.name)) {\n        context = global[object.node.name];\n        const key = property.node.name;\n        if (hasOwnProperty.call(context, key)) {\n          func = context[key];\n        }\n      }\n      if (object.isLiteral() && property.isIdentifier()) {\n        const type = typeof object.node.value;\n        if (type === \"string\" || type === \"number\") {\n          context = object.node.value;\n          func = context[property.node.name];\n        }\n      }\n    }\n    if (func) {\n      const args = path.get(\"arguments\").map(arg => evaluateCached(arg, state));\n      if (!state.confident) return;\n      return func.apply(context, args);\n    }\n  }\n  deopt(path, state);\n}\nfunction evaluateQuasis(path, quasis, state, raw = false) {\n  let str = \"\";\n  let i = 0;\n  const exprs = path.isTemplateLiteral() ? path.get(\"expressions\") : path.get(\"quasi.expressions\");\n  for (const elem of quasis) {\n    if (!state.confident) break;\n    str += raw ? elem.value.raw : elem.value.cooked;\n    const expr = exprs[i++];\n    if (expr) str += String(evaluateCached(expr, state));\n  }\n  if (!state.confident) return;\n  return str;\n}\nfunction evaluate() {\n  const state = {\n    confident: true,\n    deoptPath: null,\n    seen: new Map()\n  };\n  let value = evaluateCached(this, state);\n  if (!state.confident) value = undefined;\n  return {\n    confident: state.confident,\n    deopt: state.deoptPath,\n    value: value\n  };\n}\n\n//# sourceMappingURL=evaluation.js.map\n",
-      "start": 1727785256936,
-      "end": 1727785256960,
+      "start": 1728160681047,
+      "end": 1728160681168,
       "sourcemaps": null
     },
     {
       "name": "vite:react-babel",
-      "start": 1727785256960,
-      "end": 1727785256960,
+      "start": 1728160681168,
+      "end": 1728160681168,
+      "order": "pre"
+    },
+    {
+      "name": "optimus-bundle",
+      "start": 1728160681168,
+      "end": 1728160681168,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1727785256960,
-      "end": 1727785256960,
+      "start": 1728160681168,
+      "end": 1728160681168,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1727785256960,
-      "end": 1727785256960,
+      "start": 1728160681168,
+      "end": 1728160681168,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1727785256960,
-      "end": 1727785256960,
+      "start": 1728160681168,
+      "end": 1728160681169,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1727785256960,
-      "end": 1727785256960,
+      "start": 1728160681169,
+      "end": 1728160681169,
       "order": "normal"
     },
     {
       "name": "vite-plugin-commonjs",
-      "start": 1727785256960,
-      "end": 1727785256960,
-      "order": "normal"
-    },
-    {
-      "name": "optimus-bundle",
-      "start": 1727785256960,
-      "end": 1727785256960,
+      "start": 1728160681169,
+      "end": 1728160681169,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1727785256960,
-      "end": 1727785256960,
+      "start": 1728160681169,
+      "end": 1728160681169,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1727785256960,
-      "end": 1727785256960,
+      "start": 1728160681169,
+      "end": 1728160681169,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1727785256960,
-      "end": 1727785256960,
+      "start": 1728160681169,
+      "end": 1728160681169,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1727785256960,
-      "end": 1727785256960,
+      "start": 1728160681169,
+      "end": 1728160681169,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1727785256960,
-      "end": 1727785256960,
+      "start": 1728160681169,
+      "end": 1728160681169,
       "order": "normal"
     },
     {
       "name": "commonjs",
       "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as evaluation } from \"\\u0000/Users/ibrahim.dagdelen/Projects/Github/icon-converter-demo/node_modules/@babel/traverse/lib/path/evaluation.js?commonjs-exports\";\n\n\"use strict\";\n\nObject.defineProperty(evaluation, \"__esModule\", {\n  value: true\n});\nvar evaluate_1 = evaluation.evaluate = evaluate;\nvar evaluateTruthy_1 = evaluation.evaluateTruthy = evaluateTruthy;\nconst VALID_OBJECT_CALLEES = [\"Number\", \"String\", \"Math\"];\nconst VALID_IDENTIFIER_CALLEES = [\"isFinite\", \"isNaN\", \"parseFloat\", \"parseInt\", \"decodeURI\", \"decodeURIComponent\", \"encodeURI\", \"encodeURIComponent\", null, null];\nconst INVALID_METHODS = [\"random\"];\nfunction isValidObjectCallee(val) {\n  return VALID_OBJECT_CALLEES.includes(val);\n}\nfunction isValidIdentifierCallee(val) {\n  return VALID_IDENTIFIER_CALLEES.includes(val);\n}\nfunction isInvalidMethod(val) {\n  return INVALID_METHODS.includes(val);\n}\nfunction evaluateTruthy() {\n  const res = this.evaluate();\n  if (res.confident) return !!res.value;\n}\nfunction deopt(path, state) {\n  if (!state.confident) return;\n  state.deoptPath = path;\n  state.confident = false;\n}\nconst Globals = new Map([[\"undefined\", undefined], [\"Infinity\", Infinity], [\"NaN\", NaN]]);\nfunction evaluateCached(path, state) {\n  const {\n    node\n  } = path;\n  const {\n    seen\n  } = state;\n  if (seen.has(node)) {\n    const existing = seen.get(node);\n    if (existing.resolved) {\n      return existing.value;\n    } else {\n      deopt(path, state);\n      return;\n    }\n  } else {\n    const item = {\n      resolved: false\n    };\n    seen.set(node, item);\n    const val = _evaluate(path, state);\n    if (state.confident) {\n      item.resolved = true;\n      item.value = val;\n    }\n    return val;\n  }\n}\nfunction _evaluate(path, state) {\n  if (!state.confident) return;\n  if (path.isSequenceExpression()) {\n    const exprs = path.get(\"expressions\");\n    return evaluateCached(exprs[exprs.length - 1], state);\n  }\n  if (path.isStringLiteral() || path.isNumericLiteral() || path.isBooleanLiteral()) {\n    return path.node.value;\n  }\n  if (path.isNullLiteral()) {\n    return null;\n  }\n  if (path.isTemplateLiteral()) {\n    return evaluateQuasis(path, path.node.quasis, state);\n  }\n  if (path.isTaggedTemplateExpression() && path.get(\"tag\").isMemberExpression()) {\n    const object = path.get(\"tag.object\");\n    const {\n      node: {\n        name\n      }\n    } = object;\n    const property = path.get(\"tag.property\");\n    if (object.isIdentifier() && name === \"String\" && !path.scope.getBinding(name) && property.isIdentifier() && property.node.name === \"raw\") {\n      return evaluateQuasis(path, path.node.quasi.quasis, state, true);\n    }\n  }\n  if (path.isConditionalExpression()) {\n    const testResult = evaluateCached(path.get(\"test\"), state);\n    if (!state.confident) return;\n    if (testResult) {\n      return evaluateCached(path.get(\"consequent\"), state);\n    } else {\n      return evaluateCached(path.get(\"alternate\"), state);\n    }\n  }\n  if (path.isExpressionWrapper()) {\n    return evaluateCached(path.get(\"expression\"), state);\n  }\n  if (path.isMemberExpression() && !path.parentPath.isCallExpression({\n    callee: path.node\n  })) {\n    const property = path.get(\"property\");\n    const object = path.get(\"object\");\n    if (object.isLiteral()) {\n      const value = object.node.value;\n      const type = typeof value;\n      let key = null;\n      if (path.node.computed) {\n        key = evaluateCached(property, state);\n        if (!state.confident) return;\n      } else if (property.isIdentifier()) {\n        key = property.node.name;\n      }\n      if ((type === \"number\" || type === \"string\") && key != null && (typeof key === \"number\" || typeof key === \"string\")) {\n        return value[key];\n      }\n    }\n  }\n  if (path.isReferencedIdentifier()) {\n    const binding = path.scope.getBinding(path.node.name);\n    if (binding) {\n      if (binding.constantViolations.length > 0 || path.node.start < binding.path.node.end) {\n        deopt(binding.path, state);\n        return;\n      }\n      if (binding.hasValue) {\n        return binding.value;\n      }\n    }\n    const name = path.node.name;\n    if (Globals.has(name)) {\n      if (!binding) {\n        return Globals.get(name);\n      }\n      deopt(binding.path, state);\n      return;\n    }\n    const resolved = path.resolve();\n    if (resolved === path) {\n      deopt(path, state);\n      return;\n    } else {\n      return evaluateCached(resolved, state);\n    }\n  }\n  if (path.isUnaryExpression({\n    prefix: true\n  })) {\n    if (path.node.operator === \"void\") {\n      return undefined;\n    }\n    const argument = path.get(\"argument\");\n    if (path.node.operator === \"typeof\" && (argument.isFunction() || argument.isClass())) {\n      return \"function\";\n    }\n    const arg = evaluateCached(argument, state);\n    if (!state.confident) return;\n    switch (path.node.operator) {\n      case \"!\":\n        return !arg;\n      case \"+\":\n        return +arg;\n      case \"-\":\n        return -arg;\n      case \"~\":\n        return ~arg;\n      case \"typeof\":\n        return typeof arg;\n    }\n  }\n  if (path.isArrayExpression()) {\n    const arr = [];\n    const elems = path.get(\"elements\");\n    for (const elem of elems) {\n      const elemValue = elem.evaluate();\n      if (elemValue.confident) {\n        arr.push(elemValue.value);\n      } else {\n        deopt(elemValue.deopt, state);\n        return;\n      }\n    }\n    return arr;\n  }\n  if (path.isObjectExpression()) {\n    const obj = {};\n    const props = path.get(\"properties\");\n    for (const prop of props) {\n      if (prop.isObjectMethod() || prop.isSpreadElement()) {\n        deopt(prop, state);\n        return;\n      }\n      const keyPath = prop.get(\"key\");\n      let key;\n      if (prop.node.computed) {\n        key = keyPath.evaluate();\n        if (!key.confident) {\n          deopt(key.deopt, state);\n          return;\n        }\n        key = key.value;\n      } else if (keyPath.isIdentifier()) {\n        key = keyPath.node.name;\n      } else {\n        key = keyPath.node.value;\n      }\n      const valuePath = prop.get(\"value\");\n      let value = valuePath.evaluate();\n      if (!value.confident) {\n        deopt(value.deopt, state);\n        return;\n      }\n      value = value.value;\n      obj[key] = value;\n    }\n    return obj;\n  }\n  if (path.isLogicalExpression()) {\n    const wasConfident = state.confident;\n    const left = evaluateCached(path.get(\"left\"), state);\n    const leftConfident = state.confident;\n    state.confident = wasConfident;\n    const right = evaluateCached(path.get(\"right\"), state);\n    const rightConfident = state.confident;\n    switch (path.node.operator) {\n      case \"||\":\n        state.confident = leftConfident && (!!left || rightConfident);\n        if (!state.confident) return;\n        return left || right;\n      case \"&&\":\n        state.confident = leftConfident && (!left || rightConfident);\n        if (!state.confident) return;\n        return left && right;\n      case \"??\":\n        state.confident = leftConfident && (left != null || rightConfident);\n        if (!state.confident) return;\n        return left != null ? left : right;\n    }\n  }\n  if (path.isBinaryExpression()) {\n    const left = evaluateCached(path.get(\"left\"), state);\n    if (!state.confident) return;\n    const right = evaluateCached(path.get(\"right\"), state);\n    if (!state.confident) return;\n    switch (path.node.operator) {\n      case \"-\":\n        return left - right;\n      case \"+\":\n        return left + right;\n      case \"/\":\n        return left / right;\n      case \"*\":\n        return left * right;\n      case \"%\":\n        return left % right;\n      case \"**\":\n        return Math.pow(left, right);\n      case \"<\":\n        return left < right;\n      case \">\":\n        return left > right;\n      case \"<=\":\n        return left <= right;\n      case \">=\":\n        return left >= right;\n      case \"==\":\n        return left == right;\n      case \"!=\":\n        return left != right;\n      case \"===\":\n        return left === right;\n      case \"!==\":\n        return left !== right;\n      case \"|\":\n        return left | right;\n      case \"&\":\n        return left & right;\n      case \"^\":\n        return left ^ right;\n      case \"<<\":\n        return left << right;\n      case \">>\":\n        return left >> right;\n      case \">>>\":\n        return left >>> right;\n    }\n  }\n  if (path.isCallExpression()) {\n    const callee = path.get(\"callee\");\n    let context;\n    let func;\n    if (callee.isIdentifier() && !path.scope.getBinding(callee.node.name) && (isValidObjectCallee(callee.node.name) || isValidIdentifierCallee(callee.node.name))) {\n      func = commonjsHelpers.commonjsGlobal[callee.node.name];\n    }\n    if (callee.isMemberExpression()) {\n      const object = callee.get(\"object\");\n      const property = callee.get(\"property\");\n      if (object.isIdentifier() && property.isIdentifier() && isValidObjectCallee(object.node.name) && !isInvalidMethod(property.node.name)) {\n        context = commonjsHelpers.commonjsGlobal[object.node.name];\n        const key = property.node.name;\n        if (hasOwnProperty.call(context, key)) {\n          func = context[key];\n        }\n      }\n      if (object.isLiteral() && property.isIdentifier()) {\n        const type = typeof object.node.value;\n        if (type === \"string\" || type === \"number\") {\n          context = object.node.value;\n          func = context[property.node.name];\n        }\n      }\n    }\n    if (func) {\n      const args = path.get(\"arguments\").map(arg => evaluateCached(arg, state));\n      if (!state.confident) return;\n      return func.apply(context, args);\n    }\n  }\n  deopt(path, state);\n}\nfunction evaluateQuasis(path, quasis, state, raw = false) {\n  let str = \"\";\n  let i = 0;\n  const exprs = path.isTemplateLiteral() ? path.get(\"expressions\") : path.get(\"quasi.expressions\");\n  for (const elem of quasis) {\n    if (!state.confident) break;\n    str += raw ? elem.value.raw : elem.value.cooked;\n    const expr = exprs[i++];\n    if (expr) str += String(evaluateCached(expr, state));\n  }\n  if (!state.confident) return;\n  return str;\n}\nfunction evaluate() {\n  const state = {\n    confident: true,\n    deoptPath: null,\n    seen: new Map()\n  };\n  let value = evaluateCached(this, state);\n  if (!state.confident) value = undefined;\n  return {\n    confident: state.confident,\n    deopt: state.deoptPath,\n    value: value\n  };\n}\n\n//# sourceMappingURL=evaluation.js.map\n\nexport { evaluation as __moduleExports, evaluate_1 as evaluate, evaluateTruthy_1 as evaluateTruthy, evaluation as default };",
-      "start": 1727785256960,
-      "end": 1727785256962,
+      "start": 1728160681169,
+      "end": 1728160681171,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -98,27 +98,33 @@
       }
     },
     {
+      "name": "inject",
+      "start": 1728160681171,
+      "end": 1728160681171,
+      "order": "normal"
+    },
+    {
       "name": "vite:dynamic-import-vars",
-      "start": 1727785256962,
-      "end": 1727785256962,
+      "start": 1728160681171,
+      "end": 1728160681171,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1727785256962,
-      "end": 1727785256962,
+      "start": 1728160681171,
+      "end": 1728160681171,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1727785256962,
-      "end": 1727785256962,
+      "start": 1728160681171,
+      "end": 1728160681171,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1727785256962,
-      "end": 1727785256962,
+      "start": 1728160681171,
+      "end": 1728160681171,
       "order": "normal"
     }
   ]
