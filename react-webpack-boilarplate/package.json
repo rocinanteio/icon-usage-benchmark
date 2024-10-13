@@ -1,0 +1,27 @@
+{
+  "name": "react-webpack-boilarplate",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack serve --port 3000 --mode development --open --hot",
+    "build": "webpack --mode production"
+  },
+  "dependencies": {
+    "@modern-js/inspector-webpack-plugin": "^1.0.6",
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.1",
+    "css-loader": "^7.1.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "source-map-loader": "^5.0.0",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.6.3",
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.1.0"
+  },
+  "devDependencies": {
+    "html-webpack-plugin": "^5.6.0"
+  }
+}
